@@ -1,3 +1,4 @@
+import streamlit as st
 from natal.config import Display
 from pathlib import Path
 
@@ -22,3 +23,4 @@ BODIES = list(Display().model_fields.keys())
 STYLE = f"<style>{Path('style.css').read_text()}</style>"
 LOGO = "static/astrobro-logo.png"
 CHART_SIZE = 650
+SESS = st.session_state

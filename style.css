@@ -69,22 +69,8 @@
   }
 }
 
-.st-key-prev {
-  .stButton {
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-  }
-}
-
 [data-testid="stColumn"] {
   min-width: 60px;
-}
-
-#MainMenu,
-footer,
-.stDecoration {
-  display: none;
 }
 
 [data-testid="stSidebar"][aria-expanded="true"] {
@@ -101,9 +87,6 @@ footer,
 
 .stMainBlockContainer {
   padding-top: 4rem;
-}
-
-.stMainBlockContainer {
   overflow-x: hidden;
 }
 

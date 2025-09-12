@@ -36,32 +36,35 @@ def test_sample_data(transit: AppTest, sess: SafeSessionState):
 
     transit.run()
 
-    assert sess["name1"] == "sample"
-    assert sess["city1"] == "Hong Kong - HK"
-    assert sess["date1"] == date(1976, 4, 20)
-    assert sess["hr1"] == 18
-    assert sess["min1"] == 58
-    assert sess["city2"] == "Taipei - TW"
-    assert sess["date2"] == date(2014, 4, 20)
-    assert sess["hr2"] == 18
-    assert sess["min2"] == 48
+    assert SESS["name1"] == "sample"
+    assert SESS["city1"] == "Hong Kong - HK"
+    assert SESS["date1"] == date(1976, 4, 20)
+    assert SESS["hr1"] == 18
+    assert SESS["min1"] == 58
+    assert SESS["city2"] == "Taipei - TW"
+    assert SESS["date2"] == date(2014, 4, 20)
+    assert SESS["hr2"] == 18
+    assert SESS["min2"] == 48
+
 
 def test_change_orbs(transit: AppTest, sess: SafeSessionState):
     transit.button(key="transit_orbs").click().run()
-    assert sess.conjunction == 2
-    assert sess.opposition == 2
-    assert sess.trine == 2
-    assert sess.square == 2
-    assert sess.sextile == 1
+    assert SESS.conjunction == 2
+    assert SESS.opposition == 2
+    assert SESS.trine == 2
+    assert SESS.square == 2
+    assert SESS.sextile == 1
+
 
 def test_change_displays(transit: AppTest, sess: SafeSessionState):
     transit.button(key="inner_display2").click().run()
-    assert sess.sun2 == True
-    assert sess.moon2 == True
-    assert sess.mercury2 == True
-    assert sess.asc_node2 == False
-    assert sess.jupiter2 == False
-    assert sess.pluto2 == False
+    assert SESS.sun2 == True
+    assert SESS.moon2 == True
+    assert SESS.mercury2 == True
+    assert SESS.asc_node2 == False
+    assert SESS.jupiter2 == False
+    assert SESS.pluto2 == False
+
 
 def test_save(sess: SafeSessionState, transit_sample: str):
     assert json.loads(archive_str(sess)) == json.loads(transit_sample)
@@ -70,9 +73,9 @@ def test_save(sess: SafeSessionState, transit_sample: str):
 def test_prev_button(transit: AppTest, sess: SafeSessionState):
     # press prev button
     transit.button(key="prev").click().run()
-    assert sess.date1 == date(1976, 4, 20)
-    assert sess.name2 == "transit"
-    assert sess.date2 == date(2014, 4, 19)
+    assert SESS.date1 == date(1976, 4, 20)
+    assert SESS.name2 == "transit"
+    assert SESS.date2 == date(2014, 4, 19)
 
 
 def test_import(sess: SafeSessionState, transit_sample: str):

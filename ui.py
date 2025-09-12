@@ -1,35 +1,29 @@
 import streamlit as st
 from archive import archive_str, import_data
-from const import BODIES
+from const import BODIES, SESS
 from datetime import date as Date
 from datetime import datetime, timedelta
 from io import BytesIO
 from natal import Chart, Data, HouseSys, Stats
 from natal.config import Config, Display, Orb, ThemeType
 from natal.const import ASPECT_NAMES
-
-# from natal_report import Report
 from streamlit_shortcuts import shortcut_button
 from typing import Literal
 from utils import get_cities, get_dt, utc_of
 
-sess = st.session_state
-
 
 def data_form(id: int):
-    sess[f"name{id}"] = sess.get(f"name{id}", "" if id == 1 else "transit")
-    sess[f"city{id}"] = sess.get(f"city{id}", None)
+    SESS.setdefault(f"name{id}", "" if id == 1 else "transit")
+    SESS.setdefault(f"city{id}", None)
     c1, c2 = st.columns(2)
     name = c1.text_input("Name", key=f"name{id}")
     city = c2.selectbox(
         "City", get_cities().index, key=f"city{id}", help="type to search"
     )
     now = datetime.now()
-    sess[f"date{id}"] = sess.get(f"date{id}") or (
-        Date(2000, 1, 1) if id == 1 else now.date()
-    )
-    sess[f"hr{id}"] = sess.get(f"hr{id}", 13 if id == 1 else now.hour)
-    sess[f"min{id}"] = sess.get(f"min{id}", 0 if id == 1 else now.minute)
+    SESS.setdefault(f"date{id}", Date(2000, 1, 1) if id == 1 else now.date())
+    SESS.setdefault(f"hr{id}", 13 if id == 1 else now.hour)
+    SESS.setdefault(f"min{id}", 0 if id == 1 else now.minute)
     c1, c2, c3 = st.columns(3)
     c1.date_input(
         "Date",
@@ -54,24 +48,9 @@ def data_form(id: int):
 
 
 def general_opt():
-    c1, c2 = st.columns(2)
-    c1.toggle("Show Statistics", key="show_stats")
-    # with c2:
-    #     filename, name1, city1, *_ = input_status()
-    #     ready = name1 and city1
-    #     with st.empty():
-    #         if st.button("Generate PDF", use_container_width=True, disabled=not ready):
-    #             with st.spinner("generating..."):
-    #                 pdf = pdf_report()
-    #             st.download_button(
-    #                 ":material/download: Download",
-    #                 pdf,
-    #                 file_name=f"{filename}_report.pdf",
-    #                 mime="application/pdf",
-    #                 use_container_width=True,
-    #             )
-    sess["house_sys"] = sess.get("house_sys", "Placidus")
-    sess["theme_type"] = sess.get("theme_type", "dark")
+    st.toggle("Show Statistics", key="show_stats")
+    SESS.setdefault("house_sys", "Placidus")
+    SESS.setdefault("theme_type", "dark")
     c1, c2 = st.columns(2)
     c1.selectbox("House System", HouseSys._member_names_, key="house_sys")
     c2.selectbox("Chart Theme", ThemeType.__args__, key="theme_type")
@@ -79,15 +58,15 @@ def general_opt():
 
 
 def orb_opt():
-    sess.orb = sess.get("orb", Orb())
+    SESS.setdefault("orb", Orb())
     for aspect in ASPECT_NAMES:
         st.number_input(
             label=aspect,
-            value=sess.orb[aspect],
+            value=SESS.orb[aspect],
             min_value=0,
             max_value=10,
             # actualize at change time, loop causes `aspect` stick to last value
-            on_change=lambda asp: sess.orb.update({asp: sess[asp]}),
+            on_change=lambda asp: SESS.orb.update({asp: SESS[asp]}),
             args=(aspect,),  # actualize at create time
             key=aspect,
         )
@@ -115,16 +94,16 @@ def orb_opt():
 
 def display_opt(num: int):
     display_n = f"display{num}"
-    sess[display_n] = sess.get(display_n, Display())
+    SESS.setdefault(display_n, Display())
 
     def toggle(body: str):
         body_n = f"{body}{num}"
-        sess[body_n] = sess[display_n][body]
+        SESS[body_n] = SESS[display_n][body]
         st.toggle(
             body,
             key=body_n,
             # actualize at change time, won't stick to loop last value because its scoped by the enclosing function
-            on_change=lambda: sess[display_n].update({body: sess[body_n]}),
+            on_change=lambda: SESS[display_n].update({body: SESS[body_n]}),
         )
 
     c1, c2 = st.columns(2)
@@ -166,7 +145,7 @@ def save_load_ui():
         st.file_uploader(
             "load chart data",
             key="load_file",
-            on_change=lambda: import_data(sess.load_file),
+            on_change=lambda: import_data(SESS.load_file),
         )
 
 
@@ -182,14 +161,17 @@ def stepper(id: int):
                 label_visibility="collapsed",
             )
         with c1:
-            shortcut_button(
-                "❮",
-                "alt+arrowleft",
-                hint=False,
-                on_click=step,
-                args=(id, unit, -1),
-                key="prev",
-            )
+            with st.container(
+                key="prev-container", horizontal=True, horizontal_alignment="right"
+            ):
+                shortcut_button(
+                    "❮",
+                    "alt+arrowleft",
+                    hint=False,
+                    on_click=step,
+                    args=(id, unit, -1),
+                    key="prev",
+                )
         with c3:
             shortcut_button(
                 "❯",
@@ -203,7 +185,7 @@ def stepper(id: int):
 
 def chart_ui(data1: Data, data2: Data = None):
     st.write("")
-    chart = Chart(data1=data1, data2=data2, width=sess.chart_size)
+    chart = Chart(data1=data1, data2=data2, width=SESS.chart_size)
     with st.container(key="chart_svg"):
         st.markdown(chart.svg, unsafe_allow_html=True)
 
@@ -240,9 +222,9 @@ def step(id: int, unit: str, shift: Literal[1, -1]):
     if unit not in ["month", "year"]:
         dt += delta
 
-    sess[f"date{id}"] = dt.date()
-    sess[f"hr{id}"] = dt.hour
-    sess[f"min{id}"] = dt.minute
+    SESS[f"date{id}"] = dt.date()
+    SESS[f"hr{id}"] = dt.hour
+    SESS[f"min{id}"] = dt.minute
 
 
 def data_obj(
@@ -257,20 +239,20 @@ def data_obj(
         lat_lon["utc_dt"] = utc_of(get_dt(id), city_info["timezone"])
         return lat_lon
 
-    house_sys = HouseSys[sess["house_sys"]]
-    orb = sess.orb
-    display1 = {body: sess[f"{body}1"] for body in BODIES}
+    house_sys = HouseSys[SESS["house_sys"]]
+    orb = SESS.orb
+    display1 = {body: SESS[f"{body}1"] for body in BODIES}
 
     data1 = Data(
         name=name1,
         **get_params(1, city1),
         config=Config(
-            house_sys=house_sys, theme_type=sess.theme_type, orb=orb, display=display1
+            house_sys=house_sys, theme_type=SESS.theme_type, orb=orb, display=display1
         ),
     )
 
     if name2 and city2:
-        display2 = {body: sess[f"{body}2"] for body in BODIES}
+        display2 = {body: SESS[f"{body}2"] for body in BODIES}
         orb2 = Orb(**{aspect: 0 for aspect in ASPECT_NAMES})
         data2 = Data(
             name=name2,
@@ -285,7 +267,7 @@ def data_obj(
 
 def set_orbs(vals: list[int]):
     for aspect, val in zip(ASPECT_NAMES, vals):
-        sess.orb[aspect] = val
+        SESS.orb[aspect] = val
 
 
 def set_displays(num: int, opt: Literal["inner", "planets", "default"]):
@@ -300,7 +282,7 @@ def set_displays(num: int, opt: Literal["inner", "planets", "default"]):
         case "default":
             display = Display()
 
-    sess[f"display{num}"] = Display(**display)
+    SESS[f"display{num}"] = Display(**display)
 
 
 def pdf_report() -> BytesIO | str:
@@ -315,9 +297,9 @@ def pdf_report() -> BytesIO | str:
 
 
 def input_status() -> tuple[str, bool, bool, str, str, str, str]:
-    name1 = sess.get("name1")
-    city1 = sess.get("city1")
-    name2 = sess.get("name2")
-    city2 = sess.get("city2")
+    name1 = SESS.get("name1")
+    city1 = SESS.get("city1")
+    name2 = SESS.get("name2")
+    city2 = SESS.get("city2")
     filename = f"{name1}_{name2}" if (name2 and city2) else name1
     return filename, name1, city1, name2, city2

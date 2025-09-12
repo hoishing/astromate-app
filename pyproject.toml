@@ -16,4 +16,4 @@ isort.no-sections = true
 extend-ignore = ["E203", "E402", "E501", "E712", "F401", "F811"]
 
 [dependency-groups]
-dev = ["ipykernel", "ruff", "watchdog"]
+dev = ["ipykernel", "watchdog"]

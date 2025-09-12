@@ -1,6 +1,5 @@
 [server]
 enableStaticServing = true
-maxUploadSize = 1
 runOnSave = true
 enableCORS = false
 enableXsrfProtection = false
@@ -13,6 +12,7 @@ base = "dark"
 primaryColor = "#ffbf00"
 backgroundColor = "#212529"
 secondaryBackgroundColor = "#343a40"
+baseRadius = "large"
 
 [browser]
 gatherUsageStats = false

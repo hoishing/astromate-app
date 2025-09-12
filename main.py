@@ -15,12 +15,12 @@ from ui import (
 
 st.set_page_config(**PAGE_CONFIG)
 st.logo(LOGO)
-st.markdown(STYLE, unsafe_allow_html=True)
+st.html(STYLE)
 
 with st.sidebar:
     general_opt()
     with st.expander("Options"):
-        t1, t2, t3 = st.tabs(["Orbs", "Birth", "Transit/Synastry"])
+        t1, t2, t3 = st.tabs(["Orbs", "Chart 1", "Chart 2"])
         with t1:
             orb_opt()
         with t2:
@@ -29,10 +29,10 @@ with st.sidebar:
             display_opt(2)
     save_load_ui()
 
-with st.expander("Birth Data", expanded=True):
+with st.expander("Chart 1", expanded=True):
     name1, city1 = data_form(1)
 
-with st.expander("Transit / Synastry"):
+with st.expander("Chart 2"):
     name2, city2 = data_form(2)
 
 st.session_state.chart_size = min(screenwidth_detector() + 20, 650)
