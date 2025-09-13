@@ -24,3 +24,21 @@ STYLE = f"<style>{Path('style.css').read_text()}</style>"
 LOGO = "static/astrobro-logo.png"
 CHART_SIZE = 650
 SESS = st.session_state
+
+HIST_USE_COLS = [
+    "chart1",
+    "city1",
+    "datetime1",
+    "chart2",
+    "city2",
+    "datetime2",
+]
+
+HIST_COLUMN_CONFIG = {
+    "chart1": st.column_config.Column(label="main"),
+    "city1": st.column_config.Column(label="city"),
+    "datetime1": st.column_config.Column(label="datetime"),
+    "chart2": st.column_config.Column(label="auxiliary"),
+    "city2": st.column_config.Column(label="city"),
+    "datetime2": st.column_config.Column(label="datetime"),
+}

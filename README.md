@@ -13,6 +13,9 @@
 ## TODO
 
 - i18n
+- info UI
+  - gender
+  - lat lon
 - refactor UI
   - options
   - chart + stepper

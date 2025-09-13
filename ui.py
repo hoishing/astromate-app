@@ -1,50 +1,13 @@
 import streamlit as st
-from archive import archive_str, import_data
 from const import BODIES, SESS
 from datetime import date as Date
 from datetime import datetime, timedelta
-from io import BytesIO
 from natal import Chart, Data, HouseSys, Stats
 from natal.config import Config, Display, Orb, ThemeType
 from natal.const import ASPECT_NAMES
 from streamlit_shortcuts import shortcut_button
 from typing import Literal
 from utils import get_cities, get_dt, utc_of
-
-
-def data_form(id: int):
-    SESS.setdefault(f"name{id}", "" if id == 1 else "transit")
-    SESS.setdefault(f"city{id}", None)
-    c1, c2 = st.columns(2)
-    name = c1.text_input("Name", key=f"name{id}")
-    city = c2.selectbox(
-        "City", get_cities().index, key=f"city{id}", help="type to search"
-    )
-    now = datetime.now()
-    SESS.setdefault(f"date{id}", Date(2000, 1, 1) if id == 1 else now.date())
-    SESS.setdefault(f"hr{id}", 13 if id == 1 else now.hour)
-    SESS.setdefault(f"min{id}", 0 if id == 1 else now.minute)
-    c1, c2, c3 = st.columns(3)
-    c1.date_input(
-        "Date",
-        max_value=Date(2300, 1, 1),
-        min_value=Date(1800, 1, 1),
-        format="YYYY-MM-DD",
-        key=f"date{id}",
-    )
-    c2.selectbox(
-        "Hour",
-        range(24),
-        key=f"hr{id}",
-    )
-    c3.selectbox(
-        "Minute",
-        range(60),
-        key=f"min{id}",
-        help="daylight saving time",
-    )
-
-    return name, city
 
 
 def general_opt():
@@ -129,27 +92,68 @@ def display_opt(num: int):
     )
 
 
-def save_load_ui():
-    filename, name1, city1, *_ = input_status()
-    data1_ready = name1 and city1
-
-    with st.expander("save / load data"):
-        st.download_button(
-            "save chart data",
-            archive_str() if data1_ready else "",
-            file_name=f"{filename}.json",
-            use_container_width=True,
-            key="save_button",
-            disabled=not data1_ready,
-        )
-        st.file_uploader(
-            "load chart data",
-            key="load_file",
-            on_change=lambda: import_data(SESS.load_file),
-        )
+# options utils ======================================================
 
 
-def stepper(id: int):
+def set_orbs(vals: list[int]):
+    for aspect, val in zip(ASPECT_NAMES, vals):
+        SESS.orb[aspect] = val
+
+
+def set_displays(num: int, opt: Literal["inner", "planets", "default"]):
+    display = dict.fromkeys(BODIES, False)
+    inner = ["asc", "sun", "moon", "mercury", "venus", "mars"]
+    match opt:
+        case "inner":
+            display.update(dict.fromkeys(inner, True))
+        case "planets":
+            planets = inner + ["jupiter", "saturn", "uranus", "neptune", "pluto"]
+            display.update(dict.fromkeys(planets, True))
+        case "default":
+            display = Display()
+
+    SESS[f"display{num}"] = Display(**display)
+
+
+# chart ui ======================================================
+
+
+def input_ui(id: int):
+    SESS.setdefault(f"name{id}", "" if id == 1 else "transit")
+    SESS.setdefault(f"city{id}", None)
+    c1, c2 = st.columns(2)
+    name = c1.text_input("Name", key=f"name{id}")
+    city = c2.selectbox(
+        "City", get_cities().index, key=f"city{id}", help="type to search"
+    )
+    now = datetime.now()
+    SESS.setdefault(f"date{id}", Date(2000, 1, 1) if id == 1 else now.date())
+    SESS.setdefault(f"hr{id}", 13 if id == 1 else now.hour)
+    SESS.setdefault(f"min{id}", 0 if id == 1 else now.minute)
+    c1, c2, c3 = st.columns(3)
+    c1.date_input(
+        "Date",
+        max_value=Date(2300, 1, 1),
+        min_value=Date(1800, 1, 1),
+        format="YYYY-MM-DD",
+        key=f"date{id}",
+    )
+    c2.selectbox(
+        "Hour",
+        range(24),
+        key=f"hr{id}",
+    )
+    c3.selectbox(
+        "Minute",
+        range(60),
+        key=f"min{id}",
+        help="daylight saving time",
+    )
+
+    return name, city
+
+
+def stepper_ui(id: int):
     with st.container(key="stepper"):
         st.write("")
         c1, c2, c3 = st.columns([3, 4, 3])
@@ -196,35 +200,35 @@ def stats_ui(data1: Data, data2: Data = None):
     st.write("")
 
 
-# utils ======================================================
+# chart utils ======================================================
 
 
-def step(id: int, unit: str, shift: Literal[1, -1]):
-    dt = get_dt(id)
+def step(chart_id: int, unit: str, delta: Literal[1, -1]):
+    dt = get_dt(chart_id)
 
     match unit:
         case "week":
-            delta = timedelta(weeks=shift)
+            delta = timedelta(weeks=delta)
         case "day":
-            delta = timedelta(days=shift)
+            delta = timedelta(days=delta)
         case "hour":
-            delta = timedelta(hours=shift)
+            delta = timedelta(hours=delta)
         case "minute":
-            delta = timedelta(minutes=shift)
+            delta = timedelta(minutes=delta)
         case "month":
-            new_month = dt.month + shift
+            new_month = dt.month + delta
             new_year = dt.year + (new_month - 1) // 12
             new_month = ((new_month - 1) % 12) + 1
             dt = dt.replace(year=new_year, month=new_month)
         case "year":
-            dt = dt.replace(year=dt.year + shift)
+            dt = dt.replace(year=dt.year + delta)
 
     if unit not in ["month", "year"]:
         dt += delta
 
-    SESS[f"date{id}"] = dt.date()
-    SESS[f"hr{id}"] = dt.hour
-    SESS[f"min{id}"] = dt.minute
+    SESS[f"date{chart_id}"] = dt.date()
+    SESS[f"hr{chart_id}"] = dt.hour
+    SESS[f"min{chart_id}"] = dt.minute
 
 
 def data_obj(
@@ -265,37 +269,7 @@ def data_obj(
     return data1, data2
 
 
-def set_orbs(vals: list[int]):
-    for aspect, val in zip(ASPECT_NAMES, vals):
-        SESS.orb[aspect] = val
-
-
-def set_displays(num: int, opt: Literal["inner", "planets", "default"]):
-    display = dict.fromkeys(BODIES, False)
-    inner = ["asc", "sun", "moon", "mercury", "venus", "mars"]
-    match opt:
-        case "inner":
-            display.update(dict.fromkeys(inner, True))
-        case "planets":
-            planets = inner + ["jupiter", "saturn", "uranus", "neptune", "pluto"]
-            display.update(dict.fromkeys(planets, True))
-        case "default":
-            display = Display()
-
-    SESS[f"display{num}"] = Display(**display)
-
-
-def pdf_report() -> BytesIO | str:
-    _, name1, city1, name2, city2 = input_status()
-    if name1 and city1:
-        data1, data2 = data_obj(name1, city1, name2, city2)
-        # report = Report(data1, data2)
-        # return report.create_pdf(report.full_report)
-        return ""
-    else:
-        return ""
-
-
+# no use now
 def input_status() -> tuple[str, bool, bool, str, str, str, str]:
     name1 = SESS.get("name1")
     city1 = SESS.get("city1")

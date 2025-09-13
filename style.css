@@ -2,7 +2,8 @@
 
 :root {
   --border-color: #3e4044;
-  --border-radius: 6px;
+  /* --border-radius: 6px; */
+  --border-radius: 0.7rem;
   --bg-color: #282d31;
 }
 
@@ -74,7 +75,7 @@
 }
 
 [data-testid="stSidebar"][aria-expanded="true"] {
-  min-width: 365px;
+  min-width: 400px;
 }
 
 .st-key-chart_svg {
