@@ -13,6 +13,7 @@ dependencies = [
 
 [tool.ruff]
 isort.no-sections = true
+line-length = 100
 extend-ignore = ["E203", "E402", "E501", "E712", "F401", "F811"]
 
 [dependency-groups]

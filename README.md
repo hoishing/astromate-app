@@ -12,9 +12,14 @@
 
 ## TODO
 
+- tool tip for stepper
+  - span for text, show hide with css, see gemini history
+- check performance
+  - startup time
+  - chart loading
+  - stats loading
 - i18n
 - info UI
-  - gender
   - lat lon
 - refactor UI
   - options

@@ -1,17 +1,9 @@
 import pandas as pd
 import streamlit as st
-from const import HIST_COLUMN_CONFIG, HIST_USE_COLS, LOGO, PAGE_CONFIG, STYLE
+from const import HIST_COL_CONFIG, LOGO, PAGE_CONFIG, SESS, STYLE
 from st_screenwidth_detector import screenwidth_detector
-from ui import (
-    chart_ui,
-    data_obj,
-    display_opt,
-    general_opt,
-    input_ui,
-    orb_opt,
-    stats_ui,
-    stepper_ui,
-)
+from ui import chart_ui, display_opt, general_opt, input_ui, orb_opt, stats_ui, stepper_ui
+from utils import natal_data
 
 st.set_page_config(**PAGE_CONFIG)
 st.logo(LOGO)
@@ -31,16 +23,11 @@ with st.sidebar:
         with t4:
             display_opt(2)
 
-    st.subheader(":material/save_alt: Saved Charts")
-    df = pd.read_csv(
-        "mock.csv",
-        usecols=HIST_USE_COLS,
-    )
-    st.dataframe(
-        df,
-        hide_index=True,
-        column_config=HIST_COLUMN_CONFIG,
-    )
+    # TODO: replace with database
+    st.subheader("Saved Charts")
+    df = pd.read_csv("mock.csv", usecols=HIST_COL_CONFIG.keys())
+    height = (len(df) + 1) * 35
+    st.dataframe(df, hide_index=True, column_config=HIST_COL_CONFIG, height=height)
 
 with st.expander("Main Chart", expanded=True):
     name1, city1 = input_ui(1)
@@ -48,11 +35,12 @@ with st.expander("Main Chart", expanded=True):
 with st.expander("Auxiliary Chart"):
     name2, city2 = input_ui(2)
 
-st.session_state.chart_size = min(screenwidth_detector() + 20, 650)
+SESS.chart_size = min(screenwidth_detector() + 20, 650)
 
 if name1 and city1:
-    data1, data2 = data_obj(name1, city1, name2, city2)
+    data1 = natal_data(1)
+    data2 = natal_data(2) if name2 and city2 else None
     chart_ui(data1, data2)
     stepper_ui(2 if data2 else 1)
-    if st.session_state.show_stats:
+    if SESS.show_stats:
         stats_ui(data1, data2)

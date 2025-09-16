@@ -70,10 +70,23 @@
   }
 }
 
-[data-testid="stColumn"] {
-  min-width: 60px;
+.st-key-name-row1,
+.st-key-name-row2 {
+  /* every st.container has a stLayoutWrapper */
+  & > [data-testid="stLayoutWrapper"] {
+    min-width: 240px;
+  }
+  [data-testid="stHorizontalBlock"] {
+    flex-wrap: nowrap;
+  }
 }
 
+.st-key-date-row1,
+.st-key-date-row2 {
+  flex-wrap: nowrap;
+}
+
+/* sidebar min width */
 [data-testid="stSidebar"][aria-expanded="true"] {
   min-width: 400px;
 }
@@ -88,7 +101,7 @@
 
 .stMainBlockContainer {
   padding-top: 4rem;
-  overflow-x: hidden;
+  overflow-x: hidden; /* TODO: fix it on .st-key-chart_svg */
 }
 
 .st-key-prev + .stElementContainer,

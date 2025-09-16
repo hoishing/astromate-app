@@ -3,8 +3,6 @@
 [server]
 enableStaticServing = true
 runOnSave = true
-enableCORS = false
-enableXsrfProtection = false
 
 [client]
 toolbarMode = "minimal"
