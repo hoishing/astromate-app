@@ -13,7 +13,7 @@ dt_column = st.column_config.DatetimeColumn()
 
 with st.sidebar:
     with st.expander("Options", expanded=True):
-        t1, t2, t3, t4 = st.tabs(["General", "Orbs", "Main", "Auxiliary"])
+        t1, t2, t3, t4 = st.tabs(["General", "Orbs", "Birth", "Synastry"])
         with t1:
             general_opt()
         with t2:
@@ -29,17 +29,17 @@ with st.sidebar:
     height = (len(df) + 1) * 35
     st.dataframe(df, hide_index=True, column_config=HIST_COL_CONFIG, height=height)
 
-with st.expander("Main Chart", expanded=True):
-    name1, city1 = input_ui(1)
+with st.expander("Birth Chart", expanded=True):
+    input_ui(1)
 
-with st.expander("Auxiliary Chart"):
-    name2, city2 = input_ui(2)
+with st.expander("Synastry Chart"):
+    input_ui(2)
 
 SESS.chart_size = min(screenwidth_detector() + 20, 650)
 
-if name1 and city1:
+if SESS.name1 and SESS.lat1 and SESS.lon1 and SESS.tz1:
     data1 = natal_data(1)
-    data2 = natal_data(2) if name2 and city2 else None
+    data2 = natal_data(2) if SESS.name2 and SESS.lat2 and SESS.lon2 and SESS.tz2 else None
     chart_ui(data1, data2)
     stepper_ui(2 if data2 else 1)
     if SESS.show_stats:

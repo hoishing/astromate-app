@@ -70,20 +70,9 @@
   }
 }
 
-.st-key-name-row1,
-.st-key-name-row2 {
-  /* every st.container has a stLayoutWrapper */
-  & > [data-testid="stLayoutWrapper"] {
-    min-width: 240px;
-  }
-  [data-testid="stHorizontalBlock"] {
-    flex-wrap: nowrap;
-  }
-}
-
-.st-key-date-row1,
-.st-key-date-row2 {
-  flex-wrap: nowrap;
+/* make st.column shrink */
+[data-testid="stColumn"] {
+  min-width: 60px;
 }
 
 /* sidebar min width */

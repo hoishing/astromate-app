@@ -1,31 +1,56 @@
 import streamlit as st
-from const import BODIES, SESS
+from const import ASPECTS, BODIES, CHART_COLORS, HOUSE_SYS, LANGS, SESS
 from datetime import date as Date
 from datetime import datetime
-from natal import Chart, Data, HouseSys, Stats
-from natal.config import Display, Orb, ThemeType
-from natal.const import ASPECT_NAMES
+from natal import Chart, Data, Stats
+from natal.config import Display, Orb
 from streamlit_shortcuts import shortcut_button
 from typing import Literal
-from utils import all_cities, step
+from utils import all_cities, all_timezones, i, set_lat_lon_dt_tz, step
 
 
 def general_opt():
-    st.toggle("Show Statistics", key="show_stats")
+    SESS.setdefault("lang", "English")
     SESS.setdefault("house_sys", "Placidus")
     SESS.setdefault("theme_type", "dark")
-    c1, c2 = st.columns(2)
-    c1.selectbox("House System", HouseSys._member_names_, key="house_sys")
-    c2.selectbox("Chart Theme", ThemeType.__args__, key="theme_type")
+    SESS.setdefault("show_stats", False)
+    c1, c2 = st.columns([3, 2])
+    c1.selectbox(
+        "House System",
+        HOUSE_SYS,
+        key="house_sys",
+        format_func=lambda x: x.replace("_", " "),
+    )
+    c1.segmented_control(
+        "Chart Color",
+        CHART_COLORS,
+        key="theme_type",
+        width="stretch",
+        format_func=lambda x: CHART_COLORS[x],
+    )
+    c2.selectbox(
+        "Language",
+        range(len(LANGS)),
+        key="lang_num",
+        index=0,
+        format_func=lambda x: LANGS[x],
+    )
+    c2.segmented_control(
+        "Statistics",
+        [True, False],
+        key="show_stats",
+        width="stretch",
+        format_func=lambda x: ":material/check: " if x else ":material/close:",
+    )
 
 
 def orb_opt():
     def set_orbs(vals: list[int]):
-        for aspect, val in zip(ASPECT_NAMES, vals):
+        for aspect, val in zip(ASPECTS, vals):
             SESS.orb[aspect] = val
 
     SESS.setdefault("orb", Orb())
-    for aspect in ASPECT_NAMES:
+    for aspect in ASPECTS:
         st.number_input(
             label=aspect,
             value=SESS.orb[aspect],
@@ -60,71 +85,87 @@ def orb_opt():
 
 def display_opt(num: int):
     display_num = f"display{num}"
-    SESS.setdefault(display_num, Display())
+    default_display = Display(asc_node=False, mc=False)
+    inner_display = Display(
+        **dict.fromkeys("asc_node mc jupiter saturn uranus neptune pluto".split(), False)
+    )
+    SESS.setdefault(display_num, default_display)
 
     def toggle(body: str):
         body_n = f"{body}{num}"
         SESS[body_n] = SESS[display_num][body]
         st.toggle(
-            body,
+            i(body),
             key=body_n,
             # actualize at change time, won't stick to loop last value because its scoped by the enclosing function
             on_change=lambda: SESS[display_num].update({body: SESS[body_n]}),
         )
 
-    def batch_update(num: int, opt: Literal["inner", "planets", "default"]):
-        display = dict.fromkeys(BODIES, False)
-        inner = ["asc", "sun", "moon", "mercury", "venus", "mars"]
-        match opt:
-            case "inner":
-                display.update(dict.fromkeys(inner, True))
-            case "planets":
-                planets = inner + ["jupiter", "saturn", "uranus", "neptune", "pluto"]
-                display.update(dict.fromkeys(planets, True))
-            case "default":
-                display = Display()
-
-        SESS[f"display{num}"] = Display(**display)
+    def button_opts(opt: Literal["inner", "default"]):
+        display = inner_display if opt == "inner" else default_display
+        label = "inner planets" if opt == "inner" else "default"
+        return dict(
+            label=label,
+            key=f"{opt}_display{num}",
+            use_container_width=True,
+            on_click=lambda: SESS[display_num].update(display),
+        )
 
     c1, c2 = st.columns(2)
     with c1:
-        for body in BODIES[:10]:
+        for body in BODIES[:7]:
             toggle(body)
     with c2:
-        for body in BODIES[10:]:
+        for body in BODIES[7:]:
             toggle(body)
 
     c1, c2 = st.columns(2)
-    c1.button(
-        "inner planets",
-        key=f"inner_display{num}",
-        use_container_width=True,
-        on_click=lambda: batch_update(num, "inner"),
-    )
-    c2.button(
-        "default",
-        key=f"default_display{num}",
-        use_container_width=True,
-        on_click=lambda: batch_update(num, "default"),
-    )
+    c1.button(**button_opts("inner"))
+    c2.button(**button_opts("default"))
 
 
 def input_ui(id: int):
-    SESS.setdefault(f"name{id}", "" if id == 1 else "transit")
+    SESS.setdefault(f"name{id}", "" if id == 1 else "Transit")
     SESS.setdefault(f"city{id}", None)
-    with st.container(key=f"name-row{id}", horizontal=True):
-        with st.container(key=f"name-city{id}", horizontal=True):
-            name = st.text_input("Name", key=f"name{id}")
-            city = st.selectbox(
-                "City",
-                all_cities(),
-                key=f"city{id}",
-                placeholder=" - ",
-                format_func=lambda x: f"{x[0]} - {x[1]}",
-            )
-        with st.container(key=f"lat-lon{id}", horizontal=True):
-            st.text_input("Latitude", key=f"lat{id}")
-            st.text_input("Longitude", key=f"lon{id}")
+
+    def reset_city():
+        SESS[f"city{id}"] = None
+
+    c1, c2 = st.columns(2)
+    c1.text_input("Name", key=f"name{id}")
+    c2.selectbox(
+        "City",
+        all_cities(),
+        key=f"city{id}",
+        placeholder=i("city-placeholder"),
+        format_func=lambda x: f"{x[0]} - {x[1]}",
+        on_change=set_lat_lon_dt_tz,
+        args=(id,),
+    )
+    c1, c2, c3 = st.columns(3)
+    c1.number_input(
+        "Latitude",
+        key=f"lat{id}",
+        min_value=-89.99,
+        max_value=89.99,
+        value=None,
+        on_change=reset_city,
+    )
+    c2.number_input(
+        "Longitude",
+        key=f"lon{id}",
+        min_value=-179.99,
+        max_value=179.99,
+        value=None,
+        on_change=reset_city,
+    )
+    c3.selectbox(
+        "Timezone",
+        all_timezones(),
+        key=f"tz{id}",
+        index=None,
+        format_func=lambda x: x[0],
+    )
     now = datetime.now()
     SESS.setdefault(f"date{id}", Date(2000, 1, 1) if id == 1 else now.date())
     SESS.setdefault(f"hr{id}", 13 if id == 1 else now.hour)
@@ -137,19 +178,8 @@ def input_ui(id: int):
             format="YYYY-MM-DD",
             key=f"date{id}",
         )
-        st.selectbox(
-            "Hour",
-            range(24),
-            key=f"hr{id}",
-        )
-        st.selectbox(
-            "Minute",
-            range(60),
-            key=f"min{id}",
-            help="daylight saving time",
-        )
-
-    return name, city
+        st.selectbox("Hour", range(24), key=f"hr{id}")
+        st.selectbox("Minute", range(60), key=f"min{id}", help="daylight saving time")
 
 
 def stepper_ui(id: int):

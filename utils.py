@@ -1,25 +1,22 @@
 import sqlite3
 import streamlit as st
-from const import BODIES, SESS
+from const import BODIES, I18N, SESS
 from datetime import datetime, timedelta
 from natal import Config, Data, HouseSys
 from typing import Literal
 from zoneinfo import ZoneInfo
 
 
-def utc_of(dt: datetime, timezone: str) -> datetime:
-    """convert local datetime to utc datetime
+def i(key: str) -> str:
+    return I18N[key][SESS.lang_num]
 
-    args:
-        dt: local datetime
-        timezone: timezone string
-    returns:
-        utc datetime
-    """
-    local_tz = ZoneInfo(timezone)
-    local_dt = dt.replace(tzinfo=local_tz)
-    utc_dt = local_dt.astimezone(ZoneInfo("UTC"))
-    return utc_dt
+
+def utc_of(id: int) -> datetime:
+    """convert local datetime to utc datetime"""
+    naive_dt = get_dt(id)
+    tzinfo = ZoneInfo(SESS[f"tz{id}"])
+    dt = naive_dt.replace(tzinfo=tzinfo)
+    return dt.astimezone(ZoneInfo("UTC"))
 
 
 def get_dt(id: int) -> datetime:
@@ -32,7 +29,15 @@ def get_dt(id: int) -> datetime:
 
 @st.cache_resource
 def db_conn() -> sqlite3.Connection:
-    return sqlite3.connect("astrobro.db")
+    return sqlite3.connect("astrobro.db", check_same_thread=False)
+
+
+@st.cache_data
+def all_timezones() -> list[str]:
+    """get all timezones from database"""
+    cursor = db_conn().cursor()
+    cursor.execute("SELECT timezone FROM timezone")
+    return cursor.fetchall()
 
 
 @st.cache_data
@@ -40,33 +45,35 @@ def all_cities() -> list[tuple[str, str]]:
     """get all cities name and country from database"""
     cursor = db_conn().cursor()
     cursor.execute("SELECT name, country FROM cities")
-    rows = cursor.fetchall()
-    return rows
+    return cursor.fetchall()
 
 
-def lat_lon_dt(chart_id: int) -> dict:
+def set_lat_lon_dt_tz(id: int) -> dict:
     """return lat, lon, utc datetime from a chart input ui"""
     columns = "lat, lon, timezone"
     cursor = db_conn().cursor()
     cursor.execute(
         f"SELECT {columns} FROM cities WHERE name = ? and country = ?",
-        SESS[f"city{chart_id}"],
+        SESS[f"city{id}"],
     )
     (lat, lon, timezone) = cursor.fetchone()
-    utc_dt = utc_of(get_dt(chart_id), timezone)
-    return dict(lat=lat, lon=lon, utc_dt=utc_dt)
+    SESS[f"lat{id}"] = lat
+    SESS[f"lon{id}"] = lon
+    SESS[f"tz{id}"] = timezone
 
 
-def natal_data(chart_id: int) -> Data:
+def natal_data(id: int) -> Data:
     """return natal data from a chart input ui"""
-    house_sys = HouseSys[SESS["house_sys"]]
-    display = {body: SESS[f"{body}{chart_id}"] for body in BODIES}
+    display = {body: SESS[f"{body}{id}"] for body in BODIES}
 
     return Data(
-        name=SESS[f"name{chart_id}"],
-        **lat_lon_dt(chart_id),
+        name=SESS[f"name{id}"],
+        lat=SESS[f"lat{id}"],
+        lon=SESS[f"lon{id}"],
+        utc_dt=utc_of(id),
+        moshier=True,
         config=Config(
-            house_sys=house_sys,
+            house_sys=HouseSys[SESS.house_sys],
             theme_type=SESS.theme_type,
             orb=SESS.orb,
             display=display,
