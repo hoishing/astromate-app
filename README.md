@@ -12,22 +12,15 @@
 
 ## TODO
 
-- tool tip for stepper
-  - span for text, show hide with css, see gemini history
+- AI chat
+- auth
+  - list recent charts
+  - import / export charts
+  - save charts
 - check performance
   - startup time
   - chart loading
   - stats loading
-- i18n
-- info UI
-  - lat lon
-- refactor UI
-  - options
-  - chart + stepper
-  - AI chat
-- auth
-- list recent charts
-- chat with AI
 
 ## Questions
 

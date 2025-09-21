@@ -1,14 +1,15 @@
 import sqlite3
 import streamlit as st
-from const import BODIES, I18N, SESS
+from const import I18N, SESS
 from datetime import datetime, timedelta
-from natal import Config, Data, HouseSys
+from natal import Config, Data
+from natal.const import ASPECT_NAMES
 from typing import Literal
 from zoneinfo import ZoneInfo
 
 
 def i(key: str) -> str:
-    return I18N[key][SESS.lang_num]
+    return I18N[key][SESS.get("lang_num", 0)]
 
 
 def utc_of(id: int) -> datetime:
@@ -37,7 +38,7 @@ def all_timezones() -> list[str]:
     """get all timezones from database"""
     cursor = db_conn().cursor()
     cursor.execute("SELECT timezone FROM timezone")
-    return cursor.fetchall()
+    return [x[0] for x in cursor.fetchall()]
 
 
 @st.cache_data
@@ -64,18 +65,17 @@ def set_lat_lon_dt_tz(id: int) -> dict:
 
 def natal_data(id: int) -> Data:
     """return natal data from a chart input ui"""
-    display = {body: SESS[f"{body}{id}"] for body in BODIES}
-
+    display = SESS[f"display{id}"]
+    aspects = {aspect: SESS[aspect] for aspect in ASPECT_NAMES}
     return Data(
         name=SESS[f"name{id}"],
         lat=SESS[f"lat{id}"],
         lon=SESS[f"lon{id}"],
         utc_dt=utc_of(id),
-        moshier=True,
         config=Config(
-            house_sys=HouseSys[SESS.house_sys],
+            house_sys=SESS.house_sys[0],
             theme_type=SESS.theme_type,
-            orb=SESS.orb,
+            orb=aspects,
             display=display,
         ),
     )
