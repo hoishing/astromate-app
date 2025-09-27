@@ -83,6 +83,7 @@ I18N = {
     "dsc": ("DSC", "下降"),
     "mc": ("MC", "天頂"),
     "inner-planets": ("Inner Planets", "內行星"),
+    "classic": ("Classic", "經典"),
     # input form
     "name": ("Name", "名稱"),
     "city": ("City", "城市"),

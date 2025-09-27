@@ -13,6 +13,10 @@
 ## TODO
 
 - AI chat
+  - rely on built-in knowledge of LLM
+  - provide full context in system prompt
+  - RAG
+  - Agentic RAG
 - auth
   - list recent charts
   - import / export charts

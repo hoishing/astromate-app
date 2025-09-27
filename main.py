@@ -2,7 +2,16 @@ import pandas as pd
 import streamlit as st
 from const import HIST_COL_CONFIG, LOGO, PAGE_CONFIG, SESS, STYLE
 from st_screenwidth_detector import screenwidth_detector
-from ui import chart_ui, display_opt, general_opt, input_ui, orb_opt, stats_ui, stepper_ui
+from ui import (
+    chart_ui,
+    chat_ui,
+    display_opt,
+    general_opt,
+    input_ui,
+    orb_opt,
+    stats_ui,
+    stepper_ui,
+)
 from utils import i, natal_data
 
 st.set_page_config(**PAGE_CONFIG)
@@ -45,3 +54,5 @@ if SESS.name1 and SESS.lat1 and SESS.lon1 and SESS.tz1:
     stepper_ui(2 if data2 else 1)
     if SESS.show_stats:
         stats_ui(data1, data2)
+    chat_ui(data1, data2)
+    # st.text(chat_prompt(data1, data2))

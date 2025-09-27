@@ -1,15 +1,20 @@
 import streamlit as st
-from const import BODIES, CHART_COLORS, HOUSE_SYS, LANGS, MODELS, ORBS, SESS
+from const import BODIES, CHART_COLORS, HOUSE_SYS, LANGS, ORBS, SESS
 from datetime import date as Date
 from datetime import datetime
-from functools import reduce
-from google.genai import Client, types
 from natal import Chart, Data, Stats
 from natal.config import Display
 from natal.const import ASPECT_NAMES, PLANET_NAMES
 from streamlit_shortcuts import shortcut_button
-from textwrap import dedent
-from utils import all_cities, all_timezones, consolidate_messages, i, set_lat_lon_dt_tz, step
+from utils import (
+    all_cities,
+    all_timezones,
+    consolidate_messages,
+    i,
+    new_chat,
+    set_lat_lon_dt_tz,
+    step,
+)
 
 
 def general_opt():
@@ -262,3 +267,31 @@ def stats_ui(data1: Data, data2: Data = None):
     stats = Stats(data1=data1, data2=data2)
     st.markdown(stats.full_report("html"), unsafe_allow_html=True)
     st.write("")
+
+
+def chat_ui(data1: Data, data2: Data = None) -> None:
+    # Initialize chat object in session state
+    SESS.chat = SESS.get("chat", new_chat(data1, data2))
+
+    # Display chat history with consolidated messages
+    avatar = {"user": "👤", "model": "💫"}
+    consolidated_messages = consolidate_messages(SESS.chat.get_history())
+    for role, text in consolidated_messages:
+        with st.chat_message(role, avatar=avatar[role]):
+            st.markdown(text)
+
+    # Accept user input
+    if prompt := st.chat_input("chat about the astrological chart..."):
+        # Display user message
+        with st.chat_message("user", avatar=avatar["user"]):
+            st.markdown(prompt)
+
+        # Generate and display assistant response
+        with st.chat_message("model", avatar=avatar["model"]):
+            try:
+                response = SESS.chat.send_message_stream(prompt)
+                st.write_stream(chunk.text for chunk in response)
+
+            except Exception as e:
+                st.error(e)
+                st.stop()

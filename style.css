@@ -103,3 +103,7 @@
     border: none;
   }
 }
+
+[data-testid="stBottomBlockContainer"] {
+  padding-bottom: 1rem;
+}

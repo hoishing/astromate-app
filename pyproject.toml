@@ -9,6 +9,7 @@ dependencies = [
     "st-screenwidth-detector",
     "streamlit",
     "streamlit-shortcuts",
+    "google-genai",
 ]
 
 [tool.ruff]

@@ -1,9 +1,12 @@
 import sqlite3
 import streamlit as st
-from const import I18N, SESS
+from const import I18N, LANGS, MODELS, SESS
 from datetime import datetime, timedelta
-from natal import Config, Data
+from functools import reduce
+from google.genai import Client, types
+from natal import Config, Data, Stats
 from natal.const import ASPECT_NAMES
+from textwrap import dedent
 from typing import Literal
 from zoneinfo import ZoneInfo
 
@@ -51,12 +54,11 @@ def all_cities() -> list[tuple[str, str]]:
 
 def set_lat_lon_dt_tz(id: int) -> dict:
     """return lat, lon, utc datetime from a chart input ui"""
+    if not (city_tuple := SESS[f"city{id}"]):
+        return
     columns = "lat, lon, timezone"
     cursor = db_conn().cursor()
-    cursor.execute(
-        f"SELECT {columns} FROM cities WHERE name = ? and country = ?",
-        SESS[f"city{id}"],
-    )
+    cursor.execute(f"SELECT {columns} FROM cities WHERE name = ? and country = ?", city_tuple)
     (lat, lon, timezone) = cursor.fetchone()
     SESS[f"lat{id}"] = lat
     SESS[f"lon{id}"] = lon
@@ -108,3 +110,60 @@ def step(chart_id: int, unit: str, delta: Literal[1, -1]):
     SESS[f"date{chart_id}"] = dt.date()
     SESS[f"hr{chart_id}"] = dt.hour
     SESS[f"min{chart_id}"] = dt.minute
+
+
+def consolidate_messages(messages: list) -> list:
+    """Consolidate consecutive messages with the same role into single messages"""
+    if not messages:
+        return []
+
+    consolidated = []
+    current_role = None
+    current_text = ""
+
+    for message in messages:
+        if current_role is None:
+            current_role = message.role
+            current_text = message.parts[0].text
+        elif message.role == current_role:
+            # Same role, concatenate text
+            current_text += message.parts[0].text
+        else:
+            # Different role, save current and start new
+            consolidated.append((current_role, current_text))
+            current_role = message.role
+            current_text = message.parts[0].text
+
+    # Don't forget the last message
+    if current_role is not None:
+        consolidated.append((current_role, current_text))
+
+    return consolidated
+
+
+def new_chat(data1: Data, data2: Data = None):
+    stats = Stats(data1=data1, data2=data2)
+    chart_data = reduce(
+        lambda x, y: x + y,
+        (
+            stats.ai_md(tb, 3)
+            for tb in ["celestial_body", "house", "aspect", "quadrant", "hemisphere"]
+        ),
+    )
+    sys_prompt = dedent(f"""\
+            You are an expert astrologer. You answer questions about this astrological chart:
+            
+            <chart>
+            {chart_data}
+            </chart>
+
+            # Instructions
+            - Answer the user's questions based on the chart data.
+            - Use {"Traditional Chinese" if SESS.lang_num else "English"} to reply.
+            """)
+    client = Client(api_key=st.secrets["GOOGLE_API_KEY"])
+    model = MODELS[1]
+    return client.chats.create(
+        model=model,
+        config=types.GenerateContentConfig(system_instruction=sys_prompt),
+    )
