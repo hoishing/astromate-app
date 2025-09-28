@@ -62,3 +62,6 @@ venv.bak/
 site/
 
 .aider*
+
+# Streamlit secrets
+.streamlit/secrets.toml
