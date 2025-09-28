@@ -80,8 +80,10 @@
   min-width: 460px;
 }
 
+/* center every child element */
 .st-key-chart_svg {
-  .stMarkdown {
+  div,
+  p {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -90,7 +92,8 @@
 
 .stMainBlockContainer {
   padding-top: 4rem;
-  overflow-x: hidden; /* TODO: fix it on .st-key-chart_svg */
+  padding-bottom: 4rem;
+  overflow-x: hidden; /* prevent horizontal scrollbar */
 }
 
 .st-key-prev,

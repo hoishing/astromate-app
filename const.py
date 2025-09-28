@@ -54,6 +54,7 @@ I18N = {
     "chart-color": ("Chart Color", "星盤顏色"),
     "language": ("Language", "語言"),
     "statistics": ("Statistics", "統計"),
+    # "ai_chat": ("AI Chat", "AI 聊天"),
     # orbs
     "orbs": ("Orbs", "容許度"),
     "conjunction": ("Conjunction", "合相"),

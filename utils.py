@@ -1,9 +1,10 @@
 import sqlite3
 import streamlit as st
-from const import I18N, LANGS, MODELS, SESS
+from const import I18N, MODELS, SESS
 from datetime import datetime, timedelta
 from functools import reduce
 from google.genai import Client, types
+from google.genai.chats import Chat
 from natal import Config, Data, Stats
 from natal.const import ASPECT_NAMES
 from textwrap import dedent
@@ -141,7 +142,7 @@ def consolidate_messages(messages: list) -> list:
     return consolidated
 
 
-def new_chat(data1: Data, data2: Data = None):
+def new_chat(data1: Data, data2: Data = None) -> Chat:
     stats = Stats(data1=data1, data2=data2)
     chart_data = reduce(
         lambda x, y: x + y,
@@ -150,6 +151,7 @@ def new_chat(data1: Data, data2: Data = None):
             for tb in ["celestial_body", "house", "aspect", "quadrant", "hemisphere"]
         ),
     )
+    lang = "Traditional Chinese" if SESS.lang_num else "English"
     sys_prompt = dedent(f"""\
             You are an expert astrologer. You answer questions about this astrological chart:
             
@@ -159,10 +161,10 @@ def new_chat(data1: Data, data2: Data = None):
 
             # Instructions
             - Answer the user's questions based on the chart data.
-            - Use {"Traditional Chinese" if SESS.lang_num else "English"} to reply.
+            - Use {lang} to reply.
             """)
     client = Client(api_key=st.secrets["GOOGLE_API_KEY"])
-    model = MODELS[1]
+    model = MODELS[2]
     return client.chats.create(
         model=model,
         config=types.GenerateContentConfig(system_instruction=sys_prompt),

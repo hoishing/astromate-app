@@ -12,7 +12,10 @@
 
 ## TODO
 
+- UI
+  - scroll to bottom after chart generated
 - AI chat
+  - reset after chart changed
   - rely on built-in knowledge of LLM
   - provide full context in system prompt
   - RAG

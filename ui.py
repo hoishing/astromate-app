@@ -26,6 +26,15 @@ def general_opt():
         key="house_sys",
         format_func=i,
     )
+    c2.selectbox(
+        i("language"),
+        range(len(LANGS)),
+        index=SESS.get("lang_num", 0),
+        key="lang_num",
+        format_func=lambda x: LANGS[x],
+    )
+
+    c1, c2, c3 = st.columns([3, 2, 2])
     c1.segmented_control(
         i("chart-color"),
         CHART_COLORS.keys(),
@@ -34,19 +43,20 @@ def general_opt():
         width="stretch",
         format_func=lambda x: CHART_COLORS[x],
     )
-    c2.selectbox(
-        i("language"),
-        range(len(LANGS)),
-        index=SESS.get("lang_num", 0),
-        key="lang_num",
-        format_func=lambda x: LANGS[x],
-    )
     c2.segmented_control(
         i("statistics"),
         [True, False],
         key="show_stats",
         width="stretch",
         default=SESS.get("show_stats", False),
+        format_func=lambda x: ":material/check: " if x else ":material/close:",
+    )
+    c3.segmented_control(
+        "AI",
+        [True, False],
+        key="ai_chat",
+        width="stretch",
+        default=SESS.get("ai_chat", True),
         format_func=lambda x: ":material/check: " if x else ":material/close:",
     )
 
@@ -224,6 +234,7 @@ def stepper_ui(id: int):
             horizontal=True,
             horizontal_alignment="center",
             vertical_alignment="center",
+            # gap=None,
         ):
             SESS["stepper-unit"] = SESS.get("stepper-unit", "day")
             shortcut_button(
@@ -239,7 +250,6 @@ def stepper_ui(id: int):
             st.segmented_control(
                 i("adjustment"),
                 ["year", "month", "week", "day", "hour", "minute"],
-                width="content",
                 label_visibility="collapsed",
                 format_func=lambda x: i(x),
                 key="stepper-unit",
@@ -269,7 +279,7 @@ def stats_ui(data1: Data, data2: Data = None):
     st.write("")
 
 
-def chat_ui(data1: Data, data2: Data = None) -> None:
+def ai_ui(data1: Data, data2: Data = None) -> None:
     # Initialize chat object in session state
     SESS.chat = SESS.get("chat", new_chat(data1, data2))
 
