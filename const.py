@@ -42,9 +42,12 @@ HIST_COL_CONFIG = {
 
 LANGS = ["English", "中文"]
 MODELS = [
-    "gemini-2.0-flash-lite",
-    "gemini-2.5-flash-lite",
-    "gemini-2.5-flash",
+    "x-ai/grok-4-fast:free",
+    "deepseek/deepseek-chat-v3.1:free",
+    "google/gemini-2.0-flash-exp:free",
+    # "gemini-2.0-flash-lite",
+    # "gemini-2.5-flash-lite",
+    # "gemini-2.5-flash",
 ]
 I18N = {
     # general options

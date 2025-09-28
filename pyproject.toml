@@ -6,10 +6,10 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "natal",
+    "openai",
     "st-screenwidth-detector",
     "streamlit",
     "streamlit-shortcuts",
-    "google-genai",
 ]
 
 [tool.ruff]
@@ -21,4 +21,4 @@ extend-ignore = ["E203", "E402", "E501", "E712", "F401", "F811"]
 natal = { path = "../natal" }
 
 [dependency-groups]
-dev = ["ipykernel", "watchdog"]
+dev = ["ipykernel", "pytest", "watchdog"]

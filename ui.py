@@ -284,7 +284,7 @@ def ai_ui(data1: Data, data2: Data = None) -> None:
     SESS.chat = SESS.get("chat", new_chat(data1, data2))
 
     # Display chat history with consolidated messages
-    avatar = {"user": "👤", "model": "💫"}
+    avatar = {"user": "👤", "assistant": "💫"}
     consolidated_messages = consolidate_messages(SESS.chat.get_history())
     for role, text in consolidated_messages:
         with st.chat_message(role, avatar=avatar[role]):
@@ -297,7 +297,7 @@ def ai_ui(data1: Data, data2: Data = None) -> None:
             st.markdown(prompt)
 
         # Generate and display assistant response
-        with st.chat_message("model", avatar=avatar["model"]):
+        with st.chat_message("assistant", avatar=avatar["assistant"]):
             try:
                 response = SESS.chat.send_message_stream(prompt)
                 st.write_stream(chunk.text for chunk in response)

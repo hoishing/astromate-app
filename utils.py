@@ -3,8 +3,7 @@ import streamlit as st
 from const import I18N, MODELS, SESS
 from datetime import datetime, timedelta
 from functools import reduce
-from google.genai import Client, types
-from google.genai.chats import Chat
+from openai import OpenAI
 from natal import Config, Data, Stats
 from natal.const import ASPECT_NAMES
 from textwrap import dedent
@@ -113,6 +112,43 @@ def step(chart_id: int, unit: str, delta: Literal[1, -1]):
     SESS[f"min{chart_id}"] = dt.minute
 
 
+class Message:
+    def __init__(self, role: str, text: str):
+        self.role = role
+        self.parts = [type("Part", (), {"text": text})()]
+
+
+class OpenRouterChat:
+    def __init__(self, client: OpenAI, model: str, system_message: str):
+        self.client = client
+        self.model = model
+        self.messages = [{"role": "system", "content": system_message}]
+
+    def get_history(self) -> list:
+        """Return history as Message objects compatible with Google Gemini format"""
+        return [
+            Message(msg["role"], msg["content"]) for msg in self.messages[1:]
+        ]  # Skip system message
+
+    def send_message_stream(self, prompt: str):
+        """Send message and return streaming response"""
+        self.messages.append({"role": "user", "content": prompt})
+
+        response = self.client.chat.completions.create(
+            model=self.model, messages=self.messages, stream=True
+        )
+
+        full_response = ""
+        for chunk in response:
+            if chunk.choices[0].delta.content:
+                content = chunk.choices[0].delta.content
+                full_response += content
+                yield type("Chunk", (), {"text": content})()
+
+        # Add assistant response to history
+        self.messages.append({"role": "assistant", "content": full_response})
+
+
 def consolidate_messages(messages: list) -> list:
     """Consolidate consecutive messages with the same role into single messages"""
     if not messages:
@@ -142,7 +178,7 @@ def consolidate_messages(messages: list) -> list:
     return consolidated
 
 
-def new_chat(data1: Data, data2: Data = None) -> Chat:
+def new_chat(data1: Data, data2: Data = None) -> OpenRouterChat:
     stats = Stats(data1=data1, data2=data2)
     chart_data = reduce(
         lambda x, y: x + y,
@@ -163,9 +199,8 @@ def new_chat(data1: Data, data2: Data = None) -> Chat:
             - Answer the user's questions based on the chart data.
             - Use {lang} to reply.
             """)
-    client = Client(api_key=st.secrets["GOOGLE_API_KEY"])
-    model = MODELS[2]
-    return client.chats.create(
-        model=model,
-        config=types.GenerateContentConfig(system_instruction=sys_prompt),
+    client = OpenAI(
+        base_url="https://openrouter.ai/api/v1", api_key=st.secrets["OPENROUTER_API_KEY"]
     )
+    model = MODELS[0]  # Use x-ai/grok-4-fast:free instead of Gemini
+    return OpenRouterChat(client, model, sys_prompt)
