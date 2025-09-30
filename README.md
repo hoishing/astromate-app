@@ -13,13 +13,13 @@
 ## TODO
 
 - UI
-  - scroll to bottom after chart generated
+  - ❌ scroll to bottom after chart generated (moved to `scroll2bottom` branch)
 - AI chat
   - reset after chart changed
   - rely on built-in knowledge of LLM
   - provide full context in system prompt
-  - RAG
-  - Agentic RAG
+  - RAG -> Agentic RAG
+- learning mode?
 - auth
   - list recent charts
   - import / export charts

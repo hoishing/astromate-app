@@ -3,11 +3,11 @@ import streamlit as st
 from const import I18N, MODELS, SESS
 from datetime import datetime, timedelta
 from functools import reduce
-from openai import OpenAI
 from natal import Config, Data, Stats
 from natal.const import ASPECT_NAMES
+from openai import OpenAI
 from textwrap import dedent
-from typing import Literal
+from typing import Literal, TypedDict
 from zoneinfo import ZoneInfo
 
 
@@ -112,27 +112,20 @@ def step(chart_id: int, unit: str, delta: Literal[1, -1]):
     SESS[f"min{chart_id}"] = dt.minute
 
 
-class Message:
-    def __init__(self, role: str, text: str):
-        self.role = role
-        self.parts = [type("Part", (), {"text": text})()]
+class Message(TypedDict):
+    role: Literal["developer", "user", "assistant"]
+    content: str
 
 
 class OpenRouterChat:
     def __init__(self, client: OpenAI, model: str, system_message: str):
         self.client = client
         self.model = model
-        self.messages = [{"role": "system", "content": system_message}]
-
-    def get_history(self) -> list:
-        """Return history as Message objects compatible with Google Gemini format"""
-        return [
-            Message(msg["role"], msg["content"]) for msg in self.messages[1:]
-        ]  # Skip system message
+        self.messages = [Message(role="developer", content=system_message)]
 
     def send_message_stream(self, prompt: str):
         """Send message and return streaming response"""
-        self.messages.append({"role": "user", "content": prompt})
+        self.messages.append(Message(role="user", content=prompt))
 
         response = self.client.chat.completions.create(
             model=self.model, messages=self.messages, stream=True
@@ -140,42 +133,12 @@ class OpenRouterChat:
 
         full_response = ""
         for chunk in response:
-            if chunk.choices[0].delta.content:
-                content = chunk.choices[0].delta.content
+            if content := chunk.choices[0].delta.content:
                 full_response += content
-                yield type("Chunk", (), {"text": content})()
+                yield content
 
         # Add assistant response to history
-        self.messages.append({"role": "assistant", "content": full_response})
-
-
-def consolidate_messages(messages: list) -> list:
-    """Consolidate consecutive messages with the same role into single messages"""
-    if not messages:
-        return []
-
-    consolidated = []
-    current_role = None
-    current_text = ""
-
-    for message in messages:
-        if current_role is None:
-            current_role = message.role
-            current_text = message.parts[0].text
-        elif message.role == current_role:
-            # Same role, concatenate text
-            current_text += message.parts[0].text
-        else:
-            # Different role, save current and start new
-            consolidated.append((current_role, current_text))
-            current_role = message.role
-            current_text = message.parts[0].text
-
-    # Don't forget the last message
-    if current_role is not None:
-        consolidated.append((current_role, current_text))
-
-    return consolidated
+        self.messages.append(Message(role="assistant", content=full_response))
 
 
 def new_chat(data1: Data, data2: Data = None) -> OpenRouterChat:
