@@ -51,6 +51,9 @@ MODELS = [
     # "gemini-2.5-flash",
 ]
 I18N = {
+    # auth
+    "login": ("Login", "登入"),
+    "logout": ("Logout", "登出"),
     # general options
     "options": ("Options", "選項"),
     "general": ("General", "一般"),

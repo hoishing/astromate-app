@@ -15,6 +15,7 @@
 - AI chat
   - Transit
 - learning mode?
+- Stats UI update
 - auth
   - list recent charts
   - import / export charts

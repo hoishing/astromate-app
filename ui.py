@@ -1,5 +1,6 @@
+import pandas as pd
 import streamlit as st
-from const import BODIES, CHART_COLORS, HOUSE_SYS, LANGS, ORBS, SESS
+from const import BODIES, CHART_COLORS, HIST_COL_CONFIG, HOUSE_SYS, LANGS, ORBS, ROW_HEIGHT, SESS
 from datetime import date as Date
 from datetime import datetime
 from natal import Chart, Data, Stats
@@ -95,7 +96,9 @@ def display_opt(num: int):
             "default": PLANET_NAMES,
         }
         planets = presets[kind] + ["asc"]
-        SESS[display_n] = dict.fromkeys(Display.model_fields, False) | dict.fromkeys(planets, True)
+        SESS[display_n] = Display(
+            **(dict.fromkeys(Display.model_fields, False) | dict.fromkeys(planets, True))
+        )
 
     if display_n not in SESS:
         update_display("default")
@@ -218,48 +221,54 @@ def input_ui(id: int):
         )
 
 
-def stepper_ui(id: int):
-    with st.container(key="stepper"):
-        st.write("")
-        with st.container(
-            key="stepper-container",
-            horizontal=True,
-            horizontal_alignment="center",
-            vertical_alignment="center",
-            # gap=None,
-        ):
-            SESS["stepper-unit"] = SESS.get("stepper-unit", "day")
-            shortcut_button(
-                # "❮",
-                ":material/arrow_back_ios_new:",
-                "alt+arrowleft",
-                hint=False,
-                on_click=step,
-                args=(id, SESS["stepper-unit"], -1),
-                key="prev",
-            )
+def utils_ui(id: int):
+    st.write("")
+    with st.container(
+        key="utils-container",
+        horizontal=True,
+        horizontal_alignment="center",
+        vertical_alignment="center",
+        # gap=None,
+    ):
+        SESS["stepper-unit"] = SESS.get("stepper-unit", "day")
+        shortcut_button(
+            # "❮",
+            ":material/arrow_back_ios_new:",
+            "alt+arrowleft",
+            hint=False,
+            on_click=step,
+            args=(id, SESS["stepper-unit"], -1),
+            key="prev",
+        )
 
-            st.selectbox(
-                i("adjustment"),
-                ["year", "month", "week", "day", "hour", "minute"],
-                # index=3,
-                label_visibility="collapsed",
-                format_func=lambda x: i(x),
-                key="stepper-unit",
-                width=90,
-            )
+        st.selectbox(
+            i("adjustment"),
+            ["year", "month", "week", "day", "hour", "minute"],
+            # index=3,
+            label_visibility="collapsed",
+            format_func=lambda x: i(x),
+            key="stepper-unit",
+            width=90,
+        )
 
-            shortcut_button(
-                ":material/arrow_forward_ios:",
-                # "❯",
-                "alt+arrowright",
-                hint=False,
-                on_click=step,
-                args=(id, SESS["stepper-unit"], 1),
-                key="next",
-            )
-            st.button("", icon=":material/save:", key="save", on_click=lambda: ...)
-            st.button("", icon=":material/print:", key="print", on_click=lambda: ...)
+        shortcut_button(
+            ":material/arrow_forward_ios:",
+            # "❯",
+            "alt+arrowright",
+            hint=False,
+            on_click=step,
+            args=(id, SESS["stepper-unit"], 1),
+            key="next",
+        )
+
+        def save_chart():
+            if st.user.is_logged_in:
+                pass
+            else:
+                st.login()
+
+        st.button("", icon=":material/save:", key="save", on_click=save_chart)
+        st.button("", icon=":material/print:", key="print", on_click=lambda: ...)
 
 
 def chart_ui(data1: Data, data2: Data = None):
@@ -308,3 +317,13 @@ def ai_ui(data1: Data, data2: Data = None) -> None:
             except Exception as e:
                 st.error(e)
                 st.stop()
+
+
+def saved_charts_ui():
+    st.subheader(i("saved-charts"))
+    df = pd.read_csv("mock.csv", usecols=HIST_COL_CONFIG.keys())
+    df1 = df.iloc[:3]
+    height = (len(df1) + 1) * ROW_HEIGHT + 2
+    st.dataframe(
+        df1, hide_index=True, column_config=HIST_COL_CONFIG, height=height, row_height=ROW_HEIGHT
+    )
