@@ -6,7 +6,7 @@ from natal import Chart, Data, Stats
 from natal.config import Display
 from natal.const import ASPECT_NAMES, PLANET_NAMES
 from streamlit_shortcuts import shortcut_button
-from utils import all_cities, all_timezones, i, new_chat, set_lat_lon_dt_tz, step
+from utils import all_cities, all_timezones, i, new_chat, scroll_to_bottom, set_lat_lon_dt_tz, step
 
 
 def general_opt():
@@ -263,6 +263,8 @@ def chart_ui(data1: Data, data2: Data = None):
     chart = Chart(data1=data1, data2=data2, width=SESS.chart_size)
     with st.container(key="chart_svg"):
         st.markdown(chart.svg, unsafe_allow_html=True)
+    if "chat" in SESS:
+        del SESS["chat"]
 
 
 def stats_ui(data1: Data, data2: Data = None):
@@ -272,7 +274,7 @@ def stats_ui(data1: Data, data2: Data = None):
 
 
 def ai_ui(data1: Data, data2: Data = None) -> None:
-    # Initialize chat object in session state
+    # Initialize new chat for each chart
     SESS.chat = SESS.get("chat", new_chat(data1, data2))
 
     # Display chat history
@@ -293,8 +295,11 @@ def ai_ui(data1: Data, data2: Data = None) -> None:
         with st.chat_message("assistant", avatar=avatar["assistant"]):
             try:
                 response = SESS.chat.send_message_stream(prompt)
-                with st.spinner("thinking...", show_time=True):
+
+                with st.spinner(f"{i('thinking')}...", show_time=True):
+                    scroll_to_bottom()
                     st.write_stream(chunk for chunk in response)
+                    scroll_to_bottom()
 
             except Exception as e:
                 st.error(e)

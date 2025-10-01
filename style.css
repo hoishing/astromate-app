@@ -77,7 +77,7 @@
 
 /* sidebar min width */
 [data-testid="stSidebar"][aria-expanded="true"] {
-  min-width: 460px;
+  min-width: 440px;
 }
 
 /* center every child element */
@@ -109,4 +109,19 @@
 
 [data-testid="stBottomBlockContainer"] {
   padding-bottom: 1rem;
+}
+
+.st-key-stepper-container {
+  flex-wrap: nowrap;
+}
+
+[aria-label="button group"] {
+  flex-wrap: nowrap;
+}
+
+.st-key-north_node1,
+.st-key-north_node2 {
+  p {
+    white-space: nowrap;
+  }
 }

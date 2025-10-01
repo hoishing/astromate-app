@@ -146,7 +146,7 @@ def new_chat(data1: Data, data2: Data = None) -> OpenRouterChat:
     chart_data = reduce(
         lambda x, y: x + y,
         (
-            stats.ai_md(tb, 3)
+            stats.ai_md(tb, 2 if tb == "house" else 3)
             for tb in ["celestial_body", "house", "aspect", "quadrant", "hemisphere"]
         ),
     )
@@ -167,3 +167,25 @@ def new_chat(data1: Data, data2: Data = None) -> OpenRouterChat:
     )
     model = MODELS[0]  # Use x-ai/grok-4-fast:free instead of Gemini
     return OpenRouterChat(client, model, sys_prompt)
+
+
+def scroll_to_bottom():
+    import random
+    import string
+
+    # random chars to avoid cache, make sure execute after rerun
+    random_chars = random.choices(string.ascii_lowercase, k=10)
+    js = f"""
+    <script>
+    function scrollToBottom(dummy_var) {{
+        const target = parent.document.querySelector(".stMainBlockContainer");
+        target.scrollTo({{
+            top: target.scrollHeight,
+            behavior: "smooth",
+        }});
+        console.log(target.scrollHeight);
+    }}
+    scrollToBottom({random_chars});
+    </script>
+    """
+    st.components.v1.html(js, height=0, width=0)

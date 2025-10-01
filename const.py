@@ -86,7 +86,7 @@ I18N = {
     "ic": ("IC", "天底"),
     "dsc": ("DSC", "下降"),
     "mc": ("MC", "天頂"),
-    "inner-planets": ("Inner Planets", "內行星"),
+    "inner-planets": ("Inner", "內行星"),
     "classic": ("Classic", "經典"),
     # input form
     "name": ("Name", "名稱"),
@@ -115,4 +115,6 @@ I18N = {
     "Porphyry": ("Porphyry", "波菲利"),
     "Campanus": ("Campanus", "坎帕努斯"),
     "Regiomontanus": ("Regiomontanus", "雷格蒙塔努斯"),
+    # ai chat
+    "thinking": ("thinking", "思考中"),
 }
