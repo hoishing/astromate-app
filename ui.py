@@ -230,8 +230,8 @@ def stepper_ui(id: int):
         ):
             SESS["stepper-unit"] = SESS.get("stepper-unit", "day")
             shortcut_button(
-                "❮",
-                # ":material/arrow_back_ios_new:",
+                # "❮",
+                ":material/arrow_back_ios_new:",
                 "alt+arrowleft",
                 hint=False,
                 on_click=step,
@@ -239,23 +239,27 @@ def stepper_ui(id: int):
                 key="prev",
             )
 
-            st.segmented_control(
+            st.selectbox(
                 i("adjustment"),
                 ["year", "month", "week", "day", "hour", "minute"],
+                # index=3,
                 label_visibility="collapsed",
                 format_func=lambda x: i(x),
                 key="stepper-unit",
+                width=90,
             )
 
             shortcut_button(
-                # ":material/arrow_forward_ios:",
-                "❯",
+                ":material/arrow_forward_ios:",
+                # "❯",
                 "alt+arrowright",
                 hint=False,
                 on_click=step,
                 args=(id, SESS["stepper-unit"], 1),
                 key="next",
             )
+            st.button("", icon=":material/save:", key="save", on_click=lambda: ...)
+            st.button("", icon=":material/print:", key="print", on_click=lambda: ...)
 
 
 def chart_ui(data1: Data, data2: Data = None):

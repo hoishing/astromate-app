@@ -1,17 +1,8 @@
 import pandas as pd
 import streamlit as st
-from const import HIST_COL_CONFIG, LOGO, PAGE_CONFIG, SESS, STYLE
+from const import HIST_COL_CONFIG, LOGO, PAGE_CONFIG, ROW_HEIGHT, SESS, STYLE
 from st_screenwidth_detector import screenwidth_detector
-from ui import (
-    ai_ui,
-    chart_ui,
-    display_opt,
-    general_opt,
-    input_ui,
-    orb_opt,
-    stats_ui,
-    stepper_ui,
-)
+from ui import ai_ui, chart_ui, display_opt, general_opt, input_ui, orb_opt, stats_ui, stepper_ui
 from utils import i, natal_data
 
 st.set_page_config(**PAGE_CONFIG)
@@ -36,8 +27,11 @@ with st.sidebar:
     # TODO: replace with database
     st.subheader(i("saved-charts"))
     df = pd.read_csv("mock.csv", usecols=HIST_COL_CONFIG.keys())
-    height = (len(df) + 1) * 35
-    st.dataframe(df, hide_index=True, column_config=HIST_COL_CONFIG, height=height)
+    df1 = df.iloc[:0]
+    height = (len(df1) + 1) * ROW_HEIGHT + 2
+    st.dataframe(
+        df1, hide_index=True, column_config=HIST_COL_CONFIG, height=height, row_height=ROW_HEIGHT
+    )
 
 with st.expander(i("birth-chart"), expanded=True):
     input_ui(1)

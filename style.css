@@ -92,7 +92,7 @@
 
 .stMainBlockContainer {
   padding-top: 4rem;
-  padding-bottom: 4rem;
+  padding-bottom: 2rem;
   overflow-x: hidden; /* prevent horizontal scrollbar */
 }
 
@@ -101,18 +101,10 @@
   & + .stElementContainer {
     display: none;
   }
-  button {
-    background-color: transparent;
-    border: none;
-  }
 }
 
 [data-testid="stBottomBlockContainer"] {
   padding-bottom: 1rem;
-}
-
-.st-key-stepper-container {
-  flex-wrap: nowrap;
 }
 
 [aria-label="button group"] {

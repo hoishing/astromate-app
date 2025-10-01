@@ -28,6 +28,7 @@ BODIES = list(Display.model_fields)
 STYLE = f"<style>{Path('style.css').read_text()}</style>"
 LOGO = "static/astrobro-logo.png"
 CHART_SIZE = 650
+ROW_HEIGHT = 35
 CHART_COLORS = dict(
     zip(ThemeType.__args__, [f":material/{x}:" for x in ["sunny", "dark_mode", "contrast"]])
 )
