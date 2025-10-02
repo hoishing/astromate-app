@@ -65,3 +65,6 @@ site/
 
 # Streamlit secrets
 .streamlit/secrets.toml
+
+# db
+data.db

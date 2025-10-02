@@ -322,8 +322,7 @@ def ai_ui(data1: Data, data2: Data = None) -> None:
 def saved_charts_ui():
     st.subheader(i("saved-charts"))
     df = pd.read_csv("mock.csv", usecols=HIST_COL_CONFIG.keys())
-    df1 = df.iloc[:3]
-    height = (len(df1) + 1) * ROW_HEIGHT + 2
+    height = (len(df) + 1) * ROW_HEIGHT + 2
     st.dataframe(
-        df1, hide_index=True, column_config=HIST_COL_CONFIG, height=height, row_height=ROW_HEIGHT
+        df, hide_index=True, column_config=HIST_COL_CONFIG, height=height, row_height=ROW_HEIGHT
     )

@@ -32,14 +32,19 @@ def get_dt(id: int) -> datetime:
 
 
 @st.cache_resource
-def db_conn() -> sqlite3.Connection:
-    return sqlite3.connect("astrobro.db", check_same_thread=False)
+def cities_db() -> sqlite3.Connection:
+    return sqlite3.connect("cities.db", check_same_thread=False)
+
+
+@st.cache_resource
+def data_db() -> sqlite3.Connection:
+    return sqlite3.connect("data.db", check_same_thread=False)
 
 
 @st.cache_data
 def all_timezones() -> list[str]:
     """get all timezones from database"""
-    cursor = db_conn().cursor()
+    cursor = cities_db().cursor()
     cursor.execute("SELECT timezone FROM timezone")
     return [x[0] for x in cursor.fetchall()]
 
@@ -47,7 +52,7 @@ def all_timezones() -> list[str]:
 @st.cache_data
 def all_cities() -> list[tuple[str, str]]:
     """get all cities name and country from database"""
-    cursor = db_conn().cursor()
+    cursor = cities_db().cursor()
     cursor.execute("SELECT name, country FROM cities")
     return cursor.fetchall()
 
@@ -57,7 +62,7 @@ def set_lat_lon_dt_tz(id: int) -> dict:
     if not (city_tuple := SESS[f"city{id}"]):
         return
     columns = "lat, lon, timezone"
-    cursor = db_conn().cursor()
+    cursor = cities_db().cursor()
     cursor.execute(f"SELECT {columns} FROM cities WHERE name = ? and country = ?", city_tuple)
     (lat, lon, timezone) = cursor.fetchone()
     SESS[f"lat{id}"] = lat
