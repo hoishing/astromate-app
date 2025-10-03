@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  astrobro:
+    build:
+      context: .
+      secrets:
+        - github_token
+    container_name: astrobro-app
+    ports:
+      - "8508:8508"
+    volumes:
+      - .:/app
+    restart: unless-stopped
+
+secrets:
+  github_token:
+    environment: GITHUB_TOKEN
