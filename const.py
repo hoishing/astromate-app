@@ -21,14 +21,6 @@ ROW_HEIGHT = 35
 CHART_COLORS = dict(
     zip(ThemeType.__args__, [f":material/{x}:" for x in ["sunny", "dark_mode", "contrast"]])
 )
-HIST_COL_CONFIG = {
-    "chart1": st.column_config.Column(label="main"),
-    "city1": st.column_config.Column(label="city"),
-    "datetime1": st.column_config.Column(label="datetime"),
-    "chart2": st.column_config.Column(label="auxiliary"),
-    "city2": st.column_config.Column(label="city"),
-    "datetime2": st.column_config.Column(label="datetime"),
-}
 
 LANGS = ["English", "中文"]
 MODELS = [
@@ -100,6 +92,7 @@ I18N = {
     "adjustment": ("Adjustment", "調整"),
     # saved charts
     "saved-charts": ("Saved Charts", "星盤存檔"),
+    "no-saved-charts": ("No saved charts", "沒有星盤存檔"),
     # house sys
     "Placidus": ("Placidus", "普拉西度"),
     "Koch": ("Koch", "科赫"),

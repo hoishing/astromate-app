@@ -1,3 +1,4 @@
+import json
 import sqlite3
 import streamlit as st
 from const import I18N, MODELS, SESS
@@ -194,3 +195,13 @@ def scroll_to_bottom():
     </script>
     """
     st.components.v1.html(js, height=0, width=0)
+
+
+def all_charts() -> list[dict] | None:
+    sql = "select data from charts where email = ? order by updated_at desc"
+    cursor = data_db().cursor()
+    cursor.execute(sql, (st.user.email,))
+    all_data = cursor.fetchall()
+    if not all_data:
+        return None
+    return [json.loads(d) for (d,) in all_data]

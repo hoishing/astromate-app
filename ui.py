@@ -1,13 +1,22 @@
-import pandas as pd
 import streamlit as st
-from const import BODIES, CHART_COLORS, HIST_COL_CONFIG, HOUSE_SYS, LANGS, ORBS, ROW_HEIGHT, SESS
+from archive import save_chart
+from const import BODIES, CHART_COLORS, HOUSE_SYS, LANGS, ORBS, ROW_HEIGHT, SESS
 from datetime import date as Date
 from datetime import datetime
 from natal import Chart, Data, Stats
 from natal.config import Display
 from natal.const import ASPECT_NAMES, PLANET_NAMES
 from streamlit_shortcuts import shortcut_button
-from utils import all_cities, all_timezones, i, new_chat, scroll_to_bottom, set_lat_lon_dt_tz, step
+from utils import (
+    all_charts,
+    all_cities,
+    all_timezones,
+    i,
+    new_chat,
+    scroll_to_bottom,
+    set_lat_lon_dt_tz,
+    step,
+)
 
 
 def general_opt():
@@ -261,13 +270,13 @@ def utils_ui(id: int):
             key="next",
         )
 
-        def save_chart():
+        def save_or_login():
             if st.user.is_logged_in:
-                pass
+                save_chart()
             else:
                 st.login()
 
-        st.button("", icon=":material/save:", key="save", on_click=save_chart)
+        st.button("", icon=":material/save:", key="save", on_click=save_or_login)
         st.button("", icon=":material/print:", key="print", on_click=lambda: ...)
 
 
@@ -321,8 +330,36 @@ def ai_ui(data1: Data, data2: Data = None) -> None:
 
 def saved_charts_ui():
     st.subheader(i("saved-charts"))
-    df = pd.read_csv("mock.csv", usecols=HIST_COL_CONFIG.keys())
-    height = (len(df) + 1) * ROW_HEIGHT + 2
-    st.dataframe(
-        df, hide_index=True, column_config=HIST_COL_CONFIG, height=height, row_height=ROW_HEIGHT
-    )
+    data = all_charts()
+    if data is None:
+        st.info(i("no-saved-charts"))
+    else:
+        height = (len(data) + 1) * ROW_HEIGHT + 2
+        st.dataframe(
+            data,
+            hide_index=True,
+            column_config={
+                "name1": i("birth"),
+                "city1": i("city"),
+                "dt1": st.column_config.DatetimeColumn(i("date"), format="YYYY-MM-DD HH:MM"),
+                "lat1": None,
+                "lon1": None,
+                "tz1": None,
+                "name2": i("synastry"),
+                "city2": i("city"),
+                "dt2": st.column_config.DatetimeColumn(i("date"), format="YYYY-MM-DD HH:MM"),
+                "lat2": None,
+                "lon2": None,
+                "tz2": None,
+                "theme_type": None,
+                "house_sys": None,
+                "orb": None,
+                "display1": None,
+                "display2": None,
+            },
+            height=height,
+            row_height=ROW_HEIGHT,
+            key="saved_charts",
+            on_select=lambda: print(SESS.saved_charts.selection.cells),
+            selection_mode="single-cell",
+        )
