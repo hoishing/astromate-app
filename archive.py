@@ -3,9 +3,8 @@ import streamlit as st
 from const import ORBS
 from datetime import datetime
 from hashlib import md5
-from io import BytesIO
 from natal.config import Display, Orb
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError
 from streamlit.runtime.state.safe_session_state import SafeSessionState
 from utils import data_db, get_dt
 
@@ -23,8 +22,6 @@ class DataArchive(BaseModel):
     lon2: float | None = None
     tz2: str | None = None
     dt2: datetime | None = None
-    house_sys: str
-    theme_type: str
     orb: Orb
     display1: Display
     display2: Display
@@ -44,9 +41,7 @@ def archive_str(sess: SafeSessionState = st.session_state) -> str:
         lat2=sess.lat2,
         lon2=sess.lon2,
         tz2=sess.tz2,
-        dt2=get_dt(2) if (sess.name2 and sess.city2) else None,
-        house_sys=sess.house_sys,
-        theme_type=sess.theme_type,
+        dt2=get_dt(2),
         orb=Orb(**{asp: sess[asp] for asp in ORBS}),
         display1=sess.display1,
         display2=sess.display2,
@@ -76,11 +71,13 @@ def data_hash(sess: SafeSessionState = st.session_state) -> str:
     return md5(json.dumps(raw_data).encode()).hexdigest()
 
 
-def import_data(fp: BytesIO | None, sess: SafeSessionState = st.session_state):
-    """Import chart data from a JSON file."""
-    if not fp:
+def load_chart(data: dict, sess: SafeSessionState = st.session_state):
+    """Import chart data from a dictionary."""
+    try:
+        data = DataArchive.model_validate(data)
+    except ValidationError as e:
+        st.error(e)
         return
-    data = DataArchive.model_validate_json(fp.read())
     sess.name1 = data.name1
     sess.city1 = data.city1
     sess.lat1 = data.lat1
@@ -94,14 +91,13 @@ def import_data(fp: BytesIO | None, sess: SafeSessionState = st.session_state):
     sess.lat2 = data.lat2
     sess.lon2 = data.lon2
     sess.tz2 = data.tz2
-    sess.date2 = data.dt2.date() if data.dt2 else None
-    sess.hr2 = data.dt2.hour if data.dt2 else 0
-    sess.min2 = data.dt2.minute if data.dt2 else 0
-    sess.house_sys = data.house_sys
-    sess.theme_type = data.theme_type
+    sess.date2 = data.dt2.date()
+    sess.hr2 = data.dt2.hour
+    sess.min2 = data.dt2.minute
     sess.display1 = data.display1
     sess.display2 = data.display2
-    sess.orb = data.orb
+    for asp, val in data.orb.items():
+        sess[asp] = val
 
 
 def save_chart() -> None:
@@ -118,11 +114,9 @@ def save_chart() -> None:
     data_db().commit()
 
 
-
 def delete_chart(chart_hash: str) -> None:
     """Delete a chart by its hash."""
     sql = "DELETE FROM charts WHERE hash = ? AND email = ?"
     cursor = data_db().cursor()
     cursor.execute(sql, (chart_hash, st.user.email))
     data_db().commit()
-

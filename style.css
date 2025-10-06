@@ -117,3 +117,7 @@
     white-space: nowrap;
   }
 }
+
+.stElementContainer:has(.stAlert) {
+  display: none;
+}

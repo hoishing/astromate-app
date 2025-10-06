@@ -1,6 +1,7 @@
+import pandas as pd
 import streamlit as st
-from archive import save_chart
-from const import BODIES, CHART_COLORS, HOUSE_SYS, LANGS, ORBS, ROW_HEIGHT, SESS
+from archive import load_chart, save_chart
+from const import BODIES, HOUSE_SYS, LANGS, ORBS, ROW_HEIGHT, SESS, THEME_TYPE
 from datetime import date as Date
 from datetime import datetime
 from natal import Chart, Data, Stats
@@ -22,6 +23,7 @@ from utils import (
 def general_opt():
     c1, c2 = st.columns([3, 2])
     SESS.house_sys = SESS.get("house_sys", "Placidus")
+    SESS.theme_type = SESS.get("theme_type", "dark")
     c1.selectbox(
         i("house-system"),
         HOUSE_SYS,
@@ -39,11 +41,11 @@ def general_opt():
     c1, c2, c3 = st.columns([3, 2, 2])
     c1.segmented_control(
         i("chart-color"),
-        CHART_COLORS.keys(),
+        THEME_TYPE.keys(),
         key="theme_type",
-        default=SESS.get("theme_type", "dark"),
         width="stretch",
-        format_func=lambda x: CHART_COLORS[x],
+        default=SESS.get("theme_type", "dark"),
+        format_func=lambda x: THEME_TYPE[x],
     )
     c2.segmented_control(
         i("statistics"),
@@ -237,26 +239,26 @@ def utils_ui(id: int):
         horizontal=True,
         horizontal_alignment="center",
         vertical_alignment="center",
-        # gap=None,
     ):
-        SESS["stepper-unit"] = SESS.get("stepper-unit", "day")
+        stepper_options = ["year", "month", "week", "day", "hour", "minute"]
+        SESS.stepper_unit = SESS.get("stepper_unit", "day")
         shortcut_button(
             # "❮",
             ":material/arrow_back_ios_new:",
             "alt+arrowleft",
             hint=False,
             on_click=step,
-            args=(id, SESS["stepper-unit"], -1),
+            args=(id, SESS.stepper_unit, -1),
             key="prev",
         )
 
         st.selectbox(
             i("adjustment"),
-            ["year", "month", "week", "day", "hour", "minute"],
-            # index=3,
+            stepper_options,
             label_visibility="collapsed",
+            index=stepper_options.index(SESS.get("stepper_unit", "day")),
             format_func=lambda x: i(x),
-            key="stepper-unit",
+            key="stepper_unit",
             width=90,
         )
 
@@ -266,7 +268,7 @@ def utils_ui(id: int):
             "alt+arrowright",
             hint=False,
             on_click=step,
-            args=(id, SESS["stepper-unit"], 1),
+            args=(id, SESS.stepper_unit, 1),
             key="next",
         )
 
@@ -329,6 +331,12 @@ def ai_ui(data1: Data, data2: Data = None) -> None:
 
 
 def saved_charts_ui():
+    def on_select(data: pd.DataFrame):
+        selected = SESS.saved_charts.selection.cells
+        if selected:
+            row = data.iloc[selected[0][0]]  # first value of first cell
+            load_chart(row.to_dict())
+
     st.subheader(i("saved-charts"))
     data = all_charts()
     if data is None:
@@ -362,4 +370,5 @@ def saved_charts_ui():
             row_height=ROW_HEIGHT,
             key="saved_charts",
             selection_mode="single-cell",
+            on_select=lambda: on_select(data),
         )
