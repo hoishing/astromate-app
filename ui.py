@@ -356,10 +356,10 @@ def saved_charts_ui():
                 "orb": None,
                 "display1": None,
                 "display2": None,
+                "hash": st.column_config.LinkColumn("", display_text=":material/delete:"),
             },
             height=height,
             row_height=ROW_HEIGHT,
             key="saved_charts",
-            on_select=lambda: print(SESS.saved_charts.selection.cells),
             selection_mode="single-cell",
         )

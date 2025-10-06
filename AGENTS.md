@@ -1,33 +1,43 @@
-# Python Rules
+# Commands
+
+## Build/Lint/Test
+- `uv run ruff check .` - lint code
+- `uv run ruff format .` - format code
+- `uv run pytest` - run all tests
+- `uv run pytest tests/test_birth.py::test_default_name -v` - run single test
+- `uv run streamlit run main.py` - run the app locally
 
 ## Code Style
 
+### Python Version & Types
 - use python 3.12
-- all function must be type hinted
-- use `pathlib.Path` instead of `os.path` for path operation
-- use latest type hints syntax, eg.
-  - `list[int]` instead of `List[int]`
-  - `dict[str, int]` instead of `Dict[str, int]`
-  - `tuple[int, ...]` instead of `Tuple[int, ...]`
-  - `A | B` instead of `Union[A, B]`
-  - use `typing.Self` instead of forward reference string "ClassName"
+- all functions must be type hinted
+- use latest type hints syntax: `list[int]`, `dict[str, int]`, `A | B`, `typing.Self`
+- use `pathlib.Path` instead of `os.path` for path operations
+
+### Imports & Formatting
 - remove unused imports
+- use ruff for linting (line-length=100, no-sections for isort)
+- imports: standard library, third-party, local (separated by blank lines)
 
-## Docstrings Styles
+### Naming Conventions
+- functions: snake_case
+- variables: snake_case
+- constants: UPPER_CASE
+- classes: PascalCase
 
-- always use single line concise docstring
-- DO NOT include params and type hint in docstring
+### Docstrings & Documentation
+- single line concise docstrings
+- DO NOT include params and type hints in docstring
 
-## Virtual Environment And Package Management
+### Error Handling
+- use specific exceptions over generic Exception
+- prefer early returns over nested if statements
+- validate inputs at function boundaries
+
+## Virtual Environment & Package Management
 
 - only use `uv` for managing virtual environment and package dependencies
-- use `uv init --python 3.12 && uv venv` to inititialize and create virtual environment
-- use `uv add` instead of `uv pip install` for installing packages
-- activate the environment with `source .venv/bin/activate` before running cli command installed by `uv add`
-- you can install and remove any packages if necessary
-- only use `uv` for managing virtual environment and package dependencies
-- use `uv init --python 3.12 && uv venv` to initialize and create virtual environment
-- use `uv add` and `uv remove` to add/remove packages
-- DO NOT use `uv pip install` and `uv pip uninstall` to add/remove packages
-- activate the environment with `source .venv/bin/activate` before running cli command installed by `uv add`
-- you can install and remove any packages if necessary
+- `uv init --python 3.12 && uv venv` - initialize and create virtual environment
+- `uv add` / `uv remove` - add/remove packages (not `uv pip install`)
+- activate with `source .venv/bin/activate` before running CLI tools

@@ -116,3 +116,13 @@ def save_chart() -> None:
     cursor = data_db().cursor()
     cursor.execute(sql, (data_hash(), st.user.email, archive_str()))
     data_db().commit()
+
+
+
+def delete_chart(chart_hash: str) -> None:
+    """Delete a chart by its hash."""
+    sql = "DELETE FROM charts WHERE hash = ? AND email = ?"
+    cursor = data_db().cursor()
+    cursor.execute(sql, (chart_hash, st.user.email))
+    data_db().commit()
+

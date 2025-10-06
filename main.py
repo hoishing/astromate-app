@@ -1,4 +1,5 @@
 import streamlit as st
+from archive import delete_chart
 from const import LOGO, PAGE_CONFIG, SESS, STYLE
 from st_screenwidth_detector import screenwidth_detector
 from ui import (
@@ -13,6 +14,13 @@ from ui import (
     utils_ui,
 )
 from utils import i, natal_data
+
+# Handle delete requests
+delete_hash = st.query_params.get("delete")
+if delete_hash and st.user.is_logged_in:
+    delete_chart(delete_hash)
+    st.query_params.clear()
+
 
 st.set_page_config(**PAGE_CONFIG)
 st.logo(LOGO)

@@ -1,4 +1,5 @@
 import json
+import pandas as pd
 import sqlite3
 import streamlit as st
 from const import I18N, MODELS, SESS
@@ -197,11 +198,14 @@ def scroll_to_bottom():
     st.components.v1.html(js, height=0, width=0)
 
 
-def all_charts() -> list[dict] | None:
-    sql = "select data from charts where email = ? order by updated_at desc"
+def all_charts() -> pd.DataFrame | None:
+    sql = "select data, hash from charts where email = ? order by updated_at desc"
     cursor = data_db().cursor()
     cursor.execute(sql, (st.user.email,))
     all_data = cursor.fetchall()
     if not all_data:
         return None
-    return [json.loads(d) for (d,) in all_data]
+    df = pd.DataFrame([{**json.loads(d), "hash": h} for (d, h) in all_data])
+    df.set_index("hash", inplace=True, drop=False)
+    df.hash = "?delete=" + df.hash
+    return df
