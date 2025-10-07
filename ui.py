@@ -127,13 +127,13 @@ def display_opt(num: int):
 
     c1, c2, c3 = st.columns(3)
     with c1:
-        for body in BODIES[:5]:
+        for body in BODIES[:7]:
             toggle(body)
     with c2:
-        for body in BODIES[5:10]:
+        for body in BODIES[7:14]:
             toggle(body)
     with c3:
-        for body in BODIES[10:]:
+        for body in BODIES[14:]:
             toggle(body)
 
     c1, c2, c3 = st.columns(3)

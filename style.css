@@ -111,11 +111,8 @@
   flex-wrap: nowrap;
 }
 
-.st-key-north_node1,
-.st-key-north_node2 {
-  p {
-    white-space: nowrap;
-  }
+input[aria-label="North Node"] ~ div p {
+  white-space: nowrap;
 }
 
 .stElementContainer:has(.stAlert) {
