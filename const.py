@@ -1,5 +1,4 @@
 import streamlit as st
-from natal import ThemeType
 from natal.config import Display, Orb
 from pathlib import Path
 
@@ -18,13 +17,10 @@ STYLE = f"<style>{Path('style.css').read_text()}</style>"
 LOGO = "static/astrobro-logo.png"
 CHART_SIZE = 650
 ROW_HEIGHT = 35
-THEME_TYPE = dict(
-    zip(ThemeType.__args__, [f":material/{x}:" for x in ["sunny", "dark_mode", "contrast"]])
-)
+PRINT_COLOR = dict(light=":material/palette:", mono=":material/contrast:")
 
 LANGS = ["English", "中文"]
 MODELS = [
-    "x-ai/grok-4-fast:free",
     "deepseek/deepseek-chat-v3.1:free",
     "google/gemini-2.0-flash-exp:free",
     # "gemini-2.0-flash-lite",
@@ -39,7 +35,7 @@ I18N = {
     "options": ("Options", "選項"),
     "general": ("General", "一般"),
     "house-system": ("House System", "宮位系統"),
-    "chart-color": ("Chart Color", "星盤顏色"),
+    "print-color": ("Print Color", "列印顏色"),
     "language": ("Language", "語言"),
     "statistics": ("Statistics", "統計"),
     # "ai_chat": ("AI Chat", "AI 聊天"),
@@ -53,6 +49,25 @@ I18N = {
     "quincunx": ("Quincunx", "梅花相"),
     "transit": ("Transit", "行運"),
     "default": ("Default", "預設"),
+    # elements
+    "fire": ("Fire", "火象"),
+    "air": ("Air", "風象"),
+    "water": ("Water", "水象"),
+    "earth": ("Earth", "土象"),
+    "sum": ("Sum", "總和"),
+    # modality
+    "cardinal": ("Cardinal", "開創"),
+    "fixed": ("Fixed", "固定"),
+    "mutable": ("Mutable", "變動"),
+    # polarity
+    "polarity": ("Polarity", "陰陽"),
+    "pos": ("Positive", "陽"),
+    "neg": ("Negative", "陰"),
+    # hemisphere
+    "eastern": ("Eastern", "東半球"),
+    "western": ("Western", "西半球"),
+    "northern": ("Northern", "北半球"),
+    "southern": ("Southern", "南半球"),
     # planet display
     "birth": ("Birth", "命盤"),
     "synastry": ("Synastry", "合盤"),
@@ -108,4 +123,31 @@ I18N = {
     "Regiomontanus": ("Regiomontanus", "雷格蒙塔努斯"),
     # ai chat
     "thinking": ("thinking", "思考中"),
+    "chat-placeholder": ("chat about the astrological chart...", "聊聊這個星盤吧～"),
+    # stats
+    "basic-info": ("Basic Info", "基本資訊"),
+    "element-vs-modality": ("Element vs Modality", "四元素與三態"),
+    "quad-vs-hemi": ("Quadrants vs Hemisphere", "象限與半球"),
+    "aspects": ("Aspects", "相位"),
+    # basic info
+    "coordinates": ("Coordinates", "座標"),
+    "local-time": ("Local Time", "當地時間"),
+    # celestial bodies
+    "celestial_body": ("Celestial Bodies", "星體"),
+    "body": ("Body", "星體"),
+    "sign": ("Sign", "星座"),
+    "house": ("House", "宮位"),
+    "dignity": ("Dignity", "廟旺陷弱"),
+    "domicile": ("Domicile", "廟"),
+    "exaltation": ("Exaltation", "旺"),
+    "detriment": ("Detriment", "陷"),
+    "fall": ("Fall", "弱"),
+    # signs and houses
+    "body-in-signs": ("Celestial Bodies in Signs", "星體星座分布"),
+    "body-in-houses": ("Celestial Bodies in Houses", "星體宮位分布"),
+    "bodies": ("Bodies", "星體"),
+    "cusp": ("Cusp", "宮頭"),
+    # cross ref
+    "rows": ("rows", "列"),
+    "cols": ("cols", "行"),
 }

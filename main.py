@@ -1,7 +1,7 @@
 import streamlit as st
 from archive import delete_chart
 from const import LOGO, PAGE_CONFIG, SESS, STYLE
-from st_screenwidth_detector import screenwidth_detector
+# from st_screenwidth_detector import screenwidth_detector
 from ui import (
     ai_ui,
     chart_ui,
@@ -53,7 +53,7 @@ with st.expander(i("birth-chart"), expanded=True):
 with st.expander(i("synastry-chart")):
     input_ui(2)
 
-SESS.chart_size = min(screenwidth_detector() + 18, 650)
+# SESS.chart_size = min(screenwidth_detector() + 18, 650)
 
 if SESS.name1 and SESS.lat1 and SESS.lon1 and SESS.tz1:
     data1 = natal_data(1)
@@ -62,5 +62,5 @@ if SESS.name1 and SESS.lat1 and SESS.lon1 and SESS.tz1:
     utils_ui(2 if data2 else 1)
     if SESS.show_stats:
         stats_ui(data1, data2)
-    if SESS.ai_chat:
-        ai_ui(data1, data2)
+    # if SESS.ai_chat:
+        # ai_ui(data1, data2)

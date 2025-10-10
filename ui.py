@@ -1,13 +1,13 @@
 import pandas as pd
 import streamlit as st
 from archive import load_chart, save_chart
-from const import BODIES, HOUSE_SYS, LANGS, ORBS, ROW_HEIGHT, SESS, THEME_TYPE
+from const import BODIES, HOUSE_SYS, LANGS, ORBS, PRINT_COLOR, ROW_HEIGHT, SESS
 from datetime import date as Date
 from datetime import datetime
 from natal import Chart, Data, Stats
 from natal.config import Display
 from natal.const import ASPECT_NAMES, PLANET_NAMES
-from streamlit_shortcuts import shortcut_button
+from natal.utils import html_section
 from utils import (
     all_charts,
     all_cities,
@@ -23,7 +23,9 @@ from utils import (
 def general_opt():
     c1, c2 = st.columns([3, 2])
     SESS.house_sys = SESS.get("house_sys", "Placidus")
-    SESS.theme_type = SESS.get("theme_type", "dark")
+    SESS.print_color = SESS.get("print_color", "light")
+    SESS.show_stats = SESS.get("show_stats", True)
+    SESS.ai_chat = SESS.get("ai_chat", True)
     c1.selectbox(
         i("house-system"),
         HOUSE_SYS,
@@ -38,21 +40,20 @@ def general_opt():
         format_func=lambda x: LANGS[x],
     )
 
-    c1, c2, c3 = st.columns([3, 2, 2])
+    c1, c2, c3 = st.columns(3)
     c1.segmented_control(
-        i("chart-color"),
-        THEME_TYPE.keys(),
-        key="theme_type",
+        i("print-color"),
+        PRINT_COLOR.keys(),
+        key="print_color",
         width="stretch",
-        default=SESS.get("theme_type", "dark"),
-        format_func=lambda x: THEME_TYPE[x],
+        format_func=lambda x: PRINT_COLOR[x],
     )
     c2.segmented_control(
         i("statistics"),
         [True, False],
         key="show_stats",
         width="stretch",
-        default=SESS.get("show_stats", False),
+        # default=SESS.get("show_stats", False),
         format_func=lambda x: ":material/check: " if x else ":material/close:",
     )
     c3.segmented_control(
@@ -60,7 +61,7 @@ def general_opt():
         [True, False],
         key="ai_chat",
         width="stretch",
-        default=SESS.get("ai_chat", True),
+        # default=SESS.get("ai_chat", True),
         format_func=lambda x: ":material/check: " if x else ":material/close:",
     )
 
@@ -158,26 +159,22 @@ def display_opt(num: int):
 
 
 def input_ui(id: int):
-    def reset_city():
-        SESS[f"city{id}"] = None
-
     # name, city
     c1, c2 = st.columns(2)
+    SESS[f"name{id}"] = SESS.get(f"name{id}", "" if id == 1 else "Transit")
     c1.text_input(
         i("name"),
         key=f"name{id}",
-        value=SESS.get(f"name{id}", "" if id == 1 else "Transit"),
     )
-    city = SESS.get(f"city{id}", None)
+    SESS[f"city{id}"] = SESS.get(f"city{id}", None)
     c2.selectbox(
         i("city"),
         all_cities(),
         key=f"city{id}",
-        index=all_cities().index(city) if city else None,
+        # index=all_cities().index(city) if city else None,
         placeholder=i("city-placeholder"),
         format_func=lambda x: f"{x[0]} - {x[1]}",
-        on_change=set_lat_lon_dt_tz,
-        args=(id,),
+        on_change=lambda: set_lat_lon_dt_tz(id, SESS[f"city{id}"]),
     )
 
     # lat, lon, tz
@@ -190,46 +187,36 @@ def input_ui(id: int):
         key=f"lat{id}",
         min_value=-89.99,
         max_value=89.99,
-        on_change=reset_city,
     )
     c2.number_input(
         i("longitude"),
         key=f"lon{id}",
         min_value=-179.99,
         max_value=179.99,
-        on_change=reset_city,
     )
     c3.selectbox(
         i("timezone"),
         all_timezones(),
         key=f"tz{id}",
-        on_change=reset_city,
     )
 
     # date, hr, min
     now = datetime.now()
     with st.container(key=f"date-row{id}", horizontal=True):
+        SESS[f"date{id}"] = SESS.get(f"date{id}", Date(2000, 1, 1) if id == 1 else now.date())
         st.date_input(
             i("date"),
-            value=SESS.get(f"date{id}", Date(2000, 1, 1) if id == 1 else now.date()),
             max_value=Date(2300, 1, 1),
             min_value=Date(1800, 1, 1),
             format="YYYY-MM-DD",
             key=f"date{id}",
         )
-        st.selectbox(
-            i("hour"),
-            range(24),
-            key=f"hr{id}",
-            index=SESS.get(f"hr{id}", 13 if id == 1 else now.hour),
-        )
-        st.selectbox(
-            i("minute"),
-            range(60),
-            key=f"min{id}",
-            help="daylight saving time",
-            index=SESS.get(f"min{id}", 0 if id == 1 else now.minute),
-        )
+
+        SESS[f"hr{id}"] = SESS.get(f"hr{id}", 13 if id == 1 else now.hour)
+        st.selectbox(i("hour"), range(24), key=f"hr{id}")
+
+        SESS[f"min{id}"] = SESS.get(f"min{id}", 0 if id == 1 else now.minute)
+        st.selectbox(i("minute"), range(60), key=f"min{id}", help="daylight saving time")
 
 
 def utils_ui(id: int):
@@ -242,11 +229,9 @@ def utils_ui(id: int):
     ):
         stepper_options = ["year", "month", "week", "day", "hour", "minute"]
         SESS.stepper_unit = SESS.get("stepper_unit", "day")
-        shortcut_button(
-            # "❮",
-            ":material/arrow_back_ios_new:",
-            "alt+arrowleft",
-            hint=False,
+        st.button(
+            "",
+            icon=":material/arrow_left:",
             on_click=step,
             args=(id, SESS.stepper_unit, -1),
             key="prev",
@@ -256,17 +241,14 @@ def utils_ui(id: int):
             i("adjustment"),
             stepper_options,
             label_visibility="collapsed",
-            index=stepper_options.index(SESS.get("stepper_unit", "day")),
             format_func=lambda x: i(x),
             key="stepper_unit",
             width=90,
         )
 
-        shortcut_button(
-            ":material/arrow_forward_ios:",
-            # "❯",
-            "alt+arrowright",
-            hint=False,
+        st.button(
+            "",
+            icon=":material/arrow_right:",
             on_click=step,
             args=(id, SESS.stepper_unit, 1),
             key="next",
@@ -284,7 +266,8 @@ def utils_ui(id: int):
 
 def chart_ui(data1: Data, data2: Data = None):
     st.write("")
-    chart = Chart(data1=data1, data2=data2, width=SESS.chart_size)
+    chart = Chart(data1=data1, data2=data2, width=650)
+    # chart = Chart(data1=data1, data2=data2, width=SESS.chart_size)
     with st.container(key="chart_svg"):
         st.markdown(chart.svg, unsafe_allow_html=True)
     if "chat" in SESS:
@@ -292,9 +275,67 @@ def chart_ui(data1: Data, data2: Data = None):
 
 
 def stats_ui(data1: Data, data2: Data = None):
-    stats = Stats(data1=data1, data2=data2)
-    st.markdown(stats.full_report("html"), unsafe_allow_html=True)
-    st.write("")
+    with st.container(key="stats-ui"):
+        stats = Stats(
+            data1=data1, data2=data2, city1=SESS.city1, city2=SESS.city2, tz1=SESS.tz1, tz2=SESS.tz2
+        )
+        basic_info_headers = [i("name"), i("city"), i("coordinates"), i("local-time")]
+        basic_info = html_section(i("basic-info"), stats.basic_info(basic_info_headers))
+
+        ele_mod_headers = [i("fire"), i("air"), i("water"), i("earth"), i("sum")]
+        ele_mod_row = [i("cardinal"), i("fixed"), i("mutable"), i("sum")]
+        ele_mod_polor = [i("polarity"), i("pos"), i("neg")]
+        ele_mod_grid = stats.element_vs_modality(ele_mod_headers, ele_mod_row, ele_mod_polor)
+        ele_mod = html_section(i("element-vs-modality"), ele_mod_grid)
+
+        quad_hemi_headers = [i("eastern"), i("western"), i("northern"), i("southern"), i("sum")]
+        quad_hemi_grid = stats.quadrants_vs_hemisphere(quad_hemi_headers)
+        quad_hemi = html_section(i("quad-vs-hemi"), quad_hemi_grid)
+
+        body_headers = [i("body"), i("sign"), i("house"), i("dignity")]
+        dignity_labels = [i("domicile"), i("exaltation"), i("fall"), i("detriment")]
+        bodies_grid = stats.celestial_body(1, body_headers, dignity_labels)
+        user_name = f" - {stats.data1.name}" if stats.data2 else ""
+        bodies = html_section(i("celestial_body") + user_name, bodies_grid)
+        houses_title = f"{i('body-in-houses')} - {i(SESS.house_sys)}"
+
+        if stats.data2:
+            # bodies 2
+            bodies_grid2 = stats.celestial_body(2, body_headers, dignity_labels)
+            bodies2 = html_section(i("celestial_body") + f" - {stats.data2.name}", bodies_grid2)
+            bodies += bodies2
+            # sign distribution 1 & 2
+            synastry_sign_headers = [i("sign"), stats.data1.name, stats.data2.name, i("sum")]
+            synastry_signs_grid = stats.signs(headers=synastry_sign_headers)
+            signs = html_section(i("body-in-signs"), synastry_signs_grid)
+            # house distribution
+            synastry_houses_headers = [
+                i("house"),
+                i("cusp"),
+                stats.data1.name,
+                stats.data2.name,
+                i("sum"),
+            ]
+            synastry_houses_grid = stats.houses(headers=synastry_houses_headers)
+            houses = html_section(houses_title, synastry_houses_grid)
+            # cross ref
+            cross_ref_title = f"{i('aspects')} - {stats.data1.name}: {i('rows')} / {stats.data2.name}: {i('cols')}"
+        else:
+            # sign distribution 1
+            sign_headers = [i("sign"), i("bodies"), i("sum")]
+            signs_grid = stats.signs(headers=sign_headers)
+            signs = html_section(i("body-in-signs"), signs_grid)
+            # house distribution 1
+            houses_headers = [i("house"), i("cusp"), i("bodies"), i("sum")]
+            houses_grid = stats.houses(headers=houses_headers)
+            houses = html_section(houses_title, houses_grid)
+            cross_ref_title = i("aspects")
+
+        cross_ref_grid = stats.cross_ref(total_label=i("sum"))
+        cross_ref = html_section(cross_ref_title, cross_ref_grid)
+
+        output = basic_info + ele_mod + quad_hemi + bodies + signs + houses + cross_ref
+        st.markdown(output, unsafe_allow_html=True)
 
 
 def ai_ui(data1: Data, data2: Data = None) -> None:
@@ -310,7 +351,7 @@ def ai_ui(data1: Data, data2: Data = None) -> None:
             st.markdown(text)
 
     # Accept user input
-    if prompt := st.chat_input("chat about the astrological chart..."):
+    if prompt := st.chat_input(i("chat-placeholder")):
         # Display user message
         with st.chat_message("user", avatar=avatar["user"]):
             st.markdown(prompt)

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols&display=swap&text=♈♉♊♋♌♍♎♏♐♑♒♓");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols&display=swap&text=♈♉♊♋♌♍♎♏♐♑♒♓☉☽☿♀♂♃♄♅♆♇☊⚷⚳⚴⚵⚶☌☍△□⚹⚻");
 
 :root {
   --border-color: #3e4044;
@@ -7,17 +7,18 @@
   --bg-color: #282d31;
 }
 
-.tabulate {
-  font-size: 1rem;
-  font-family: "Noto Sans Symbols", sans-serif, serif, monospace;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
+.st-key-stats-ui {
+  svg {
+    vertical-align: text-top;
+    height: 1.3rem;
+    width: 1.3rem;
+    stroke: white;
+    transform: scale(0.8);
+  }
 
-  h4 {
-    font-size: 1.2rem;
-    margin-top: 2rem;
-    margin-bottom: 0.5rem;
+  .title {
+    font-size: 1.1rem;
+    margin: 2rem 0 0.8rem 0.5rem;
   }
 
   table {
@@ -39,10 +40,12 @@
   th {
     border: 0.5px solid var(--border-color);
     padding: 0.3rem;
+    font-size: 0.95rem;
+    font-family: "Noto Sans Symbols", "Source Sans", sans-serif;
   }
 
   tr {
-    &:first-child th {
+    &:first-child td {
       &:first-child {
         border-top-left-radius: var(--border-radius);
       }
@@ -60,12 +63,12 @@
       }
     }
 
-    &:nth-child(even) {
+    &:nth-child(odd) {
       background-color: var(--bg-color);
     }
   }
 
-  &.cross_ref table {
+  .cross_ref table {
     table-layout: fixed;
   }
 }
@@ -96,13 +99,6 @@
   overflow-x: hidden; /* prevent horizontal scrollbar */
 }
 
-.st-key-prev,
-.st-key-next {
-  & + .stElementContainer {
-    display: none;
-  }
-}
-
 [data-testid="stBottomBlockContainer"] {
   padding-bottom: 1rem;
 }
@@ -113,8 +109,4 @@
 
 input[aria-label="North Node"] ~ div p {
   white-space: nowrap;
-}
-
-.stElementContainer:has(.stAlert) {
-  display: none;
 }

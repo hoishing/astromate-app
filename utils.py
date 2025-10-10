@@ -5,9 +5,12 @@ import streamlit as st
 from const import I18N, MODELS, SESS
 from datetime import datetime, timedelta
 from functools import reduce
-from natal import Config, Data, Stats
+from importlib.resources import files
+from natal import Chart, Config, Data, Stats
 from natal.const import ASPECT_NAMES
+from natal.utils import html_section
 from openai import OpenAI
+from tagit import div, main, style
 from textwrap import dedent
 from typing import Literal, TypedDict
 from zoneinfo import ZoneInfo
@@ -59,14 +62,13 @@ def all_cities() -> list[tuple[str, str]]:
     return cursor.fetchall()
 
 
-def set_lat_lon_dt_tz(id: int) -> dict:
+def set_lat_lon_dt_tz(id: int, city_tuple: tuple[str, str]) -> dict:
     """return lat, lon, utc datetime from a chart input ui"""
-    if not (city_tuple := SESS[f"city{id}"]):
-        return
+    # print(type(city_tuple), city_tuple)
     columns = "lat, lon, timezone"
     cursor = cities_db().cursor()
     cursor.execute(f"SELECT {columns} FROM cities WHERE name = ? and country = ?", city_tuple)
-    (lat, lon, timezone) = cursor.fetchone()
+    lat, lon, timezone = cursor.fetchone()
     SESS[f"lat{id}"] = lat
     SESS[f"lon{id}"] = lon
     SESS[f"tz{id}"] = timezone
@@ -76,17 +78,13 @@ def natal_data(id: int) -> Data:
     """return natal data from a chart input ui"""
     display = SESS[f"display{id}"]
     aspects = {aspect: SESS[aspect] for aspect in ASPECT_NAMES}
+    hse_1st_char = SESS.house_sys[0]
     return Data(
         name=SESS[f"name{id}"],
         lat=SESS[f"lat{id}"],
         lon=SESS[f"lon{id}"],
         utc_dt=utc_of(id),
-        config=Config(
-            house_sys=SESS.house_sys[0],
-            theme_type=SESS.theme_type,
-            orb=aspects,
-            display=display,
-        ),
+        config=Config(house_sys=hse_1st_char, orb=aspects, display=display),
     )
 
 
@@ -149,13 +147,12 @@ class OpenRouterChat:
 
 
 def new_chat(data1: Data, data2: Data = None) -> OpenRouterChat:
-    stats = Stats(data1=data1, data2=data2)
+    stats = Stats(
+        data1=data1, data2=data2, city1=SESS.city1, city2=SESS.city2, tz1=SESS.tz1, tz2=SESS.tz2
+    )
     chart_data = reduce(
         lambda x, y: x + y,
-        (
-            stats.ai_md(tb, 2 if tb == "house" else 3)
-            for tb in ["celestial_body", "house", "aspect", "quadrant", "hemisphere"]
-        ),
+        (stats.ai_md(tb) for tb in ["celestial_body", "house", "aspect", "quadrant", "hemisphere"]),
     )
     lang = "Traditional Chinese" if SESS.lang_num else "English"
     sys_prompt = dedent(f"""\

@@ -12,18 +12,18 @@
 
 ## TODO
 
-- AI chat
+- PDF
+- AI
+- Stats
+  - cross reference background
+- chart lists
+- MultiPages
+  - Birth
+  - Synastry
   - Transit
+  - Solar return
 - learning mode?
-- Stats UI update
-- auth
-  - list recent charts
-  - import / export charts
-  - save charts
 - check performance
-  - startup time
-  - chart loading
-  - stats loading
 
 ## Questions
 

@@ -8,15 +8,18 @@ dependencies = [
     "authlib",
     "natal",
     "openai",
-    "st-screenwidth-detector",
+    # "st-screenwidth-detector",
     "streamlit",
-    "streamlit-shortcuts",
+    # "streamlit-shortcuts",
 ]
 
 [tool.ruff]
 isort.no-sections = true
 line-length = 100
 extend-ignore = ["E203", "E402", "E501", "E712", "F401", "F811"]
+
+[tool.uv.sources]
+natal = { path = "../natal", editable = true }
 
 [dependency-groups]
 dev = ["ipykernel", "pytest", "watchdog"]
