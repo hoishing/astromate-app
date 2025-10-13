@@ -17,7 +17,7 @@ STYLE = f"<style>{Path('style.css').read_text()}</style>"
 LOGO = "static/astrobro-logo.png"
 CHART_SIZE = 650
 ROW_HEIGHT = 35
-PRINT_COLOR = dict(light=":material/palette:", mono=":material/contrast:")
+PDF_COLOR = dict(light=":material/palette:", mono=":material/contrast:")
 
 LANGS = ["English", "中文"]
 MODELS = [
@@ -35,12 +35,19 @@ I18N = {
     "options": ("Options", "選項"),
     "general": ("General", "一般"),
     "house-system": ("House System", "宮位系統"),
-    "print-color": ("Print Color", "列印顏色"),
+    "pdf-color": ("PDF Color", "PDF 顏色"),
     "language": ("Language", "語言"),
     "statistics": ("Statistics", "統計"),
+    # utils ui
+    "gen-pdf": ("Generate PDF", "生成 PDF"),
+    "download-pdf": ("Download PDF", "下載 PDF"),
+    "save-chart": ("Save Chart", "保存星盤"),
+    "prev": ("Prev ", "上一"),
+    "next": ("Next ", "下一"),
     # "ai_chat": ("AI Chat", "AI 聊天"),
     # orbs
     "orbs": ("Orbs", "容許度"),
+    "orb": ("Orb", "容許度"),
     "conjunction": ("Conjunction", "合相"),
     "square": ("Square", "四分相"),
     "trine": ("Trine", "三分相"),
@@ -124,30 +131,60 @@ I18N = {
     # ai chat
     "thinking": ("thinking", "思考中"),
     "chat-placeholder": ("chat about the astrological chart...", "聊聊這個星盤吧～"),
+    "question-1": (
+        "What does my birth chart reveal about my personality, strengths, and challenges?",
+        "我的出生圖對我的個性、優勢和挑戰有何啟示？",
+    ),
+    "question-2": (
+        "What are my key relationships and how can I improve them?",
+        "我的關鍵關係是什麼，如何改善？",
+    ),
+    "question-3": (
+        "What are my career opportunities and how can I make the most of them?",
+        "我的職業機會是什麼，如何最大化利用？",
+    ),
+    "question-4": (
+        "Any suggestions on my love life and relationships?",
+        "在愛情和人際關係方面有什麼建議？",
+    ),
+    "question-5": (
+        "What are my spiritual and emotional needs, and how can I fulfill them?",
+        "我的精神需求和情感需求是什麼，如何滿足？",
+    ),
+    "question-6": (
+        "What are my financial goals and how can I achieve them?",
+        "我的財務目標是什麼，如何實現？",
+    ),
+    "question-7": (
+        "What is my career path or life direction? Which way should I be heading?",
+        "我的職業生涯或人生方向是什麼？我該朝哪個方向努力？",
+    ),
     # stats
-    "basic-info": ("Basic Info", "基本資訊"),
+    "basic-info": ("Basic Info", "基本資料"),
     "element-vs-modality": ("Element vs Modality", "四元素與三態"),
     "quad-vs-hemi": ("Quadrants vs Hemisphere", "象限與半球"),
     "aspects": ("Aspects", "相位"),
+    "aspect": ("Aspect", "相位"),
     # basic info
     "coordinates": ("Coordinates", "座標"),
     "local-time": ("Local Time", "當地時間"),
     # celestial bodies
     "celestial_body": ("Celestial Bodies", "星體"),
     "body": ("Body", "星體"),
-    "sign": ("Sign", "星座"),
-    "house": ("House", "宮位"),
-    "dignity": ("Dignity", "廟旺陷弱"),
+    "dignity": ("Dignity", "尊貴"),
     "domicile": ("Domicile", "廟"),
     "exaltation": ("Exaltation", "旺"),
     "detriment": ("Detriment", "陷"),
     "fall": ("Fall", "弱"),
     # signs and houses
-    "body-in-signs": ("Celestial Bodies in Signs", "星體星座分布"),
-    "body-in-houses": ("Celestial Bodies in Houses", "星體宮位分布"),
+    "signs": ("Signs", "星座"),
+    "sign": ("Sign", "星座"),
+    "houses": ("Houses", "宮位"),
+    "house": ("House", "宮位"),
     "bodies": ("Bodies", "星體"),
     "cusp": ("Cusp", "宮頭"),
     # cross ref
     "rows": ("rows", "列"),
     "cols": ("cols", "行"),
+    # pdf
 }

@@ -8,9 +8,9 @@ dependencies = [
     "authlib",
     "natal",
     "openai",
-    # "st-screenwidth-detector",
     "streamlit",
-    # "streamlit-shortcuts",
+    "tagit",
+    "weasyprint>=66.0",
 ]
 
 [tool.ruff]

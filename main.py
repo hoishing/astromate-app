@@ -59,7 +59,7 @@ if SESS.name1 and SESS.lat1 and SESS.lon1 and SESS.tz1:
     data1 = natal_data(1)
     data2 = natal_data(2) if SESS.name2 and SESS.lat2 and SESS.lon2 and SESS.tz2 else None
     chart_ui(data1, data2)
-    utils_ui(2 if data2 else 1)
+    utils_ui(2 if data2 else 1, data1, data2)
     if SESS.show_stats:
         stats_ui(data1, data2)
     # if SESS.ai_chat:

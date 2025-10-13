@@ -12,10 +12,9 @@
 
 ## TODO
 
-- PDF
+- save general options to database
 - AI
-- Stats
-  - cross reference background
+  - startup questions
 - chart lists
 - MultiPages
   - Birth

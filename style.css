@@ -8,14 +8,6 @@
 }
 
 .st-key-stats-ui {
-  svg {
-    vertical-align: text-top;
-    height: 1.3rem;
-    width: 1.3rem;
-    stroke: white;
-    transform: scale(0.8);
-  }
-
   .title {
     font-size: 1.1rem;
     margin: 2rem 0 0.8rem 0.5rem;
@@ -68,8 +60,34 @@
     }
   }
 
-  .cross_ref table {
-    table-layout: fixed;
+  /* step effect */
+  .aspect_grid {
+    /* tr:nth-child(n + 1) td:nth-child(1), */
+    tr:nth-child(n + 2) td:nth-child(2),
+    tr:nth-child(n + 3) td:nth-child(3),
+    tr:nth-child(n + 4) td:nth-child(4),
+    tr:nth-child(n + 5) td:nth-child(5),
+    tr:nth-child(n + 6) td:nth-child(6),
+    tr:nth-child(n + 7) td:nth-child(7),
+    tr:nth-child(n + 8) td:nth-child(8),
+    tr:nth-child(n + 9) td:nth-child(9),
+    tr:nth-child(n + 10) td:nth-child(10),
+    tr:nth-child(n + 11) td:nth-child(11),
+    tr:nth-child(n + 12) td:nth-child(12),
+    tr:nth-child(n + 13) td:nth-child(13),
+    tr:nth-child(n + 14) td:nth-child(14),
+    tr:nth-child(n + 15) td:nth-child(15),
+    tr:nth-child(n + 16) td:nth-child(16),
+    tr:nth-child(n + 17) td:nth-child(17),
+    tr:nth-child(n + 18) td:nth-child(18),
+    tr:nth-child(n + 19) td:nth-child(19),
+    tr:nth-child(n + 20) td:nth-child(20),
+    tr:nth-child(n + 21) td:nth-child(21),
+    tr:nth-child(n + 22) td:nth-child(22),
+    tr:nth-child(n + 23) td:nth-child(23),
+    tr:nth-child(n + 24) td:nth-child(24) {
+      color: rgba(255, 255, 255, 0.2);
+    }
   }
 }
 

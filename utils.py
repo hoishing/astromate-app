@@ -1,19 +1,25 @@
 import json
+import logging
 import pandas as pd
 import sqlite3
 import streamlit as st
 from const import I18N, MODELS, SESS
 from datetime import datetime, timedelta
 from functools import reduce
-from importlib.resources import files
+from io import BytesIO
 from natal import Chart, Config, Data, Stats
+from natal.config import LightTheme
 from natal.const import ASPECT_NAMES
-from natal.utils import html_section
 from openai import OpenAI
-from tagit import div, main, style
+from pathlib import Path
+from tagit import div, main, style, table, td, tr
 from textwrap import dedent
-from typing import Literal, TypedDict
+from typing import Iterable, Literal, TypedDict
+from weasyprint import HTML
 from zoneinfo import ZoneInfo
+
+# suppress fontTools warnings
+logging.getLogger("fontTools").setLevel(logging.ERROR)
 
 
 def i(key: str) -> str:
@@ -156,14 +162,28 @@ def new_chat(data1: Data, data2: Data = None) -> OpenRouterChat:
     )
     lang = "Traditional Chinese" if SESS.lang_num else "English"
     sys_prompt = dedent(f"""\
-            You are an expert astrologer. You answer questions about this astrological chart:
+            You are an expert astrologer. You answer questions about this astrological chart data:
             
-            <chart>
+            <chart_data>
             {chart_data}
-            </chart>
+            </chart_data>
+
+            # Chart Data Tables Description
+            - Celestial Bodies: sign, house and dignity of specific celestial body
+            - Signs: distribution of celestial bodies in the 12 signs
+            - Houses: distribution of celestial bodies in the 12 houses
+            - Elements: distribution of celestial bodies in the 4 elements
+            - Modality: distribution of celestial bodies in the 3 modalities
+            - Polarity: distribution of celestial bodies in the 2 polarities
+            - Aspects: aspects between celestial bodies
+            - Quadrants: distribution of celestial bodies in the 4 quadrants
+            - Hemispheres: distribution of celestial bodies in the 4 hemispheres
 
             # Instructions
             - Answer the user's questions based on the chart data.
+            - think about the followings when answering the user's questions:
+              - do celestial bodies concentrate in certain signs, houses, elements, modality, polarity, quadrant, or hemisphere?
+              - do aspects between celestial bodies form certain patterns?
             - Use {lang} to reply.
             """)
     client = OpenAI(
@@ -206,3 +226,170 @@ def all_charts() -> pd.DataFrame | None:
     df.set_index("hash", inplace=True, drop=False)
     df.hash = "?delete=" + df.hash
     return df
+
+
+# stats and pdf report =========================================================
+
+
+def html_table(grid: list[Iterable]) -> str:
+    """converts list of iterable into an HTML table"""
+    rows = []
+    for row in grid:
+        cells = []
+        for cell in row:
+            if isinstance(cell, str) and cell.startswith("null:"):
+                cells.append(td(cell.split(":")[1], colspan=2))
+            else:
+                cells.append(td(cell))
+        rows.append(tr(cells))
+    return table(rows)
+
+
+def html_section(title: str, grid: list[Iterable], class_: str = "") -> str:
+    """creates an HTML section with a title and data table"""
+    return div(
+        div(title, class_="title") + html_table(grid),
+        class_="section " + class_,
+    )
+
+
+def pdf_io(html: str) -> BytesIO:
+    """PDF generation from HTML string"""
+    fp = BytesIO()
+    HTML(string=html).write_pdf(fp)
+    return fp
+
+
+def stats_html(data1: Data, data2: Data = None):
+    stats = Stats(
+        data1=data1, data2=data2, city1=SESS.city1, city2=SESS.city2, tz1=SESS.tz1, tz2=SESS.tz2
+    )
+    basic_info_headers = [i("name"), i("city"), i("coordinates"), i("local-time")]
+    basic_info = html_section(i("basic-info"), stats.basic_info(basic_info_headers))
+
+    ele_mod_headers = [i("fire"), i("air"), i("water"), i("earth"), i("sum")]
+    ele_mod_row = [i("cardinal"), i("fixed"), i("mutable"), i("sum")]
+    ele_mod_polor = [i("polarity"), i("pos"), i("neg")]
+    ele_mod_grid = stats.element_vs_modality(ele_mod_headers, ele_mod_row, ele_mod_polor)
+    ele_mod = html_section(i("element-vs-modality"), ele_mod_grid)
+
+    quad_hemi_headers = [i("eastern"), i("western"), i("northern"), i("southern"), i("sum")]
+    quad_hemi_grid = stats.quadrants_vs_hemisphere(quad_hemi_headers)
+    quad_hemi = html_section(i("quad-vs-hemi"), quad_hemi_grid)
+
+    body_headers = [i("body"), i("sign"), i("house"), i("dignity")]
+    dignity_labels = [i("domicile"), i("exaltation"), i("fall"), i("detriment")]
+    bodies_grid = stats.celestial_body(1, body_headers, dignity_labels)
+    user_name = f" - {data1.name}" if data2 else ""
+    bodies = html_section(i("celestial_body") + user_name, bodies_grid)
+    houses_title = f"{i('houses')} - {i(SESS.house_sys)}"
+
+    if data2:
+        # bodies 2
+        bodies_grid2 = stats.celestial_body(2, body_headers, dignity_labels)
+        bodies2 = html_section(i("celestial_body") + f" - {data2.name}", bodies_grid2)
+        bodies += bodies2
+        # sign distribution 1 & 2
+        synastry_sign_headers = [i("sign"), data1.name, data2.name, i("sum")]
+        synastry_signs_grid = stats.signs(headers=synastry_sign_headers)
+        signs = html_section(i("signs"), synastry_signs_grid)
+        # house distribution
+        synastry_houses_headers = [i("house"), i("cusp"), data1.name, data2.name, i("sum")]
+        synastry_houses_grid = stats.houses(headers=synastry_houses_headers)
+        houses = html_section(houses_title, synastry_houses_grid)
+        # cross ref
+        aspects_title = f"{i('aspects')} - {data1.name}: {i('rows')} / {data2.name}: {i('cols')}"
+    else:
+        # sign distribution 1
+        sign_headers = [i("sign"), i("bodies"), i("sum")]
+        signs_grid = stats.signs(headers=sign_headers)
+        signs = html_section(i("signs"), signs_grid)
+        # house distribution 1
+        houses_headers = [i("house"), i("cusp"), i("bodies"), i("sum")]
+        houses_grid = stats.houses(headers=houses_headers)
+        houses = html_section(houses_title, houses_grid)
+        aspects_title = i("aspects")
+
+    aspect_grid = stats.aspect_grid(total_label=i("sum"))
+    aspect_cls = "" if data2 else "aspect_grid"
+    aspects = html_section(aspects_title, aspect_grid, class_=aspect_cls)
+
+    html = basic_info + ele_mod + quad_hemi + bodies + signs + houses + aspects
+    return html
+
+
+def pdf_html(data1: Data, data2: Data = None):
+    """html source for PDF report"""
+    data1.config.theme_type = SESS.pdf_color
+    data1.config.chart.stroke_width = 0.7
+
+    stats = Stats(
+        data1=data1, data2=data2, city1=SESS.city1, city2=SESS.city2, tz1=SESS.tz1, tz2=SESS.tz2
+    )
+    chart = Chart(data1, width=400, data2=data2)
+
+    basic_info_title = i("basic-info")
+    basic_info_headers = [i("name"), i("city"), i("coordinates"), i("local-time")]
+    ele_vs_mod_title = i("element-vs-modality")
+    ele_vs_mod_headers = ["🜂", "🜁", "🜄", "🜃", "∑"]
+    ele_vs_mod_row_label = ["⟑", "⊟", "𛰣", "∑"]
+    ele_vs_mod_polarity_label = ["◐", "+", "-"]
+    quad_vs_hemi_title = i("quad-vs-hemi")
+    quad_vs_hemi_headers = [i("eastern"), i("western"), i("northern"), i("southern"), "∑"]
+    body_headers = [i("body"), i("sign"), i("house"), i("dignity")]
+    dignity_labels = ["⏫", "🔼", "⏬", "🔽"]
+    aspects_title = i("aspects")
+    signs_title = i("signs")
+    signs_headers = [i("sign")]
+    houses_title = f"{i('houses')} - {i(SESS.house_sys)}"
+    if data2:
+        body_title1 = i("celestial_body") + f" - {data1.name}"
+        body_title2 = i("celestial_body") + f" - {data2.name}"
+        signs_headers = [i("sign"), data1.name, data2.name, "∑"]
+        houses_headers = [i("house"), i("cusp"), data1.name, data2.name, "∑"]
+    else:
+        body_title1 = i("celestial_body")
+        signs_headers = [i("sign"), i("bodies"), "∑"]
+        houses_headers = [i("house"), i("cusp"), i("bodies"), "∑"]
+
+    orb_title = i("orbs")
+    orb_headers = [i("aspect"), i("orb")]
+
+    row1 = div(
+        html_section(basic_info_title, stats.basic_info(basic_info_headers))
+        + html_section(
+            ele_vs_mod_title,
+            stats.element_vs_modality(
+                headers=ele_vs_mod_headers,
+                row_label=ele_vs_mod_row_label,
+                polarity_label=ele_vs_mod_polarity_label,
+                pdf=True,
+            ),
+        )
+        + html_section(
+            quad_vs_hemi_title,
+            stats.quadrants_vs_hemisphere(headers=quad_vs_hemi_headers, pdf=True),
+        ),
+        class_="info_col",
+    ) + div(chart.svg, class_="chart")
+
+    body_params = {"headers": body_headers, "dignity_labels": dignity_labels, "pdf": True}
+    row2 = html_section(body_title1, stats.celestial_body(1, **body_params))
+
+    if stats.data2:
+        row2 += html_section(body_title2, stats.celestial_body(2, **body_params))
+
+    row2 += html_section(
+        aspects_title,
+        grid=stats.aspect_grid(total_label="∑", pdf=True),
+        class_="" if data2 else "aspect_grid",
+    )
+    row3 = (
+        html_section(signs_title, stats.signs(headers=signs_headers, pdf=True))
+        + html_section(houses_title, stats.houses(headers=houses_headers, pdf=True))
+        + html_section(orb_title, stats.orb_settings(headers=orb_headers))
+    )
+    css = Path(__file__).parent.joinpath("pdf.css").read_text()
+    rows = div(row1, class_="row1") + div(row2, class_="row2") + div(row3, class_="row3")
+    html = style(css) + main(rows)
+    return html

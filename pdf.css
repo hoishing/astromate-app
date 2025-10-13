@@ -1,0 +1,123 @@
+:root {
+  --color-border: white;
+  --color-background-alt: #f5f5f5;
+  --color-text: #595959;
+  --color-dim-text: rgba(0, 0, 0, 0.1);
+  --border-width: 0.1rem;
+  --text-size: 0.5rem;
+}
+
+@page {
+  size: A4;
+  margin: 2rem 2rem 1rem 2rem;
+}
+
+.row1,
+.row2,
+.row3 {
+  display: flex;
+}
+
+.row1 {
+  & > .chart {
+    flex: 1 0 auto;
+    text-align: center;
+    padding-bottom: 0.5rem;
+  }
+}
+
+.row2 {
+  margin-bottom: 1rem;
+}
+
+main {
+  font-family: sans-serif, serif, monospace;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.info_col {
+  display: flex;
+  flex-direction: column;
+  & .section {
+    margin-bottom: 1rem;
+  }
+}
+
+table {
+  color: var(--color-text);
+  font-size: var(--text-size);
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+
+  tr:nth-child(odd) {
+    background-color: var(--color-background-alt);
+  }
+
+  td {
+    padding: 0.3rem;
+    border-right: var(--border-width) solid var(--color-border);
+    border-bottom: var(--border-width) solid var(--color-border);
+    text-align: center;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+}
+
+svg {
+  vertical-align: bottom;
+}
+
+.title {
+  font-size: var(--text-size);
+  font-weight: bold;
+  color: var(--color-text);
+  padding: 0.3rem 0;
+}
+
+.section {
+  margin-right: 1rem;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+/* svg stroke color override with css not supported by weasyprint */
+/* .aspect_grid {
+  tr:nth-child(n + 2) td:nth-child(2),
+  tr:nth-child(n + 3) td:nth-child(3),
+  tr:nth-child(n + 4) td:nth-child(4),
+  tr:nth-child(n + 5) td:nth-child(5),
+  tr:nth-child(n + 6) td:nth-child(6),
+  tr:nth-child(n + 7) td:nth-child(7),
+  tr:nth-child(n + 8) td:nth-child(8),
+  tr:nth-child(n + 9) td:nth-child(9),
+  tr:nth-child(n + 10) td:nth-child(10),
+  tr:nth-child(n + 11) td:nth-child(11),
+  tr:nth-child(n + 12) td:nth-child(12),
+  tr:nth-child(n + 13) td:nth-child(13),
+  tr:nth-child(n + 14) td:nth-child(14),
+  tr:nth-child(n + 15) td:nth-child(15),
+  tr:nth-child(n + 16) td:nth-child(16),
+  tr:nth-child(n + 17) td:nth-child(17),
+  tr:nth-child(n + 18) td:nth-child(18),
+  tr:nth-child(n + 19) td:nth-child(19),
+  tr:nth-child(n + 20) td:nth-child(20),
+  tr:nth-child(n + 21) td:nth-child(21),
+  tr:nth-child(n + 22) td:nth-child(22),
+  tr:nth-child(n + 23) td:nth-child(23),
+  tr:nth-child(n + 24) td:nth-child(24) {
+    svg {
+      stroke: var(--color-dim-text);
+    }
+  }
+} */
