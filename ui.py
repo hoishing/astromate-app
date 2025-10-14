@@ -287,8 +287,8 @@ def utils_ui(id: int, data1: Data, data2: Data | None):
 
 def chart_ui(data1: Data, data2: Data = None):
     st.write("")
-    chart = Chart(data1=data1, data2=data2, width=650)
-    # chart = Chart(data1=data1, data2=data2, width=SESS.chart_size)
+    # chart = Chart(data1=data1, data2=data2, width=650)
+    chart = Chart(data1=data1, data2=data2, width=SESS.chart_size)
     with st.container(key="chart_svg"):
         st.markdown(chart.svg, unsafe_allow_html=True)
     if "chat" in SESS:
