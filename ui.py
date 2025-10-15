@@ -1,6 +1,12 @@
 import pandas as pd
 import streamlit as st
-from archive import load_chart, save_chart
+from archive import (
+    OPTION_FIELDS,
+    create_user,
+    fetch_user_record,
+    load_chart,
+    save_chart,
+)
 from const import BODIES, HOUSE_SYS, LANGS, ORBS, PDF_COLOR, ROW_HEIGHT, SESS
 from datetime import date as Date
 from datetime import datetime
@@ -11,6 +17,7 @@ from utils import (
     all_charts,
     all_cities,
     all_timezones,
+    data_db,
     i,
     new_chat,
     pdf_html,
@@ -23,23 +30,55 @@ from utils import (
 
 
 def general_opt():
+    # print("general_opt:", datetime.now())
+    def update_db(key):
+        if st.user.is_logged_in:
+            # work around for SES[key] is None bug
+            if SESS[key] is None:
+                # print("null:", key)
+                return
+
+            sql = f"UPDATE users SET {key} = ? WHERE email = ?"
+            cursor = data_db().cursor()
+            cursor.execute(sql, (SESS[key], st.user.email))
+            data_db().commit()
+
+    OPT_VALUES = ["Placidus", int(st.query_params.get("lang", 0)), "light", True, True]
+
+    def set_default_options():
+        for idx, field in enumerate(OPTION_FIELDS):
+            SESS[field] = SESS.get(field, OPT_VALUES[idx])
+
+    if st.user.is_logged_in:
+        # get user options from db
+        user_record = fetch_user_record(st.user.email)
+        if user_record is None:
+            # if user not found, set default options
+            set_default_options()
+            # create user with default options in db
+            create_user([st.user.email] + [SESS[field] for field in OPTION_FIELDS])
+        else:
+            # user found, set user options from db
+            for field in OPTION_FIELDS:
+                SESS[field] = user_record[field]
+    else:
+        # if user not logged in, set default options
+        set_default_options()
+
     c1, c2 = st.columns([3, 2])
-    SESS.house_sys = SESS.get("house_sys", "Placidus")
-    SESS.pdf_color = SESS.get("pdf_color", "light")
-    SESS.show_stats = SESS.get("show_stats", True)
-    SESS.ai_chat = SESS.get("ai_chat", True)
     c1.selectbox(
         i("house-system"),
         HOUSE_SYS,
         key="house_sys",
         format_func=i,
+        on_change=lambda: update_db("house_sys"),
     )
     c2.selectbox(
         i("language"),
         range(len(LANGS)),
-        index=SESS.get("lang_num", 0),
         key="lang_num",
         format_func=lambda x: LANGS[x],
+        on_change=lambda: update_db("lang_num"),
     )
 
     c1, c2, c3 = st.columns(3)
@@ -49,22 +88,23 @@ def general_opt():
         key="pdf_color",
         width="stretch",
         format_func=lambda x: PDF_COLOR[x],
+        on_change=lambda: update_db("pdf_color"),
     )
     c2.segmented_control(
         i("statistics"),
         [True, False],
         key="show_stats",
         width="stretch",
-        # default=SESS.get("show_stats", False),
         format_func=lambda x: ":material/check: " if x else ":material/close:",
+        on_change=lambda: update_db("show_stats"),
     )
     c3.segmented_control(
         "AI",
         [True, False],
         key="ai_chat",
         width="stretch",
-        # default=SESS.get("ai_chat", True),
         format_func=lambda x: ":material/check: " if x else ":material/close:",
+        on_change=lambda: update_db("ai_chat"),
     )
 
 
@@ -258,15 +298,22 @@ def utils_ui(id: int, data1: Data, data2: Data | None):
             help=i("next") + i(SESS.stepper_unit),
         )
 
-        def save_or_login():
-            if st.user.is_logged_in:
-                save_chart()
-            else:
-                st.login()
-
-        st.button(
-            "", icon=":material/save:", key="save", on_click=save_or_login, help=i("save-chart")
-        )
+        if st.user.is_logged_in:
+            st.button(
+                "",
+                icon=":material/save:",
+                key="save",
+                on_click=lambda: save_chart(st.user.email),
+                help=i("save-chart"),
+            )
+        else:
+            st.button(
+                "",
+                icon=":material/login:",
+                key="login-small-button",
+                on_click=st.login,
+                help=i("login"),
+            )
 
         with st.container(width=50, key="print-container"):
             with st.empty():
@@ -287,9 +334,11 @@ def utils_ui(id: int, data1: Data, data2: Data | None):
 
 def chart_ui(data1: Data, data2: Data = None):
     st.write("")
+    # data1.config.chart.margin_factor = 0.0
     # chart = Chart(data1=data1, data2=data2, width=650)
     chart = Chart(data1=data1, data2=data2, width=SESS.chart_size)
     with st.container(key="chart_svg"):
+        # st.image(chart.svg, width=650)
         st.markdown(chart.svg, unsafe_allow_html=True)
     if "chat" in SESS:
         del SESS["chat"]

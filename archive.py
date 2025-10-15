@@ -6,6 +6,7 @@ from hashlib import md5
 from natal.config import Display, Orb
 from pydantic import BaseModel, ValidationError
 from streamlit.runtime.state.safe_session_state import SafeSessionState
+from typing import Iterable
 from utils import data_db, get_dt
 
 
@@ -100,7 +101,7 @@ def load_chart(data: dict, sess: SafeSessionState = st.session_state):
         sess[asp] = val
 
 
-def save_chart() -> None:
+def save_chart(email: str) -> None:
     sql = """
     INSERT INTO charts (hash, email, data) 
     VALUES (?, ?, ?)
@@ -110,13 +111,44 @@ def save_chart() -> None:
     data = excluded.data;
     """
     cursor = data_db().cursor()
-    cursor.execute(sql, (data_hash(), st.user.email, archive_str()))
+    cursor.execute(sql, (data_hash(), email, archive_str()))
     data_db().commit()
 
 
-def delete_chart(chart_hash: str) -> None:
+def delete_chart(email: str, chart_hash: str) -> None:
     """Delete a chart by its hash."""
     sql = "DELETE FROM charts WHERE hash = ? AND email = ?"
     cursor = data_db().cursor()
-    cursor.execute(sql, (chart_hash, st.user.email))
+    cursor.execute(sql, (chart_hash, email))
     data_db().commit()
+
+
+OPTION_FIELDS = ["house_sys", "lang_num", "pdf_color", "show_stats", "ai_chat"]
+
+
+def create_user(options: Iterable) -> None:
+    cursor = data_db().cursor()
+    cursor.execute(
+        f"""INSERT INTO users 
+        (email, {", ".join(OPTION_FIELDS)}) 
+        VALUES (?, {", ".join(["?"] * len(OPTION_FIELDS))});""",
+        options,
+    )
+    data_db().commit()
+
+
+# def user_exists(email: str) -> bool:
+#     sql = "SELECT 1 FROM users WHERE email = ?"
+#     cursor = data_db().cursor()
+#     cursor.execute(sql, (email,))
+#     return cursor.fetchone() is not None
+
+
+def fetch_user_record(email: str) -> dict | None:
+    sql = f"SELECT {', '.join(OPTION_FIELDS)} FROM users WHERE email = ?"
+    cursor = data_db().cursor()
+    cursor.execute(sql, (email,))
+    saved_options = cursor.fetchone()
+    if saved_options is None:
+        return None
+    return dict(zip(OPTION_FIELDS, saved_options))

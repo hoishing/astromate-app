@@ -18,7 +18,7 @@ from utils import i, natal_data
 # Handle delete requests
 delete_hash = st.query_params.get("delete")
 if delete_hash and st.user.is_logged_in:
-    delete_chart(delete_hash)
+    delete_chart(st.user.email, delete_hash)
     st.query_params.clear()
 
 

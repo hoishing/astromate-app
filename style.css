@@ -103,6 +103,9 @@
 
 /* center every child element */
 .st-key-chart_svg {
+  /* for st.image */
+  /* flex-flow: row;
+  justify-content: center; */
   div,
   p {
     display: flex;

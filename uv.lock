@@ -76,7 +76,7 @@ requires-dist = [
     { name = "authlib" },
     { name = "natal", editable = "../natal" },
     { name = "openai" },
-    { name = "st-screenwidth-detector", specifier = ">=0.1.4" },
+    { name = "st-screenwidth-detector" },
     { name = "streamlit" },
     { name = "tagit" },
     { name = "weasyprint", specifier = ">=66.0" },
