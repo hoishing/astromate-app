@@ -1,5 +1,4 @@
 import pandas as pd
-from datetime import datetime
 import streamlit as st
 from archive import (
     DEFAULT_GENERAL_OPTS,
@@ -36,10 +35,14 @@ def general_opt():
 
     # print("general_opt start:", datetime.now())
     def update_db(key: str):
+        # BUG: workaround for None values in session state bug during multiple reruns
+        # it will trigger on_change event with session state of None
+        if SESS[key] is None:
+            # restore session state from VAR
+            SESS[key] = VAR[key]
+            return
         if st.user.is_logged_in:
-            # workaround for None values in session state bug during multiple reruns
-            if SESS[key] is not None:
-                sync(key)
+            sync(key)
             sql = f"UPDATE users SET {key} = ? WHERE email = ?"
             cursor = data_db().cursor()
             cursor.execute(sql, (VAR[key], st.user.email))
