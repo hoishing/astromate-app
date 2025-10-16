@@ -1,106 +1,106 @@
 import pandas as pd
+from datetime import datetime
 import streamlit as st
 from archive import (
-    OPTION_FIELDS,
+    DEFAULT_GENERAL_OPTS,
     create_user,
     fetch_user_record,
     load_chart,
     save_chart,
 )
-from const import BODIES, HOUSE_SYS, LANGS, ORBS, PDF_COLOR, ROW_HEIGHT, SESS
+from const import HOUSE_SYS, LANGS, ORBS, PDF_COLOR, ROW_HEIGHT, SESS, VAR
 from datetime import date as Date
-from datetime import datetime
 from natal import Chart, Data
 from natal.config import Display
 from natal.const import ASPECT_NAMES, PLANET_NAMES
+from streamlit.column_config import DatetimeColumn, LinkColumn
 from utils import (
     all_charts,
     all_cities,
     all_timezones,
+    cities_db,
     data_db,
     i,
     new_chat,
     pdf_html,
     pdf_io,
     scroll_to_bottom,
-    set_lat_lon_dt_tz,
     stats_html,
     step,
+    sync,
 )
 
 
 def general_opt():
-    # print("general_opt:", datetime.now())
-    def update_db(key):
-        if st.user.is_logged_in:
-            # work around for SES[key] is None bug
-            if SESS[key] is None:
-                # print("null:", key)
-                return
+    """general options from database, or show default options if user not logged in"""
 
+    # print("general_opt start:", datetime.now())
+    def update_db(key: str):
+        if st.user.is_logged_in:
+            # workaround for None values in session state bug during multiple reruns
+            if SESS[key] is not None:
+                sync(key)
             sql = f"UPDATE users SET {key} = ? WHERE email = ?"
             cursor = data_db().cursor()
-            cursor.execute(sql, (SESS[key], st.user.email))
+            cursor.execute(sql, (VAR[key], st.user.email))
             data_db().commit()
-
-    OPT_VALUES = ["Placidus", int(st.query_params.get("lang", 0)), "light", True, True]
-
-    def set_default_options():
-        for idx, field in enumerate(OPTION_FIELDS):
-            SESS[field] = SESS.get(field, OPT_VALUES[idx])
 
     if st.user.is_logged_in:
         # get user options from db
-        user_record = fetch_user_record(st.user.email)
-        if user_record is None:
-            # if user not found, set default options
-            set_default_options()
-            # create user with default options in db
-            create_user([st.user.email] + [SESS[field] for field in OPTION_FIELDS])
+        if user_record := fetch_user_record(st.user.email):
+            # user found, set general options from db
+            for field in DEFAULT_GENERAL_OPTS:
+                VAR[field] = user_record[field]
         else:
-            # user found, set user options from db
-            for field in OPTION_FIELDS:
-                SESS[field] = user_record[field]
-    else:
-        # if user not logged in, set default options
-        set_default_options()
+            # create user with default options
+            create_user([st.user.email] + [VAR[field] for field in DEFAULT_GENERAL_OPTS])
 
     c1, c2 = st.columns([3, 2])
+
+    SESS.house_sys = VAR.house_sys
     c1.selectbox(
         i("house-system"),
-        HOUSE_SYS,
+        options=HOUSE_SYS,
         key="house_sys",
         format_func=i,
         on_change=lambda: update_db("house_sys"),
     )
+
+    SESS.lang_num = VAR.lang_num
     c2.selectbox(
         i("language"),
-        range(len(LANGS)),
+        options=range(len(LANGS)),
         key="lang_num",
         format_func=lambda x: LANGS[x],
         on_change=lambda: update_db("lang_num"),
     )
 
     c1, c2, c3 = st.columns(3)
+
+    SESS.pdf_color = VAR.pdf_color
     c1.segmented_control(
         i("pdf-color"),
-        PDF_COLOR.keys(),
+        options=PDF_COLOR,
         key="pdf_color",
         width="stretch",
         format_func=lambda x: PDF_COLOR[x],
         on_change=lambda: update_db("pdf_color"),
     )
+
+    SESS.show_stats = VAR.show_stats
     c2.segmented_control(
         i("statistics"),
-        [True, False],
+        options=[True, False],
         key="show_stats",
         width="stretch",
         format_func=lambda x: ":material/check: " if x else ":material/close:",
         on_change=lambda: update_db("show_stats"),
     )
+
+    SESS.ai_chat = VAR.ai_chat
     c3.segmented_control(
         "AI",
-        [True, False],
+        options=[True, False],
         key="ai_chat",
         width="stretch",
         format_func=lambda x: ":material/check: " if x else ":material/close:",
@@ -109,13 +109,17 @@ def general_opt():
 
 
 def orb_opt():
-    def set_orbs(vals: list[int]):
-        for aspect, val in zip(ASPECT_NAMES, vals):
-            SESS[aspect] = val
+    """orb settings"""
 
     def orb_input(aspect: str):
-        SESS[aspect] = SESS.get(aspect, ORBS[aspect])
-        st.number_input(label=i(aspect), min_value=0, max_value=10, key=aspect)
+        SESS[aspect] = VAR[aspect]
+        st.number_input(
+            label=i(aspect),
+            min_value=0,
+            max_value=10,
+            key=aspect,
+            on_change=lambda: sync(aspect),
+        )
 
     c1, c2 = st.columns(2)
     with c1:
@@ -130,135 +134,173 @@ def orb_opt():
         i("transit"),
         key="transit_orbs",
         use_container_width=True,
-        on_click=lambda: set_orbs([2, 2, 2, 2, 1, 0]),
+        on_click=lambda: VAR.update(zip(ASPECT_NAMES, [2, 2, 2, 2, 1, 0])),
     )
     c2.button(
         i("default"),
         key="default_orbs",
         use_container_width=True,
-        on_click=lambda: set_orbs(ORBS.values()),
+        on_click=lambda: VAR.update(ORBS),
     )
 
 
-def display_opt(num: int):
-    display_n = f"display{num}"
+def display_opt(id: int):
+    """options for displaying a celestial body or not"""
 
-    def update_display(kind: str):
+    def update_display(id: int, kind: str):
         presets = {
             "inner": PLANET_NAMES[:5],
             "classic": PLANET_NAMES[:7],
             "default": PLANET_NAMES,
         }
         planets = presets[kind] + ["asc"]
-        SESS[display_n] = Display(
-            **(dict.fromkeys(Display.model_fields, False) | dict.fromkeys(planets, True))
-        )
-
-    if display_n not in SESS:
-        update_display("default")
+        data = dict.fromkeys(Display.model_fields, False) | dict.fromkeys(planets, True)
+        for body in data:
+            VAR[f"{body}{id}"] = data[body]
 
     def toggle(body: str):
-        body_n = f"{body}{num}"
-        SESS[body_n] = SESS[display_n][body]
+        key = f"{body}{id}"
+        SESS[key] = VAR[key]
         st.toggle(
             i(body),
-            key=body_n,
-            # lambda don't have its own scope,
-            # if not wrapped in a function, it will use the last value of for loop
-            on_change=lambda: SESS[display_n].update({body: SESS[body_n]}),
+            key=key,
+            on_change=lambda: sync(key),
         )
 
     c1, c2, c3 = st.columns(3)
+    bodies = list(Display.model_fields)
     with c1:
-        for body in BODIES[:7]:
+        for body in bodies[:7]:
             toggle(body)
     with c2:
-        for body in BODIES[7:14]:
+        for body in bodies[7:14]:
             toggle(body)
     with c3:
-        for body in BODIES[14:]:
+        for body in bodies[14:]:
             toggle(body)
 
     c1, c2, c3 = st.columns(3)
     c1.button(
         i("inner-planets"),
-        key=f"inner_display{num}",
+        key=f"inner_display{id}",
         use_container_width=True,
-        on_click=lambda: update_display("inner"),
+        on_click=lambda: update_display(id, "inner"),
     )
     c2.button(
         i("classic"),
-        key=f"classic_display{num}",
+        key=f"classic_display{id}",
         use_container_width=True,
-        on_click=lambda: update_display("classic"),
+        on_click=lambda: update_display(id, "classic"),
     )
     c3.button(
         i("default"),
-        key=f"default_display{num}",
+        key=f"default_display{id}",
         use_container_width=True,
-        on_click=lambda: update_display("default"),
+        on_click=lambda: update_display(id, "default"),
     )
 
 
 def input_ui(id: int):
-    # name, city
-    c1, c2 = st.columns(2)
-    SESS[f"name{id}"] = SESS.get(f"name{id}", "" if id == 1 else "Transit")
-    c1.text_input(
-        i("name"),
-        key=f"name{id}",
-    )
-    SESS[f"city{id}"] = SESS.get(f"city{id}", None)
-    c2.selectbox(
-        i("city"),
-        all_cities(),
-        key=f"city{id}",
-        # index=all_cities().index(city) if city else None,
-        placeholder=i("city-placeholder"),
-        format_func=lambda x: f"{x[0]} - {x[1]}",
-        on_change=lambda: set_lat_lon_dt_tz(id, SESS[f"city{id}"]),
-    )
+    """natal data input ui"""
 
-    # lat, lon, tz
-    SESS[f"lat{id}"] = SESS.get(f"lat{id}", None)
-    SESS[f"lon{id}"] = SESS.get(f"lon{id}", None)
-    SESS[f"tz{id}"] = SESS.get(f"tz{id}", None)
-    c1, c2, c3 = st.columns(3)
-    c1.number_input(
-        i("latitude"),
-        key=f"lat{id}",
-        min_value=-89.99,
-        max_value=89.99,
-    )
-    c2.number_input(
-        i("longitude"),
-        key=f"lon{id}",
-        min_value=-179.99,
-        max_value=179.99,
-    )
-    c3.selectbox(
-        i("timezone"),
-        all_timezones(),
-        key=f"tz{id}",
-    )
+    def set_lat_lon_dt_tz(id: int):
+        """return lat, lon, utc datetime from a chart input ui"""
+        city = f"city{id}"
+        sync(city)
+        cursor = cities_db().cursor()
+        cursor.execute("SELECT lat, lon, timezone FROM cities WHERE name = ? and country = ?", VAR[city])
+        lat, lon, timezone = cursor.fetchone()
+        VAR[f"lat{id}"] = lat
+        VAR[f"lon{id}"] = lon
+        VAR[f"tz{id}"] = timezone
 
-    # date, hr, min
-    now = datetime.now()
-    with st.container(key=f"date-row{id}", horizontal=True):
-        SESS[f"date{id}"] = SESS.get(f"date{id}", Date(2000, 1, 1) if id == 1 else now.date())
-        st.date_input(
-            i("date"),
-            max_value=Date(2300, 1, 1),
-            min_value=Date(1800, 1, 1),
-            format="YYYY-MM-DD",
-            key=f"date{id}",
+    def name_and_city(id: int):
+        c1, c2 = st.columns(2)
+
+        name_key = f"name{id}"
+        SESS[name_key] = VAR[name_key]
+        c1.text_input(
+            i("name"),
+            key=name_key,
+            on_change=lambda: sync(name_key),
         )
 
-        SESS[f"hr{id}"] = SESS.get(f"hr{id}", 13 if id == 1 else now.hour)
-        st.selectbox(i("hour"), range(24), key=f"hr{id}")
+        city_key = f"city{id}"
+        SESS[city_key] = VAR[city_key]
+        c2.selectbox(
+            i("city"),
+            all_cities(),
+            key=city_key,
+            placeholder=i("city-placeholder"),
+            format_func=lambda city_tuple: f"{city_tuple[0]} - {city_tuple[1]}",
+            on_change=lambda: set_lat_lon_dt_tz(id),
+        )
 
-        SESS[f"min{id}"] = SESS.get(f"min{id}", 0 if id == 1 else now.minute)
-        st.selectbox(i("minute"), range(60), key=f"min{id}", help="daylight saving time")
+    def lat_lon_tz(id: int):
+        c1, c2, c3 = st.columns(3)
+        lat, lon, tz = f"lat{id}", f"lon{id}", f"tz{id}"
+
+        SESS[lat] = VAR[lat]
+        c1.number_input(
+            i("latitude"),
+            key=lat,
+            min_value=-89.99,
+            max_value=89.99,
+            on_change=lambda: sync(lat),
+        )
+
+        SESS[lon] = VAR[lon]
+        c2.number_input(
+            i("longitude"),
+            key=lon,
+            min_value=-179.99,
+            max_value=179.99,
+            on_change=lambda: sync(lon),
+        )
+
+        SESS[tz] = VAR[tz]
+        c3.selectbox(
+            i("timezone"),
+            all_timezones(),
+            key=tz,
+            on_change=lambda: sync(tz),
+        )
+
+    def date_hr_min(id: int):
+        with st.container(key=f"date-row{id}", horizontal=True):
+            date_key = f"date{id}"
+            SESS[date_key] = VAR[date_key]
+            st.date_input(
+                i("date"),
+                max_value=Date(2300, 1, 1),
+                min_value=Date(1800, 1, 1),
+                format="YYYY-MM-DD",
+                key=date_key,
+                on_change=lambda: sync(date_key),
+            )
+
+            hr_key = f"hr{id}"
+            SESS[hr_key] = VAR[hr_key]
+            st.selectbox(
+                i("hour"),
+                range(24),
+                key=hr_key,
+                help=i("daylight-saving-time"),
+                on_change=lambda: sync(hr_key),
+            )
+
+            min_key = f"min{id}"
+            SESS[min_key] = VAR[min_key]
+            st.selectbox(
+                i("minute"),
+                range(60),
+                key=min_key,
+                on_change=lambda: sync(min_key),
+            )
+
+    name_and_city(id)
+    lat_lon_tz(id)
+    date_hr_min(id)
 
 
 def utils_ui(id: int, data1: Data, data2: Data | None):
@@ -270,16 +312,15 @@ def utils_ui(id: int, data1: Data, data2: Data | None):
         vertical_alignment="center",
     ):
         stepper_options = ["year", "month", "week", "day", "hour", "minute"]
-        SESS.stepper_unit = SESS.get("stepper_unit", "day")
         st.button(
             "",
             icon=":material/arrow_left:",
-            on_click=step,
-            args=(id, SESS.stepper_unit, -1),
+            on_click=lambda: step(id, -1),
             key="prev",
-            help=i("prev") + i(SESS.stepper_unit),
+            help=i("prev") + i(VAR.stepper_unit),
         )
 
+        SESS["stepper_unit"] = VAR["stepper_unit"]
         st.selectbox(
             i("adjustment"),
             stepper_options,
@@ -287,15 +328,15 @@ def utils_ui(id: int, data1: Data, data2: Data | None):
             format_func=lambda x: i(x),
             key="stepper_unit",
             width=90,
+            on_change=lambda: sync("stepper_unit"),
         )
 
         st.button(
             "",
             icon=":material/arrow_right:",
-            on_click=step,
-            args=(id, SESS.stepper_unit, 1),
+            on_click=lambda: step(id, 1),
             key="next",
-            help=i("next") + i(SESS.stepper_unit),
+            help=i("next") + i(VAR.stepper_unit),
         )
 
         if st.user.is_logged_in:
@@ -321,7 +362,7 @@ def utils_ui(id: int, data1: Data, data2: Data | None):
                     with st.spinner("", width="stretch"):
                         html = pdf_html(data1, data2)
                         pdf = pdf_io(html)
-                    filename = f"{SESS.name1}_{SESS.name2}" if SESS.name2 else SESS.name1
+                    filename = f"{VAR.name1}_{VAR.name2}" if VAR.name2 else VAR.name1
                     st.download_button(
                         "",
                         icon=":material/download:",
@@ -334,14 +375,11 @@ def utils_ui(id: int, data1: Data, data2: Data | None):
 
 def chart_ui(data1: Data, data2: Data = None):
     st.write("")
-    # data1.config.chart.margin_factor = 0.0
-    # chart = Chart(data1=data1, data2=data2, width=650)
-    chart = Chart(data1=data1, data2=data2, width=SESS.chart_size)
+    chart = Chart(data1=data1, data2=data2, width=VAR.chart_size)
     with st.container(key="chart_svg"):
-        # st.image(chart.svg, width=650)
         st.markdown(chart.svg, unsafe_allow_html=True)
-    if "chat" in SESS:
-        del SESS["chat"]
+    # reset chat history when loading new chart
+    VAR.chat = None
 
 
 def stats_ui(data1: Data, data2: Data | None):
@@ -351,12 +389,12 @@ def stats_ui(data1: Data, data2: Data | None):
 
 
 def ai_ui(data1: Data, data2: Data | None) -> None:
-    # Initialize new chat for each chart
-    SESS.chat = SESS.get("chat", new_chat(data1, data2))
+    # Initialize new chat only when new chart is loaded, this keeps the history during rerun
+    VAR.chat = VAR.get("chat", new_chat(data1, data2))
 
     # Display chat history
     avatar = {"user": "👤", "assistant": "💫"}
-    for message in SESS.chat.messages[1:]:
+    for message in VAR.chat.messages[1:]:
         role = message["role"]
         text = message["content"]
         with st.chat_message(role, avatar=avatar[role]):
@@ -371,7 +409,7 @@ def ai_ui(data1: Data, data2: Data | None) -> None:
         # Generate and display assistant response
         with st.chat_message("assistant", avatar=avatar["assistant"]):
             try:
-                response = SESS.chat.send_message_stream(prompt)
+                response = VAR.chat.send_message_stream(prompt)
 
                 with st.spinner(f"{i('thinking')}...", show_time=True):
                     scroll_to_bottom()
@@ -396,30 +434,20 @@ def saved_charts_ui():
         st.info(i("no-saved-charts"))
     else:
         height = (len(data) + 1) * ROW_HEIGHT + 2
+        column_config = {f"{prop}{num}": None for num in "12" for prop in ["lat", "lon", "tz"]}
+        column_config |= {f"name{num}": i("birth") for num in "12"}
+        column_config |= {f"city{num}": i("city") for num in "12"}
+        column_config |= {f"dt{num}": DatetimeColumn(i("date"), format="YYYY-MM-DD HH:MM") for num in "12"}
+        column_config |= {prop: None for prop in ["theme_type", "house_sys"]}
+        column_config |= {aspect: None for aspect in ASPECT_NAMES}
+        column_config |= {f"{body}{num}": None for num in "12" for body in Display.model_fields}
+        column_config |= {"hash": LinkColumn("", display_text=":material/delete:")}
         st.dataframe(
             data,
             hide_index=True,
-            column_config={
-                "name1": i("birth"),
-                "city1": i("city"),
-                "dt1": st.column_config.DatetimeColumn(i("date"), format="YYYY-MM-DD HH:MM"),
-                "lat1": None,
-                "lon1": None,
-                "tz1": None,
-                "name2": i("synastry"),
-                "city2": i("city"),
-                "dt2": st.column_config.DatetimeColumn(i("date"), format="YYYY-MM-DD HH:MM"),
-                "lat2": None,
-                "lon2": None,
-                "tz2": None,
-                "theme_type": None,
-                "house_sys": None,
-                "orb": None,
-                "display1": None,
-                "display2": None,
-                "hash": st.column_config.LinkColumn("", display_text=":material/delete:"),
-            },
             height=height,
+            column_config=column_config,
+            column_order=["name1", "city1", "dt1", "name2", "city2", "dt2", "hash"],
             row_height=ROW_HEIGHT,
             key="saved_charts",
             selection_mode="single-cell",

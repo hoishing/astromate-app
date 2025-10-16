@@ -3,12 +3,12 @@ import logging
 import pandas as pd
 import sqlite3
 import streamlit as st
-from const import I18N, MODELS, SESS
+from const import I18N, MODELS, VAR
 from datetime import datetime, timedelta
 from functools import reduce
 from io import BytesIO
 from natal import Chart, Config, Data, Stats
-from natal.config import LightTheme
+from natal.config import Display
 from natal.const import ASPECT_NAMES
 from openai import OpenAI
 from pathlib import Path
@@ -23,22 +23,28 @@ logging.getLogger("fontTools").setLevel(logging.ERROR)
 
 
 def i(key: str) -> str:
-    return I18N[key][SESS.get("lang_num", 0)]
+    """get i18n string"""
+    return I18N[key][VAR["lang_num"]]
+
+
+def sync(key: str) -> None:
+    """sync session state to st.session_state.var"""
+    VAR[key] = st.session_state[key]
 
 
 def utc_of(id: int) -> datetime:
     """convert local datetime to utc datetime"""
     naive_dt = get_dt(id)
-    tzinfo = ZoneInfo(SESS[f"tz{id}"])
+    tzinfo = ZoneInfo(VAR[f"tz{id}"])
     dt = naive_dt.replace(tzinfo=tzinfo)
     return dt.astimezone(ZoneInfo("UTC"))
 
 
 def get_dt(id: int) -> datetime:
     """get datetime from session state"""
-    date = SESS[f"date{id}"]
-    hr = SESS[f"hr{id}"]
-    minute = SESS[f"min{id}"]
+    date = VAR[f"date{id}"]
+    hr = VAR[f"hr{id}"]
+    minute = VAR[f"min{id}"]
     return datetime(date.year, date.month, date.day, hr, minute)
 
 
@@ -68,36 +74,24 @@ def all_cities() -> list[tuple[str, str]]:
     return cursor.fetchall()
 
 
-def set_lat_lon_dt_tz(id: int, city_tuple: tuple[str, str]) -> dict:
-    """return lat, lon, utc datetime from a chart input ui"""
-    # print(type(city_tuple), city_tuple)
-    columns = "lat, lon, timezone"
-    cursor = cities_db().cursor()
-    cursor.execute(f"SELECT {columns} FROM cities WHERE name = ? and country = ?", city_tuple)
-    lat, lon, timezone = cursor.fetchone()
-    SESS[f"lat{id}"] = lat
-    SESS[f"lon{id}"] = lon
-    SESS[f"tz{id}"] = timezone
-
-
 def natal_data(id: int) -> Data:
     """return natal data from a chart input ui"""
-    display = SESS[f"display{id}"]
-    aspects = {aspect: SESS[aspect] for aspect in ASPECT_NAMES}
-    hse_1st_char = SESS.house_sys[0]
+    display = {key: VAR[f"{key}{id}"] for key in Display.model_fields}
+    aspects = {aspect: VAR[aspect] for aspect in ASPECT_NAMES}
+    hse_1st_char = VAR.house_sys[0]
     return Data(
-        name=SESS[f"name{id}"],
-        lat=SESS[f"lat{id}"],
-        lon=SESS[f"lon{id}"],
+        name=VAR[f"name{id}"],
+        lat=VAR[f"lat{id}"],
+        lon=VAR[f"lon{id}"],
         utc_dt=utc_of(id),
         config=Config(house_sys=hse_1st_char, orb=aspects, display=display),
     )
 
 
-def step(chart_id: int, unit: str, delta: Literal[1, -1]):
+def step(chart_id: int, delta: Literal[1, -1]):
     """step implementation for stepper ui"""
     dt = get_dt(chart_id)
-
+    unit = VAR.stepper_unit
     match unit:
         case "week":
             delta = timedelta(weeks=delta)
@@ -118,9 +112,9 @@ def step(chart_id: int, unit: str, delta: Literal[1, -1]):
     if unit not in ["month", "year"]:
         dt += delta
 
-    SESS[f"date{chart_id}"] = dt.date()
-    SESS[f"hr{chart_id}"] = dt.hour
-    SESS[f"min{chart_id}"] = dt.minute
+    VAR[f"date{chart_id}"] = dt.date()
+    VAR[f"hr{chart_id}"] = dt.hour
+    VAR[f"min{chart_id}"] = dt.minute
 
 
 class Message(TypedDict):
@@ -139,7 +133,9 @@ class OpenRouterChat:
         self.messages.append(Message(role="user", content=prompt))
 
         response = self.client.chat.completions.create(
-            model=self.model, messages=self.messages, stream=True
+            model=self.model,
+            messages=self.messages,
+            stream=True,
         )
 
         full_response = ""
@@ -153,14 +149,12 @@ class OpenRouterChat:
 
 
 def new_chat(data1: Data, data2: Data = None) -> OpenRouterChat:
-    stats = Stats(
-        data1=data1, data2=data2, city1=SESS.city1, city2=SESS.city2, tz1=SESS.tz1, tz2=SESS.tz2
-    )
+    stats = Stats(data1=data1, data2=data2, city1=VAR.city1, city2=VAR.city2, tz1=VAR.tz1, tz2=VAR.tz2)
     chart_data = reduce(
         lambda x, y: x + y,
         (stats.ai_md(tb) for tb in ["celestial_body", "house", "aspect", "quadrant", "hemisphere"]),
     )
-    lang = "Traditional Chinese" if SESS.lang_num else "English"
+    lang = "Traditional Chinese" if VAR.lang_num else "English"
     sys_prompt = dedent(f"""\
             You are an expert astrologer. You answer questions about this astrological chart data:
             
@@ -186,9 +180,7 @@ def new_chat(data1: Data, data2: Data = None) -> OpenRouterChat:
               - do aspects between celestial bodies form certain patterns?
             - Use {lang} to reply.
             """)
-    client = OpenAI(
-        base_url="https://openrouter.ai/api/v1", api_key=st.secrets["OPENROUTER_API_KEY"]
-    )
+    client = OpenAI(base_url="https://openrouter.ai/api/v1", api_key=st.secrets["OPENROUTER_API_KEY"])
     model = MODELS[0]  # Use x-ai/grok-4-fast:free instead of Gemini
     return OpenRouterChat(client, model, sys_prompt)
 
@@ -261,9 +253,7 @@ def pdf_io(html: str) -> BytesIO:
 
 
 def stats_html(data1: Data, data2: Data = None):
-    stats = Stats(
-        data1=data1, data2=data2, city1=SESS.city1, city2=SESS.city2, tz1=SESS.tz1, tz2=SESS.tz2
-    )
+    stats = Stats(data1=data1, data2=data2, city1=VAR.city1, city2=VAR.city2, tz1=VAR.tz1, tz2=VAR.tz2)
     basic_info_headers = [i("name"), i("city"), i("coordinates"), i("local-time")]
     basic_info = html_section(i("basic-info"), stats.basic_info(basic_info_headers))
 
@@ -282,7 +272,7 @@ def stats_html(data1: Data, data2: Data = None):
     bodies_grid = stats.celestial_body(1, body_headers, dignity_labels)
     user_name = f" - {data1.name}" if data2 else ""
     bodies = html_section(i("celestial_body") + user_name, bodies_grid)
-    houses_title = f"{i('houses')} - {i(SESS.house_sys)}"
+    houses_title = f"{i('houses')} - {i(VAR.house_sys)}"
 
     if data2:
         # bodies 2
@@ -320,12 +310,10 @@ def stats_html(data1: Data, data2: Data = None):
 
 def pdf_html(data1: Data, data2: Data = None):
     """html source for PDF report"""
-    data1.config.theme_type = SESS.pdf_color
+    data1.config.theme_type = VAR.pdf_color
     data1.config.chart.stroke_width = 0.7
 
-    stats = Stats(
-        data1=data1, data2=data2, city1=SESS.city1, city2=SESS.city2, tz1=SESS.tz1, tz2=SESS.tz2
-    )
+    stats = Stats(data1=data1, data2=data2, city1=VAR.city1, city2=VAR.city2, tz1=VAR.tz1, tz2=VAR.tz2)
     chart = Chart(data1, width=400, data2=data2)
 
     basic_info_title = i("basic-info")
@@ -341,7 +329,7 @@ def pdf_html(data1: Data, data2: Data = None):
     aspects_title = i("aspects")
     signs_title = i("signs")
     signs_headers = [i("sign")]
-    houses_title = f"{i('houses')} - {i(SESS.house_sys)}"
+    houses_title = f"{i('houses')} - {i(VAR.house_sys)}"
     if data2:
         body_title1 = i("celestial_body") + f" - {data1.name}"
         body_title2 = i("celestial_body") + f" - {data2.name}"

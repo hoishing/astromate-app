@@ -1,8 +1,53 @@
 import streamlit as st
-from natal.config import Display, Orb
+from datetime import date as Date
+from datetime import datetime
+from natal.config import Display, DotDict, Orb
 from pathlib import Path
 
 SESS = st.session_state
+SESS.setdefault("var", DotDict())
+VAR = st.session_state.var
+
+ORBS = Orb().model_dump()
+
+DEFAULT_GENERAL_OPTS = {
+    "house_sys": "Placidus",
+    "lang_num": int(st.query_params.get("lang", 1)),
+    "pdf_color": "light",
+    "show_stats": True,
+    "ai_chat": True,
+}
+
+for key in DEFAULT_GENERAL_OPTS:
+    VAR.setdefault(key, DEFAULT_GENERAL_OPTS[key])
+
+for aspect in ORBS:
+    VAR.setdefault(aspect, ORBS[aspect])
+
+VAR.setdefault("name1", "")
+VAR.setdefault("name2", "Transit")
+VAR.setdefault("city1", None)
+VAR.setdefault("city2", None)
+VAR.setdefault("lat1", None)
+VAR.setdefault("lon1", None)
+VAR.setdefault("tz1", None)
+VAR.setdefault("lat2", None)
+VAR.setdefault("lon2", None)
+VAR.setdefault("tz2", None)
+VAR.setdefault("date1", Date(2000, 1, 1))
+VAR.setdefault("date2", datetime.now().date())
+VAR.setdefault("hr1", 13)
+VAR.setdefault("hr2", datetime.now().hour)
+VAR.setdefault("min1", 0)
+VAR.setdefault("min2", datetime.now().minute)
+VAR.setdefault("stepper_unit", "day")
+VAR.setdefault("chart_size", 650)
+VAR.setdefault("chat", None)
+
+for body, val in Display().items():
+    for num in "12":
+        VAR.setdefault(f"{body}{num}", val)
+
 
 PAGE_CONFIG = dict(
     page_title="AstroBro",
@@ -11,8 +56,6 @@ PAGE_CONFIG = dict(
 )
 
 HOUSE_SYS = ["Placidus", "Koch", "Equal", "Whole Sign", "Porphyry", "Campanus", "Regiomontanus"]
-ORBS = Orb().model_dump()
-BODIES = list(Display.model_fields)
 STYLE = f"<style>{Path('style.css').read_text()}</style>"
 LOGO = "static/astrobro-logo.png"
 CHART_SIZE = 650
@@ -116,6 +159,7 @@ I18N = {
     "hour": ("hr", "時"),
     "minute": ("min", "分"),
     "date": ("Date", "日期"),
+    "daylight-saving-time": ("Daylight Saving Time(if applicable)", "夏令時間(如適用)"),
     "adjustment": ("Adjustment", "調整"),
     # saved charts
     "saved-charts": ("Saved Charts", "星盤存檔"),
