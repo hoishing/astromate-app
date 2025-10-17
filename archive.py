@@ -7,7 +7,7 @@ from natal.config import Dictable, Display
 from natal.const import ASPECT_NAMES
 from natal.data import DotDict
 from pydantic import ValidationError, create_model
-from typing import Iterable
+from typing import Iterable, Literal
 from utils import data_db, get_dt
 
 DataArchive = create_model(
@@ -70,18 +70,23 @@ def load_chart(data: dict, var: DotDict = VAR):
         var[asp] = data[asp]
 
 
-def save_chart(email: str) -> None:
-    sql = """
-    INSERT INTO charts (hash, email, data) 
-    VALUES (?, ?, ?)
-    ON CONFLICT(hash) 
-    DO UPDATE SET 
-    email = excluded.email,
-    data = excluded.data;
-    """
+def save_chart(email: str) -> Literal["overwrite", "create"]:
+    """Save a chart to the database. overwrite or create depending if hash exists"""
+    hash = data_hash()
     cursor = data_db().cursor()
-    cursor.execute(sql, (data_hash(), email, archive_str()))
+    data = archive_str()
+    values = [data, hash]
+    # print(data)
+    if hash_exists(email, hash):
+        sql = "UPDATE charts SET data = ? WHERE hash = ?"
+        output = "overwrite"
+    else:
+        sql = "INSERT INTO charts (data, hash, email) VALUES (?, ?, ?)"
+        values.append(email)
+        output = "create"
+    cursor.execute(sql, values)
     data_db().commit()
+    return output
 
 
 def delete_chart(email: str, chart_hash: str) -> None:
@@ -103,11 +108,12 @@ def create_user(options: Iterable) -> None:
     data_db().commit()
 
 
-# def user_exists(email: str) -> bool:
-#     sql = "SELECT 1 FROM users WHERE email = ?"
-#     cursor = data_db().cursor()
-#     cursor.execute(sql, (email,))
-#     return cursor.fetchone() is not None
+def hash_exists(email: str, hash: str) -> bool:
+    """Check if a chart with the same hash and email exists"""
+    sql = "SELECT 1 FROM charts WHERE email = ? AND hash = ?"
+    cursor = data_db().cursor()
+    cursor.execute(sql, (email, hash))
+    return cursor.fetchone() is not None
 
 
 def fetch_user_record(email: str) -> dict | None:

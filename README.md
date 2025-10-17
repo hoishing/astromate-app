@@ -12,7 +12,6 @@
 
 ## TODO
 
-- save general options to database
 - AI
   - startup questions
 - chart lists

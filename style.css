@@ -103,9 +103,6 @@
 
 /* center every child element */
 .st-key-chart_svg {
-  /* for st.image */
-  /* flex-flow: row;
-  justify-content: center; */
   div,
   p {
     display: flex;
@@ -130,4 +127,9 @@
 
 input[aria-label="North Node"] ~ div p {
   white-space: nowrap;
+}
+
+/* align st.toast text position to its icon*/
+[data-testid="stToast"] p {
+  margin-bottom: 0.6rem;
 }

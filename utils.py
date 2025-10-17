@@ -3,7 +3,7 @@ import logging
 import pandas as pd
 import sqlite3
 import streamlit as st
-from const import I18N, MODELS, VAR
+from const import I18N, MODELS, VAR, SESS
 from datetime import datetime, timedelta
 from functools import reduce
 from io import BytesIO
@@ -28,9 +28,18 @@ def i(key: str) -> str:
 
 
 def sync(key: str) -> None:
-    """sync session state to st.session_state.var"""
-    VAR[key] = st.session_state[key]
+    """sync SESS to VAR, ignore None value which is Streamlit's bug"""
+    # BUG: workaround for None values in session state bug during multiple reruns
+    # it will trigger on_change event with session state of None
+    if SESS[key] is None:
+        # restore session state from VAR
+        SESS[key] = VAR[key]
+        return
+    VAR[key] = SESS[key]
 
+def sync_nullable(key: str) -> None:
+    """sync SESS to VAR, value can be None"""
+    VAR[key] = SESS[key]
 
 def utc_of(id: int) -> datetime:
     """convert local datetime to utc datetime"""

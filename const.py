@@ -164,6 +164,8 @@ I18N = {
     # saved charts
     "saved-charts": ("Saved Charts", "星盤存檔"),
     "no-saved-charts": ("No saved charts", "沒有星盤存檔"),
+    "chart-created": ("Chart Created", "星盤已保存"),
+    "chart-updated": ("Chart Updated", "星盤已更新"),
     # house sys
     "Placidus": ("Placidus", "普拉西度"),
     "Koch": ("Koch", "科赫"),

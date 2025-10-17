@@ -27,6 +27,7 @@ from utils import (
     stats_html,
     step,
     sync,
+    sync_nullable,
 )
 
 
@@ -35,12 +36,6 @@ def general_opt():
 
     # print("general_opt start:", datetime.now())
     def update_db(key: str):
-        # BUG: workaround for None values in session state bug during multiple reruns
-        # it will trigger on_change event with session state of None
-        if SESS[key] is None:
-            # restore session state from VAR
-            SESS[key] = VAR[key]
-            return
         if st.user.is_logged_in:
             sync(key)
             sql = f"UPDATE users SET {key} = ? WHERE email = ?"
@@ -137,7 +132,7 @@ def orb_opt():
         i("transit"),
         key="transit_orbs",
         use_container_width=True,
-        on_click=lambda: VAR.update(zip(ASPECT_NAMES, [2, 2, 2, 2, 1, 0])),
+        on_click=lambda: VAR.update(dict(zip(ASPECT_NAMES, [2, 2, 2, 2, 1, 0]))),
     )
     c2.button(
         i("default"),
@@ -164,6 +159,7 @@ def display_opt(id: int):
     def toggle(body: str):
         key = f"{body}{id}"
         SESS[key] = VAR[key]
+        # print(key, VAR[key])
         st.toggle(
             i(body),
             key=key,
@@ -209,7 +205,7 @@ def input_ui(id: int):
     def set_lat_lon_dt_tz(id: int):
         """return lat, lon, utc datetime from a chart input ui"""
         city = f"city{id}"
-        sync(city)
+        sync_nullable(city)
         cursor = cities_db().cursor()
         cursor.execute("SELECT lat, lon, timezone FROM cities WHERE name = ? and country = ?", VAR[city])
         lat, lon, timezone = cursor.fetchone()
@@ -347,7 +343,9 @@ def utils_ui(id: int, data1: Data, data2: Data | None):
                 "",
                 icon=":material/save:",
                 key="save",
-                on_click=lambda: save_chart(st.user.email),
+                on_click=lambda: st.toast(i("chart-created"), icon=":material/check:")
+                if save_chart(st.user.email) == "create"
+                else st.toast(i("chart-updated"), icon=":material/check:"),
                 help=i("save-chart"),
             )
         else:
