@@ -12,16 +12,19 @@
 
 ## TODO
 
+- lat lon validation
+  - Placidus and Koch: -66.5 < lat < 66.5
+  - float convertable
+
 - AI
   - startup questions
-- chart lists
+- chart lists update according to page type
 - MultiPages
-  - Birth
-  - Synastry
-  - Transit
-  - Solar return
-- learning mode?
-- check performance
+  - Natal: no input_ui(2)
+  - Synastry: has input_ui(2), disable ai
+  - Transit: input_ui(2).name = i("transit"), disable ai
+  - Solar Return: add target year select box, default next birthday year
+- learning mode
 
 ## Questions
 

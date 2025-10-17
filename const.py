@@ -25,15 +25,15 @@ for aspect in ORBS:
     VAR.setdefault(aspect, ORBS[aspect])
 
 VAR.setdefault("name1", "")
-VAR.setdefault("name2", "Transit")
-VAR.setdefault("city1", None)
-VAR.setdefault("city2", None)
+VAR.setdefault("name2", "")
+VAR.setdefault("city1", "")
+VAR.setdefault("city2", "")
 VAR.setdefault("lat1", None)
 VAR.setdefault("lon1", None)
-VAR.setdefault("tz1", None)
+VAR.setdefault("tz1", "")
 VAR.setdefault("lat2", None)
 VAR.setdefault("lon2", None)
-VAR.setdefault("tz2", None)
+VAR.setdefault("tz2", "")
 VAR.setdefault("date1", Date(2000, 1, 1))
 VAR.setdefault("date2", datetime.now().date())
 VAR.setdefault("hr1", 13)
@@ -41,7 +41,8 @@ VAR.setdefault("hr2", datetime.now().hour)
 VAR.setdefault("min1", 0)
 VAR.setdefault("min2", datetime.now().minute)
 VAR.setdefault("stepper_unit", "day")
-VAR.setdefault("chart_size", 650)
+
+# Non UI variables, no need to handle SESS None bug
 VAR.setdefault("chat", None)
 
 for body, val in Display().items():
@@ -151,7 +152,8 @@ I18N = {
     "timezone": ("Timezone", "時區"),
     "birth-chart": ("Birth Chart", "命盤"),
     "synastry-chart": ("Synastry Chart", "合盤"),
-    "city-placeholder": ("- custom -", "- 自定 -"),
+    "city-placeholder": ("city", "城市"),
+    "city-help": ("select or type in the city name", "選擇或輸入城市名稱"),
     "year": ("yr", "年"),
     "month": ("mo", "月"),
     "week": ("wk", "週"),

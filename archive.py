@@ -12,10 +12,10 @@ from utils import data_db, get_dt
 
 DataArchive = create_model(
     "DataArchive",
-    **{f"{prop}{i}": (str | None, None) for i in "12" for prop in ["name", "tz"]},
-    **{f"city{i}": (tuple[str, str] | None, None) for i in "12"},
+    **{f"{prop}{i}": (str) for i in "12" for prop in ["name", "tz"]},
+    **{f"city{i}": (str) for i in "12"},
     **{f"{prop}{i}": (float | None, None) for i in "12" for prop in ["lat", "lon"]},
-    **{f"dt{i}": (datetime | None, None) for i in "12"},
+    **{f"dt{i}": (datetime) for i in "12"},
     **{aspect: (int, 0) for aspect in ASPECT_NAMES},
     **{f"{body}{i}": (bool, False) for body in Display.model_fields for i in "12"},
 )

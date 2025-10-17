@@ -3,7 +3,7 @@ import logging
 import pandas as pd
 import sqlite3
 import streamlit as st
-from const import I18N, MODELS, VAR, SESS
+from const import I18N, MODELS, SESS, VAR
 from datetime import datetime, timedelta
 from functools import reduce
 from io import BytesIO
@@ -37,9 +37,6 @@ def sync(key: str) -> None:
         return
     VAR[key] = SESS[key]
 
-def sync_nullable(key: str) -> None:
-    """sync SESS to VAR, value can be None"""
-    VAR[key] = SESS[key]
 
 def utc_of(id: int) -> datetime:
     """convert local datetime to utc datetime"""
@@ -58,8 +55,8 @@ def get_dt(id: int) -> datetime:
 
 
 @st.cache_resource
-def cities_db() -> sqlite3.Connection:
-    return sqlite3.connect("cities.db", check_same_thread=False)
+def cities_df() -> pd.DataFrame:
+    return pd.read_csv("cities.csv")
 
 
 @st.cache_resource
@@ -69,18 +66,7 @@ def data_db() -> sqlite3.Connection:
 
 @st.cache_data
 def all_timezones() -> list[str]:
-    """get all timezones from database"""
-    cursor = cities_db().cursor()
-    cursor.execute("SELECT timezone FROM timezone")
-    return [x[0] for x in cursor.fetchall()]
-
-
-@st.cache_data
-def all_cities() -> list[tuple[str, str]]:
-    """get all cities name and country from database"""
-    cursor = cities_db().cursor()
-    cursor.execute("SELECT name, country FROM cities")
-    return cursor.fetchall()
+    return cities_df()["tz"].unique()
 
 
 def natal_data(id: int) -> Data:
@@ -225,7 +211,8 @@ def all_charts() -> pd.DataFrame | None:
         return None
     df = pd.DataFrame([{**json.loads(d), "hash": h} for (d, h) in all_data])
     df.set_index("hash", inplace=True, drop=False)
-    df.hash = "?delete=" + df.hash
+    df.rename(columns={"hash": "delete"}, inplace=True)
+    df["delete"] = "?delete=" + df["delete"]
     return df
 
 

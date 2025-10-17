@@ -15,9 +15,8 @@ from natal.const import ASPECT_NAMES, PLANET_NAMES
 from streamlit.column_config import DatetimeColumn, LinkColumn
 from utils import (
     all_charts,
-    all_cities,
     all_timezones,
-    cities_db,
+    cities_df,
     data_db,
     i,
     new_chat,
@@ -27,7 +26,6 @@ from utils import (
     stats_html,
     step,
     sync,
-    sync_nullable,
 )
 
 
@@ -36,8 +34,8 @@ def general_opt():
 
     # print("general_opt start:", datetime.now())
     def update_db(key: str):
+        sync(key)
         if st.user.is_logged_in:
-            sync(key)
             sql = f"UPDATE users SET {key} = ? WHERE email = ?"
             cursor = data_db().cursor()
             cursor.execute(sql, (VAR[key], st.user.email))
@@ -202,18 +200,20 @@ def display_opt(id: int):
 def input_ui(id: int):
     """natal data input ui"""
 
-    def set_lat_lon_dt_tz(id: int):
+    def set_lat_lon_dt_tz():
         """return lat, lon, utc datetime from a chart input ui"""
         city = f"city{id}"
-        sync_nullable(city)
-        cursor = cities_db().cursor()
-        cursor.execute("SELECT lat, lon, timezone FROM cities WHERE name = ? and country = ?", VAR[city])
-        lat, lon, timezone = cursor.fetchone()
-        VAR[f"lat{id}"] = lat
-        VAR[f"lon{id}"] = lon
-        VAR[f"tz{id}"] = timezone
+        sync(city)
+        # locate the row with the city name
+        rows = cities_df()[cities_df()["city"] == VAR[city]]
+        if rows.empty:
+            return
 
-    def name_and_city(id: int):
+        row = rows.iloc[0]
+        for prop in ["lat", "lon", "tz"]:
+            VAR[f"{prop}{id}"] = row[prop]
+
+    def name_and_city():
         c1, c2 = st.columns(2)
 
         name_key = f"name{id}"
@@ -225,17 +225,19 @@ def input_ui(id: int):
         )
 
         city_key = f"city{id}"
-        SESS[city_key] = VAR[city_key]
+        city = VAR[city_key]
+        SESS[city_key] = None if city == ("", "") else city
         c2.selectbox(
             i("city"),
-            all_cities(),
+            options=cities_df(),
             key=city_key,
             placeholder=i("city-placeholder"),
-            format_func=lambda city_tuple: f"{city_tuple[0]} - {city_tuple[1]}",
-            on_change=lambda: set_lat_lon_dt_tz(id),
+            accept_new_options=True,
+            help=i("city-help"),
+            on_change=set_lat_lon_dt_tz,
         )
 
-    def lat_lon_tz(id: int):
+    def lat_lon_tz():
         c1, c2, c3 = st.columns(3)
         lat, lon, tz = f"lat{id}", f"lon{id}", f"tz{id}"
 
@@ -265,7 +267,7 @@ def input_ui(id: int):
             on_change=lambda: sync(tz),
         )
 
-    def date_hr_min(id: int):
+    def date_hr_min():
         with st.container(key=f"date-row{id}", horizontal=True):
             date_key = f"date{id}"
             SESS[date_key] = VAR[date_key]
@@ -297,9 +299,9 @@ def input_ui(id: int):
                 on_change=lambda: sync(min_key),
             )
 
-    name_and_city(id)
-    lat_lon_tz(id)
-    date_hr_min(id)
+    name_and_city()
+    lat_lon_tz()
+    date_hr_min()
 
 
 def utils_ui(id: int, data1: Data, data2: Data | None):
@@ -435,20 +437,26 @@ def saved_charts_ui():
         st.info(i("no-saved-charts"))
     else:
         height = (len(data) + 1) * ROW_HEIGHT + 2
-        column_config = {f"{prop}{num}": None for num in "12" for prop in ["lat", "lon", "tz"]}
-        column_config |= {f"name{num}": i("birth") for num in "12"}
-        column_config |= {f"city{num}": i("city") for num in "12"}
-        column_config |= {f"dt{num}": DatetimeColumn(i("date"), format="YYYY-MM-DD HH:MM") for num in "12"}
-        column_config |= {prop: None for prop in ["theme_type", "house_sys"]}
+        column_config = {
+            "name1": i("birth"),
+            "name2": i("synastry"),
+            "city1": i("city"),
+            "city2": i("city"),
+            "dt1": DatetimeColumn(i("date"), format="YYYY-MM-DD HH:MM"),
+            "dt2": DatetimeColumn(i("date"), format="YYYY-MM-DD HH:MM"),
+            "theme_type": None,
+            "house_sys": None,
+            "delete": LinkColumn("", display_text=":material/delete:"),
+        }
+        column_config |= {f"{prop}{num}": None for num in "12" for prop in ["lat", "lon", "tz"]}
         column_config |= {aspect: None for aspect in ASPECT_NAMES}
         column_config |= {f"{body}{num}": None for num in "12" for body in Display.model_fields}
-        column_config |= {"hash": LinkColumn("", display_text=":material/delete:")}
         st.dataframe(
             data,
             hide_index=True,
             height=height,
             column_config=column_config,
-            column_order=["name1", "city1", "dt1", "name2", "city2", "dt2", "hash"],
+            column_order=["name1", "city1", "dt1", "name2", "city2", "dt2", "delete"],
             row_height=ROW_HEIGHT,
             key="saved_charts",
             selection_mode="single-cell",

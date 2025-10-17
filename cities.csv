@@ -1,0 +1,3269 @@
+city,pop,lat,lon,tz
+台北 - TW,7871900,25.0478,121.532,Asia/Taipei
+新北 - TW,543342,25.0143,121.467,Asia/Taipei
+基隆 - TW,397515,25.1309,121.741,Asia/Taipei
+桃園 - TW,402014,24.9937,121.297,Asia/Taipei
+新竹 - TW,404109,24.8036,120.969,Asia/Taipei
+苗栗 - TW,533219,24.5141,120.317,Asia/Taipei
+台中 - TW,1040725,24.1469,120.684,Asia/Taipei
+彰化 - TW,124725,23.9567,120.576,Asia/Taipei
+雲林 - TW,104723,23.7094,120.543,Asia/Taipei
+嘉義 - TW,262553,23.5769,120.317,Asia/Taipei
+台南 - TW,771235,22.9908,120.213,Asia/Taipei
+高雄 - TW,1519711,22.6163,120.313,Asia/Taipei
+屏東 - TW,31288,22.0042,120.744,Asia/Taipei
+南投 - TW,105682,23.9157,120.664,Asia/Taipei
+宜蘭 - TW,94188,24.757,121.753,Asia/Taipei
+花蓮 - TW,350468,23.9769,121.604,Asia/Taipei
+台東 - TW,211681,22.7217,120.51,Asia/Taipei
+澎湖 - TW,56435,23.5654,119.586,Asia/Taipei
+金門 - TW,37507,24.4341,118.317,Asia/Taipei
+馬祖 - TW,8000,26.1457,119.913,Asia/Taipei
+香港 - HK,7491609,22.2783,114.174,Asia/Hong_Kong
+澳門 - MO,649335,22.2005,113.546,Asia/Macau
+北京 - CN,18960744,39.9075,116.397,Asia/Shanghai
+上海 - CN,22315474,31.2222,121.458,Asia/Shanghai
+廣州 - CN,16096724,23.1166,113.25,Asia/Shanghai
+深圳 - CN,17494398,22.5455,114.068,Asia/Shanghai
+Aalborg - DK,142937,57.048,9.9187,Europe/Copenhagen
+Aarau - CH,21503,47.3925,8.04422,Europe/Zurich
+Aba - NG,1160000,5.10658,7.36667,Africa/Lagos
+Abakaliki - NG,134102,6.32485,8.11368,Africa/Lagos
+Abakan - RU,184168,53.7154,91.4259,Asia/Krasnoyarsk
+Abancay - PE,72277,-13.6343,-72.8838,America/Lima
+Abeche - TD,139983,13.8292,20.8324,Africa/Ndjamena
+Abengourou - CI,130810,6.72972,-3.49639,Africa/Abidjan
+Abeokuta - NG,735000,7.15571,3.34509,Africa/Lagos
+Abha - SA,210886,18.2164,42.5053,Asia/Riyadh
+Abidjan - CI,6321017,5.35444,-4.00167,Africa/Abidjan
+Abobo - CI,1340083,5.41613,-4.0159,Africa/Abidjan
+Abomey - BJ,117824,7.18286,1.99119,Africa/Porto-Novo
+Abu Dhabi - AE,1807000,24.4512,54.397,Asia/Dubai
+Abu Ghurayb - IQ,900000,33.3056,44.1848,Asia/Baghdad
+Abuja - NG,2690000,9.05785,7.49508,Africa/Lagos
+Accra - GH,1963264,5.55602,-0.1969,Africa/Accra
+Ad Dali` - YE,14760,13.6957,44.7314,Asia/Aden
+Ad Diwaniyah - IQ,318801,31.9929,44.9255,Asia/Baghdad
+Ad-Damazin - SD,186051,11.7891,34.3592,Africa/Khartoum
+Adamstown - PN,46,-25.066,-130.101,Pacific/Pitcairn
+Adana - TR,1816750,36.9862,35.3253,Europe/Istanbul
+Adapazari - TR,286787,40.7806,30.4033,Europe/Istanbul
+Addis Ababa - ET,3860000,9.02497,38.7469,Africa/Addis_Ababa
+Adelaide - AU,1469163,-34.9287,138.599,Australia/Adelaide
+Aden - YE,1079670,12.7796,45.0385,Asia/Aden
+Adiyaman - TR,267131,37.7644,38.2763,Europe/Istanbul
+Ado-Ekiti - NG,435000,7.62329,5.22087,Africa/Lagos
+Adrar - DZ,68276,27.8743,-0.29388,Africa/Algiers
+Afyonkarahisar - TR,251799,38.7567,30.5433,Europe/Istanbul
+Agadez - NE,149549,16.9733,7.99111,Africa/Niamey
+Agadir - MA,698310,30.4202,-9.59815,Africa/Casablanca
+Agartala - IN,400004,23.8361,91.2794,Asia/Kolkata
+Agdam - AZ,39451,39.991,46.9274,Asia/Baku
+Agdas - AZ,23528,40.647,47.4738,Asia/Baku
+Agdzhabedy - AZ,43000,40.0502,47.4594,Asia/Baku
+Aghstafa - AZ,12542,41.1189,45.4539,Asia/Baku
+Aghsu - AZ,17209,40.5703,48.4009,Asia/Baku
+Agra - IN,1430055,27.1833,78.0167,Asia/Kolkata
+Agri - TR,120390,39.7147,43.0401,Europe/Istanbul
+Aguadilla - PR,16073,18.4275,-67.1541,America/Puerto_Rico
+Aguascalientes - MX,722250,21.8826,-102.284,America/Mexico_City
+Ahmedabad - IN,6357693,23.0258,72.5873,Asia/Kolkata
+Ahuachapan - SV,34102,13.924,-89.8434,America/El_Salvador
+Ahvaz - IR,841145,31.319,48.6842,Asia/Tehran
+Aibak - AF,47823,36.2647,68.0155,Asia/Kabul
+Aileu - TL,17356,-8.72806,125.566,Asia/Dili
+Ain Defla - DZ,55259,36.264,1.9679,Africa/Algiers
+Ain Temouchent - DZ,70810,35.2975,-1.14037,Africa/Algiers
+Ainaro - TL,12000,-8.99241,125.508,Asia/Dili
+Aizawl - IN,293416,23.7289,92.7179,Asia/Kolkata
+Ajaccio - FR,54364,41.9189,8.73812,Europe/Paris
+Ajdabiya - LY,131773,30.7554,20.2263,Africa/Tripoli
+Ajegunle - NG,550000,6.45197,3.33115,Africa/Lagos
+Ajlun - JO,125557,32.3333,35.7528,Asia/Amman
+Ajman City - AE,490035,25.4018,55.4788,Asia/Dubai
+Akhaltsikhe - GE,17445,41.6395,42.986,Asia/Tbilisi
+Akita - JP,307672,39.7167,140.117,Asia/Tokyo
+Akjoujt - MR,15851,19.7416,-14.3853,Africa/Nouakchott
+Aksaray - TR,247147,38.3725,34.0254,Europe/Istanbul
+Aktobe - KZ,500757,50.2797,57.2072,Asia/Aqtobe
+Akure - NG,730000,7.25256,5.19312,Africa/Lagos
+Akureyri - IS,19219,65.6835,-18.0878,Atlantic/Reykjavik
+Al 'Amarah - IQ,323302,31.8356,47.1448,Asia/Baghdad
+Al 'Aziziyah - LY,52404,32.5319,13.0175,Africa/Tripoli
+Al Ahmadi - KW,637411,29.0769,48.0839,Asia/Kuwait
+Al Bahah - SA,88419,20.0129,41.4677,Asia/Riyadh
+Al Bayda - YE,37821,13.9852,45.5727,Asia/Aden
+Al Bayda' - LY,129439,32.7627,21.7551,Africa/Tripoli
+Al Buraymi - OM,73670,24.2509,55.7931,Asia/Muscat
+Al Farwaniyah - KW,86525,29.2775,47.9586,Asia/Kuwait
+Al Fayyum - EG,519047,29.31,30.8418,Africa/Cairo
+Al Fujairah City - AE,118933,25.1164,56.3414,Asia/Dubai
+Al Ghayzah - YE,10948,16.2079,52.176,Asia/Aden
+Al Hasakah - SY,422445,36.5024,40.7477,Asia/Damascus
+Al Hazm - YE,18241,16.1641,44.7769,Asia/Aden
+Al Hillah - IQ,455700,32.4637,44.4196,Asia/Baghdad
+Al Hudaydah - YE,734699,14.7978,42.9545,Asia/Aden
+Al Jahra' - KW,24281,29.3375,47.6581,Asia/Kuwait
+Al Kharjah - EG,83108,25.451,30.5465,Africa/Cairo
+Al Khawr - QA,18923,25.6839,51.5058,Asia/Qatar
+Al Khums - LY,201943,32.6486,14.2619,Africa/Tripoli
+Al Kut - IQ,315162,32.5128,45.8182,Asia/Baghdad
+Al Mahwit - YE,10593,15.4701,43.5448,Asia/Aden
+Al Mansurah - EG,621953,31.0364,31.3807,Africa/Cairo
+Al Marj - LY,85315,32.4926,20.8291,Africa/Tripoli
+Al Qadarif - SD,363945,14.0349,35.3834,Africa/Khartoum
+Al Qunaytirah - SY,36143,33.126,35.8246,Asia/Damascus
+Al Wakrah - QA,26436,25.1715,51.6034,Asia/Qatar
+Alajuela - CR,47494,10.0172,-84.2127,America/Costa_Rica
+Alba Iulia - RO,64227,46.0667,23.5833,Europe/Bucharest
+Albany - US,101228,42.6526,-73.7562,America/New_York
+Albuquerque - US,564559,35.0845,-106.651,America/Denver
+Aleg - MR,19183,17.0531,-13.9131,Africa/Nouakchott
+Aleppo - SY,2098210,36.2012,37.1612,Asia/Damascus
+Alexandria - EG,5263542,31.2018,29.9158,Africa/Cairo
+Alexandria - RO,40390,43.9833,25.3333,Europe/Bucharest
+Algiers - DZ,2364230,36.7323,3.08746,Africa/Algiers
+Ali Sabih - DJ,50006,11.1558,42.7125,Africa/Djibouti
+Allada - BJ,23287,6.66547,2.15138,Africa/Porto-Novo
+Almaty - KZ,1977011,43.2525,76.9115,Asia/Almaty
+Alofi - NU,624,-19.0529,-169.92,Pacific/Niue
+Alor Setar - MY,417800,6.12104,100.36,Asia/Kuala_Lumpur
+Alotau - PG,10025,-10.3151,150.457,Pacific/Port_Moresby
+Altai - MN,17617,46.3722,96.2583,Asia/Hovd
+Alytus - LT,49195,54.3957,24.0389,Europe/Vilnius
+Am Timan - TD,74691,11.0433,20.2834,Africa/Ndjamena
+Amasya - TR,114921,40.6533,35.8331,Europe/Istanbul
+Ambato - EC,387309,-1.24908,-78.6167,America/Guayaquil
+Ambatondrazaka - MG,50463,-17.8333,48.4167,Indian/Antananarivo
+Ambon - ID,347288,-3.69583,128.183,Asia/Jayapura
+Ambositra - MG,43504,-20.5303,47.2434,Indian/Antananarivo
+Ambovombe - MG,69265,-25.1784,46.0872,Indian/Antananarivo
+Amdjarass - TD,29793,16.0667,22.8354,Africa/Ndjamena
+Amman - JO,1275857,31.9552,35.945,Asia/Amman
+Amnat Charoen - TH,34769,15.8585,104.629,Asia/Bangkok
+Amran - YE,90792,15.6594,43.9438,Asia/Aden
+Amravati - IN,647057,20.9333,77.75,Asia/Kolkata
+Amritsar - IN,1159227,31.6223,74.8753,Asia/Kolkata
+Amsterdam - NL,741636,52.374,4.88969,Europe/Amsterdam
+Anadyr - RU,15604,64.7342,177.51,Asia/Anadyr
+Ancona - IT,89994,43.6072,13.5103,Europe/Rome
+Andijon - UZ,747800,40.7834,72.3507,Asia/Tashkent
+Andong - KR,153348,36.5664,128.723,Asia/Seoul
+Andorra la Vella - AD,20430,42.5078,1.52109,Europe/Andorra
+Anew - TM,27526,37.8875,58.516,Asia/Ashgabat
+Ang Thong - TH,13738,14.5884,100.453,Asia/Bangkok
+Ankang - CN,870126,32.68,109.017,Asia/Shanghai
+Ankara - TR,3517182,39.9199,32.8543,Europe/Istanbul
+Anna Regina - GY,12448,7.26555,-58.4826,America/Guyana
+Annaba - DZ,342703,36.9,7.76667,Africa/Algiers
+Annapolis - US,40812,38.9786,-76.4918,America/New_York
+Anqing - CN,804493,30.5136,117.047,Asia/Shanghai
+Anshan - CN,1450000,41.1236,122.99,Asia/Shanghai
+Anshun - CN,765313,26.25,105.933,Asia/Shanghai
+Antakya - TR,210000,36.2066,36.1572,Europe/Istanbul
+Antalya - TR,1344000,36.9081,30.6956,Europe/Istanbul
+Antananarivo - MG,1349501,-18.9137,47.5361,Indian/Antananarivo
+Antigua Guatemala - GT,46054,14.5564,-90.7332,America/Guatemala
+Antipolo - PH,913712,14.6258,121.123,Asia/Manila
+Antofagasta - CL,401096,-23.6509,-70.3975,America/Santiago
+Antsirabe - MG,260907,-19.8659,47.0333,Indian/Antananarivo
+Antsiranana - MG,136959,-12.3173,49.2919,Indian/Antananarivo
+Antsohihy - MG,40512,-14.8796,47.9875,Indian/Antananarivo
+Anuradhapura - LK,60943,8.31223,80.4131,Asia/Colombo
+Anyang - CN,1146839,36.096,114.383,Asia/Shanghai
+Aomori - JP,298394,40.8167,140.733,Asia/Tokyo
+Aosta - IT,35261,45.7376,7.31722,Europe/Rome
+Apia - WS,40407,-13.8333,-171.767,Pacific/Apia
+Aplahoue - BJ,26340,6.93333,1.68333,Africa/Porto-Novo
+Aqaba - JO,95048,29.5267,35.0078,Asia/Amman
+Aqsu - CN,535657,41.1842,80.2792,Asia/Urumqi
+Ar Raqqah - SY,531952,35.9528,39.0079,Asia/Damascus
+Ar Rayyan - QA,272465,25.2919,51.4244,Asia/Qatar
+Aracaju - BR,664908,-10.9111,-37.0717,America/Maceio
+Arachinovo - MK,12800,42.0268,21.5628,Europe/Skopje
+Arad - RO,169065,46.1833,21.3167,Europe/Bucharest
+Arak - IR,503647,34.0949,49.6981,Asia/Tehran
+Arar - SA,148540,30.9753,41.0381,Asia/Riyadh
+Arauca - CO,85585,7.08471,-70.7591,America/Bogota
+Ardabil - IR,410753,38.2498,48.2933,Asia/Tehran
+Ardahan - TR,22927,41.1087,42.7022,Europe/Istanbul
+Arecibo - PR,87754,18.4724,-66.7157,America/Puerto_Rico
+Aregua - PY,11222,-25.3124,-57.385,America/Asuncion
+Arendal - NO,30916,58.4615,8.77253,Europe/Oslo
+Arequipa - PE,1008290,-16.399,-71.5375,America/Lima
+Arica - CL,241653,-18.4755,-70.3006,America/Santiago
+Ariel - IL,20540,32.1065,35.1845,Asia/Jerusalem
+Arima - TT,35000,10.6374,-61.2823,America/Port_of_Spain
+Arish - EG,199243,31.1316,33.7984,Africa/Cairo
+Arkhangel'sk - RU,349742,64.5461,40.5518,Europe/Moscow
+Armavir - AM,29700,40.1555,44.0388,Asia/Yerevan
+Armenia - CO,304314,4.53656,-75.6726,America/Bogota
+Arnhem - NL,141674,51.98,5.91111,Europe/Amsterdam
+Arta - DJ,17477,11.5264,42.8519,Africa/Djibouti
+Artashat - AM,22800,39.9548,44.5487,Asia/Yerevan
+Artemisa - CU,68073,22.8137,-82.7581,America/Havana
+Artigas - UY,41909,-30.4043,-56.4693,America/Montevideo
+Artvin - TR,25841,41.1816,41.8217,Europe/Istanbul
+Arusha - TZ,617631,-3.36667,36.6833,Africa/Dar_es_Salaam
+Arvayheer - MN,29420,46.2639,102.775,Asia/Ulaanbaatar
+Aryanah - TN,114486,36.8601,10.1934,Africa/Tunis
+As Salt - JO,107874,32.0392,35.7272,Asia/Amman
+As Samawah - IQ,152890,31.332,45.2944,Asia/Baghdad
+As Sulaymaniyah - IQ,878146,35.565,45.4329,Asia/Baghdad
+As-Suwayda - SY,59052,32.709,36.5695,Asia/Damascus
+Asaba - NG,73374,6.19824,6.73187,Africa/Lagos
+Asadabad - AF,48400,34.8731,71.147,Asia/Kabul
+Asansol - IN,504271,23.6833,86.9833,Asia/Kolkata
+Ashgabat - TM,727700,37.95,58.3833,Asia/Ashgabat
+Ashtarak - AM,17600,40.2976,44.3615,Asia/Yerevan
+Asmara - ER,563930,15.3381,38.9318,Africa/Asmara
+Asosa - ET,69700,10.0667,34.5333,Africa/Addis_Ababa
+Assab - ER,21300,13.0092,42.7394,Africa/Asmara
+Assen - NL,62237,52.9967,6.5625,Europe/Amsterdam
+Assiut - EG,528669,27.181,31.1837,Africa/Cairo
+Assomada - CV,21297,15.1,-23.6833,Atlantic/Cape_Verde
+Astana - KZ,345604,51.1801,71.446,Asia/Almaty
+Astara - AZ,15190,38.456,48.875,Asia/Baku
+Astrakhan - RU,533925,46.3497,48.0408,Europe/Astrakhan
+Asuncion - PY,1482200,-25.2865,-57.647,America/Asuncion
+Aswan - EG,379774,24.0908,32.8994,Africa/Cairo
+At Tafilah - JO,25429,30.8375,35.6044,Asia/Amman
+Atakpame - TG,80683,7.53333,1.13333,Africa/Lome
+Ataq - YE,37315,14.5377,46.8319,Asia/Aden
+Atar - MR,31133,20.5188,-13.0464,Africa/Nouakchott
+Athens - GR,664046,37.9838,23.7278,Europe/Athens
+Ati - TD,29867,13.2138,18.3393,Africa/Ndjamena
+Atlanta - US,510823,33.749,-84.388,America/New_York
+Attard - MT,11377,35.8897,14.4425,Europe/Malta
+Atyrau - KZ,290700,47.1048,51.8843,Asia/Atyrau
+Auckland - NZ,1530500,-36.8485,174.763,Pacific/Auckland
+Augusta - US,18899,44.3106,-69.7795,America/New_York
+Aurangabad - IN,1175116,19.8776,75.3423,Asia/Kolkata
+Austin - US,974447,30.2672,-97.7431,America/Chicago
+Avarua - CK,13373,-21.2075,-159.775,Pacific/Rarotonga
+Aveiro - PT,54162,40.6457,-8.64643,Europe/Lisbon
+Awasa - ET,422200,7.06205,38.4763,Africa/Addis_Ababa
+Aweil - SS,38745,8.76194,27.3919,Africa/Juba
+Awka - NG,167738,6.21269,7.07199,Africa/Lagos
+Ayacucho - PE,140033,-13.1638,-74.2234,America/Lima
+Aydin - TR,163022,37.845,27.8396,Europe/Istanbul
+Ayoun El Atrous - MR,28174,16.6614,-9.6149,Africa/Nouakchott
+Az Zawiyah - LY,200000,32.7571,12.7276,Africa/Tripoli
+Azogues - EC,34877,-2.73982,-78.8456,America/Guayaquil
+Azua - DO,59139,18.4532,-70.7349,America/Santo_Domingo
+Baalbek - LB,30916,34.0058,36.2181,Asia/Beirut
+Babahoyo - EC,76279,-1.80493,-79.5249,America/Guayaquil
+Babati - TZ,67445,-4.21667,35.75,Africa/Dar_es_Salaam
+Bac Ninh - VN,287658,21.1861,106.076,Asia/Bangkok
+Bacau - RO,136087,46.5672,26.9138,Europe/Bucharest
+Badulla - LK,47587,6.9802,81.0577,Asia/Colombo
+Bafata - GW,33502,12.1658,-14.6617,Africa/Bissau
+Bafoussam - CM,373268,5.47775,10.4176,Africa/Douala
+Baghdad - IQ,7216000,33.3406,44.4009,Asia/Baghdad
+Bago - MM,244376,17.3352,96.4814,Asia/Yangon
+Baguio - PH,272714,16.4164,120.593,Asia/Manila
+Bahawalpur - PK,903795,29.3978,71.6752,Asia/Karachi
+Bahir Dar - ET,350000,11.5936,37.3908,Africa/Addis_Ababa
+Baia Mare - RO,108759,47.6573,23.5681,Europe/Bucharest
+Baidoa - SO,129839,3.11383,43.6498,Africa/Mogadishu
+Baikonur - KZ,70000,45.6167,63.3167,Asia/Qostanay
+Baise - CN,686078,23.8901,106.627,Asia/Shanghai
+Baku - AZ,1116513,40.3777,49.892,Asia/Baku
+Balikesir - TR,238151,39.6492,27.8861,Europe/Istanbul
+Balikpapan - ID,695287,-1.26753,116.829,Asia/Makassar
+Balkanabat - TM,87822,39.5108,54.3671,Asia/Ashgabat
+Balti - MD,125000,47.7629,27.9285,Europe/Chisinau
+Baltimore - US,585708,39.2904,-76.6122,America/New_York
+Bamako - ML,4227569,12.6091,-7.97522,Africa/Bamako
+Bambari - CF,83029,5.76795,20.6757,Africa/Bangui
+Bamenda - CM,420445,5.9597,10.146,Africa/Douala
+Bamyan - AF,61863,34.8216,67.8273,Asia/Kabul
+Ban Houayxay - LA,12500,20.27,100.418,Asia/Vientiane
+Banan - CN,508703,29.3786,106.54,Asia/Shanghai
+Banda Aceh - ID,255029,5.54167,95.3333,Asia/Jakarta
+Bandar Abbas - IR,352173,27.1865,56.2808,Asia/Tehran
+Bandar Lampung - ID,1166066,-5.42917,105.261,Asia/Jakarta
+Bandar Seri Begawan - BN,64409,4.89035,114.94,Asia/Brunei
+Bandundu Province - CD,202904,-3.31687,17.3806,Africa/Kinshasa
+Bandung - ID,2444160,-6.92222,107.607,Asia/Jakarta
+Banfora - BF,117452,10.6333,-4.76667,Africa/Ouagadougou
+Bangassou - CF,54059,4.74132,22.8184,Africa/Bangui
+Bangkok - TH,5104476,13.754,100.501,Asia/Bangkok
+Bangui - CF,812407,4.36122,18.555,Africa/Bangui
+Banha - EG,182254,30.4598,31.1842,Africa/Cairo
+Bani - DO,66709,18.2797,-70.3318,America/Santo_Domingo
+Bani Suwayf - EG,273151,29.0744,31.0979,Africa/Cairo
+Banja Luka - BA,221106,44.7788,17.2063,Europe/Sarajevo
+Banjarmasin - ID,657663,-3.31987,114.591,Asia/Makassar
+Banjul - GM,37274,13.4527,-16.578,Africa/Banjul
+Banlung - KH,17000,13.7394,106.987,Asia/Phnom_Penh
+Bannu - PK,1357890,32.9853,70.604,Asia/Karachi
+Banqiao - TW,551221,25.0143,121.467,Asia/Taipei
+Banska Bystrica - SK,74590,48.7395,19.1493,Europe/Bratislava
+Bao'an - CN,4476554,22.5521,113.883,Asia/Shanghai
+Baoding - CN,2739887,38.8729,115.462,Asia/Shanghai
+Baoji - CN,1437802,34.3678,107.237,Asia/Shanghai
+Baoshan - CN,935618,25.1163,99.1637,Asia/Shanghai
+Baotou - CN,2150000,40.6516,109.844,Asia/Shanghai
+Baqubah - IQ,152550,33.754,44.6052,Asia/Baghdad
+Bar - ME,17727,42.0937,19.0984,Europe/Podgorica
+Barcelona - ES,1620343,41.3888,2.15899,Europe/Madrid
+Barcelona - VE,815141,10.1384,-64.6877,America/Caracas
+Barceloneta - PR,22322,18.4505,-66.5385,America/Puerto_Rico
+Barda - AZ,37372,40.3758,47.1262,Asia/Baku
+Barentu - ER,15891,15.1058,37.5907,Africa/Asmara
+Bari - IT,316491,41.1207,16.8698,Europe/Rome
+Barinas - VE,397279,8.62064,-70.231,America/Caracas
+Barishal - BD,202242,22.705,90.3701,Asia/Dhaka
+Barnaul - RU,632372,53.362,83.7279,Asia/Barnaul
+Barquisimeto - VE,1240714,10.0647,-69.357,America/Caracas
+Barranquilla - CO,1206319,10.9685,-74.7813,America/Bogota
+Bartica - GY,11157,6.40539,-58.6233,America/Guyana
+Bartin - TR,81692,41.6358,32.3375,Europe/Istanbul
+Baruun-Urt - MN,18190,46.6806,113.279,Asia/Ulaanbaatar
+Basarabeasca - MD,10809,46.3335,28.9616,Europe/Chisinau
+Basel - CH,177595,47.5584,7.57327,Europe/Zurich
+Basrah - IQ,1326564,30.5085,47.7804,Asia/Baghdad
+Basse Santa Su - GM,14380,13.31,-14.2137,Africa/Banjul
+Basse-Terre - GP,11472,15.9971,-61.7321,America/Guadeloupe
+Basseterre - KN,12920,17.2955,-62.725,America/St_Kitts
+Bata - GQ,173046,1.86391,9.76582,Africa/Malabo
+Batam - ID,1164352,1.14937,104.025,Asia/Jakarta
+Batangafo - CF,24119,7.30082,18.2833,Africa/Bangui
+Batken - KG,27730,40.0622,70.8219,Asia/Bishkek
+Batman - TR,452157,37.8874,41.1322,Europe/Istanbul
+Batna City - DZ,289504,35.556,6.17414,Africa/Algiers
+Baton Rouge - US,227470,30.4433,-91.1875,America/Chicago
+Battagram - PK,700000,34.6772,73.0233,Asia/Karachi
+Battambang - KH,119251,13.1027,103.198,Asia/Phnom_Penh
+Batumi - GE,186949,41.6408,41.6306,Asia/Tbilisi
+Bauchi - NG,693700,10.3103,9.84388,Africa/Lagos
+Baukau - TL,16000,-8.47572,126.456,Asia/Dili
+Bayamo - CU,192632,20.3737,-76.6427,America/Havana
+Bayamon - PR,203499,18.3986,-66.1557,America/Puerto_Rico
+Bayan Nur - CN,1760000,40.7414,107.386,Asia/Shanghai
+Bayanhongor - MN,30931,46.1944,100.718,Asia/Ulaanbaatar
+Bayburt - TR,48036,40.2563,40.2229,Europe/Istanbul
+Bazarak - AF,65000,35.3129,69.5152,Asia/Kabul
+Beau Bassin-Rose Hill - MU,111355,-20.2333,57.4661,Indian/Mauritius
+Bechar - DZ,165241,31.6167,-2.21667,Africa/Algiers
+Beersheba - IL,186600,31.2518,34.7913,Asia/Jerusalem
+Beihai - CN,525329,21.4835,109.115,Asia/Shanghai
+Beijing - CN,18960744,39.9075,116.397,Asia/Shanghai
+Beira - MZ,687764,-19.8436,34.8389,Africa/Maputo
+Beirut - LB,1916100,33.8933,35.5016,Asia/Beirut
+Beja - TN,61568,36.7256,9.18169,Africa/Tunis
+Beja - PT,34760,38.0147,-7.86284,Europe/Lisbon
+Bejaia - DZ,176139,36.7559,5.08433,Africa/Algiers
+Bekasi - ID,2564940,-6.2349,106.99,Asia/Jakarta
+Bekescsaba - HU,59732,46.6833,21.1,Europe/Budapest
+Beledweyne - SO,55410,4.73583,45.2036,Africa/Mogadishu
+Belem - BR,1499641,-1.45583,-48.5044,America/Belem
+Belfast - GB,348005,54.5968,-5.92541,Europe/London
+Belgorod - RU,345289,50.6034,36.5809,Europe/Moscow
+Belgrade - RS,1273651,44.804,20.4651,Europe/Belgrade
+Belize City - BZ,65222,17.4995,-88.1976,America/Belize
+Bellinzona - CH,43220,46.1928,9.01703,Europe/Zurich
+Belmopan - BZ,13381,17.2538,-88.764,America/Belize
+Belo Horizonte - BR,2721564,-19.9208,-43.9378,America/Sao_Paulo
+Belokany - AZ,14800,41.7263,46.4048,Asia/Baku
+Ben Arous - TN,88322,36.7545,10.2217,Africa/Tunis
+Ben Tre - VN,124449,10.2415,106.376,Asia/Ho_Chi_Minh
+Bender - MD,110175,46.8316,29.4767,Europe/Chisinau
+Bengaluru - IN,8495492,12.9719,77.5937,Asia/Kolkata
+Benghazi - LY,757490,32.1149,20.0686,Africa/Tripoli
+Bengkulu - ID,373591,-3.80044,102.266,Asia/Jakarta
+Benguela - AO,555124,-12.5767,13.4027,Africa/Luanda
+Beni Abbes - DZ,11416,30.1331,-2.16611,Africa/Algiers
+Beni Mellal - MA,210397,32.3372,-6.34983,Africa/Casablanca
+Benin City - NG,1782000,6.33815,5.62575,Africa/Lagos
+Berane - ME,11073,42.8433,19.8728,Europe/Podgorica
+Berat - AL,62232,40.7058,19.9522,Europe/Tirane
+Berberati - CF,103713,4.26116,15.7922,Africa/Bangui
+Bergen - NO,294029,60.393,5.32415,Europe/Oslo
+Berlin - DE,3426354,52.5244,13.4105,Europe/Berlin
+Bern - CH,121631,46.9481,7.44744,Europe/Zurich
+Berovo - MK,13847,41.7018,22.8572,Europe/Skopje
+Bertoua - CM,137993,4.57728,13.6846,Africa/Douala
+Beylagan - AZ,15599,39.7756,47.6186,Asia/Baku
+Bhisho - ZA,137287,-32.8472,27.4422,Africa/Johannesburg
+Bhopal - IN,1798218,23.2547,77.4029,Asia/Kolkata
+Bhubaneswar - IN,885363,20.2724,85.8338,Asia/Kolkata
+Bialystok - PL,291855,53.1333,23.1643,Europe/Warsaw
+Bien Hoa - VN,1272235,10.9447,106.824,Asia/Ho_Chi_Minh
+Bijelo Polje - ME,15400,43.0383,19.7476,Europe/Podgorica
+Bijie - CN,1137383,27.3019,105.286,Asia/Shanghai
+Bilecik - TR,74457,40.1419,29.9793,Europe/Istanbul
+Biltine - TD,33540,14.5273,20.926,Africa/Ndjamena
+Bimbo - CF,348802,4.25671,18.4158,Africa/Bangui
+Bindura - ZW,50400,-17.3019,31.3306,Africa/Harare
+Bingoel - TR,128935,38.8847,40.4939,Europe/Istanbul
+Binzhou - CN,682717,37.3667,118.017,Asia/Shanghai
+Birendranagar - NP,154886,28.5967,81.6166,Asia/Kathmandu
+Birjand - IR,196982,32.8663,59.2211,Asia/Tehran
+Birkirkara - MT,24356,35.8971,14.4611,Europe/Malta
+Birmingham - GB,1157603,52.4814,-1.89983,Europe/London
+Birnin Kebbi - NG,108164,12.4539,4.1975,Africa/Lagos
+Birobidzhan - RU,73623,48.793,132.92,Asia/Vladivostok
+Birzebbuga - MT,12915,35.8255,14.5268,Europe/Malta
+Bishkek - KG,900000,42.87,74.59,Asia/Bishkek
+Biskra - DZ,204661,34.8504,5.72805,Africa/Algiers
+Bismarck - US,75092,46.8083,-100.784,America/Chicago
+Bissau - GW,439704,11.8636,-15.5977,Africa/Bissau
+Bistrita - RO,78877,47.1332,24.5001,Europe/Bucharest
+Bitlis - TR,53023,38.4012,42.1078,Europe/Istanbul
+Bitola - MK,69287,41.0323,21.3355,Europe/Skopje
+Bizerte - TN,138430,37.2744,9.87391,Africa/Tunis
+Bjelovar - HR,24392,45.8979,16.8507,Europe/Zagreb
+Blagoevgrad - BG,67810,42.0146,23.098,Europe/Sofia
+Blagoveshchensk - RU,225091,50.2759,127.526,Asia/Yakutsk
+Blantyre - MW,902588,-15.785,35.0085,Africa/Blantyre
+Blenheim - NZ,30300,-41.516,173.953,Pacific/Auckland
+Blida - DZ,331779,36.47,2.8277,Africa/Algiers
+Bloemfontein - ZA,556637,-29.1211,26.214,Africa/Johannesburg
+Bluefields - NI,44373,12.0129,-83.7645,America/Managua
+Bo - SL,174354,7.96472,-11.7383,Africa/Freetown
+Boa Vista - BR,419652,2.81972,-60.6733,America/Boa_Vista
+Boaco - NI,29046,12.4726,-85.6596,America/Managua
+Bobo-Dioulasso - BF,904920,11.1771,-4.2979,Africa/Ouagadougou
+Bodden Town - KY,14845,19.2765,-81.2542,America/Cayman
+Bodo - NO,34073,67.2827,14.3751,Europe/Oslo
+Boende - CD,50794,-0.28163,20.8805,Africa/Kinshasa
+Bogor - ID,1127408,-6.59444,106.789,Asia/Jakarta
+Bogota - CO,7674366,4.60971,-74.0817,America/Bogota
+Bogovinje - MK,15166,41.9224,20.9153,Europe/Skopje
+Boise - US,235684,43.6135,-116.203,America/Boise
+Bojnurd - IR,192041,37.4747,57.329,Asia/Tehran
+Bokaro - IN,564319,23.6693,86.1516,Asia/Kolkata
+Boke - GN,63736,10.9322,-14.2905,Africa/Conakry
+Bokhtar - TJ,110800,37.8367,68.7775,Asia/Dushanbe
+Bol - TD,51389,13.4673,14.7135,Africa/Ndjamena
+Bolama - GW,10769,11.5769,-15.4761,Africa/Bissau
+Bolgatanga - GH,81958,10.7856,-0.85139,Africa/Accra
+Bollullos de la Mitacion - ES,6499,37.3401,-6.13719,Europe/Madrid
+Bologna - IT,394843,44.4938,11.3387,Europe/Rome
+Bolu - TR,184682,40.7358,31.6061,Europe/Istanbul
+Bomet - KE,11765,-0.78129,35.3416,Africa/Nairobi
+Bonao - DO,73269,18.9415,-70.4111,America/Santo_Domingo
+Bondoukou - CI,141568,8.0402,-2.80003,Africa/Abidjan
+Bonga - ET,56000,7.28889,36.2417,Africa/Addis_Ababa
+Bongor - TD,63699,10.2809,15.3742,Africa/Ndjamena
+Bor - SS,26782,6.20889,31.5586,Africa/Juba
+Bordeaux - FR,260958,44.8412,-0.58046,Europe/Paris
+Bordj Bou Arreridj - DZ,158812,36.0739,4.76139,Africa/Algiers
+Bosaso - SO,74287,11.2842,49.1816,Africa/Mogadishu
+Bosilovo - MK,12447,41.4406,22.7279,Europe/Skopje
+Bossangoa - CF,55353,6.49263,17.4552,Africa/Bangui
+Boston - US,653833,42.3584,-71.0598,America/New_York
+Botosani - RO,90010,47.75,26.6667,Europe/Bucharest
+Bouake - CI,832371,7.69385,-5.03031,Africa/Abidjan
+Bouar - CF,71680,5.93404,15.596,Africa/Bangui
+Bouira - DZ,68545,36.3749,3.902,Africa/Algiers
+Boumerdas - DZ,28996,36.7664,3.47717,Africa/Algiers
+Bozhou - CN,1409436,33.8772,115.77,Asia/Shanghai
+Bozoum - CF,20665,6.31933,16.3799,Africa/Bangui
+Braga - PT,121394,41.5514,-8.42311,Europe/Lisbon
+Braganca - PT,34375,41.8072,-6.75898,Europe/Lisbon
+Braila - RO,154686,45.2715,27.9743,Europe/Bucharest
+Brasilia - BR,2207718,-15.7797,-47.9297,America/Sao_Paulo
+Brasov - RO,253200,45.6486,25.6061,Europe/Bucharest
+Bratislava - SK,423737,48.1482,17.1067,Europe/Bratislava
+Brazzaville - CG,1982000,-4.26613,15.2832,Africa/Brazzaville
+Brcko - BA,38968,44.8716,18.8163,Europe/Sarajevo
+Bregenz - AT,29806,47.5031,9.7471,Europe/Vienna
+Bremen - DE,546501,53.0758,8.80717,Europe/Berlin
+Brest - BY,344470,52.1089,23.7175,Europe/Minsk
+Bria - CF,47226,6.54233,21.9863,Africa/Bangui
+Bridgetown - BB,98511,13.1073,-59.6202,America/Barbados
+Brikama - GM,97233,13.2714,-16.6494,Africa/Banjul
+Brisbane - AU,2780063,-27.4679,153.028,Australia/Brisbane
+Brno - CZ,379466,49.1952,16.608,Europe/Prague
+Brokopondo - SR,14662,5.05594,-54.9804,America/Paramaribo
+Brooklyn - US,2736074,40.6501,-73.9496,America/New_York
+Brussels - BE,1019022,50.8505,4.34878,Europe/Brussels
+Brvenica - MK,16267,41.9671,20.9809,Europe/Skopje
+Bryansk - RU,427236,53.271,34.3214,Europe/Moscow
+Bubanza - BI,30996,-3.0804,29.391,Africa/Bujumbura
+Bucaramanga - CO,581130,7.125,-73.1189,America/Bogota
+Buchanan - LR,75854,5.87693,-10.0496,Africa/Monrovia
+Bucharest - RO,1877155,44.4323,26.1063,Europe/Bucharest
+Budapest - HU,1741041,47.4984,19.0404,Europe/Budapest
+Budta - PH,1273715,7.20417,124.44,Asia/Manila
+Budva - ME,18000,42.2872,18.8392,Europe/Podgorica
+Buea - CM,140533,4.15342,9.24231,Africa/Douala
+Buenos Aires - AR,2891082,-34.6131,-58.3772,America/Argentina/Buenos_Aires
+Bujumbura - BI,769317,-3.38193,29.3614,Africa/Bujumbura
+Bukavu - CD,816811,-2.49077,28.8428,Africa/Lubumbashi
+Bukhara - UZ,280187,39.7703,64.4307,Asia/Samarkand
+Bukoba - TZ,144938,-1.33167,31.8122,Africa/Dar_es_Salaam
+Bulawayo - ZW,665952,-20.15,28.5833,Africa/Harare
+Bulgan - MN,17348,48.8125,103.535,Asia/Ulaanbaatar
+Bungoma - KE,68031,0.5635,34.5605,Africa/Nairobi
+Bunia - CD,399282,1.55941,30.2522,Africa/Lubumbashi
+Buon Ma Thuot - VN,434256,12.6675,108.038,Asia/Ho_Chi_Minh
+Burao - SO,99270,9.52213,45.5336,Africa/Mogadishu
+Buraydah - SA,745353,26.326,43.975,Asia/Riyadh
+Burdur - TR,95436,37.7203,30.2908,Europe/Istanbul
+Burgas - BG,195966,42.5065,27.4689,Europe/Sofia
+Buri Ram - TH,28283,14.9943,103.104,Asia/Bangkok
+Bursa - TR,3101833,40.1956,29.0601,Europe/Istanbul
+Busan - KR,3343903,35.1017,129.03,Asia/Seoul
+Bushehr - IR,165377,28.9689,50.8366,Asia/Tehran
+Busia - KE,71886,0.46005,34.1117,Africa/Nairobi
+Buta - CD,80751,2.78582,24.73,Africa/Lubumbashi
+Butha-Buthe - LS,40599,-28.7666,28.2494,Africa/Maseru
+Butuan - PH,309709,8.94917,125.544,Asia/Manila
+Butwal - NP,195054,27.7005,83.4484,Asia/Kathmandu
+Buzau - RO,103481,45.15,26.8333,Europe/Bucharest
+Bydgoszcz - PL,366452,53.1235,18.0076,Europe/Warsaw
+Byumba - RW,43134,-1.5763,30.0675,Africa/Kigali
+Ca Mau - VN,226372,9.17682,105.152,Asia/Ho_Chi_Minh
+Caacupe - PY,56864,-25.3858,-57.1422,America/Asuncion
+Caazapa - PY,23996,-26.1966,-56.3679,America/Asuncion
+Cabinda - AO,550000,-5.56198,12.1948,Africa/Luanda
+Cabo Rojo - PR,10839,18.0866,-67.1457,America/Puerto_Rico
+Cacheu - GW,10490,12.2744,-16.1653,Africa/Bissau
+Cagayan de Oro - PH,741617,8.48222,124.647,Asia/Manila
+Cagliari - IT,149257,39.2305,9.11917,Europe/Rome
+Caguas - PR,86804,18.2341,-66.0485,America/Puerto_Rico
+Cahul - MD,34492,45.9046,28.1952,Europe/Chisinau
+Cairo - EG,9606916,30.0626,31.2497,Africa/Cairo
+Cajamarca - PE,201329,-7.16378,-78.5003,America/Lima
+Cakovec - HR,15078,46.3844,16.4339,Europe/Zagreb
+Calabar - NG,540000,4.95893,8.32695,Africa/Lagos
+Calamba - PH,575046,14.2117,121.165,Asia/Manila
+Calapan - PH,66008,13.4117,121.18,Asia/Manila
+Calarasi - MD,14066,47.2555,28.3095,Europe/Chisinau
+Calgary - CA,1306784,51.0501,-114.085,America/Edmonton
+Cali - CO,2392877,3.43054,-76.5199,America/Bogota
+Callao - PE,1300000,-12.0516,-77.1345,America/Lima
+Caloocan City - PH,1712945,14.6495,120.968,Asia/Manila
+Camagueey - CU,347562,21.3808,-77.9169,America/Havana
+Camayenne - GN,1871242,9.535,-13.6878,Africa/Conakry
+Campeche - MX,220389,19.8407,-90.5168,America/Merida
+Campinas - BR,1031554,-22.9056,-47.0608,America/Sao_Paulo
+Campo Grande - BR,906092,-20.4428,-54.6464,America/Campo_Grande
+Campobasso - IT,49230,41.5595,14.6674,Europe/Rome
+Campos dos Goytacazes - BR,511168,-21.7523,-41.3304,America/Sao_Paulo
+Can Tho - VN,1507187,10.0371,105.788,Asia/Ho_Chi_Minh
+Canakkale - TR,143622,40.1555,26.4127,Europe/Istanbul
+Canberra - AU,367752,-35.2835,149.128,Australia/Sydney
+Canelones - UY,19698,-34.5238,-56.2822,America/Montevideo
+Cangzhou - CN,527681,38.3112,116.853,Asia/Shanghai
+Cankiri - TR,90564,40.5999,33.6153,Europe/Istanbul
+Cao Bang - VN,73549,22.6657,106.258,Asia/Bangkok
+Cao Lanh - VN,211912,10.4602,105.633,Asia/Ho_Chi_Minh
+Cap-Haitien - HT,134815,19.7594,-72.1981,America/Port-au-Prince
+Cape Coast - GH,212426,5.10535,-1.2466,Africa/Accra
+Cape Town - ZA,4772846,-33.9258,18.4232,Africa/Johannesburg
+Caracas - VE,3000000,10.488,-66.8792,America/Caracas
+Cardiff - GB,372089,51.48,-3.18,Europe/London
+Carnot - CF,129032,4.94273,15.8773,Africa/Bangui
+Carolina - PR,170404,18.3808,-65.9574,America/Puerto_Rico
+Carson City - US,58639,39.1638,-119.767,America/Los_Angeles
+Cartagena - CO,914552,10.3982,-75.4933,America/Bogota
+Cartago - CR,26594,9.86371,-83.9195,America/Costa_Rica
+Casablanca - MA,3665954,33.5883,-7.61138,Africa/Casablanca
+Castelo Branco - PT,33479,39.8236,-7.49101,Europe/Lisbon
+Castries - LC,20000,13.9957,-61.0061,America/St_Lucia
+Catamarca - AR,159139,-28.4696,-65.7852,America/Argentina/Catamarca
+Catano - PR,28093,18.4413,-66.1182,America/Puerto_Rico
+Catanzaro - IT,78970,38.8825,16.6009,Europe/Rome
+Causeni - MD,21690,46.6374,29.4109,Europe/Chisinau
+Caxito - AO,55000,-8.57848,13.6642,Africa/Luanda
+Cayenne - GF,61550,4.9381,-52.3346,America/Cayenne
+Cayey - PR,18494,18.1119,-66.166,America/Puerto_Rico
+Cebu City - PH,965332,10.3167,123.891,Asia/Manila
+Ceerigaabo - SO,33853,10.6162,47.368,Africa/Mogadishu
+Celje - SI,38059,46.2309,15.2604,Europe/Ljubljana
+Centar Zupa - MK,45412,41.4785,20.5594,Europe/Skopje
+Central - HK,11077,22.283,114.158,Asia/Hong_Kong
+Centre de Flacq - MU,17710,-20.1897,57.7144,Indian/Mauritius
+Cerro de Pasco - PE,58899,-10.6658,-76.2531,America/Lima
+Cesis - LV,14699,57.3119,25.2746,Europe/Riga
+Ceske Budejovice - CZ,93426,48.9745,14.4743,Europe/Prague
+Cetinje - ME,15137,42.3906,18.9142,Europe/Podgorica
+Ceuta - ES,83179,35.8892,-5.32042,Europe/Madrid
+Chachapoyas - PE,32026,-6.23169,-77.869,America/Lima
+Chachoengsao - TH,49741,13.6882,101.072,Asia/Bangkok
+Chaguanas - TT,67433,10.5167,-61.4167,America/Port_of_Spain
+Chai Nat - TH,15469,15.1864,100.124,Asia/Bangkok
+Chaiyaphum - TH,58350,15.8105,102.029,Asia/Bangkok
+Chake Chake - TZ,52047,-5.24586,39.7666,Africa/Dar_es_Salaam
+Chalatenango - SV,19364,14.0414,-88.9395,America/El_Salvador
+Chandigarh - IN,970602,30.7363,76.7884,Asia/Kolkata
+Changchun - CN,4714996,43.88,125.323,Asia/Shanghai
+Changde - CN,1457419,29.0321,111.698,Asia/Shanghai
+Changsha - CN,3093980,28.1987,112.971,Asia/Shanghai
+Changshu - CN,1677050,31.6461,120.742,Asia/Shanghai
+Changwon - KR,1025702,35.2281,128.681,Asia/Seoul
+Changzhi - CN,1214940,36.1839,113.105,Asia/Shanghai
+Changzhou - CN,3290918,31.7736,119.954,Asia/Shanghai
+Chanthaburi - TH,99819,12.6096,102.104,Asia/Bangkok
+Chaozhou - CN,1750945,23.654,116.623,Asia/Shanghai
+Charikar - AF,53676,35.0136,69.1714,Asia/Kabul
+Charleston - US,46838,38.3498,-81.6326,America/New_York
+Charlotte - US,911311,35.2271,-80.8431,America/New_York
+Charlotte Amalie - VI,20000,18.3419,-64.9307,America/St_Thomas
+Charlottetown - CA,38809,46.2346,-63.1256,America/Halifax
+Chattogram - BD,3920222,22.3384,91.8317,Asia/Dhaka
+Cheboksary - RU,492331,56.1322,47.246,Europe/Moscow
+Chelyabinsk - RU,1202371,55.1611,61.4288,Asia/Yekaterinburg
+Chengdu - CN,13568357,30.6667,104.067,Asia/Shanghai
+Chennai - IN,4681087,13.0878,80.2785,Asia/Kolkata
+Chenzhou - CN,822534,25.8,113.033,Asia/Shanghai
+Cheongju-si - KR,853938,36.6372,127.49,Asia/Seoul
+Cherkasy - UA,272651,49.4445,32.0574,Europe/Kyiv
+Cherkessk - RU,122395,44.2238,42.0462,Europe/Moscow
+Chernihiv - UA,285234,51.5054,31.2866,Europe/Kyiv
+Chernivtsi - UA,265471,48.2904,25.9324,Europe/Kyiv
+Chetumal - MX,169028,18.5196,-88.304,America/Cancun
+Cheyenne - US,65132,41.14,-104.82,America/Denver
+Chiang Mai - TH,127240,18.7904,98.9847,Asia/Bangkok
+Chiang Rai - TH,78756,19.9086,99.8325,Asia/Bangkok
+Chiba - JP,979768,35.6,140.117,Asia/Tokyo
+Chicago - US,2664452,41.85,-87.65,America/Chicago
+Chiclayo - PE,552508,-6.77008,-79.855,America/Lima
+Chihuahua - MX,925762,28.6353,-106.089,America/Chihuahua
+Chillan - CL,150396,-36.6066,-72.1034,America/Santiago
+Chilpancingo - MX,187251,17.5523,-99.5012,America/Mexico_City
+Chimaltenango - GT,96985,14.6588,-90.8216,America/Guatemala
+Chimoio - MZ,422046,-19.1164,33.4833,Africa/Maputo
+Chinandega - NI,126387,12.6295,-87.1313,America/Managua
+Chinhoyi - ZW,90800,-17.3667,30.2,Africa/Harare
+Chinsali - ZM,38805,-10.5414,32.0816,Africa/Lusaka
+Chipata - ZM,327059,-13.6333,32.65,Africa/Lusaka
+Chiquimula - GT,111505,14.8009,-89.5464,America/Guatemala
+Chisinau - MD,635994,47.009,28.8594,Europe/Chisinau
+Chita - RU,349005,52.0431,113.492,Asia/Chita
+Chizhou - CN,615274,30.6613,117.478,Asia/Shanghai
+Chlef - DZ,178616,36.1653,1.33452,Africa/Algiers
+Choibalsan - MN,44835,48.0726,114.533,Asia/Ulaanbaatar
+Choma - ZM,98974,-16.8089,26.9875,Africa/Lusaka
+Chon Buri - TH,219164,13.3622,100.983,Asia/Bangkok
+Chongjin - KP,327000,41.7956,129.776,Asia/Pyongyang
+Chongqing - CN,7457599,29.5603,106.558,Asia/Shanghai
+Choyr - MN,10434,46.3611,108.361,Asia/Ulaanbaatar
+Christchurch - NZ,412000,-43.5333,172.633,Pacific/Auckland
+Chumphon - TH,55835,10.4957,99.1797,Asia/Bangkok
+Chuncheon - KR,286124,37.8747,127.734,Asia/Seoul
+Chur - CH,35373,46.8499,9.53287,Europe/Zurich
+Chuxiong - CN,555081,25.0364,101.546,Asia/Shanghai
+Chuzhou - CN,782671,32.3219,118.298,Asia/Shanghai
+Cibitoke - BI,36959,-2.8869,29.1248,Africa/Bujumbura
+Ciego de Avila - CU,142027,21.8422,-78.7603,America/Havana
+Cienfuegos - CU,186644,22.1468,-80.4481,America/Havana
+Cimislia - MD,12464,46.5263,28.7649,Europe/Chisinau
+Ciudad Bolivar - VE,412619,8.12366,-63.5469,America/Caracas
+Ciudad Choluteca - HN,75872,13.3057,-87.1788,America/Tegucigalpa
+Ciudad del Este - PY,301815,-25.5036,-54.6507,America/Asuncion
+Ciudad Guayana - VE,978202,8.35122,-62.641,America/Caracas
+Ciudad Juarez - MX,1512450,31.7202,-106.461,America/Ciudad_Juarez
+Ciudad Nezahualcoyotl - MX,1104585,19.4006,-99.0148,America/Mexico_City
+Ciudad Victoria - MX,332100,23.7406,-99.1436,America/Monterrey
+Cixi - CN,1457510,30.1764,121.246,Asia/Shanghai
+Cluj-Napoca - RO,286598,46.7667,23.6,Europe/Bucharest
+Coamo - PR,11940,18.08,-66.358,America/Puerto_Rico
+Coban - GT,212047,15.4703,-90.3745,America/Guatemala
+Cobija - BO,26585,-11.0267,-68.7692,America/La_Paz
+Cochabamba - BO,841276,-17.3819,-66.1599,America/La_Paz
+Cockburn Town - TC,3720,21.4612,-71.1419,America/Grand_Turk
+Coimbatore - IN,2136916,11.0055,76.9661,Asia/Kolkata
+Coimbra - PT,106582,40.2069,-8.41996,Europe/Lisbon
+Cojutepeque - SV,48411,13.7197,-88.9331,America/El_Salvador
+Colima - MX,146965,19.2447,-103.713,America/Mexico_City
+Colombo - LK,648034,6.93548,79.8487,Asia/Colombo
+Colon - PA,76643,9.36025,-79.9002,America/Panama
+Colonia del Sacramento - UY,21714,-34.4626,-57.8398,America/Montevideo
+Columbia - US,142416,34.0007,-81.0348,America/New_York
+Columbus - US,913175,39.9612,-82.9988,America/New_York
+Comayagua - HN,58784,14.4558,-87.6397,America/Tegucigalpa
+Comendador - DO,12070,18.8775,-71.7032,America/Santo_Domingo
+Comilla - BD,1030000,23.4619,91.185,Asia/Dhaka
+Comrat - MD,22911,46.2949,28.6571,Europe/Chisinau
+Conakry - GN,1928389,9.53795,-13.6773,Africa/Conakry
+Concepcion - CL,223574,-36.827,-73.0498,America/Santiago
+Concepcion - PY,48123,-23.3999,-57.4324,America/Asuncion
+Concord - US,43976,43.2081,-71.5376,America/New_York
+Constanta - RO,317832,44.1807,28.6343,Europe/Bucharest
+Constantine - DZ,448028,36.365,6.61472,Africa/Algiers
+Copenhagen - DK,1153615,55.6759,12.5655,Europe/Copenhagen
+Copiapo - CL,129280,-27.3674,-70.3322,America/Santiago
+Cordoba - AR,2106734,-31.4065,-64.1885,America/Argentina/Cordoba
+Corfu - GR,40047,39.6244,19.9202,Europe/Athens
+Coro - VE,246657,11.4077,-69.6782,America/Caracas
+Coronel Oviedo - PY,51286,-25.4461,-56.4393,America/Asuncion
+Corozal - PR,11297,18.3411,-66.3168,America/Puerto_Rico
+Corrientes - AR,346334,-27.4678,-58.8344,America/Argentina/Cordoba
+Corum - TR,269595,40.5489,34.9533,Europe/Istanbul
+Cotabato - PH,383383,7.22361,124.246,Asia/Manila
+Cotui - DO,41641,19.0539,-70.1512,America/Santo_Domingo
+Coyhaique - CL,45787,-45.5752,-72.0662,America/Coyhaique
+Craiova - RO,234140,44.3167,23.8,Europe/Bucharest
+Cucuta - CO,777106,7.90745,-72.5049,America/Bogota
+Cuenca - EC,636996,-2.8953,-78.9963,America/Guayaquil
+Cuernavaca - MX,338650,18.9261,-99.2308,America/Mexico_City
+Cuiaba - BR,618124,-15.5961,-56.0967,America/Cuiaba
+Cuilapa - GT,41359,14.2754,-90.2986,America/Guatemala
+Cuito - AO,355423,-12.3833,16.9333,Africa/Luanda
+Culiacan - MX,808416,24.8021,-107.394,America/Mazatlan
+Cumana - VE,405626,10.4639,-64.1786,America/Caracas
+Curitiba - BR,1948626,-25.4278,-49.2731,America/Sao_Paulo
+Cusco - PE,428450,-13.5319,-71.967,America/Lima
+Da Lat - VN,258014,11.9465,108.442,Asia/Ho_Chi_Minh
+Da Nang - VN,1276000,16.0678,108.221,Asia/Ho_Chi_Minh
+Daegu - KR,2365523,35.8703,128.591,Asia/Seoul
+Daejeon - KR,1470336,36.3491,127.385,Asia/Seoul
+Dajabon - DO,16398,19.5481,-71.7082,America/Santo_Domingo
+Dakar - SN,2646503,14.6937,-17.4441,Africa/Dakar
+Dakhla - EH,75000,23.6848,-15.958,Africa/El_Aaiun
+Dalandzadgad - MN,24863,43.5708,104.425,Asia/Ulaanbaatar
+Dalian - CN,4913879,38.9122,121.602,Asia/Shanghai
+Dallas - US,1326087,32.7831,-96.8067,America/Chicago
+Daloa - CI,421871,6.87735,-6.45022,Africa/Abidjan
+Daman - IN,44282,20.4143,72.8324,Asia/Kolkata
+Damanhur - EG,318207,31.0341,30.4682,Africa/Cairo
+Damascus - SY,1569394,33.5102,36.2913,Asia/Damascus
+Damaturu - NG,46000,11.747,11.9608,Africa/Lagos
+Dambai - GH,22445,8.06616,0.17947,Africa/Accra
+Damietta - EG,305920,31.4165,31.8133,Africa/Cairo
+Dammam - SA,1252523,26.4344,50.1033,Asia/Riyadh
+Damongo - GH,23544,9.08296,-1.81884,Africa/Accra
+Dapaong - TG,58071,10.8622,0.20762,Africa/Lome
+Daqing - CN,1604027,46.5833,125.0,Asia/Shanghai
+Dar es Salaam - TZ,5383728,-6.82349,39.2695,Africa/Dar_es_Salaam
+Dar Naim - MR,61089,18.1081,-15.9267,Africa/Nouakchott
+Dar'a - SY,97969,32.6189,36.1021,Asia/Damascus
+Darhan - MN,83883,49.4867,105.923,Asia/Ulaanbaatar
+Darnah - LY,102581,32.767,22.6367,Africa/Tripoli
+Daru - PG,15214,-9.07786,143.209,Pacific/Port_Moresby
+Darwin - AU,139902,-12.4611,130.842,Australia/Darwin
+Dasoguz - TM,166500,41.8362,59.9666,Asia/Ashgabat
+Dassa-Zoume - BJ,29461,7.75,2.18333,Africa/Porto-Novo
+Datong - CN,1850000,40.0936,113.291,Asia/Shanghai
+Daugavpils - LV,77799,55.8833,26.5333,Europe/Riga
+Davao - PH,1848947,7.07306,125.613,Asia/Manila
+David - PA,81957,8.42729,-82.4309,America/Panama
+Dawei - MM,136783,14.0823,98.1915,Asia/Yangon
+Dazhou - CN,1589435,31.2106,107.463,Asia/Shanghai
+Debar - MK,18074,41.5229,20.522,Europe/Skopje
+Debrecen - HU,202402,47.5317,21.6244,Europe/Budapest
+Dededo Village - GU,44943,13.5178,144.839,Pacific/Guam
+Dedougou - BF,63617,12.4634,-3.46075,Africa/Ouagadougou
+Dehra Dun - IN,522081,30.3244,78.0339,Asia/Kolkata
+Deir ez-Zor - SY,271800,35.3359,40.1408,Asia/Damascus
+Delcevo - MK,17415,41.9672,22.7694,Europe/Skopje
+Delemont - CH,12682,47.3649,7.34453,Europe/Zurich
+Delhi - IN,11034555,28.6519,77.2315,Asia/Kolkata
+Dembeni - YT,10141,-12.8436,45.1844,Indian/Mayotte
+Denizli - TR,313238,37.7742,29.0875,Europe/Istanbul
+Dennery - LC,12589,13.9141,-60.8913,America/St_Lucia
+Denpasar - ID,725314,-8.65,115.217,Asia/Makassar
+Denver - US,729019,39.7392,-104.985,America/Denver
+Depok - ID,2145400,-6.4,106.819,Asia/Jakarta
+Dera Ismail Khan - PK,763195,31.8313,70.9017,Asia/Karachi
+Des Moines - US,214133,41.6005,-93.6091,America/Chicago
+Detroit - US,645705,42.3314,-83.0457,America/Detroit
+Deyang - CN,735070,31.1302,104.382,Asia/Shanghai
+Dezhou - CN,679535,37.4466,116.367,Asia/Shanghai
+Dhaka - BD,10356500,23.7104,90.4074,Asia/Dhaka
+Dhamar - YE,160114,14.5427,44.4051,Asia/Aden
+Dhanbad - IN,1196214,23.7976,86.4299,Asia/Kolkata
+Dhankuta - NP,22084,26.9833,87.3333,Asia/Kathmandu
+Diego Martin - TT,25370,10.7208,-61.5662,America/Port_of_Spain
+Dien Bien Phu - VN,84672,21.386,103.023,Asia/Bangkok
+Diffa - NE,54082,13.3154,12.6113,Africa/Niamey
+Dihok - IQ,340900,36.8661,42.9879,Asia/Baghdad
+Dijon - FR,158002,47.3134,5.01391,Europe/Paris
+Dikhil - DJ,32801,11.1045,42.3697,Africa/Djibouti
+Dili - TL,150000,-8.55861,125.574,Asia/Dili
+Dimbokro - CI,70198,6.64678,-4.70519,Africa/Abidjan
+Diourbel - SN,157554,14.6479,-16.2436,Africa/Dakar
+Dipayal - NP,33968,29.2608,80.94,Asia/Kathmandu
+Dire Dawa - ET,343000,9.59306,41.8661,Africa/Addis_Ababa
+Dispur - IN,10812,26.1356,91.8007,Asia/Kolkata
+Divichibazar - AZ,23248,41.2012,48.9871,Asia/Baku
+Diyarbakir - TR,1791373,37.9136,40.2172,Europe/Istanbul
+Djambala - CG,15372,-2.53806,14.7541,Africa/Brazzaville
+Djelfa - DZ,265833,34.6728,3.263,Africa/Algiers
+Djibouti - DJ,626512,11.589,43.145,Africa/Djibouti
+Djougou - BJ,94773,9.70853,1.66598,Africa/Porto-Novo
+Dnipro - UA,968502,48.4666,35.0407,Europe/Kyiv
+Doba - TD,70942,8.66389,16.8532,Africa/Ndjamena
+Dobrich - BG,79269,43.5649,27.8314,Europe/Sofia
+Dodoma - TZ,765179,-6.17221,35.7395,Africa/Dar_es_Salaam
+Doha - QA,344939,25.2855,51.531,Asia/Qatar
+Dolisie - CG,121000,-4.19834,12.6666,Africa/Brazzaville
+Dolneni - MK,11534,41.4246,21.4546,Europe/Skopje
+Dombivali - IN,1247327,19.2167,73.0833,Asia/Kolkata
+Domzale - SI,13204,46.1377,14.5937,Europe/Ljubljana
+Donetsk - UA,901645,48.023,37.8022,Europe/Kyiv
+Dong Ha - VN,164228,16.8163,107.1,Asia/Bangkok
+Dongguan - CN,9644871,23.018,113.749,Asia/Shanghai
+Dongola - SD,56167,19.1816,30.4769,Africa/Khartoum
+Dongying - CN,998968,37.4627,118.492,Asia/Shanghai
+Dorado - PR,13117,18.4588,-66.2677,America/Puerto_Rico
+Dori - BF,46512,14.0341,-0.03261,Africa/Ouagadougou
+Dortmund - DE,588462,51.5149,7.466,Europe/Berlin
+Dosso - NE,79406,13.049,3.1937,Africa/Niamey
+Douala - CM,1338082,4.04827,9.70428,Africa/Douala
+Douglas - IM,26218,54.15,-4.48333,Europe/Isle_of_Man
+Dover - US,39403,39.1582,-75.5244,America/New_York
+Drammen - NO,105042,59.7439,10.2045,Europe/Oslo
+Dresden - DE,556227,51.0509,13.7383,Europe/Berlin
+Drobeta-Turnu Severin - RO,79865,44.6269,22.6529,Europe/Bucharest
+Drochia - MD,16080,48.0369,27.8124,Europe/Chisinau
+Dubai - AE,3790000,25.0772,55.3093,Asia/Dubai
+Dublin - IE,1024027,53.3331,-6.24889,Europe/Dublin
+Dubrovnik - HR,26922,42.6412,18.1091,Europe/Zagreb
+Duesseldorf - DE,620523,51.2217,6.77616,Europe/Berlin
+Duezce - TR,194097,40.8389,31.1639,Europe/Istanbul
+Duisburg - DE,504358,51.4325,6.76516,Europe/Berlin
+Dundo - AO,177604,-7.36643,20.8156,Africa/Luanda
+Dunedin - NZ,131800,-45.8742,170.504,Pacific/Auckland
+Durazno - UY,33926,-33.3806,-56.5231,America/Montevideo
+Durban - ZA,3338026,-29.8579,31.0292,Africa/Johannesburg
+Durres - AL,195920,41.3235,19.4547,Europe/Tirane
+Dushanbe - TJ,679400,38.5358,68.779,Asia/Dushanbe
+Dutse - NG,17129,11.7562,9.33896,Africa/Lagos
+Dzaoudzi - YT,15339,-12.7834,45.2569,Indian/Mayotte
+Dzuunmod - MN,16953,47.7069,106.953,Asia/Ulaanbaatar
+E'zhou - CN,668727,30.3961,114.887,Asia/Shanghai
+Ebaye - MH,15000,8.77479,167.739,Pacific/Kwajalein
+Ebebiyin - GQ,24831,2.15218,11.3301,Africa/Malabo
+Ebolowa - CM,101363,2.9,11.15,Africa/Douala
+Ecatepec de Morelos - MX,1645352,19.6049,-99.0606,America/Mexico_City
+Ed Damer - SD,103941,17.599,33.9721,Africa/Khartoum
+Edinburgh - GB,514990,55.9521,-3.19648,Europe/London
+Edinet - MD,22872,48.1732,27.3008,Europe/Chisinau
+Edirne - TR,180002,41.6772,26.556,Europe/Istanbul
+Edmonton - CA,1010899,53.5501,-113.469,America/Edmonton
+Eger - HU,53876,47.9027,20.3733,Europe/Budapest
+El Bayadh - DZ,85577,33.6832,1.01927,Africa/Algiers
+El Daein - SD,264734,11.4619,26.1258,Africa/Khartoum
+El Fasher - SD,252609,13.6279,25.3494,Africa/Khartoum
+El Kef - TN,53596,36.1742,8.70486,Africa/Tunis
+El Meghaier - DZ,39106,33.9514,5.92222,Africa/Algiers
+El Menia - DZ,57344,30.5756,2.88417,Africa/Algiers
+El Obeid - SD,393311,13.1842,30.2167,Africa/Khartoum
+El Oued - DZ,186525,33.3561,6.86319,Africa/Algiers
+El Paso - US,678815,31.7587,-106.487,America/Denver
+El Tarf - DZ,13346,36.7672,8.31377,Africa/Algiers
+El-Tor - EG,38285,28.2417,33.6222,Africa/Cairo
+Elazig - TR,443363,38.6743,39.2232,Europe/Istanbul
+Elbasan - AL,100903,41.1114,20.0822,Europe/Tirane
+Eldoret - KE,475716,0.52036,35.2699,Africa/Nairobi
+Elista - RU,106971,46.3079,44.2554,Europe/Moscow
+Embu - KE,64979,-0.53987,37.4574,Africa/Nairobi
+Encamp - AD,11223,42.5347,1.58014,Europe/Andorra
+Encarnacion - PY,74983,-27.3318,-55.8666,America/Asuncion
+Enugu - NG,950000,6.44132,7.49883,Africa/Lagos
+Erbil - IQ,1612700,36.1912,44.0094,Asia/Baghdad
+Erdenet - MN,97814,49.0333,104.083,Asia/Ulaanbaatar
+Erfurt - DE,213692,50.9773,11.0354,Europe/Berlin
+Ermoupolis - GR,11351,37.4447,24.9429,Europe/Athens
+Erzincan - TR,150714,39.7392,39.4901,Europe/Istanbul
+Erzurum - TR,767848,39.9086,41.2769,Europe/Istanbul
+Escuintla - GT,156313,14.301,-90.7882,America/Guatemala
+Eskisehir - TR,789023,39.7767,30.5206,Europe/Istanbul
+Esmeraldas - EC,218727,0.9592,-79.654,America/Guayaquil
+Espargos - CV,24500,16.7552,-22.9446,Atlantic/Cape_Verde
+Essen - DE,593085,51.4566,7.01228,Europe/Berlin
+Esteli - NI,96422,13.0929,-86.3559,America/Managua
+Evora - PT,55620,38.5659,-7.90405,Europe/Lisbon
+Ewo - CG,11750,-0.8725,14.8206,Africa/Brazzaville
+Fada - TD,17240,17.1919,21.5808,Africa/Ndjamena
+Fada N'gourma - BF,73200,12.0616,0.35843,Africa/Ouagadougou
+Faisalabad - PK,3800193,31.4155,73.0897,Asia/Karachi
+Fajardo - PR,32124,18.3258,-65.6524,America/Puerto_Rico
+Falesti - MD,14377,47.5767,27.7126,Europe/Chisinau
+Falun - SE,37291,60.6036,15.626,Europe/Stockholm
+Famagusta - CY,42526,35.1249,33.9413,Asia/Famagusta
+Farafangana - MG,36724,-22.8222,47.8261,Indian/Antananarivo
+Farah - AF,43561,32.3745,62.1164,Asia/Kabul
+Faranah - GN,70181,10.0404,-10.7434,Africa/Conakry
+Faridabad - IN,1414050,28.4112,77.3132,Asia/Kolkata
+Farim - GW,10207,12.4839,-15.2217,Africa/Bissau
+Faro - PT,41355,37.0187,-7.92716,Europe/Lisbon
+Fatick - SN,39361,14.3324,-16.4051,Africa/Dakar
+Faya-Largeau - TD,44011,17.9257,19.1043,Africa/Ndjamena
+Fayroz Koh - AF,15000,34.5195,65.2509,Asia/Kabul
+Fayzabad - AF,44421,37.1166,70.58,Asia/Kabul
+Fenoarivo Atsinanana - MG,44199,-17.3809,49.4083,Indian/Antananarivo
+Fergana - UZ,299200,40.3842,71.7843,Asia/Tashkent
+Ferizaj - XK,59504,42.3706,21.1553,Europe/Belgrade
+Fes - MA,1191905,34.0331,-5.00028,Africa/Casablanca
+Fianarantsoa - MG,203105,-21.4527,47.0857,Indian/Antananarivo
+Fier - AL,56297,40.7251,19.5582,Europe/Tirane
+Filadelfia - PY,19927,-22.3394,-60.0316,America/Asuncion
+Fizuli - AZ,26765,39.6009,47.1453,Asia/Baku
+Florence - IT,367150,43.7792,11.2463,Europe/Rome
+Florencia - CO,168346,1.61549,-75.6041,America/Bogota
+Flores - GT,20464,16.9226,-89.8994,America/Guatemala
+Floresti - MD,16759,47.8917,28.2934,Europe/Chisinau
+Florianopolis - BR,508826,-27.5967,-48.5492,America/Sao_Paulo
+Florida - UY,32234,-34.1003,-56.2148,America/Montevideo
+Flying Fish Cove - CX,500,-10.4217,105.679,Indian/Christmas
+Focsani - RO,66648,45.7,27.1833,Europe/Bucharest
+Fomboni - KM,17291,-12.2876,43.7434,Indian/Comoro
+Formosa - AR,222226,-26.1849,-58.1731,America/Argentina/Cordoba
+Fort Liberte - HT,11465,19.6625,-71.8351,America/Port-au-Prince
+Fort Worth - US,1008106,32.7254,-97.3208,America/Chicago
+Fort-de-France - MQ,89995,14.6037,-61.0742,America/Martinique
+Fortaleza - BR,2400000,-3.71722,-38.5431,America/Fortaleza
+Foshan - CN,9042509,23.0268,113.131,Asia/Shanghai
+Franceville - GA,132895,-1.63333,13.5836,Africa/Libreville
+Francistown - BW,103417,-21.17,27.5078,Africa/Gaborone
+Frankfort - US,28391,38.2009,-84.8733,America/New_York
+Frankfurt am Main - DE,650000,50.1155,8.68417,Europe/Berlin
+Frauenfeld - CH,25607,47.5578,8.89893,Europe/Zurich
+Fray Bentos - UY,23279,-33.1165,-58.3107,America/Montevideo
+Fredericton - CA,63116,45.9454,-66.6656,America/Moncton
+Freeport - BS,26910,26.5333,-78.7,America/Nassau
+Freetown - SL,802639,8.48714,-13.2356,Africa/Freetown
+Fresno - US,542107,36.7477,-119.772,America/Los_Angeles
+Fribourg - CH,38365,46.8024,7.15128,Europe/Zurich
+Fukui-shi - JP,262328,36.0644,136.223,Asia/Tokyo
+Fukuoka - JP,1612392,33.6,130.417,Asia/Tokyo
+Fukushima - JP,294237,37.75,140.467,Asia/Tokyo
+Funafuti - TV,6320,-8.52425,179.194,Pacific/Funafuti
+Funchal - PT,100847,32.6657,-16.9255,Atlantic/Madeira
+Fushun - CN,1400646,41.8867,123.944,Asia/Shanghai
+Fuvahmulah - MV,11140,-0.29878,73.424,Indian/Maldives
+Fuyang - CN,1768947,32.9,115.817,Asia/Shanghai
+Fuzhou - CN,3740000,26.0614,119.306,Asia/Shanghai
+Gaalkacyo - SO,61200,6.76972,47.4308,Africa/Mogadishu
+Gabes - TN,110075,33.8815,10.0982,Africa/Tunis
+Gaborone - BW,246325,-24.6545,25.9086,Africa/Gaborone
+Gabrovo - BG,66175,42.8742,25.3182,Europe/Sofia
+Gabu - GW,49371,12.28,-14.2222,Africa/Bissau
+Gaevle - SE,74884,60.6745,17.1417,Europe/Stockholm
+Gafsa - TN,95242,34.425,8.78417,Africa/Tunis
+Gagnoa - CI,277044,6.13193,-5.9506,Africa/Abidjan
+Galati - RO,217851,45.4369,28.0503,Europe/Bucharest
+Galle - LK,93118,6.0461,80.2103,Asia/Colombo
+Galway - IE,83456,53.2724,-9.05095,Europe/Dublin
+Gambela - ET,97600,8.25,34.5833,Africa/Addis_Ababa
+Gandhinagar - IN,292797,23.2167,72.6833,Asia/Kolkata
+Gangtok - IN,100286,27.3257,88.6122,Asia/Kolkata
+Ganja - AZ,335600,40.6816,46.3613,Asia/Baku
+Ganzhou - CN,1977253,25.8466,114.933,Asia/Shanghai
+Gao - ML,133110,16.2717,-0.04472,Africa/Bamako
+Garbahaarrey - SO,12652,3.32892,42.2209,Africa/Mogadishu
+Gardez - AF,103601,33.5974,69.2259,Asia/Kabul
+Garissa - KE,163399,-0.45275,39.646,Africa/Nairobi
+Garoowe - SO,57300,8.40207,48.4828,Africa/Mogadishu
+Garoua - CM,34957,9.30143,13.3977,Africa/Douala
+Gasteiz / Vitoria - ES,249176,42.85,-2.67268,Europe/Madrid
+Gavar - AM,18900,40.354,45.1239,Asia/Yerevan
+Gaza - PS,410000,31.5016,34.4667,Asia/Gaza
+Gaziantep - TR,2130432,37.0594,37.3825,Europe/Istanbul
+Gazipur - BD,2674697,23.9984,90.4223,Asia/Dhaka
+Gbadolite - CD,73835,4.279,21.0028,Africa/Kinshasa
+Gbarnga - LR,86031,6.99543,-9.47122,Africa/Monrovia
+Gdansk - PL,461865,54.3523,18.6491,Europe/Warsaw
+Geita - TZ,318006,-2.8725,32.2325,Africa/Dar_es_Salaam
+Gemena - CD,197159,3.25651,19.7723,Africa/Kinshasa
+Geneina - SD,162981,13.4526,22.4473,Africa/Khartoum
+Geneve - CH,201741,46.2022,6.14569,Europe/Zurich
+Genoa - IT,580097,44.4048,8.94439,Europe/Rome
+George Town - MY,158336,5.41123,100.335,Asia/Kuala_Lumpur
+George Town - KY,29370,19.2866,-81.3744,America/Cayman
+Georgetown - GY,235017,6.80448,-58.1553,America/Guyana
+Gevgelija - MK,20664,41.1429,22.5011,Europe/Skopje
+Ghanzi - BW,19012,-21.6978,21.6458,Africa/Gaborone
+Ghardaia - DZ,142913,32.4909,3.67347,Africa/Algiers
+Gharyan - LY,36110,32.1722,13.0203,Africa/Tripoli
+Ghat - LY,14630,24.9633,10.18,Africa/Tripoli
+Ghaziabad - IN,1199191,28.6654,77.4391,Asia/Kolkata
+Ghazni - AF,141000,33.5539,68.421,Asia/Kabul
+Gia Nghia - VN,85082,12.0042,107.691,Asia/Ho_Chi_Minh
+Gibraltar - GI,26544,36.1447,-5.35257,Europe/Gibraltar
+Gifu - JP,402557,35.4229,136.76,Asia/Tokyo
+Gilgit - PK,216760,35.9187,74.3124,Asia/Karachi
+Giresun - TR,125682,40.917,38.3874,Europe/Istanbul
+Gisborne - NZ,38300,-38.6533,178.004,Pacific/Auckland
+Gitega - BI,64904,-3.42708,29.9246,Africa/Bujumbura
+Giurgiu - RO,54551,43.8866,25.9627,Europe/Bucharest
+Giza - EG,4367343,30.0094,31.2086,Africa/Cairo
+Gjakove - XK,94158,42.3803,20.4308,Europe/Belgrade
+Gjilan - XK,51912,42.4605,21.4699,Europe/Belgrade
+Gjirokaster - AL,23437,40.0758,20.1389,Europe/Tirane
+GJong Xoai - VN,168000,11.535,106.883,Asia/Ho_Chi_Minh
+Glarus - CH,12425,47.0406,9.06804,Europe/Zurich
+Glasgow - GB,626410,55.8651,-4.25763,Europe/London
+Glodeni - MD,10146,47.7747,27.5175,Europe/Chisinau
+Goaso - GH,21798,6.80355,-2.5172,Africa/Accra
+Gobabis - NA,22639,-22.4534,18.9716,Africa/Windhoek
+Goeteborg - SE,608462,57.7072,11.9668,Europe/Stockholm
+Goeycay - AZ,42500,40.6506,47.7422,Asia/Baku
+Goiania - BR,1536097,-16.6786,-49.2539,America/Sao_Paulo
+Goma - CD,432587,-1.67409,29.2284,Africa/Lubumbashi
+Gombe - NG,560000,10.2897,11.1673,Africa/Lagos
+Gonaives - HT,84961,19.4475,-72.6893,America/Port-au-Prince
+Gorakhpur - IN,1324570,29.4477,75.6721,Asia/Kolkata
+Goranboy - AZ,10186,40.6103,46.7897,Asia/Baku
+Gorgan - IR,244937,36.8427,54.4439,Asia/Tehran
+Gori - GE,41933,41.9853,44.1129,Asia/Tbilisi
+Gorno-Altaysk - RU,63214,51.9606,85.9189,Asia/Barnaul
+Goroka - PG,18503,-6.085,145.387,Pacific/Port_Moresby
+Gorontalo - ID,198539,0.5375,123.062,Asia/Makassar
+Gorzow Wielkopolski - PL,124430,52.7337,15.225,Europe/Warsaw
+Gostivar - MK,50974,41.7963,20.908,Europe/Skopje
+Goyang-si - KR,1061752,37.6564,126.835,Asia/Seoul
+Goygol - AZ,17816,40.5858,46.3189,Asia/Baku
+Goz Beida - TD,58941,12.2264,21.4098,Africa/Ndjamena
+Granada - NI,89409,11.9306,-85.9537,America/Managua
+Graz - AT,303270,47.0673,15.442,Europe/Vienna
+Greenville - LR,20184,5.01133,-9.0388,Africa/Monrovia
+Groningen - NL,238147,53.2192,6.56667,Europe/Amsterdam
+Gros Islet - LC,25210,14.0667,-60.95,America/St_Lucia
+Grozny - RU,297137,43.312,45.6889,Europe/Moscow
+Grytviken - GS,2,-54.2811,-36.5092,Atlantic/South_Georgia
+Guadalajara - MX,1385629,20.6774,-103.347,America/Mexico_City
+Guadalupe - MX,673616,25.6768,-100.256,America/Monterrey
+Guanajuato - MX,72237,21.0186,-101.259,America/Mexico_City
+Guanare - VE,112286,9.03934,-69.7336,America/Caracas
+Guang'an - CN,858159,30.4741,106.637,Asia/Shanghai
+Guangyuan - CN,516424,32.442,105.823,Asia/Shanghai
+Guangzhou - CN,16096724,23.1167,113.25,Asia/Shanghai
+Guankou - CN,1380000,28.1586,113.627,Asia/Shanghai
+Guantanamo - CU,272801,20.1444,-75.2092,America/Havana
+Guaranda - EC,22199,-1.59106,-78.999,America/Guayaquil
+Guarda - PT,32111,40.5375,-7.26631,Europe/Lisbon
+Guarulhos - BR,1169577,-23.4628,-46.5333,America/Sao_Paulo
+Guastatoya - GT,24831,14.8544,-90.0699,America/Guatemala
+Guatemala City - GT,994938,14.6407,-90.5133,America/Guatemala
+Guayama - PR,21575,17.9841,-66.1138,America/Puerto_Rico
+Guayaquil - EC,2723665,-2.19616,-79.8862,America/Guayaquil
+Guaynabo - PR,81360,18.3575,-66.111,America/Puerto_Rico
+Guelma - DZ,120004,36.4621,7.42608,Africa/Algiers
+Guelmim - MA,129200,28.987,-10.0574,Africa/Casablanca
+Guemueshane - TR,39214,40.46,39.4718,Europe/Istanbul
+Guigang - CN,1086327,23.116,109.595,Asia/Shanghai
+Guilin - CN,1572300,25.2802,110.296,Asia/Shanghai
+Guiyang - CN,3037159,26.5833,106.717,Asia/Shanghai
+Gujranwala - PK,2511118,32.1557,74.187,Asia/Karachi
+Gujrat - PK,574240,32.5742,74.0754,Asia/Karachi
+Guliston - UZ,90398,40.4954,68.7754,Asia/Tashkent
+Gulu - UG,177400,2.77457,32.299,Africa/Kampala
+Gurugram - IN,886519,28.4601,77.0263,Asia/Kolkata
+Gusau - NG,226857,12.1702,6.66412,Africa/Lagos
+Gustavia - BL,5988,17.8962,-62.8498,America/St_Barthelemy
+Gustavo Adolfo Madero - MX,1185772,19.4939,-99.1107,America/Mexico_City
+Gwalior - IN,1054420,26.2298,78.1734,Asia/Kolkata
+Gwanda - ZW,26700,-20.9362,29.007,Africa/Harare
+Gwangju - KR,1398538,35.1547,126.916,Asia/Seoul
+Gweru - ZW,158200,-19.45,29.8167,Africa/Harare
+Gyor - HU,129301,47.6833,17.6351,Europe/Budapest
+Gyumri - AM,112301,40.7931,43.8464,Asia/Yerevan
+Gzira - MT,11669,35.9058,14.4881,Europe/Malta
+Ha Long - VN,270054,20.9505,107.073,Asia/Bangkok
+Ha Tinh - VN,27728,18.3428,105.906,Asia/Bangkok
+Ha'il - SA,605930,27.5219,41.6907,Asia/Riyadh
+Haapsalu - EE,11805,58.9394,23.5413,Europe/Tallinn
+Haarlem - NL,147590,52.3808,4.63683,Europe/Amsterdam
+Hachioji - JP,579355,35.6558,139.324,Asia/Tokyo
+Haciqabul - AZ,23102,40.0387,48.9429,Asia/Baku
+Haeju - KP,222396,38.0406,125.715,Asia/Pyongyang
+Haemeenlinna - FI,67994,60.996,24.4643,Europe/Helsinki
+Haernoesand - SE,25012,62.6323,17.9379,Europe/Stockholm
+Hagatna - GU,1051,13.4757,144.749,Pacific/Guam
+Haifa - IL,285316,32.813,34.9993,Asia/Jerusalem
+Haikou - CN,2873358,20.0342,110.347,Asia/Shanghai
+Haiphong - VN,2625200,20.8648,106.683,Asia/Bangkok
+Hajjah - YE,43549,15.6943,43.6058,Asia/Aden
+Hakha - MM,20000,22.6445,93.6108,Asia/Yangon
+Hakkari - TR,77699,37.5744,43.7408,Europe/Istanbul
+Half Way Tree - JM,18552,18.0125,-76.7993,America/Jamaica
+Halifax - CA,471559,44.6427,-63.5769,America/Halifax
+Halmstad - SE,70480,56.6745,12.8568,Europe/Stockholm
+Hamadan - IR,528256,34.7992,48.5146,Asia/Tehran
+Hamah - SY,460602,35.1318,36.7578,Asia/Damascus
+Hamamatsu - JP,791707,34.7,137.733,Asia/Tokyo
+Hamar - NO,29479,60.7945,11.068,Europe/Oslo
+Hamburg - DE,1845229,53.5507,9.99302,Europe/Berlin
+Hamhung - KP,559056,39.9183,127.536,Asia/Pyongyang
+Hamilton - NZ,189700,-37.7833,175.283,Pacific/Auckland
+Hamilton - BM,902,32.2949,-64.783,Atlantic/Bermuda
+Handan - CN,1358318,36.61,114.488,Asia/Shanghai
+Hangzhou - CN,9236032,30.2936,120.161,Asia/Shanghai
+Hannover - DE,515140,52.3705,9.73322,Europe/Berlin
+Hanoi - VN,8053663,21.0245,105.841,Asia/Bangkok
+Hanzhong - CN,1006557,33.0751,107.022,Asia/Shanghai
+Harar - ET,157000,9.31387,42.1181,Africa/Addis_Ababa
+Harare - ZW,1542813,-17.8277,31.0534,Africa/Harare
+Harbin - CN,5242897,45.75,126.65,Asia/Shanghai
+Hargeysa - SO,477876,9.56,44.065,Africa/Mogadishu
+Harper - LR,35503,4.3782,-7.71081,Africa/Monrovia
+Harrisburg - US,50183,40.2737,-76.8844,America/New_York
+Hartford - US,121054,41.7637,-72.6851,America/New_York
+Haskovo - BG,67086,41.9342,25.5556,Europe/Sofia
+Hato Mayor del Rey - DO,35999,18.7658,-69.2558,America/Santo_Domingo
+Havana - CU,2163824,23.133,-82.383,America/Havana
+Hawalli - KW,164212,29.3328,48.0286,Asia/Kuwait
+Haz-Zebbug - MT,11079,35.8719,14.4411,Europe/Malta
+Hebi - CN,634721,35.7323,114.286,Asia/Shanghai
+Hefei - CN,5050000,31.8639,117.281,Asia/Shanghai
+Hegang - CN,743307,47.3473,130.29,Asia/Shanghai
+Helena - US,32091,46.5927,-112.036,America/Denver
+Helsinki - FI,658864,60.1695,24.9354,Europe/Helsinki
+Hengshui - CN,522147,37.7391,115.683,Asia/Shanghai
+Hengyang - CN,1075516,26.8895,112.619,Asia/Shanghai
+Herat - AF,574300,34.3482,62.1997,Asia/Kabul
+Herceg Novi - ME,19536,42.4531,18.5375,Europe/Podgorica
+Heredia - CR,21947,9.99872,-84.1159,America/Costa_Rica
+Herisau - CH,15744,47.3862,9.27916,Europe/Zurich
+Hermosillo - MX,812229,29.0887,-110.967,America/Hermosillo
+Heshan - CN,1249807,28.5694,112.347,Asia/Shanghai
+Heze - CN,1346717,35.2393,115.474,Asia/Shanghai
+Hezhou - CN,1005490,24.4036,111.567,Asia/Shanghai
+Hillerod - DK,35357,55.9279,12.3008,Europe/Copenhagen
+Himeji - JP,530495,34.8167,134.7,Asia/Tokyo
+Hincesti - MD,16900,46.8309,28.59,Europe/Chisinau
+Hinche - HT,18590,19.1409,-72.0119,America/Port-au-Prince
+Hiroshima - JP,1200754,34.4,132.45,Asia/Tokyo
+Hlotse - LS,43967,-28.8718,28.045,Africa/Maseru
+Ho - GH,130701,6.60084,0.4713,Africa/Accra
+Ho Chi Minh City - VN,14002598,10.823,106.63,Asia/Ho_Chi_Minh
+Hobart - AU,252639,-42.8794,147.329,Australia/Hobart
+Hohhot - CN,2350000,40.8106,111.652,Asia/Shanghai
+Hola - KE,20912,-1.48256,40.0334,Africa/Nairobi
+Holguin - CU,319102,20.8872,-76.2631,America/Havana
+Homa Bay - KE,44949,-0.52731,34.4571,Africa/Nairobi
+Homs - SY,775404,34.724,36.7256,Asia/Damascus
+Homyel' - BY,501102,52.4345,30.9754,Europe/Minsk
+Hong Kong - HK,7396076,22.2783,114.175,Asia/Hong_Kong
+Hongseong - KR,89174,36.6009,126.665,Asia/Seoul
+Honiara - SB,56298,-9.43333,159.95,Pacific/Guadalcanal
+Honolulu - US,350964,21.3069,-157.858,Pacific/Honolulu
+Hormigueros - PR,11934,18.1397,-67.1274,America/Puerto_Rico
+Hosa'ina - ET,188200,7.54978,37.8537,Africa/Addis_Ababa
+Houston - US,2314157,29.7633,-95.3633,America/Chicago
+Howrah - IN,1027672,22.5769,88.3186,Asia/Kolkata
+Hpa-An - MM,50000,16.8895,97.6348,Asia/Yangon
+Hradec Kralove - CZ,90596,50.2092,15.8328,Europe/Prague
+Hrazdan - AM,49500,40.5169,44.7559,Asia/Yerevan
+Hrodna - BY,361115,53.6758,23.8289,Europe/Minsk
+Huacho - PE,54545,-11.1172,-77.6058,America/Lima
+Huai'an - CN,2494013,33.5886,119.019,Asia/Shanghai
+Huaibei - CN,1113321,33.9744,116.792,Asia/Shanghai
+Huaihua - CN,552622,27.5634,110.004,Asia/Shanghai
+Huainan - CN,1666826,32.6264,116.997,Asia/Shanghai
+Huambo - AO,595304,-12.7761,15.7392,Africa/Luanda
+Huancavelica - PE,49570,-12.7869,-74.973,America/Lima
+Huancayo - PE,456250,-12.0687,-75.2103,America/Lima
+Huangshi - CN,688090,30.2471,115.048,Asia/Shanghai
+Huanuco - PE,196627,-9.92882,-76.2399,America/Lima
+Huaraz - PE,118836,-9.52614,-77.5287,America/Lima
+Hue - VN,1380000,16.4619,107.595,Asia/Bangkok
+Huehuetenango - GT,79426,15.321,-91.47,America/Guatemala
+Huizhou - CN,2900113,23.1115,114.415,Asia/Shanghai
+Huludao - CN,944495,40.7524,120.836,Asia/Shanghai
+Humacao - PR,20387,18.1497,-65.8274,America/Puerto_Rico
+Hun - LY,24431,29.1268,15.9477,Africa/Tripoli
+Hung Yen - VN,118646,20.6464,106.051,Asia/Bangkok
+Hurghada - EG,207132,27.2574,33.8129,Africa/Cairo
+Huzhou - CN,1015937,30.8703,120.093,Asia/Shanghai
+Hyderabad - IN,6993262,17.384,78.4564,Asia/Kolkata
+Hyderabad - PK,1921275,25.3969,68.3772,Asia/Karachi
+Hyesan - KP,192680,41.4017,128.178,Asia/Pyongyang
+Ialoveni - MD,14915,46.9436,28.7815,Europe/Chisinau
+Iasi - RO,378954,47.1667,27.6,Europe/Bucharest
+Ibadan - NG,3649000,7.37756,3.90591,Africa/Lagos
+Ibague - CO,529635,4.43573,-75.2029,America/Bogota
+Ibarra - EC,221149,0.34881,-78.1246,America/Guayaquil
+Ibb - YE,771514,13.9667,44.1833,Asia/Aden
+Ibra' - OM,25265,22.6906,58.5334,Asia/Muscat
+Ica - PE,282407,-14.0754,-75.7342,America/Lima
+Idlib - SY,128840,35.9306,36.6339,Asia/Damascus
+Igdir - TR,101700,39.9237,44.045,Europe/Istanbul
+Ihosy - MG,41892,-22.4029,46.1258,Indian/Antananarivo
+Ijevan - AM,19500,40.8804,45.1478,Asia/Yerevan
+Ikeja - NG,313196,6.59651,3.34205,Africa/Lagos
+Ilam - IR,140940,33.6374,46.4227,Asia/Tehran
+Ile-Ife - NG,560000,7.4824,4.56032,Africa/Lagos
+Ilinden - MK,16406,41.993,21.5808,Europe/Skopje
+Illizi - DZ,13029,26.4833,8.46667,Africa/Algiers
+Ilorin - NG,1080000,8.49664,4.54214,Africa/Lagos
+Imishli - AZ,34178,39.871,48.06,Asia/Baku
+Impfondo - CG,48939,1.61804,18.0598,Africa/Brazzaville
+Imphal - IN,277196,24.8081,93.9442,Asia/Kolkata
+Imsida - MT,13713,35.8925,14.4828,Europe/Malta
+Incheon - KR,3039450,37.4565,126.705,Asia/Seoul
+Indianapolis - US,887642,39.7684,-86.158,America/Indiana/Indianapolis
+Indore - IN,1994397,22.7179,75.8333,Asia/Kolkata
+Inhambane - MZ,95388,-23.865,35.3833,Africa/Maputo
+Innsbruck - AT,132493,47.2627,11.3945,Europe/Vienna
+Inongo - CD,68852,-1.9275,18.2881,Africa/Kinshasa
+Invercargill - NZ,57600,-46.4,168.35,Pacific/Auckland
+Ioannina - GR,65574,39.6634,20.8519,Europe/Athens
+Ipoh - MY,759952,4.5841,101.083,Asia/Kuala_Lumpur
+Iquique - CL,199587,-20.2133,-70.1503,America/Santiago
+Iquitos - PE,377609,-3.74814,-73.2529,America/Lima
+Irakleion - GR,137154,35.3279,25.1434,Europe/Athens
+Irbid - JO,569068,32.5556,35.85,Asia/Amman
+Iringa - TZ,202490,-7.76667,35.7,Africa/Dar_es_Salaam
+Irkutsk - RU,623869,52.2957,104.291,Asia/Irkutsk
+Isabela - PR,12505,18.5008,-67.0243,America/Puerto_Rico
+Isfahan - IR,1547164,32.6525,51.6746,Asia/Tehran
+Isiolo - KE,78650,0.35462,37.5822,Africa/Nairobi
+Isiro - CD,255409,2.77391,27.616,Africa/Lubumbashi
+Islamabad - PK,601600,33.7215,73.0433,Asia/Karachi
+Ismailia - EG,429465,30.6043,32.2722,Africa/Cairo
+Ismayilli - AZ,28776,40.7848,48.1514,Asia/Baku
+Isparta - TR,172334,37.7644,30.5522,Europe/Istanbul
+Istanbul - TR,15701602,41.0138,28.9497,Europe/Istanbul
+Itanagar - IN,59490,27.0869,93.6099,Asia/Kolkata
+Iten - KE,42000,0.67028,35.5081,Africa/Nairobi
+Ivano-Frankivsk - UA,238196,48.9231,24.7125,Europe/Kyiv
+Ivanovo - RU,406113,56.9999,40.9726,Europe/Moscow
+Izhevsk - RU,648213,56.8522,53.1986,Europe/Samara
+Izmir - TR,2938292,38.4127,27.1384,Europe/Istanbul
+Izmit - TR,196571,40.765,29.9293,Europe/Istanbul
+Izola - SI,11223,45.5366,13.6601,Europe/Ljubljana
+Iztapalapa - MX,1815786,19.3553,-99.0622,America/Mexico_City
+Jabalpur - IN,1081677,23.167,79.9501,Asia/Kolkata
+Jaboatao dos Guararapes - BR,644037,-8.11278,-35.0147,America/Recife
+Jackson - US,153701,32.2988,-90.1848,America/Chicago
+Jacksonville - US,1009833,30.3322,-81.6556,America/New_York
+Jacmel - HT,137966,18.2357,-72.5369,America/Port-au-Prince
+Jaffna - LK,169102,9.66845,80.0074,Asia/Colombo
+Jaipur - IN,3046163,26.9196,75.7878,Asia/Kolkata
+Jakarta - ID,8540121,-6.21462,106.845,Asia/Jakarta
+Jalal-Abad - KG,123239,40.945,72.9931,Asia/Bishkek
+Jalalabad - AF,271900,34.4265,70.4515,Asia/Kabul
+Jalapa - GT,159840,14.6354,-89.9911,America/Guatemala
+Jalilabad - AZ,36259,39.2096,48.4919,Asia/Baku
+Jalingo - NG,117757,8.89367,11.3596,Africa/Lagos
+Jambi City - ID,606200,-1.6,103.617,Asia/Jakarta
+Jamestown - SH,637,-15.9249,-5.71816,Atlantic/St_Helena
+Jammu - IN,576198,32.7353,74.8617,Asia/Kolkata
+Jamshedpur - IN,1339438,22.8028,86.1855,Asia/Kolkata
+Janakpur - NP,195438,26.7288,85.9263,Asia/Kathmandu
+Jarash - JO,27046,32.2808,35.8993,Asia/Amman
+Jawhar - SO,47086,2.78087,45.5005,Africa/Mogadishu
+Jayapura - ID,404004,-2.53371,140.718,Asia/Jayapura
+Jeddah - SA,4697000,21.4901,39.1862,Asia/Riyadh
+Jefferson City - US,42595,38.5767,-92.1735,America/Chicago
+Jeju City - KR,488844,33.5097,126.522,Asia/Seoul
+Jekabpils - LV,27078,56.499,25.8574,Europe/Riga
+Jelgava - LV,54701,56.65,23.7128,Europe/Riga
+Jendouba - TN,51408,36.5011,8.78024,Africa/Tunis
+Jeonju - KR,629618,35.8219,127.149,Asia/Seoul
+Jepara - ID,1257912,-6.5924,110.671,Asia/Jakarta
+Jeremie - HT,97503,18.65,-74.1167,America/Port-au-Prince
+Jericho - PS,19783,31.8667,35.45,Asia/Hebron
+Jerusalem - IL,971800,31.769,35.2163,Asia/Jerusalem
+Jesenice - SI,13255,46.4324,14.0623,Europe/Ljubljana
+Ji'an - CN,538699,27.1172,114.979,Asia/Shanghai
+Jiamusi - CN,549549,46.7971,130.311,Asia/Shanghai
+Jiangmen - CN,1795459,22.5833,113.083,Asia/Shanghai
+Jiangyin - CN,1779515,31.911,120.263,Asia/Shanghai
+Jiaozhou - CN,619266,36.2839,120.003,Asia/Shanghai
+Jiaozuo - CN,865413,35.2392,113.239,Asia/Shanghai
+Jiaxing - CN,1180000,30.7522,120.75,Asia/Shanghai
+Jieyang - CN,1899394,23.5418,116.366,Asia/Shanghai
+Jihlava - CZ,50108,49.3961,15.5912,Europe/Prague
+Jijel - DZ,131513,36.821,5.76352,Africa/Algiers
+Jijiga - ET,483000,9.35,42.8,Africa/Addis_Ababa
+Jilin - CN,1895865,43.8465,126.561,Asia/Shanghai
+Jinan - CN,4335989,36.6683,116.997,Asia/Shanghai
+Jincheng - TW,37507,24.4341,118.317,Asia/Taipei
+Jingmen - CN,632954,31.0336,112.205,Asia/Shanghai
+Jingzhou - CN,1052282,30.3503,112.19,Asia/Shanghai
+Jinhua - CN,1463990,29.1068,119.644,Asia/Shanghai
+Jining - CN,1241012,35.405,116.581,Asia/Shanghai
+Jinja - UG,93061,0.43902,33.2032,Africa/Kampala
+Jinjiang - CN,1416151,24.8198,118.574,Asia/Shanghai
+Jinotega - NI,55000,13.091,-86.0023,America/Managua
+Jinotepe - NI,29507,11.8483,-86.1992,America/Managua
+Jinzhong - CN,1226617,37.684,112.755,Asia/Shanghai
+Jiujiang - CN,1164268,29.7048,116.002,Asia/Shanghai
+Jizan - SA,105198,16.8892,42.5511,Asia/Riyadh
+Jizzax - UZ,179200,40.1335,67.8296,Asia/Samarkand
+Joao Pessoa - BR,817511,-7.115,-34.8631,America/Fortaleza
+Jodhpur - IN,1056191,26.2684,73.0059,Asia/Kolkata
+Joenkoeping - SE,112766,57.7814,14.1562,Europe/Stockholm
+Joensuu - FI,77266,62.6012,29.7632,Europe/Helsinki
+Johannesburg - ZA,9418183,-26.2023,28.0436,Africa/Johannesburg
+Johor Bahru - MY,858118,1.4655,103.758,Asia/Kuala_Lumpur
+Johvi - EE,10130,59.3592,27.4211,Europe/Tallinn
+Jos - NG,1040000,9.92849,8.89212,Africa/Lagos
+Juba - SS,450000,4.85165,31.5825,Africa/Juba
+Juigalpa - NI,50000,12.1059,-85.3655,America/Managua
+Juiz de Fora - BR,573285,-21.7642,-43.3503,America/Sao_Paulo
+Juneau - US,31555,58.3019,-134.42,America/Juneau
+Jurmala - LV,52154,56.968,23.7704,Europe/Riga
+Jutiapa - GT,145880,14.2849,-89.888,America/Guatemala
+Juticalpa - HN,33686,14.6644,-86.2225,America/Tegucigalpa
+Jwaneng - BW,18784,-24.6017,24.7281,Africa/Gaborone
+Jyvaeskylae - FI,144477,62.2415,25.7209,Europe/Helsinki
+Kabarnet - KE,24661,0.49194,35.743,Africa/Nairobi
+Kabul - AF,4434550,34.5281,69.1723,Asia/Kabul
+Kabwe - ZM,288598,-14.4469,28.4464,Africa/Lusaka
+Kadugli - SD,87666,11.0111,29.7183,Africa/Khartoum
+Kaduna - NG,1850000,10.5264,7.43879,Africa/Lagos
+Kaedi - MR,56283,16.1507,-13.5058,Africa/Nouakchott
+Kaesong - KP,338155,37.9708,126.554,Asia/Pyongyang
+Kaffrine - SN,57307,14.1059,-15.5508,Africa/Dakar
+Kafr ash Shaykh - EG,194569,31.1117,30.9399,Africa/Cairo
+Kaga-Bandoro - CF,55047,6.98961,19.1874,Africa/Bangui
+Kagoshima - JP,595049,31.5667,130.55,Asia/Tokyo
+Kahramanmaras - TR,384953,37.5847,36.9264,Europe/Istanbul
+Kaifeng - CN,1451741,34.7986,114.307,Asia/Shanghai
+Kairouan - TN,139070,35.6781,10.0963,Africa/Tunis
+Kajaani - FI,36498,64.2273,27.7285,Europe/Helsinki
+Kajiado - KE,24678,-1.85238,36.7768,Africa/Nairobi
+Kakamega - KE,1867579,0.28422,34.7523,Africa/Nairobi
+Kakata - LR,52247,6.53104,-10.3537,Africa/Monrovia
+Kalasin - TH,55102,16.4328,103.507,Asia/Bangkok
+Kaliningrad - RU,475056,54.7064,20.511,Europe/Kaliningrad
+Kallakurichi - IN,1682687,11.7338,78.9592,Asia/Kolkata
+Kalmar - SE,38408,56.6616,16.3616,Europe/Stockholm
+Kaluga - RU,340851,54.5306,36.27,Europe/Moscow
+Kalyan - IN,1262255,19.2437,73.1355,Asia/Kolkata
+Kamina - CD,200184,-8.73508,24.998,Africa/Lubumbashi
+Kamnik - SI,13644,46.2259,14.6121,Europe/Ljubljana
+Kampala - UG,1680600,0.31628,32.5822,Africa/Kampala
+Kamphaeng Phet - TH,58787,16.4834,99.5215,Asia/Bangkok
+Kampong Cham - KH,61750,11.9934,105.463,Asia/Phnom_Penh
+Kampong Chhnang - KH,75244,12.25,104.667,Asia/Phnom_Penh
+Kampong Speu - KH,33231,11.4533,104.521,Asia/Phnom_Penh
+Kampong Thom - KH,19951,12.7111,104.889,Asia/Phnom_Penh
+Kampot - KH,22691,10.6104,104.181,Asia/Phnom_Penh
+Kananga - CD,1247168,-5.89624,22.4166,Africa/Lubumbashi
+Kanazawa - JP,466029,36.6,136.617,Asia/Tokyo
+Kanchanaburi - TH,63699,14.0041,99.5483,Asia/Bangkok
+Kandahar - AF,523300,31.6133,65.7101,Asia/Kabul
+Kandi - BJ,56043,11.1342,2.93861,Africa/Porto-Novo
+Kandy - LK,111701,7.2906,80.6336,Asia/Colombo
+Kangar - MY,63869,6.4414,100.199,Asia/Kuala_Lumpur
+Kanggye - KP,209530,40.9695,126.585,Asia/Pyongyang
+Kankan - GN,221428,10.3854,-9.30568,Africa/Conakry
+Kano - NG,4910000,12.0001,8.51672,Africa/Lagos
+Kanpur - IN,2823249,26.4652,80.3498,Asia/Kolkata
+Kanye - BW,48028,-24.9668,25.3327,Africa/Gaborone
+Kaohsiung - TW,2737660,22.6163,120.313,Asia/Taipei
+Kaolack - SN,298904,14.152,-16.0726,Africa/Dakar
+Kapan - AM,32900,39.2076,46.4068,Asia/Yerevan
+Kapenguria - KE,56000,1.23889,35.1119,Africa/Nairobi
+Kaposvar - HU,64280,46.3667,17.8,Europe/Budapest
+Kapsabet - KE,41997,0.20387,35.105,Africa/Nairobi
+Kara - TG,104207,9.55111,1.18611,Africa/Lome
+Karabuek - TR,125403,41.2049,32.6277,Europe/Istanbul
+Karachi - PK,11624219,24.8608,67.0104,Asia/Karachi
+Karagandy - KZ,497777,49.8019,73.1021,Asia/Almaty
+Karaj - IR,1448075,35.8327,50.9915,Asia/Tehran
+Karak City - JO,21678,31.1637,35.762,Asia/Amman
+Karakol - KG,84351,42.4892,78.3936,Asia/Bishkek
+Karaman - TR,175390,37.1811,33.215,Europe/Istanbul
+Karbala - IQ,1218732,32.616,44.0249,Asia/Baghdad
+Kardzhali - BG,51000,41.645,25.3658,Europe/Sofia
+Kargil - IN,16338,34.5577,76.1262,Asia/Kolkata
+Karlovac - HR,41869,45.4917,15.55,Europe/Zagreb
+Karlovy Vary - CZ,45500,50.2327,12.8712,Europe/Prague
+Karlskrona - SE,66675,56.1616,15.5866,Europe/Stockholm
+Karlstad - SE,61492,59.3793,13.5036,Europe/Stockholm
+Kars - TR,91450,40.5983,43.0855,Europe/Istanbul
+Karuzi - BI,15964,-3.10139,30.1628,Africa/Bujumbura
+Kasama - ZM,179636,-10.2129,31.1808,Africa/Lusaka
+Kashgar - CN,506640,39.4672,75.9868,Asia/Urumqi
+Kassala - SD,401477,15.451,36.4,Africa/Khartoum
+Kasserine - TN,84365,35.1676,8.83651,Africa/Tunis
+Kastamonu - TR,125622,41.3781,33.7753,Europe/Istanbul
+Kasur - PK,510875,31.1187,74.4502,Asia/Karachi
+Kathmandu - NP,1442271,27.7017,85.3206,Asia/Kathmandu
+Katima Mulilo - NA,33615,-17.5047,24.2757,Africa/Windhoek
+Katowice - PL,317316,50.2597,19.0217,Europe/Warsaw
+Katsina - NG,670000,12.9908,7.60177,Africa/Lagos
+Kaunas - LT,289380,54.9016,23.9091,Europe/Vilnius
+Kavadarci - MK,38799,41.4334,22.0122,Europe/Skopje
+Kavaratti - IN,11210,10.5669,72.642,Asia/Kolkata
+Kavieng - PG,14490,-2.57337,150.795,Pacific/Port_Moresby
+Kawaguchi - JP,607373,35.8052,139.711,Asia/Tokyo
+Kawasaki - JP,1538262,35.5206,139.717,Asia/Tokyo
+Kaya - BF,121970,13.0917,-1.08444,Africa/Ouagadougou
+Kayanza - BI,33682,-2.9221,29.6293,Africa/Bujumbura
+Kayes - ML,194716,14.4478,-11.4439,Africa/Bamako
+Kayseri - TR,1434357,38.7322,35.4853,Europe/Istanbul
+Kazan - RU,1243500,55.7887,49.1221,Europe/Moscow
+Kebili - TN,26310,33.7044,8.96903,Africa/Tunis
+Kecskemet - HU,109847,46.9062,19.6913,Europe/Budapest
+Kedougou - SN,30051,12.5556,-12.1808,Africa/Dakar
+Keetmanshoop - NA,23049,-26.5765,18.1336,Africa/Windhoek
+Keflavik - IS,15930,64.0049,-22.5624,Atlantic/Reykjavik
+Kemerovo - RU,558973,55.3542,86.1043,Asia/Novokuznetsk
+Kendari - ID,345107,-3.9778,122.515,Asia/Makassar
+Kenema - SL,143137,7.87687,-11.1903,Africa/Freetown
+Kenitra - MA,470949,34.261,-6.5802,Africa/Casablanca
+Keren - ER,74800,15.7779,38.4511,Africa/Asmara
+Kericho - KE,53804,-0.36774,35.2831,Africa/Nairobi
+Kerman - IR,577514,30.2832,57.0788,Asia/Tehran
+Kermanshah - IR,621100,34.3142,47.065,Asia/Tehran
+Kerugoya - KE,30045,-0.49887,37.2803,Africa/Nairobi
+Khabarovsk - RU,618150,48.462,135.097,Asia/Vladivostok
+Khanty-Mansiysk - RU,101466,61.0019,69.0273,Asia/Yekaterinburg
+Kharkiv - UA,1433886,49.9818,36.2548,Europe/Kyiv
+Khartoum - SD,1974647,15.5518,32.5324,Africa/Khartoum
+Khartoum North - SD,1012211,15.6493,32.5346,Africa/Khartoum
+Khasab - OM,17904,26.1799,56.2477,Asia/Muscat
+Khenchela - DZ,114472,35.4358,7.14333,Africa/Algiers
+Kherson - UA,283649,46.6369,32.6146,Europe/Kyiv
+Khirdalan - AZ,37949,40.4481,49.755,Asia/Baku
+Khmelnytskyi - UA,274582,49.4183,26.9794,Europe/Kyiv
+Khon Kaen - TH,114459,16.4467,102.833,Asia/Bangkok
+Khorramabad - IR,329825,33.4878,48.3558,Asia/Tehran
+Khorugh - TJ,30500,37.4897,71.553,Asia/Dushanbe
+Khost - AF,96123,33.3395,69.9204,Asia/Kabul
+Khovd - MN,29800,48.0056,91.6419,Asia/Hovd
+Khujand - TJ,191000,40.2826,69.6222,Asia/Dushanbe
+Khulna - BD,1500689,22.8098,89.5644,Asia/Dhaka
+Kiambu - KE,147870,-1.17139,36.8356,Africa/Nairobi
+Kibaha - TZ,265360,-6.76667,38.9167,Africa/Dar_es_Salaam
+Kibuye - RW,48024,-2.06028,29.3478,Africa/Kigali
+Kicevo - MK,31123,41.5127,20.9587,Europe/Skopje
+Kidal - ML,40030,18.4434,1.40921,Africa/Bamako
+Kiel - DE,246601,54.3213,10.1349,Europe/Berlin
+Kielce - PL,208598,50.8703,20.6275,Europe/Warsaw
+Kiffa - MR,62051,16.6207,-11.4021,Africa/Nouakchott
+Kigali - RW,1132686,-1.94995,30.0588,Africa/Kigali
+Kigoma - TZ,232388,-4.87694,29.6267,Africa/Dar_es_Salaam
+Kilifi - KE,74270,-3.63045,39.8499,Africa/Nairobi
+Kilis - TR,111648,36.7161,37.115,Europe/Istanbul
+Kimbe - PG,18847,-5.55085,150.138,Pacific/Port_Moresby
+Kimberley - ZA,142089,-28.7323,24.7623,Africa/Johannesburg
+Kindia - GN,161024,10.0569,-12.8658,Africa/Conakry
+Kindu - CD,234651,-2.94373,25.9224,Africa/Lubumbashi
+Kingston - JM,937700,17.997,-76.7936,America/Jamaica
+Kingston - NF,880,-29.0546,167.966,Pacific/Norfolk
+Kingstown - VC,24518,13.1553,-61.2274,America/St_Vincent
+Kinkala - CG,12411,-4.35859,14.7646,Africa/Brazzaville
+Kinshasa - CD,16000000,-4.32758,15.3136,Africa/Kinshasa
+Kirikkale - TR,186960,39.8453,33.5064,Europe/Istanbul
+Kirklareli - TR,58223,41.7351,27.2252,Europe/Istanbul
+Kirkuk - IQ,1031000,35.4681,44.3922,Asia/Baghdad
+Kirov - RU,507155,58.5981,49.6578,Europe/Kirov
+Kirsehir - TR,150700,39.1458,34.1639,Europe/Istanbul
+Kirundo - BI,15511,-2.5845,30.0959,Africa/Bujumbura
+Kisangani - CD,1181788,0.51528,25.191,Africa/Lubumbashi
+Kisii - KE,112417,-0.68174,34.7667,Africa/Nairobi
+Kismayo - SO,234852,-0.35817,42.5454,Africa/Mogadishu
+Kisumu - KE,397957,-0.10221,34.7617,Africa/Nairobi
+Kitakyushu - JP,940978,33.8518,130.85,Asia/Tokyo
+Kitale - KE,162174,1.01572,35.0062,Africa/Nairobi
+Kitui - KE,29062,-1.36696,38.0106,Africa/Nairobi
+Klagenfurt am Woerthersee - AT,100316,46.6247,14.3053,Europe/Vienna
+Klaipeda - LT,172292,55.7068,21.1391,Europe/Vilnius
+Kobe - JP,1525152,34.6913,135.183,Asia/Tokyo
+Kochani - MK,34258,41.9164,22.4128,Europe/Skopje
+Kochi - JP,332059,33.55,133.533,Asia/Tokyo
+Koeln - DE,963395,50.9333,6.95,Europe/Berlin
+Koforidua - GH,151255,6.09408,-0.25913,Africa/Accra
+Kofu - JP,189591,35.6667,138.567,Asia/Tokyo
+Koh Kong - KH,33134,11.6153,102.984,Asia/Phnom_Penh
+Kohima - IN,99039,25.6747,94.111,Asia/Kolkata
+Kokkola - FI,47915,63.8385,23.1307,Europe/Helsinki
+Kokopo - PG,26273,-4.3432,152.269,Pacific/Port_Moresby
+Kokshetau - KZ,150649,53.2841,69.3936,Asia/Almaty
+Kolda - SN,103574,12.8939,-14.9413,Africa/Dakar
+Kolkata - IN,4631392,22.5626,88.363,Asia/Kolkata
+Kolwezi - CD,790248,-10.7148,25.4667,Africa/Lubumbashi
+Komotini - GR,45631,41.1176,25.4059,Europe/Athens
+Konayev - KZ,42167,43.8668,77.063,Asia/Almaty
+Konya - TR,1433861,37.8713,32.4846,Europe/Istanbul
+Koper - SI,25753,45.5482,13.7296,Europe/Ljubljana
+Koprivnica - HR,22262,46.1636,16.8297,Europe/Zagreb
+Korce - AL,58259,40.6186,20.7808,Europe/Tirane
+Korhogo - CI,440926,9.45803,-5.62961,Africa/Abidjan
+Korla - CN,549324,41.7606,86.1523,Asia/Urumqi
+Koronadal - PH,201844,6.50306,124.847,Asia/Manila
+Koror - PW,14000,7.33978,134.473,Pacific/Palau
+Kosice - SK,225044,48.7144,21.258,Europe/Bratislava
+Kostanay - KZ,210000,53.2144,63.6246,Asia/Qostanay
+Kostroma - RU,277280,57.7664,40.9283,Europe/Moscow
+Kota - IN,1001694,25.1825,75.8391,Asia/Kolkata
+Kota Bharu - MY,568900,6.12361,102.243,Asia/Kuala_Lumpur
+Kota Kinabalu - MY,500421,5.9749,116.072,Asia/Kuching
+Koudougou - BF,160239,12.2526,-2.36272,Africa/Ouagadougou
+Koulamoutou - GA,30830,-1.13667,12.464,Africa/Libreville
+Koulikoro - ML,64128,12.8627,-7.55985,Africa/Bamako
+Koumra - TD,54109,8.91587,17.5505,Africa/Ndjamena
+Koungou - YT,18118,-12.7336,45.2042,Indian/Mayotte
+Kouvola - FI,80483,60.8667,26.7,Europe/Helsinki
+Kozani - GR,36481,40.2993,21.7898,Europe/Athens
+Kozhikode - IN,550440,11.248,75.7804,Asia/Kolkata
+Krabi - TH,31219,8.07257,98.9105,Asia/Bangkok
+Krakow - PL,755050,50.0614,19.9366,Europe/Warsaw
+Kralendijk - BQ,10620,12.15,-68.2667,America/Kralendijk
+Kranj - SI,37966,46.2389,14.3556,Europe/Ljubljana
+Krasnodar - RU,899541,45.0453,38.9818,Europe/Moscow
+Krasnoyarsk - RU,1090811,56.0374,92.9314,Asia/Krasnoyarsk
+Kratie - KH,19975,12.4881,106.019,Asia/Phnom_Penh
+Kratovo - MK,10288,42.0791,22.1817,Europe/Skopje
+Kristiansand - NO,117237,58.1467,7.9956,Europe/Oslo
+Kriva Palanka - MK,20820,42.202,22.3339,Europe/Skopje
+Krong Kep - KH,11658,10.4829,104.317,Asia/Phnom_Penh
+Kropyvnytskyy - UA,219676,48.5083,32.2662,Europe/Kyiv
+Kryvyy Rih - UA,603904,47.9057,33.394,Europe/Kyiv
+Kuacjok - SS,78000,8.30278,27.98,Africa/Juba
+Kuala Belait - BN,31178,4.58361,114.231,Asia/Brunei
+Kuala Lumpur - MY,1453975,3.1412,101.687,Asia/Kuala_Lumpur
+Kuala Terengganu - MY,426500,5.3302,103.141,Asia/Kuala_Lumpur
+Kuantan - MY,548014,3.8077,103.326,Asia/Kuala_Lumpur
+Kuching - MY,402738,1.55,110.333,Asia/Kuching
+Kuetahya - TR,185008,39.4242,29.9833,Europe/Istanbul
+Kukes - AL,36125,42.0769,20.4219,Europe/Tirane
+Kumamoto - JP,738907,32.8059,130.692,Asia/Tokyo
+Kumanovo - MK,75051,42.1328,21.7158,Europe/Skopje
+Kumasi - GH,2544530,6.68848,-1.62443,Africa/Accra
+Kunduz - AF,161902,36.7289,68.857,Asia/Kabul
+Kunming - CN,3855346,25.0389,102.718,Asia/Shanghai
+Kunshan - CN,2092496,31.3776,120.954,Asia/Shanghai
+Kuopio - FI,121557,62.8924,27.677,Europe/Helsinki
+Kupang - ID,442758,-10.1708,123.607,Asia/Makassar
+Kuressaare - EE,12698,58.2538,22.4922,Europe/Tallinn
+Kurgan - RU,309285,55.449,65.3434,Asia/Yekaterinburg
+Kursk - RU,448733,51.7269,36.1846,Europe/Moscow
+Kurunegala - LK,28571,7.4839,80.3683,Asia/Colombo
+Kutaisi - GE,135201,42.2679,42.6946,Asia/Tbilisi
+Kuwait City - KW,60064,29.367,47.9743,Asia/Kuwait
+Kwale - KE,10063,-4.17375,39.4521,Africa/Nairobi
+Kwun Tong - HK,16766,22.3118,114.222,Asia/Hong_Kong
+Kyiv - UA,2797553,50.4547,30.5238,Europe/Kyiv
+Kyoto - JP,1463723,35.0211,135.754,Asia/Tokyo
+Kyrenia - CY,26701,35.3363,33.3173,Asia/Famagusta
+Kyurdarmir - AZ,19088,40.3426,48.1565,Asia/Baku
+Kyustendil - BG,37799,42.2831,22.6922,Europe/Sofia
+Kyzyl - RU,116983,51.7111,94.4378,Asia/Krasnoyarsk
+Kyzylorda - KZ,354800,44.8528,65.5092,Asia/Qyzylorda
+L'Aquila - IT,33691,42.3505,13.3995,Europe/Rome
+La Asuncion - VE,35084,11.0333,-63.8628,America/Caracas
+La Ceiba - HN,222055,15.7597,-86.7822,America/Tegucigalpa
+La Chorrera - PA,61232,8.87763,-79.7801,America/Panama
+La Guaira - VE,25259,10.6016,-66.9329,America/Caracas
+La Paz - MX,250141,24.1423,-110.313,America/Mazatlan
+La Paz - HN,17555,14.3212,-87.6759,America/Tegucigalpa
+La Plata - AR,195443,-34.9213,-57.9544,America/Argentina/Buenos_Aires
+La Rioja - AR,178872,-29.4133,-66.8564,America/Argentina/La_Rioja
+La Romana - DO,208437,18.4233,-68.9664,America/Santo_Domingo
+La Serena - CL,154521,-29.9059,-71.2501,America/Santiago
+La Union - SV,26807,13.3392,-87.8433,America/El_Salvador
+La Vega - DO,102426,19.2203,-70.531,America/Santo_Domingo
+Laascaanood - SO,60100,8.47738,47.3597,Africa/Mogadishu
+Laayoune - EH,196331,27.1418,-13.188,Africa/El_Aaiun
+Labasa - FJ,27949,-16.4332,179.365,Pacific/Fiji
+Labuan - MY,95120,5.28028,115.248,Asia/Kuala_Lumpur
+Lae - PG,76255,-6.72333,146.996,Pacific/Port_Moresby
+Lafia - NG,127236,8.4939,8.51532,Africa/Lagos
+Laghouat - DZ,134372,33.8,2.86514,Africa/Algiers
+Lagos - NG,15388000,6.45407,3.39467,Africa/Lagos
+Lahij - YE,23375,13.0567,44.8819,Asia/Aden
+Lahore - PK,13004135,31.558,74.3507,Asia/Karachi
+Lahti - FI,120093,60.9827,25.6615,Europe/Helsinki
+Lai - TD,27071,9.3972,16.3007,Africa/Ndjamena
+Lai Chau - VN,42973,22.3964,103.458,Asia/Bangkok
+Laibin - CN,910282,23.7474,109.222,Asia/Shanghai
+Laiwu - CN,989535,36.1928,117.657,Asia/Shanghai
+Lambarene - GA,46605,-0.7001,10.2406,Africa/Libreville
+Lamia - GR,52006,38.8995,22.4335,Europe/Athens
+Lampang - TH,156139,18.2923,99.4928,Asia/Bangkok
+Lamphun - TH,43196,18.5805,99.0075,Asia/Bangkok
+Lamu - KE,25385,-2.27169,40.902,Africa/Nairobi
+Lang Son - VN,200108,21.8526,106.761,Asia/Bangkok
+Langfang - CN,868066,39.5208,116.715,Asia/Shanghai
+Lankaran - AZ,240300,38.7543,48.8506,Asia/Baku
+Lansing - US,112644,42.7325,-84.5555,America/Detroit
+Lanzhou - CN,3000000,36.057,103.84,Asia/Shanghai
+Lao Cai - VN,130671,22.4856,103.971,Asia/Bangkok
+Lappeenranta - FI,72646,61.0587,28.1887,Europe/Helsinki
+Larisa - GR,146926,39.6285,22.4211,Europe/Athens
+Larnaca - CY,72000,34.9221,33.6279,Asia/Nicosia
+Las Palmas de Gran Canaria - ES,378517,28.1018,-15.4157,Atlantic/Canary
+Las Pinas - PH,615549,14.4506,120.983,Asia/Manila
+Las Tunas - CU,203684,20.9613,-76.9519,America/Havana
+Las Vegas - US,641903,36.175,-115.137,America/Los_Angeles
+Lashkar Gah - AF,43934,31.5938,64.3716,Asia/Kabul
+Latacunga - EC,205624,-0.93424,-78.6152,America/Guayaquil
+Latakia - SY,709000,35.5312,35.7909,Asia/Damascus
+Lausanne - CH,139111,46.516,6.63282,Europe/Zurich
+Lautoka - FJ,52500,-17.6169,177.45,Pacific/Fiji
+Laventille - TT,21000,10.6492,-61.4989,America/Port_of_Spain
+Leeds - GB,536280,53.7965,-1.54785,Europe/London
+Leeuwarden - NL,91424,53.2027,5.80973,Europe/Amsterdam
+Leipzig - DE,504971,51.3396,12.3713,Europe/Berlin
+Leiria - PT,45112,39.7436,-8.80705,Europe/Lisbon
+Lelydorp - SR,18223,5.7,-55.2333,America/Paramaribo
+Lelystad - NL,70741,52.5083,5.475,Europe/Amsterdam
+Leon - NI,144538,12.4353,-86.8786,America/Managua
+Leon de los Aldama - MX,1579803,21.1291,-101.674,America/Mexico_City
+Leova - MD,14301,46.4819,28.253,Europe/Chisinau
+Lerik - AZ,87000,38.7739,48.415,Asia/Baku
+Les Cayes - HT,125799,18.192,-73.7495,America/Port-au-Prince
+les Escaldes - AD,15853,42.5073,1.53414,Europe/Andorra
+Leticia - CO,48144,-4.21079,-69.9394,America/Bogota
+Lezhe - AL,18695,41.7836,19.6436,Europe/Tirane
+Lhasa - CN,118721,29.65,91.1,Asia/Shanghai
+Lianyungang - CN,2001009,34.5984,119.216,Asia/Shanghai
+Liaocheng - CN,1229768,36.4506,116.002,Asia/Shanghai
+Liberec - CZ,102951,50.7671,15.0562,Europe/Prague
+Liberia - CR,45380,10.6352,-85.4378,America/Costa_Rica
+Libreville - GA,846090,0.39241,9.45356,Africa/Libreville
+Lichinga - MZ,281341,-13.3128,35.2406,Africa/Maputo
+Liepaja - LV,66680,56.5047,21.0109,Europe/Riga
+Liestal - CH,12832,47.4845,7.73446,Europe/Zurich
+Likisa - TL,19000,-8.5875,125.342,Asia/Dili
+Lille - FR,234475,50.6339,3.05512,Europe/Paris
+Lillehammer - NO,29011,61.1151,10.4663,Europe/Oslo
+Lilongwe - MW,1115815,-13.9669,33.7873,Africa/Blantyre
+Lima - PE,7737002,-12.0432,-77.0282,America/Lima
+Limassol - CY,154000,34.6841,33.0379,Asia/Nicosia
+Limon - CR,63081,9.99074,-83.036,America/Costa_Rica
+Lincoln - US,294757,40.8,-96.667,America/Chicago
+Linden - GY,44690,6.00815,-58.3072,America/Guyana
+Lindi - TZ,95096,-9.99709,39.7165,Africa/Dar_es_Salaam
+Linkoeping - SE,166673,58.4109,15.6216,Europe/Stockholm
+Linyi - CN,2743843,35.0631,118.343,Asia/Shanghai
+Linz - AT,204846,48.3064,14.2861,Europe/Vienna
+Lipetsk - RU,509735,52.5876,39.5515,Europe/Moscow
+Lipkovo - MK,28102,42.157,21.5856,Europe/Skopje
+Lisbon - PT,517802,38.7251,-9.1498,Europe/Lisbon
+Little Rock - US,202591,34.7465,-92.2896,America/Chicago
+Liupanshui - CN,1320825,26.5944,104.833,Asia/Shanghai
+Liuzhou - CN,1436599,24.324,109.407,Asia/Shanghai
+Ljubljana - SI,272220,46.0511,14.5051,Europe/Ljubljana
+Lodwar - KE,82970,3.11988,35.5964,Africa/Nairobi
+Lodz - PL,768755,51.7706,19.4739,Europe/Warsaw
+Loei - TH,35273,17.4905,101.727,Asia/Bangkok
+Logrono - ES,152485,42.4661,-2.45115,Europe/Madrid
+Loikaw - MM,17293,19.678,97.2097,Asia/Yangon
+Loja - EC,274112,-3.99313,-79.2042,America/Guayaquil
+Lokoja - NG,60579,7.79688,6.74048,Africa/Lagos
+Lokossa - BJ,47246,6.63869,1.71674,Africa/Porto-Novo
+Lome - TG,2188376,6.12874,1.22154,Africa/Lome
+London - GB,8961989,51.5085,-0.12574,Europe/London
+Londrina - BR,588125,-23.3103,-51.1628,America/Sao_Paulo
+Long Xuyen - VN,286140,10.3864,105.435,Asia/Ho_Chi_Minh
+Longyan - CN,1025087,25.0749,117.018,Asia/Shanghai
+Longyearbyen - SJ,2368,78.2233,15.6469,Arctic/Longyearbyen
+Lop Buri - TH,57761,14.7981,100.654,Asia/Bangkok
+Los Angeles - US,3820914,34.0522,-118.244,America/Los_Angeles
+Los Teques - VE,252242,10.3495,-67.0427,America/Caracas
+Lospalos - TL,17186,-8.52167,126.998,Asia/Dili
+Louga - SN,113365,15.6187,-16.2244,Africa/Dakar
+Louisville - US,624444,38.2542,-85.7594,America/Kentucky/Louisville
+Lovech - BG,29659,43.1323,24.7176,Europe/Sofia
+Lu'an - CN,1644344,31.7356,116.517,Asia/Shanghai
+Luancheng - CN,597130,37.8845,114.646,Asia/Shanghai
+Luanda - AO,2776168,-8.83682,13.2343,Africa/Luanda
+Luang Prabang - LA,47378,19.8933,102.153,Asia/Vientiane
+Lubango - AO,600751,-14.9172,13.4925,Africa/Luanda
+Lublin - PL,360044,51.2506,22.5701,Europe/Warsaw
+Lubumbashi - CD,2221925,-11.6609,27.4794,Africa/Lubumbashi
+Lucknow - IN,2472011,26.8393,80.9231,Asia/Kolkata
+Ludhiana - IN,1618879,30.912,75.8538,Asia/Kolkata
+Lueliang - CN,3346500,37.5192,111.144,Asia/Shanghai
+Luena - AO,273675,-11.7833,19.9167,Africa/Luanda
+Luganville - VU,13397,-15.5199,167.162,Pacific/Efate
+Luhansk - UA,397677,48.5681,39.3055,Europe/Kyiv
+Lulea - SE,77832,65.5841,22.1547,Europe/Stockholm
+Luohe - CN,1294974,33.5639,114.043,Asia/Shanghai
+Luoyang - CN,1390581,34.6735,112.437,Asia/Shanghai
+Lusaka - ZM,2212301,-15.4067,28.2871,Africa/Lusaka
+Lusambo - CD,49376,-4.97503,23.4439,Africa/Lubumbashi
+Lutsk - UA,215986,50.7578,25.3502,Europe/Kyiv
+Luxembourg - LU,76684,49.6098,6.13268,Europe/Luxembourg
+Luxor - EG,422407,25.6989,32.6421,Africa/Cairo
+Luzern - CH,81691,47.0505,8.30635,Europe/Zurich
+Luzhou - CN,998900,28.8903,105.426,Asia/Shanghai
+Lviv - UA,717273,49.8383,24.0232,Europe/Kyiv
+Lyon - FR,522969,45.7491,4.84789,Europe/Paris
+M'Sila - DZ,132975,35.7089,4.53722,Africa/Algiers
+Ma'an - JO,50350,30.1962,35.7341,Asia/Amman
+Ma'anshan - CN,741531,31.6858,118.51,Asia/Shanghai
+Ma'rib - YE,16794,15.4625,45.3258,Asia/Aden
+Maastricht - NL,122378,50.8483,5.68889,Europe/Amsterdam
+Macapa - BR,512902,0.03889,-51.0664,America/Belem
+Macas - EC,23687,-2.30741,-78.1203,America/Guayaquil
+Macau - MO,649335,22.2006,113.546,Asia/Macau
+Maceio - BR,1031597,-9.66583,-35.7353,America/Maceio
+Machakos - KE,63767,-1.52233,37.2652,Africa/Nairobi
+Machala - EC,289141,-3.25886,-79.9588,America/Guayaquil
+Madaba - JO,82335,31.716,35.7939,Asia/Amman
+Madang - PG,27419,-5.22152,145.787,Pacific/Port_Moresby
+Madinah - SA,1300000,24.4686,39.6142,Asia/Riyadh
+Madison - US,280305,43.0731,-89.4012,America/Chicago
+Madrid - ES,3255944,40.4165,-3.70256,Europe/Madrid
+Madurai - IN,1465625,9.919,78.1195,Asia/Kolkata
+Maebashi - JP,332149,36.4,139.083,Asia/Tokyo
+Maevatanana - MG,27459,-16.95,46.8333,Indian/Antananarivo
+Mafeteng - LS,45287,-29.823,27.2374,Africa/Maseru
+Mafikeng - ZA,77110,-25.8652,25.6442,Africa/Johannesburg
+Mafraq - JO,57118,32.3429,36.208,Asia/Amman
+Magadan - RU,92782,59.5627,150.802,Asia/Magadan
+Magdeburg - DE,235775,52.1313,11.6319,Europe/Berlin
+Magway - MM,96954,20.1496,94.9325,Asia/Yangon
+Maha Sarakham - TH,51584,16.1848,103.301,Asia/Bangkok
+Mahajanga - MG,260556,-15.7167,46.3167,Indian/Antananarivo
+Mahdia - TN,51803,35.5047,11.0622,Africa/Tunis
+Mahilyow - BY,353110,53.9088,30.3404,Europe/Minsk
+Maiduguri - NG,1110000,11.8469,13.1571,Africa/Lagos
+Maintirano - MG,23609,-18.0635,44.0295,Indian/Antananarivo
+Mainz - DE,217123,49.9819,8.28008,Europe/Berlin
+Majuro - MH,25400,7.08971,171.38,Pacific/Majuro
+Makamba - BI,14539,-4.1348,29.804,Africa/Bujumbura
+Makassar - ID,1423877,-5.14861,119.432,Asia/Makassar
+Makati City - PH,510383,14.5503,121.033,Asia/Manila
+Makeni - SL,87679,8.88605,-12.0442,Africa/Freetown
+Makhachkala - RU,596356,42.9778,47.5003,Europe/Moscow
+Makkah - SA,1578722,21.4266,39.8256,Asia/Riyadh
+Makokou - GA,24823,0.57381,12.8642,Africa/Libreville
+Makurdi - NG,390000,7.73375,8.52139,Africa/Lagos
+Malabo - GQ,155963,3.75578,8.78166,Africa/Malabo
+Malacca - MY,579000,2.196,102.24,Asia/Kuala_Lumpur
+Malaga - ES,591637,36.7202,-4.42034,Europe/Madrid
+Malakal - SS,160765,9.53342,31.6605,Africa/Juba
+Malanje - AO,455000,-9.54015,16.341,Africa/Luanda
+Malatya - TR,806156,38.3502,38.3167,Europe/Istanbul
+Maldonado - UY,55478,-34.8979,-54.9502,America/Montevideo
+Male - MV,103693,4.17521,73.5092,Indian/Maldives
+Maliana - TL,22000,-8.99167,125.22,Asia/Dili
+Malingao - PH,1121974,7.16083,124.475,Asia/Manila
+Malmoe - SE,362133,55.6059,13.0007,Europe/Stockholm
+Mamou - GN,79109,10.3755,-12.0915,Africa/Conakry
+Mamoudzou - YT,54831,-12.7823,45.2288,Indian/Mayotte
+Mamuju - ID,15000,-2.68056,118.886,Asia/Makassar
+Man - CI,241969,7.41251,-7.55383,Africa/Abidjan
+Manado - ID,451916,1.48218,124.849,Asia/Makassar
+Managua - NI,973087,12.1328,-86.2504,America/Managua
+Manakara - MG,46850,-22.1486,48.0106,Indian/Antananarivo
+Manama - BH,147074,26.2279,50.5857,Asia/Bahrain
+Manati - PR,16092,18.4275,-66.4921,America/Puerto_Rico
+Manaus - BR,2219580,-3.10194,-60.025,America/Manaus
+Manchester - GB,568996,53.4809,-2.23743,Europe/London
+Mandalay - MM,1208099,21.9747,96.0836,Asia/Yangon
+Mandalgovi - MN,12339,45.7625,106.271,Asia/Ulaanbaatar
+Mandera - KE,114718,3.93726,41.8569,Africa/Nairobi
+Mandeville - JM,47115,18.0417,-77.5071,America/Jamaica
+Manga - BF,28615,11.6636,-1.07306,Africa/Ouagadougou
+Mangilao Village - GU,15191,13.4476,144.801,Pacific/Guam
+Manhattan - US,1487536,40.7834,-73.9663,America/New_York
+Manila - PH,1600000,14.6042,120.982,Asia/Manila
+Manisa - TR,243971,38.612,27.4265,Europe/Istanbul
+Manizales - CO,434403,5.0668,-75.5068,America/Bogota
+Manokwari - ID,107325,-0.86291,134.064,Asia/Jayapura
+Manouba - TN,32005,36.8101,10.0956,Africa/Tunis
+Mansa - ZM,170965,-11.1998,28.8943,Africa/Lusaka
+Manzini - SZ,110537,-26.4988,31.38,Africa/Mbabane
+Mao - TD,50681,14.1229,15.3119,Africa/Ndjamena
+Mao - DO,48297,19.5491,-71.0781,America/Santo_Domingo
+Maoming - CN,1307802,21.6663,110.914,Asia/Shanghai
+Maputo - MZ,1254837,-25.9655,32.5832,Africa/Maputo
+Mar del Plata - AR,593337,-38.0004,-57.5562,America/Argentina/Buenos_Aires
+Maracaibo - VE,1752602,10.6423,-71.6109,America/Caracas
+Maracay - VE,464700,10.2497,-67.5948,America/Caracas
+Maradi - NE,361702,13.5,7.10174,Africa/Niamey
+Maralal - KE,31350,1.09667,36.6981,Africa/Nairobi
+Mardin - TR,129864,37.3131,40.7436,Europe/Istanbul
+Maribor - SI,96209,46.5558,15.6459,Europe/Ljubljana
+Mariehamn - AX,10682,60.0973,19.9348,Europe/Mariehamn
+Mariental - NA,14789,-24.6271,17.9647,Africa/Windhoek
+Marigot - MF,5700,18.0682,-63.083,America/Marigot
+Marijampole - LT,34975,54.5579,23.35,Europe/Vilnius
+Marka - SO,230100,1.71594,44.7717,Africa/Mogadishu
+Marondera - ZW,66204,-18.1853,31.5519,Africa/Harare
+Maroua - CM,314122,10.5909,14.3159,Africa/Douala
+Marrakesh - MA,995871,31.6342,-7.99994,Africa/Casablanca
+Marsa Matruh - EG,176498,31.3529,27.2372,Africa/Cairo
+Marsabit - KE,36289,2.33468,37.9909,Africa/Nairobi
+Marsaskala - MT,10024,35.8622,14.567,Europe/Malta
+Marseille - FR,870731,43.297,5.38107,Europe/Paris
+Marupe - LV,17796,56.9054,24.0511,Europe/Riga
+Mary - TM,114680,37.5938,61.8303,Asia/Ashgabat
+Masaya - NI,130113,11.9732,-86.0959,America/Managua
+Mascara - DZ,108629,35.3966,0.14027,Africa/Algiers
+Maseru - LS,359753,-29.3167,27.4833,Africa/Maseru
+Mashhad - IR,2307177,36.2981,59.6057,Asia/Tehran
+Massakory - TD,39944,12.9981,15.7319,Africa/Ndjamena
+Massawa - ER,23100,15.6081,39.4746,Africa/Asmara
+Masvingo - ZW,90286,-20.0637,30.8277,Africa/Harare
+Mata-Utu - WF,1200,-13.2816,-176.175,Pacific/Wallis
+Matadi - CD,425662,-5.83861,13.4631,Africa/Kinshasa
+Matagalpa - NI,109089,12.9279,-85.9191,America/Managua
+Matam - SN,27695,15.6559,-13.2554,Africa/Dakar
+Matanzas - CU,146733,23.0439,-81.5828,America/Havana
+Mataram - ID,429651,-8.58333,116.117,Asia/Makassar
+Matola - MZ,1198988,-25.9622,32.4589,Africa/Maputo
+Matsue - JP,203616,35.4833,133.05,Asia/Tokyo
+Matsuyama - JP,511192,33.8392,132.766,Asia/Tokyo
+Maturin - VE,647459,9.74569,-63.1832,America/Caracas
+Maun - BW,85350,-19.9833,23.4167,Africa/Gaborone
+Mawlamyine - MM,438861,16.4905,97.6282,Asia/Yangon
+May Pen - JM,44755,17.9645,-77.2451,America/Jamaica
+Mayagueez - PR,73077,18.2011,-67.1396,America/Puerto_Rico
+Maykop - RU,141970,44.6079,40.1024,Europe/Moscow
+Maymana - AF,75900,35.9214,64.7836,Asia/Kabul
+Mazar-e Sharif - AF,523300,36.709,67.1109,Asia/Kabul
+Mazatenango - GT,77431,14.5341,-91.5031,America/Guatemala
+Mbabane - SZ,76218,-26.3167,31.1333,Africa/Mbabane
+Mbaiki - CF,21867,3.86781,17.9892,Africa/Bangui
+Mbale - KE,60000,0.08213,34.7214,Africa/Nairobi
+Mbandaka - CD,455011,0.04865,18.2603,Africa/Kinshasa
+Mbanza Kongo - AO,148000,-6.26667,14.2383,Africa/Luanda
+Mbarara - UG,221300,-0.60467,30.6485,Africa/Kampala
+Mbeya - TZ,541603,-8.9,33.45,Africa/Dar_es_Salaam
+Mbombela - ZA,110159,-25.4751,30.9693,Africa/Johannesburg
+Mbuji-Mayi - CD,2101332,-6.13603,23.5898,Africa/Lubumbashi
+Medan - ID,2435252,3.58333,98.6667,Asia/Jakarta
+Medea - DZ,145441,36.2642,2.75393,Africa/Algiers
+Medellin - CO,1999979,6.245,-75.5715,America/Bogota
+Medenine - TN,71406,33.355,10.5055,Africa/Tunis
+Meerut - IN,1223184,28.98,77.7064,Asia/Kolkata
+Mehtar Lam - AF,17345,34.6714,70.2094,Asia/Kabul
+Meishan - CN,1107742,30.0439,103.837,Asia/Shanghai
+Meizhou - CN,992351,24.2886,116.118,Asia/Shanghai
+Mek'ele - ET,457900,13.4967,39.4753,Africa/Addis_Ababa
+Meknes - MA,568295,33.8935,-5.54727,Africa/Casablanca
+Melbourne - AU,5350705,-37.814,144.963,Australia/Melbourne
+Melilla - ES,85985,35.2937,-2.93833,Africa/Ceuta
+Mellieha - MT,11389,35.9566,14.3626,Europe/Malta
+Melo - UY,51023,-32.3682,-54.1641,America/Montevideo
+Memphis - US,633104,35.1495,-90.049,America/Chicago
+Menaka - ML,14085,15.9199,2.39609,Africa/Bamako
+Mendefera - ER,17781,14.8872,38.8153,Africa/Asmara
+Mendi - PG,26252,-6.14755,143.656,Pacific/Port_Moresby
+Mendoza - AR,114893,-32.8895,-68.8458,America/Argentina/Mendoza
+Mengzi - CN,595100,23.3678,103.382,Asia/Shanghai
+Menongue - AO,251178,-14.6585,17.691,Africa/Luanda
+Merauke - ID,102351,-8.49958,140.406,Asia/Jayapura
+Mercedes - UY,42359,-33.2524,-58.0305,America/Montevideo
+Merida - MX,1201000,20.967,-89.6232,America/Merida
+Merida - VE,300000,8.57899,-71.1692,America/Caracas
+Merida - ES,59352,38.918,-6.34292,Europe/Madrid
+Mersin - TR,537842,36.812,34.6389,Europe/Istanbul
+Meru - KE,80191,0.04626,37.6559,Africa/Nairobi
+Mexicali - MX,1032686,32.6278,-115.454,America/Tijuana
+Mexico City - MX,12294193,19.4285,-99.1277,America/Mexico_City
+Mianyang - CN,1550000,31.4678,104.682,Asia/Shanghai
+Miarinarivo - MG,13883,-18.9587,46.9055,Indian/Antananarivo
+Middelburg - NL,46485,51.5,3.61389,Europe/Amsterdam
+Miercurea-Ciuc - RO,34484,46.35,25.8,Europe/Bucharest
+Migori - KE,71668,-1.06343,34.4731,Africa/Nairobi
+Mikkeli - FI,52121,61.6886,27.2723,Europe/Helsinki
+Mila - DZ,63251,36.4503,6.26444,Africa/Algiers
+Milan - IT,1371498,45.4643,9.18951,Europe/Rome
+Milwaukee - US,563531,43.0389,-87.9065,America/Chicago
+Minas - UY,38025,-34.3759,-55.2377,America/Montevideo
+Mindelo - CV,69013,16.8901,-24.9804,Atlantic/Cape_Verde
+Mingachevir - AZ,106048,40.7642,47.0623,Asia/Baku
+Minna - NG,425000,9.61524,6.54776,Africa/Lagos
+Minsk - BY,1742124,53.9002,27.5665,Europe/Minsk
+Minya - EG,283605,28.0919,30.7581,Africa/Cairo
+Miragoane - HT,89202,18.446,-73.0896,America/Port-au-Prince
+Miskolc - HU,154521,48.1033,20.7781,Europe/Budapest
+Misratah - LY,355657,32.3753,15.0925,Africa/Tripoli
+Mito - JP,270685,36.35,140.45,Asia/Tokyo
+Mitrovice - XK,107045,42.8833,20.8667,Europe/Belgrade
+Mitu - CO,29850,1.25744,-70.2355,America/Bogota
+Miyazaki - JP,401339,31.9167,131.417,Asia/Tokyo
+Moca - DO,61834,19.3929,-70.5235,America/Santo_Domingo
+Mochudi - BW,50321,-24.4167,26.15,Africa/Gaborone
+Mocoa - CO,56398,1.15284,-76.6521,America/Bogota
+Moeroen - MN,39404,49.6342,100.162,Asia/Ulaanbaatar
+Mogadishu - SO,2587183,2.03711,45.3438,Africa/Mogadishu
+Mohale's Hoek - LS,46593,-30.1514,27.4769,Africa/Maseru
+Mokhotlong - LS,14461,-29.2894,29.0675,Africa/Maseru
+Molde - NO,22410,62.7375,7.15912,Europe/Oslo
+Molepolole - BW,74861,-24.4066,25.4951,Africa/Gaborone
+Mombasa - KE,1208333,-4.05466,39.6636,Africa/Nairobi
+Monaco - MC,32965,43.7372,7.42145,Europe/Monaco
+Monastir - TN,93306,35.778,10.8262,Africa/Tunis
+Mong Kok - HK,62967,22.3194,114.171,Asia/Hong_Kong
+Mongo - TD,53768,12.1851,18.6884,Africa/Ndjamena
+Mongu - ZM,111450,-15.2484,23.1274,Africa/Lusaka
+Monrovia - LR,1542549,6.30054,-10.7969,Africa/Monrovia
+Montana - BG,47445,43.4128,23.2217,Europe/Sofia
+Monte Plata - DO,15532,18.8075,-69.7843,America/Santo_Domingo
+Montego Bay - JM,82867,18.4712,-77.9188,America/Jamaica
+Monteria - CO,490935,8.75081,-75.8782,America/Bogota
+Monterrey - MX,1135512,25.6843,-100.317,America/Monterrey
+Montevideo - UY,1270737,-34.9033,-56.1882,America/Montevideo
+Montgomery - US,195287,32.3668,-86.3,America/Chicago
+Montreal - CA,1762949,45.5088,-73.5878,America/Toronto
+Monywa - MM,182011,22.1086,95.1358,Asia/Yangon
+Mopti - ML,186187,14.4843,-4.18296,Africa/Bamako
+Moquegua - PE,69882,-17.1975,-70.9359,America/Lima
+Moradabad - IN,721139,28.8389,78.7768,Asia/Kolkata
+Morelia - MX,743275,19.7008,-101.184,America/Mexico_City
+Morioka - JP,290700,39.7,141.15,Asia/Tokyo
+Morogoro - TZ,471409,-6.82102,37.6612,Africa/Dar_es_Salaam
+Morondava - MG,56671,-20.2887,44.3178,Indian/Antananarivo
+Moroni - KM,74749,-11.7022,43.2551,Indian/Comoro
+Moscow - RU,10381222,55.752,37.6178,Europe/Moscow
+Moshi - TZ,221733,-3.35,37.3333,Africa/Dar_es_Salaam
+Mossamedes - AO,255000,-15.1961,12.1522,Africa/Luanda
+Mosta - MT,23482,35.9094,14.4257,Europe/Malta
+Mostaganem - DZ,162885,35.9312,0.08918,Africa/Algiers
+Mosul - IQ,1683000,36.335,43.1189,Asia/Baghdad
+Mouila - GA,43342,-1.86846,11.0559,Africa/Libreville
+Moundou - TD,196124,8.57437,16.0772,Africa/Ndjamena
+Mount Hagen - PG,33623,-5.85746,144.231,Pacific/Port_Moresby
+Moussoro - TD,35100,13.6444,16.4895,Africa/Ndjamena
+Moutsamoudou - KM,26313,-12.1667,44.3994,Indian/Comoro
+Moyobamba - PE,50073,-6.03441,-76.9742,America/Lima
+Mpanda - TZ,204338,-6.34379,31.0695,Africa/Dar_es_Salaam
+Mtwara - TZ,140793,-10.2667,40.1833,Africa/Dar_es_Salaam
+Muan - KR,92009,34.9901,126.479,Asia/Seoul
+Muang Phon-Hong - LA,10112,18.4953,102.415,Asia/Vientiane
+Muang Phonsavan - LA,37507,19.4494,103.192,Asia/Vientiane
+Muang Xay - LA,25000,20.6923,101.984,Asia/Vientiane
+Mudanjiang - CN,665915,44.548,129.626,Asia/Shanghai
+Mueang Nonthaburi - TH,254375,13.8607,100.515,Asia/Bangkok
+Mugla - TR,92328,37.2181,28.3665,Europe/Istanbul
+Mukalla - YE,594951,14.5425,49.1242,Asia/Aden
+Mukdahan - TH,40480,16.5453,104.724,Asia/Bangkok
+Multan - PK,2169915,30.1968,71.4782,Asia/Karachi
+Mumbai - IN,12691836,19.0728,72.8826,Asia/Kolkata
+Munich - DE,1260391,48.1374,11.5755,Europe/Berlin
+Murang'a - KE,43314,-0.72104,37.1526,Africa/Nairobi
+Murcia - ES,460349,37.987,-1.13004,Europe/Madrid
+Murmansk - RU,295374,68.9678,33.0992,Europe/Moscow
+Murska Sobota - SI,11107,46.6626,16.1664,Europe/Ljubljana
+Murzuk - LY,30491,25.9155,13.9184,Africa/Tripoli
+Mus - TR,82536,38.7316,41.4848,Europe/Istanbul
+Muscat - OM,797000,23.5841,58.4078,Asia/Muscat
+Musoma - TZ,164172,-1.5,33.8,Africa/Dar_es_Salaam
+Mutare - ZW,224802,-18.9707,32.6709,Africa/Harare
+Muyinga - BI,14869,-2.8451,30.3414,Africa/Bujumbura
+Muzaffarabad - PK,725000,34.37,73.4708,Asia/Karachi
+Mwanza - TZ,1104521,-2.51667,32.9,Africa/Dar_es_Salaam
+My Tho - VN,270700,10.36,106.36,Asia/Ho_Chi_Minh
+Myitkyina - MM,90894,25.3833,97.3964,Asia/Yangon
+Mykolayiv - UA,470011,46.9763,31.993,Europe/Kyiv
+Mymensingh - BD,225126,24.7564,90.4065,Asia/Dhaka
+Mysuru - IN,920550,12.2979,76.6393,Asia/Kolkata
+Mytilene - GR,28322,39.1077,26.5553,Europe/Athens
+Mzuzu - MW,249564,-11.4656,34.0207,Africa/Blantyre
+N'dalatando - AO,161584,-9.29782,14.9116,Africa/Luanda
+N'Djamena - TD,1359526,12.1067,15.0444,Africa/Ndjamena
+Naama - DZ,14624,33.2667,-0.31667,Africa/Algiers
+Nabatiye et Tahta - LB,120000,33.3789,35.4839,Asia/Beirut
+Naberezhnyye Chelny - RU,509870,55.7372,52.4196,Europe/Moscow
+Nabeul - TN,70437,36.4561,10.7376,Africa/Tunis
+Nabire - ID,43898,-3.35989,135.501,Asia/Jayapura
+Nacaome - HN,13929,13.5392,-87.4891,America/Tegucigalpa
+Nagano - JP,372760,36.65,138.183,Asia/Tokyo
+Nagasaki - JP,409118,32.75,129.883,Asia/Tokyo
+Nagoya - JP,2332176,35.1815,136.906,Asia/Tokyo
+Nagpur - IN,2405665,21.1463,79.0849,Asia/Kolkata
+Nagua - DO,33862,19.3832,-69.8474,America/Santo_Domingo
+Naha - JP,317625,26.213,127.679,Asia/Tokyo
+Nairobi - KE,4397073,-1.28333,36.8167,Africa/Nairobi
+Najaf - IQ,482576,32.0259,44.3462,Asia/Baghdad
+Najafgarh - IN,1365000,28.6092,76.9798,Asia/Kolkata
+Najran - SA,505652,17.4933,44.1277,Asia/Riyadh
+Nakhon Nayok - TH,21309,14.2046,101.213,Asia/Bangkok
+Nakhon Pathom - TH,117927,13.8196,100.044,Asia/Bangkok
+Nakhon Phanom - TH,34595,17.4108,104.779,Asia/Bangkok
+Nakhon Ratchasima - TH,126391,14.9707,102.102,Asia/Bangkok
+Nakhon Sawan - TH,82305,15.7047,100.137,Asia/Bangkok
+Nakhon Si Thammarat - TH,102152,8.43333,99.9667,Asia/Bangkok
+Nakuru - KE,570674,-0.30719,36.0722,Africa/Nairobi
+Nalchik - RU,239300,43.4981,43.6189,Europe/Moscow
+Nalerigu - GH,17440,10.5273,-0.36982,Africa/Accra
+Nalut - LY,28431,31.8685,10.9812,Africa/Tripoli
+Nam GJinh - VN,448225,20.4339,106.177,Asia/Bangkok
+Namangan - UZ,713220,40.9983,71.6726,Asia/Tashkent
+Namp'o - KP,455000,38.7375,125.408,Asia/Pyongyang
+Nampula - MZ,770379,-15.1165,39.2666,Africa/Maputo
+Namur - BE,110939,50.4669,4.86746,Europe/Brussels
+Nan - TH,24670,18.7838,100.779,Asia/Bangkok
+Nanchang - CN,2357839,28.684,115.853,Asia/Shanghai
+Nanchong - CN,1858875,30.7951,106.085,Asia/Shanghai
+Nanjing - CN,9314685,32.0617,118.778,Asia/Shanghai
+Nanning - CN,3839800,22.8167,108.317,Asia/Shanghai
+Nantes - FR,318808,47.2172,-1.55336,Europe/Paris
+Nantong - CN,2273326,32.0303,120.875,Asia/Shanghai
+Nanyang - CN,1811812,32.9947,112.533,Asia/Shanghai
+Napier - NZ,66800,-39.4926,176.912,Pacific/Auckland
+Naples - IT,909048,40.8522,14.2681,Europe/Rome
+Nar'yan-Mar - RU,18041,67.6387,53.0037,Europe/Moscow
+Nara-shi - JP,367353,34.685,135.805,Asia/Tokyo
+Narathiwat - TH,47771,6.42639,101.823,Asia/Bangkok
+Narok - KE,65430,-1.08083,35.8711,Africa/Nairobi
+Naryn - KG,41178,41.4283,75.9957,Asia/Bishkek
+Nashik - IN,1486053,19.9973,73.791,Asia/Kolkata
+Nashville - US,689447,36.1659,-86.7844,America/Chicago
+Nasiriyah - IQ,558400,31.058,46.2573,Asia/Baghdad
+Nassau - BS,227940,25.0582,-77.3431,America/Nassau
+Natal - BR,896708,-5.795,-35.2094,America/Fortaleza
+Natitingou - BJ,53284,10.3042,1.37962,Africa/Porto-Novo
+Naucalpan de Juarez - MX,834434,19.4785,-99.2396,America/Mexico_City
+Navoiy - UZ,144158,40.0844,65.3792,Asia/Samarkand
+Naxcivan - AZ,97200,39.2089,45.4122,Asia/Baku
+Naxxar - MT,14890,35.9137,14.4438,Europe/Malta
+Nay Pyi Taw - MM,925000,19.745,96.1297,Asia/Yangon
+Nazareth - IL,77445,32.7009,35.2972,Asia/Jerusalem
+Ndele - CF,27071,8.41091,20.6473,Africa/Bangui
+Ndola - ZM,627503,-12.9587,28.6366,Africa/Lusaka
+Neftcala - AZ,18661,39.3768,49.247,Asia/Baku
+Negotino - MK,19515,41.4846,22.0906,Europe/Skopje
+Neiba - DO,18670,18.4898,-71.4189,America/Santo_Domingo
+Neijiang - CN,1251095,29.5835,105.062,Asia/Shanghai
+Neiva - CO,357392,2.93001,-75.2797,America/Bogota
+Nellore - IN,547621,14.4499,79.987,Asia/Kolkata
+Nelson - NZ,54400,-41.2708,173.284,Pacific/Auckland
+Nema - MR,60000,16.617,-7.25649,Africa/Nouakchott
+Neuchatel - CH,33475,46.9918,6.931,Europe/Zurich
+Neuquen - AR,231198,-38.9508,-68.0592,America/Argentina/Salta
+Nevsehir - TR,75527,38.625,34.7122,Europe/Istanbul
+New Amsterdam - GY,35039,6.24924,-57.5158,America/Guyana
+New Delhi - IN,317797,28.6214,77.2148,Asia/Kolkata
+New Plymouth - NZ,90300,-39.0667,174.083,Pacific/Auckland
+New Taipei City - TW,4004367,25.062,121.457,Asia/Taipei
+New York City - US,8804190,40.7143,-74.006,America/New_York
+Newcastle - AU,508437,-32.9295,151.78,Australia/Sydney
+Ngaoundere - CM,238196,7.32765,13.5847,Africa/Douala
+Ngerulmud - PW,1,7.50077,134.624,Pacific/Palau
+Ngozi - BI,61716,-2.9075,29.8306,Africa/Bujumbura
+Nha Trang - VN,579000,12.2451,109.194,Asia/Ho_Chi_Minh
+Niamey - NE,1323691,13.5137,2.1098,Africa/Niamey
+Nicosia - CY,200452,35.1728,33.354,Asia/Nicosia
+Nieuw Nickerie - SR,13143,5.92606,-56.973,America/Paramaribo
+Nigde - TR,91039,37.9658,34.6793,Europe/Istanbul
+Niigata - JP,797591,37.9226,139.041,Asia/Tokyo
+Niksic - ME,58212,42.7731,18.9445,Europe/Podgorica
+Nili - AF,30058,33.7218,66.1302,Asia/Kabul
+Ningbo - CN,3731203,29.8782,121.549,Asia/Shanghai
+Ninh Binh - VN,36864,20.2581,105.98,Asia/Bangkok
+Nisporeni - MD,11718,47.0802,28.171,Europe/Chisinau
+Nitra - SK,86329,48.3076,18.0845,Europe/Bratislava
+Nizhniy Novgorod - RU,1259013,56.3287,44.002,Europe/Moscow
+Nizwa - OM,72076,22.9333,57.5333,Asia/Muscat
+Njombe - TZ,92537,-9.34917,34.7717,Africa/Dar_es_Salaam
+Nola - CF,31923,3.52494,16.0458,Africa/Bangui
+Nong Bua Lamphu - TH,34401,17.2041,102.441,Asia/Bangkok
+Nong Khai - TH,63609,17.8785,102.742,Asia/Bangkok
+Nouadhibou - MR,146048,20.9419,-17.0384,Africa/Nouakchott
+Nouakchott - MR,1184530,18.0858,-15.9785,Africa/Nouakchott
+Noumea - NC,93060,-22.2741,166.449,Pacific/Noumea
+Nova Gorica - SI,13031,45.956,13.6484,Europe/Ljubljana
+Nova Iguacu - BR,823302,-22.7592,-43.4511,America/Sao_Paulo
+Novi Sad - RS,215400,45.2517,19.8369,Europe/Belgrade
+Novo Mesto - SI,24446,45.804,15.1689,Europe/Ljubljana
+Novo Selo - MK,11818,41.4154,22.8834,Europe/Skopje
+Novokuznetsk - RU,539616,53.7575,87.136,Asia/Novokuznetsk
+Novosibirsk - RU,1612833,55.0226,82.9317,Asia/Novosibirsk
+Nowrangapur - IN,1220946,19.2311,82.5483,Asia/Kolkata
+Nuernberg - DE,515543,49.4542,11.0775,Europe/Berlin
+Nueva Gerona - CU,20264,21.8876,-82.8066,America/Havana
+Nueva Loja - EC,24211,0.086,-76.8953,America/Guayaquil
+Nuku'alofa - TO,22400,-21.1368,-175.201,Pacific/Tongatapu
+Nukus - UZ,332500,42.4586,59.6058,Asia/Samarkand
+Nuuk - GL,14798,64.1835,-51.7216,America/Nuuk
+Nyala - SD,565734,12.0489,24.8807,Africa/Khartoum
+Nyamira - KE,24483,-0.56333,34.9358,Africa/Nairobi
+Nyanza - RW,32016,-2.35187,29.7509,Africa/Kigali
+Nyeri - KE,80081,-0.42013,36.9476,Africa/Nairobi
+Nyiregyhaza - HU,117689,47.9554,21.7167,Europe/Budapest
+Nykoeping - SE,38780,58.753,17.0079,Europe/Stockholm
+Nzerekore - GN,226426,7.75624,-8.8179,Africa/Conakry
+Oaxaca - MX,255029,17.0602,-96.7254,America/Mexico_City
+Obo - CF,14402,5.39586,26.4921,Africa/Bangui
+Obock - DJ,15429,11.9669,43.2884,Africa/Djibouti
+Ocotal - NI,33928,13.6322,-86.474,America/Managua
+Odesa - UA,1015826,46.4857,30.7438,Europe/Kyiv
+Odienne - CI,54669,9.50511,-7.56433,Africa/Abidjan
+OElgii - MN,28400,48.9683,89.9625,Asia/Hovd
+OErebro - SE,155989,59.2741,15.2066,Europe/Stockholm
+OEstersund - SE,49806,63.1792,14.6357,Europe/Stockholm
+Ogre - LV,22767,56.8162,24.614,Europe/Riga
+Ohrid - MK,42033,41.117,20.8017,Europe/Skopje
+Oita - JP,477715,33.2333,131.6,Asia/Tokyo
+Okara - PK,533693,30.8103,73.4515,Asia/Karachi
+Okayama - JP,724691,34.65,133.933,Asia/Tokyo
+Oklahoma City - US,681054,35.4676,-97.5164,America/Chicago
+Ol Kalou - KE,47795,-0.27088,36.3792,Africa/Nairobi
+Olomouc - CZ,99496,49.5955,17.2518,Europe/Prague
+Olsztyn - PL,171803,53.7838,20.4927,Europe/Warsaw
+Olympia - US,55733,47.0449,-122.902,America/Los_Angeles
+Omdurman - SD,1849659,15.6445,32.4777,Africa/Khartoum
+Omsk - RU,1172070,54.9924,73.3686,Asia/Omsk
+Ondjiva - AO,121537,-17.0667,15.7333,Africa/Luanda
+Onitsha - NG,1553000,6.14978,6.78569,Africa/Lagos
+Opole - PL,127676,50.6712,17.926,Europe/Warsaw
+Oradea - RO,183105,47.0458,21.9183,Europe/Bucharest
+Oral - KZ,330000,51.246,51.4256,Asia/Oral
+Oran - DZ,803329,35.6991,-0.63588,Africa/Algiers
+Orange Walk - BZ,15298,18.0812,-88.5633,America/Belize
+Oranjestad - AW,29998,12.524,-70.027,America/Aruba
+Ordos - CN,1940653,39.6086,109.782,Asia/Shanghai
+Ordu - TR,229214,40.9778,37.8905,Europe/Istanbul
+Orel - RU,303696,52.9688,36.0791,Europe/Moscow
+Orenburg - RU,564773,51.7671,55.0988,Asia/Yekaterinburg
+Orhei - MD,24918,47.385,28.8254,Europe/Chisinau
+Orleans - FR,116269,47.9025,1.90407,Europe/Paris
+Orumiyeh - IR,577307,37.5527,45.0761,Asia/Tehran
+Oruro - BO,208684,-17.9715,-67.0932,America/La_Paz
+Osaka - JP,2753862,34.6938,135.501,Asia/Tokyo
+Osh - KG,322164,40.5283,72.7985,Asia/Bishkek
+Oshakati - NA,43309,-17.7883,15.7044,Africa/Windhoek
+Osijek - HR,75535,45.5507,18.6942,Europe/Zagreb
+Oslo - NO,1082575,59.9127,10.7461,Europe/Oslo
+Osmaniye - TR,202837,37.0742,36.2478,Europe/Istanbul
+Osogbo - NG,645000,7.77104,4.55698,Africa/Lagos
+Ostrava - CZ,279791,49.8347,18.282,Europe/Prague
+Ota - JP,748081,35.5613,139.716,Asia/Tokyo
+Otjiwarongo - NA,33481,-20.4637,16.6477,Africa/Windhoek
+Otsu - JP,345070,35.0,135.867,Asia/Tokyo
+Ottawa - CA,1017449,45.4112,-75.6981,America/Toronto
+Ouagadougou - BF,2415266,12.3657,-1.53388,Africa/Ouagadougou
+Ouahigouya - BF,124587,13.5828,-2.42158,Africa/Ouagadougou
+Ouargla - DZ,169928,31.9493,5.32502,Africa/Algiers
+Ouesso - CG,40667,1.61361,16.0517,Africa/Brazzaville
+Oujda - MA,539711,34.6814,-1.90858,Africa/Casablanca
+Ouled Djellal - DZ,58481,34.43,5.06139,Africa/Algiers
+Oulu - FI,209648,65.0124,25.4682,Europe/Helsinki
+Oum el Bouaghi - DZ,67201,35.8754,7.11353,Africa/Algiers
+Oviedo - ES,220020,43.3603,-5.84476,Europe/Madrid
+Owando - CG,35698,-0.48193,15.8999,Africa/Brazzaville
+Owerri - NG,545000,5.48363,7.03325,Africa/Lagos
+Oyem - GA,72939,1.5995,11.5793,Africa/Libreville
+Oyo - NG,736072,7.85367,3.93235,Africa/Lagos
+Ozurgeti - GE,13935,41.9234,42.0052,Asia/Tbilisi
+P'yongsong - KP,100000,39.2464,125.872,Asia/Pyongyang
+Pachuca de Soto - MX,256584,20.117,-98.7333,America/Mexico_City
+Padang - ID,909040,-0.94924,100.354,Asia/Jakarta
+Paernu - EE,40228,58.3859,24.4971,Europe/Tallinn
+Pagadian - PH,206483,7.8257,123.437,Asia/Manila
+Pago Pago - AS,11500,-14.2781,-170.702,Pacific/Pago_Pago
+Pailin - KH,17850,12.849,102.609,Asia/Phnom_Penh
+Pakse - LA,88332,15.1202,105.799,Asia/Vientiane
+Pakxan - LA,21967,18.3942,103.661,Asia/Vientiane
+Pala - TD,70677,9.3646,14.9072,Africa/Ndjamena
+Palangkaraya - ID,293500,-2.20833,113.917,Asia/Pontianak
+Palembang - ID,1668848,-2.91673,104.746,Asia/Jakarta
+Palermo - IT,648260,38.1166,13.3636,Europe/Rome
+Palikir - FM,6942,6.92477,158.161,Pacific/Pohnpei
+Palma - ES,409661,39.5694,2.65024,Europe/Madrid
+Palmas - BR,306296,-10.1675,-48.3277,America/Araguaina
+Palmerston North - NZ,91300,-40.3564,175.611,Pacific/Auckland
+Palu - ID,373218,-0.90833,119.871,Asia/Makassar
+Pamandzi - YT,11442,-12.7967,45.2794,Indian/Mayotte
+Pamplona - ES,209672,42.8169,-1.64323,Europe/Madrid
+Panama - PA,408168,8.9936,-79.5197,America/Panama
+Panevezys - LT,85885,55.7319,24.3598,Europe/Vilnius
+Pangkalpinang - ID,216893,-2.12914,106.114,Asia/Jakarta
+Panjim - IN,70991,15.4957,73.8262,Asia/Kolkata
+Panzhihua - CN,787177,26.5851,101.713,Asia/Shanghai
+Paoua - CF,47703,7.24269,16.4406,Africa/Bangui
+Papeete - PF,26357,-17.5347,-149.568,Pacific/Tahiti
+Paphos - CY,35961,34.7768,32.4245,Asia/Nicosia
+Paraguari - PY,10079,-25.6208,-57.1472,America/Asuncion
+Parakou - BJ,255478,9.33716,2.63031,Africa/Porto-Novo
+Paramaribo - SR,223757,5.86638,-55.1668,America/Paramaribo
+Parana - AR,247139,-31.7327,-60.529,America/Argentina/Cordoba
+Paranaque City - PH,703245,14.4816,121.017,Asia/Manila
+Pardubice - CZ,88520,50.0408,15.7766,Europe/Prague
+Paris - FR,2138551,48.8534,2.3488,Europe/Paris
+Paro - BT,11448,27.4305,89.4133,Asia/Thimphu
+Pasig City - PH,853050,14.5869,121.061,Asia/Manila
+Pasto - CO,392930,1.21456,-77.2785,America/Bogota
+Pathein - MM,237089,16.7792,94.7321,Asia/Yangon
+Pathum Thani - TH,24547,14.0135,100.53,Asia/Bangkok
+Patna - IN,1684297,25.5941,85.1356,Asia/Kolkata
+Patra - GR,168034,38.2462,21.7351,Europe/Athens
+Pattani - TH,43690,6.86814,101.25,Asia/Bangkok
+Pavlodar - KZ,329002,52.276,76.9688,Asia/Almaty
+Paysandu - UY,73249,-32.3171,-58.0807,America/Montevideo
+Pazardzhik - BG,65671,42.1993,24.3332,Europe/Sofia
+Pecs - HU,145347,46.0762,18.2281,Europe/Budapest
+Pedernales - DO,11072,18.0356,-71.7467,America/Santo_Domingo
+Pedra Badejo - CV,10038,15.1375,-23.5308,Atlantic/Cape_Verde
+Pedro Juan Caballero - PY,75109,-22.5493,-55.7387,America/Asuncion
+Peje - XK,48962,42.6591,20.2883,Europe/Belgrade
+Pekanbaru - ID,1085000,0.51667,101.442,Asia/Jakarta
+Pemagatshel - BT,13864,27.0379,91.403,Asia/Thimphu
+Pemba - MZ,232932,-12.974,40.5177,Africa/Maputo
+Penal - TT,12281,10.1667,-61.4667,America/Port_of_Spain
+Penonome - PA,16250,8.51889,-80.3573,America/Panama
+Penza - RU,523553,53.1957,45.0108,Europe/Moscow
+Pereira - CO,467269,4.81428,-75.6949,America/Bogota
+Perm - RU,982419,58.0105,56.2502,Asia/Yekaterinburg
+Pernik - BG,82467,42.5967,23.0332,Europe/Sofia
+Perth - AU,2309338,-31.9522,115.861,Australia/Perth
+Perugia - IT,120137,43.1122,12.3888,Europe/Rome
+Peshawar - PK,4758762,34.008,71.5785,Asia/Karachi
+Peshkopi - AL,14710,41.685,20.4286,Europe/Tirane
+Petaling Jaya - MY,807879,3.10726,101.607,Asia/Kuala_Lumpur
+Petropavl - KZ,200920,54.8734,69.1506,Asia/Almaty
+Petropavlovsk-Kamchatsky - RU,181216,53.0639,158.628,Asia/Kamchatka
+Petrozavodsk - RU,279190,61.7849,34.3469,Europe/Moscow
+Phan Rang-Thap Cham - VN,207998,11.5643,108.989,Asia/Ho_Chi_Minh
+Phan Thiet - VN,228536,10.9289,108.102,Asia/Ho_Chi_Minh
+Phatthalung - TH,43522,7.61786,100.078,Asia/Bangkok
+Phayao - TH,21058,19.192,99.8788,Asia/Bangkok
+Phetchabun - TH,50656,16.419,101.161,Asia/Bangkok
+Phetchaburi - TH,46601,13.1119,99.9447,Asia/Bangkok
+Phichit - TH,35760,16.4418,100.349,Asia/Bangkok
+Philadelphia - US,1573916,39.9524,-75.1636,America/New_York
+Philipsburg - SX,1400,18.026,-63.0458,America/Lower_Princes
+Phitsanulok - TH,62584,16.8248,100.259,Asia/Bangkok
+Phnom Penh - KH,1573544,11.5625,104.916,Asia/Phnom_Penh
+Phoenix - US,1650070,33.4484,-112.074,America/Phoenix
+Phongsali - LA,13500,21.6808,102.1,Asia/Vientiane
+Phra Nakhon Si Ayutthaya - TH,50830,14.3517,100.577,Asia/Bangkok
+Phrae - TH,38538,18.1459,100.141,Asia/Bangkok
+Phu Ly - VN,136654,20.5453,105.912,Asia/Bangkok
+Phuket - TH,79308,7.89059,98.3981,Asia/Bangkok
+Piatra Neamt - RO,102688,46.9167,26.3333,Europe/Bucharest
+Pierre - US,14091,44.3683,-100.351,America/Chicago
+Pietermaritzburg - ZA,839327,-29.6168,30.3928,Africa/Johannesburg
+Pilar - PY,32810,-26.8587,-58.3064,America/Asuncion
+Pilsen - CZ,168733,49.7475,13.3776,Europe/Prague
+Pimpri - IN,1284606,18.6229,73.807,Asia/Kolkata
+Pimpri-Chinchwad - IN,1727692,18.6187,73.8037,Asia/Kolkata
+Pinar del Rio - CU,186990,22.4165,-83.6966,America/Havana
+Pingdu - CN,542234,36.7844,119.946,Asia/Shanghai
+Pingliang - CN,504848,35.5392,106.686,Asia/Shanghai
+Pingxiang - CN,893550,27.6167,113.854,Asia/Shanghai
+Pitesti - RO,141275,44.85,24.8667,Europe/Bucharest
+Piura - PE,484475,-5.18192,-80.6572,America/Lima
+Pleiku - VN,114225,13.9833,108.0,Asia/Ho_Chi_Minh
+Pleven - BG,100952,43.4179,24.6167,Europe/Sofia
+Pljevlja - ME,19489,43.3567,19.3584,Europe/Podgorica
+Ploiesti - RO,180540,44.95,26.0167,Europe/Bucharest
+Plovdiv - BG,346893,42.1539,24.75,Europe/Sofia
+Plymouth - MS,0,16.7055,-62.2129,America/Montserrat
+Podgorica - ME,236852,42.4412,19.2631,Europe/Podgorica
+Point Fortin - TT,19056,10.1741,-61.6841,America/Port_of_Spain
+Pointe-Noire - CG,1032000,-4.77609,11.8635,Africa/Brazzaville
+Pokhara - NP,599504,28.2669,83.9685,Asia/Kathmandu
+Polokwane - ZA,272461,-23.9045,29.4688,Africa/Johannesburg
+Poltava - UA,283402,49.5892,34.5537,Europe/Kyiv
+Ponce - PR,137491,18.0103,-66.624,America/Puerto_Rico
+Ponta Delgada - PT,20056,37.7395,-25.6687,Atlantic/Azores
+Pontianak - ID,658685,-0.03194,109.325,Asia/Pontianak
+Popayan - CO,318059,2.43823,-76.6132,America/Bogota
+Popondetta - PG,28198,-8.76536,148.233,Pacific/Port_Moresby
+Pori - FI,83491,61.4807,21.7852,Europe/Helsinki
+Port Antonio - JM,14400,18.1789,-76.4522,America/Jamaica
+Port Blair - IN,112050,11.6661,92.7464,Asia/Kolkata
+Port Elizabeth - ZA,1050078,-33.9611,25.6149,Africa/Johannesburg
+Port Harcourt - NG,2120000,4.77742,7.0134,Africa/Lagos
+Port Loko - SL,21308,8.76609,-12.787,Africa/Freetown
+Port Louis - MU,155226,-20.1619,57.4989,Indian/Mauritius
+Port Moresby - PG,283733,-9.47723,147.151,Pacific/Port_Moresby
+Port of Spain - TT,49031,10.6667,-61.5189,America/Port_of_Spain
+Port Said - EG,780515,31.2653,32.3019,Africa/Cairo
+Port Sudan - SD,489725,19.6175,37.2164,Africa/Khartoum
+Port-au-Prince - HT,1234742,18.5435,-72.3388,America/Port-au-Prince
+Port-aux-Francais - TF,45,-49.3492,70.2194,Indian/Kerguelen
+Port-de-Paix - HT,306217,19.9398,-72.8304,America/Port-au-Prince
+Port-Gentil - GA,164018,-0.71933,8.78151,Africa/Libreville
+Port-Vila - VU,35901,-17.7365,168.314,Pacific/Efate
+Portalegre - PT,15581,39.2938,-7.43122,Europe/Lisbon
+Portland - US,652503,45.5234,-122.676,America/Los_Angeles
+Porto - PT,249633,41.1485,-8.61097,Europe/Lisbon
+Porto Alegre - BR,1488252,-30.0328,-51.2302,America/Sao_Paulo
+Porto Novo - CV,11138,17.0197,-25.0647,Atlantic/Cape_Verde
+Porto Velho - BR,548952,-8.76194,-63.9039,America/Porto_Velho
+Porto-Novo - BJ,264320,6.49646,2.60359,Africa/Porto-Novo
+Portoviejo - EC,321800,-1.05764,-80.4514,America/Guayaquil
+Posadas - AR,305874,-27.3918,-55.9238,America/Argentina/Cordoba
+Potenza - IT,56433,40.6418,15.8079,Europe/Rome
+Potosi - BO,141251,-19.5836,-65.7531,America/La_Paz
+Potsdam - DE,182112,52.3989,13.0657,Europe/Berlin
+Pozega - HR,16867,45.3403,17.6853,Europe/Zagreb
+Poznan - PL,570352,52.4069,16.9299,Europe/Warsaw
+Prachin Buri - TH,32600,14.0499,101.369,Asia/Bangkok
+Prachuap Khiri Khan - TH,33521,11.821,99.7841,Asia/Bangkok
+Prague - CZ,1165581,50.088,14.4208,Europe/Prague
+Praia - CV,137868,14.9315,-23.5125,Atlantic/Cape_Verde
+Prayagraj - IN,1073438,25.4448,81.8432,Asia/Kolkata
+Presov - SK,82927,48.9992,21.2355,Europe/Bratislava
+Pretoria - ZA,2112693,-25.7449,28.1878,Africa/Johannesburg
+Prey Veng - KH,33079,11.4868,105.325,Asia/Phnom_Penh
+Prilep - MK,73814,41.3456,21.5537,Europe/Skopje
+Pristina - XK,550000,42.6727,21.1669,Europe/Belgrade
+Prizren - XK,171464,42.2139,20.7397,Europe/Belgrade
+Probishtip - MK,12702,42.0031,22.1786,Europe/Skopje
+Providence - US,190934,41.824,-71.4128,America/New_York
+Pskov - RU,210501,57.8192,28.3318,Europe/Moscow
+Ptuj - SI,17984,46.4201,15.8702,Europe/Ljubljana
+Pucallpa - PE,326040,-8.37915,-74.5539,America/Lima
+Puducherry - IN,657209,11.9338,79.8298,Asia/Kolkata
+Puebla - MX,1692181,19.0478,-98.2072,America/Mexico_City
+Puente Alto - CL,568106,-33.6117,-70.5758,America/Santiago
+Puerto Ayacucho - VE,125840,5.66049,-67.5834,America/Caracas
+Puerto Barrios - GT,100593,15.7272,-88.5979,America/Guatemala
+Puerto Cabezas - NI,33635,14.0351,-83.3888,America/Managua
+Puerto Carreno - CO,20936,6.19041,-67.4839,America/Bogota
+Puerto Francisco de Orellana - EC,48144,-0.44967,-76.9972,America/Guayaquil
+Puerto Maldonado - PE,85024,-12.5895,-69.1995,America/Lima
+Puerto Montt - CL,245902,-41.4693,-72.9424,America/Santiago
+Puerto Plata - DO,146000,19.7934,-70.6884,America/Santo_Domingo
+Pul-e 'Alam - AF,13247,33.9953,69.0227,Asia/Kabul
+Pul-e Khumri - AF,56369,35.9446,68.7151,Asia/Kabul
+Punakha - BT,21500,27.5914,89.8774,Asia/Thimphu
+Pune - IN,3124458,18.5196,73.8554,Asia/Kolkata
+Puno - PE,128637,-15.84,-70.022,America/Lima
+Punta Arenas - CL,117430,-53.1628,-70.9092,America/Punta_Arenas
+Puntarenas - CR,35650,9.97691,-84.8379,America/Costa_Rica
+Pursat - KH,52476,12.5388,103.919,Asia/Phnom_Penh
+Pushkino - AZ,18182,39.4583,48.545,Asia/Baku
+Putian - CN,1539389,25.4394,119.01,Asia/Shanghai
+Puyang - CN,3590000,29.4568,119.889,Asia/Shanghai
+Puyo - EC,24881,-1.49156,-78.0034,America/Guayaquil
+Pyongyang - KP,3222000,39.0339,125.754,Asia/Pyongyang
+Qabala - AZ,11867,40.9814,47.8458,Asia/Baku
+Qalat - AF,12191,32.1058,66.9083,Asia/Kabul
+Qarshi - UZ,278300,38.8606,65.7891,Asia/Samarkand
+Qax - AZ,11992,41.4183,46.9204,Asia/Baku
+Qazax - AZ,18903,41.0925,45.3656,Asia/Baku
+Qazvin - IR,333635,36.2688,50.0041,Asia/Tehran
+Qina - EG,252883,26.1642,32.7267,Africa/Cairo
+Qingdao - CN,7172451,36.0649,120.38,Asia/Shanghai
+Qingyang - CN,2125400,35.7098,107.645,Asia/Shanghai
+Qingyuan - CN,1738424,23.7,113.033,Asia/Shanghai
+Qinhuangdao - CN,759718,39.941,119.589,Asia/Shanghai
+Qinzhou - CN,1296300,21.9825,108.651,Asia/Shanghai
+Qionghai - CN,528238,19.2425,110.464,Asia/Shanghai
+Qiqihar - CN,882364,47.3392,123.962,Asia/Shanghai
+Qom - IR,900000,34.6401,50.8764,Asia/Tehran
+Qormi - MT,16801,35.876,14.472,Europe/Malta
+Quang Ngai - VN,278496,15.1205,108.792,Asia/Ho_Chi_Minh
+Quanzhou - CN,1469157,24.9139,118.586,Asia/Shanghai
+Quba - AZ,22405,41.3611,48.5134,Asia/Baku
+Quebec - CA,531902,46.8123,-71.2145,America/Toronto
+Queens - US,2316841,40.6815,-73.8365,America/New_York
+Quelimane - MZ,349842,-17.8786,36.8883,Africa/Maputo
+Quetta - PK,1565546,30.1841,67.0014,Asia/Karachi
+Quetzaltenango - GT,180706,14.8446,-91.5232,America/Guatemala
+Quezon City - PH,3084270,14.6488,121.051,Asia/Manila
+Qui Nhon - VN,519208,13.7765,109.224,Asia/Ho_Chi_Minh
+Quibdo - CO,129237,5.69188,-76.6583,America/Bogota
+Quito - EC,2781641,-0.22985,-78.525,America/Guayaquil
+Qujing - CN,1408500,25.4833,103.783,Asia/Shanghai
+Qusar - AZ,16022,41.4275,48.4302,Asia/Baku
+Quthing - LS,33910,-30.4,27.7003,Africa/Maseru
+Rabak - SD,135281,13.1809,32.74,Africa/Khartoum
+Rabat - MA,1655753,34.0132,-6.83255,Africa/Casablanca
+Rach Gia - VN,459860,10.0124,105.081,Asia/Ho_Chi_Minh
+Radovis - MK,24984,41.6383,22.4647,Europe/Skopje
+Rahim Yar Khan - PK,517000,28.4199,70.3034,Asia/Karachi
+Raipur - IN,1027264,21.2333,81.6333,Asia/Kolkata
+Rajin - KP,66224,42.2556,130.283,Asia/Pyongyang
+Rajkot - IN,1390640,22.2916,70.7932,Asia/Kolkata
+Rajshahi - BD,763580,24.374,88.6011,Asia/Dhaka
+Rakvere - EE,14984,59.3481,26.3578,Europe/Tallinn
+Raleigh - US,482295,35.7721,-78.6386,America/New_York
+Ramadi - IQ,223500,33.4206,43.3078,Asia/Baghdad
+Ramla - IL,76246,31.9262,34.8635,Asia/Jerusalem
+Ramnicu Valcea - RO,93151,45.1,24.3667,Europe/Bucharest
+Ramotswa - BW,33271,-24.8716,25.8699,Africa/Gaborone
+Rancagua - CL,212695,-34.1691,-70.7405,America/Santiago
+Ranchi - IN,1120374,23.3432,85.3094,Asia/Kolkata
+Rangpur - BD,1031388,25.7466,89.2517,Asia/Dhaka
+Ranong - TH,24561,9.96583,98.6348,Asia/Bangkok
+Ras Al Khaimah City - AE,351943,25.7895,55.9432,Asia/Dubai
+Rasapudipalem - IN,1728128,17.7331,83.3162,Asia/Kolkata
+Rasht - IR,594590,37.2761,49.5886,Asia/Tehran
+Ratchaburi - TH,92448,13.5367,99.8171,Asia/Bangkok
+Ratnapura - LK,47832,6.6858,80.4036,Asia/Colombo
+Rawalpindi - PK,3357612,33.5973,73.0479,Asia/Karachi
+Rawson - AR,26335,-43.3003,-65.1056,America/Argentina/Catamarca
+Rayong - TH,106737,12.6809,101.258,Asia/Bangkok
+Razgrad - BG,38285,43.5333,26.5185,Europe/Sofia
+Recife - BR,1653461,-8.05389,-34.8811,America/Recife
+Regina - CA,226404,50.4501,-104.618,America/Regina
+Relizane - DZ,123255,35.7373,0.55599,Africa/Algiers
+Rennes - FR,220488,48.1111,-1.67431,Europe/Paris
+Resen - MK,16539,41.09,21.0088,Europe/Skopje
+Resistencia - AR,290793,-27.4636,-58.9866,America/Argentina/Cordoba
+Resita - RO,81228,45.3008,21.8892,Europe/Bucharest
+Retalhuleu - GT,90505,14.5358,-91.6785,America/Guatemala
+Reykjavik - IS,118918,64.1355,-21.8954,Atlantic/Reykjavik
+Reynosa - MX,589466,26.08,-98.2846,America/Matamoros
+Rezekne - LV,26131,56.5103,27.34,Europe/Riga
+Ribeirao Preto - BR,711825,-21.1775,-47.8103,America/Sao_Paulo
+Richmond - US,226610,37.5538,-77.4603,America/New_York
+Richmond - NZ,19700,-41.3333,173.183,Pacific/Auckland
+Riga - LV,742572,56.946,24.1059,Europe/Riga
+Rijeka - HR,107964,45.3267,14.4424,Europe/Zagreb
+Rio Branco - BR,419452,-9.97472,-67.81,America/Rio_Branco
+Rio Claro - TT,35650,10.3059,-61.1756,America/Port_of_Spain
+Rio de Janeiro - BR,6747815,-22.9064,-43.1822,America/Sao_Paulo
+Rio Gallegos - AR,95796,-51.6253,-69.2523,America/Argentina/Rio_Gallegos
+Rio Grande - PR,13467,18.3802,-65.8313,America/Puerto_Rico
+Riobamba - EC,264048,-1.66506,-78.6589,America/Guayaquil
+Riohacha - CO,188014,11.5444,-72.9072,America/Bogota
+Riscani - MD,12893,47.9483,27.5667,Europe/Chisinau
+Rivas - NI,30000,11.4398,-85.8275,America/Managua
+Rivera - UY,64631,-30.9053,-55.5508,America/Montevideo
+Riviere du Rempart - MU,10825,-20.1031,57.6847,Indian/Mauritius
+Rivne - UA,245289,50.6204,26.237,Europe/Kyiv
+Riyadh - SA,4205961,24.6877,46.7219,Asia/Riyadh
+Rize - TR,119828,41.0208,40.5219,Europe/Istanbul
+Rizhao - CN,661943,35.4141,119.529,Asia/Shanghai
+Road Town - VG,8449,18.4269,-64.6208,America/Tortola
+Rocha - UY,25515,-34.48,-54.3306,America/Montevideo
+Roi Et - TH,39328,16.0567,103.653,Asia/Bangkok
+Rome - IT,2318895,41.8919,12.5113,Europe/Rome
+Rosario - AR,948312,-32.9468,-60.6393,America/Argentina/Cordoba
+Rose Belle - MU,12619,-20.4003,57.5967,Indian/Mauritius
+Roseau - DM,16571,15.3017,-61.3881,America/Dominica
+Rosso - MR,15870,16.5138,-15.805,Africa/Nouakchott
+Rostov-na-Donu - RU,1130305,47.22,39.7077,Europe/Moscow
+Rouen - FR,234475,49.4431,1.09932,Europe/Paris
+Rovaniemi - FI,64194,66.499,25.6887,Europe/Helsinki
+Rumbek - SS,32083,6.80619,29.6774,Africa/Juba
+Rumonge - BI,55599,-3.9736,29.4386,Africa/Bujumbura
+Rumuruti - KE,13056,0.2725,36.5381,Africa/Nairobi
+Rundu - NA,75180,-17.918,19.7731,Africa/Windhoek
+Ruse - BG,143417,43.8487,25.9534,Europe/Sofia
+Rustavi - GE,128249,41.5627,44.9787,Asia/Tbilisi
+Ruyigi - BI,11046,-3.47639,30.2486,Africa/Bujumbura
+Rwamagana - RW,47203,-1.9487,30.4347,Africa/Kigali
+Ryazan' - RU,538962,54.627,39.7041,Europe/Moscow
+Rzeszow - PL,158382,50.0413,21.999,Europe/Warsaw
+s-Hertogenbosch - NL,134520,51.6992,5.30417,Europe/Amsterdam
+Sa Kaeo - TH,28497,13.8141,102.072,Asia/Bangkok
+Sa'dah - YE,51870,16.9402,43.7639,Asia/Aden
+Saarbruecken - DE,179349,49.2326,7.00982,Europe/Berlin
+Saatli - AZ,87000,39.9321,48.3689,Asia/Baku
+Sabha - LY,149329,27.0377,14.4283,Africa/Tripoli
+Sabirabad - AZ,30612,40.0087,48.477,Asia/Baku
+Sacramento - US,524943,38.5816,-121.494,America/Los_Angeles
+Saga - JP,233301,33.2333,130.3,Asia/Tokyo
+Sagamihara - JP,720780,35.5671,139.242,Asia/Tokyo
+Sahiwal - PK,538344,30.6659,73.1019,Asia/Karachi
+Sai Kung - HK,35800,22.3833,114.267,Asia/Hong_Kong
+Saida - DZ,142497,34.8303,0.15171,Africa/Algiers
+Saint Ann's Bay - JM,13671,18.4358,-77.201,America/Jamaica
+Saint Croix - VI,50601,17.7275,-64.747,America/St_Thomas
+Saint George's - GD,7500,12.0529,-61.7523,America/Grenada
+Saint Helier - JE,28000,49.188,-2.10491,Europe/Jersey
+Saint John's - AG,24226,17.121,-61.8433,America/Antigua
+Saint Paul - US,303176,44.9444,-93.0933,America/Chicago
+Saint Peter Port - GG,16488,49.4598,-2.53527,Europe/Guernsey
+Saint Petersburg - RU,5351935,59.9386,30.3141,Europe/Moscow
+Saint-Denis - RE,154765,-20.8823,55.4504,Indian/Reunion
+Saint-Louis - SN,254171,16.0179,-16.4896,Africa/Dakar
+Saint-Pierre - PM,6200,46.7791,-56.1773,America/Miquelon
+Sainyabuli - LA,13500,19.2576,101.71,Asia/Vientiane
+Saipan - MP,48220,15.2123,145.755,Pacific/Saipan
+Saitama - JP,1324854,35.9081,139.657,Asia/Tokyo
+Sakai - JP,826161,34.5822,135.467,Asia/Tokyo
+Sakakah - SA,128332,29.9697,40.2064,Asia/Riyadh
+Sakon Nakhon - TH,76237,17.1612,104.147,Asia/Bangkok
+Sal Rei - CV,10936,16.1761,-22.9172,Atlantic/Cape_Verde
+Salalah - OM,163140,17.015,54.0924,Asia/Muscat
+Salama - GT,65275,15.1021,-90.3191,America/Guatemala
+Salaspils - LV,17826,56.8601,24.3654,Europe/Riga
+Salcedo - DO,45299,19.3777,-70.4172,America/Santo_Domingo
+Salekhard - RU,49214,66.5337,66.6095,Asia/Yekaterinburg
+Salem - US,175535,44.9429,-123.035,America/Los_Angeles
+Salgotarjan - HU,34627,48.0987,19.803,Europe/Budapest
+Salt Lake City - US,215548,40.7608,-111.891,America/Denver
+Salta - AR,520683,-24.8065,-65.42,America/Argentina/Salta
+Saltillo - MX,709671,25.426,-100.98,America/Monterrey
+Salto - UY,99823,-31.3881,-57.9598,America/Montevideo
+Salvador - BR,2711840,-12.9756,-38.491,America/Bahia
+Salvaleon de Higueey - DO,123787,18.615,-68.708,America/Santo_Domingo
+Salyan - AZ,36555,39.5962,48.9848,Asia/Baku
+Salzburg - AT,157245,47.7994,13.044,Europe/Vienna
+Samana - DO,11432,19.204,-69.3341,America/Santo_Domingo
+Samara - RU,1163399,53.2077,50.1355,Europe/Samara
+Samarinda - ID,831460,-0.49167,117.146,Asia/Makassar
+Samarkand - UZ,595200,39.6546,66.9644,Asia/Samarkand
+Sambava - MG,89003,-14.2667,50.1667,Indian/Antananarivo
+Samraong - KH,18694,14.1817,103.518,Asia/Phnom_Penh
+Samsun - TR,394050,41.2798,36.3361,Europe/Istanbul
+Samut Prakan - TH,388920,13.5976,100.597,Asia/Bangkok
+Samut Sakhon - TH,63498,13.5475,100.274,Asia/Bangkok
+Samut Songkhram - TH,35065,13.4146,100.003,Asia/Bangkok
+San Andres - CO,58257,12.5786,-81.6997,America/Bogota
+San Antonio - US,1526656,29.4241,-98.4936,America/Chicago
+San Carlos - VE,120375,9.66415,-68.5866,America/Caracas
+San Carlos - NI,13451,11.1271,-84.7779,America/Managua
+San Cristobal - VE,289852,7.76593,-72.2358,America/Caracas
+San Cristobal - DO,154040,18.4171,-70.1068,America/Santo_Domingo
+San Diego - US,1404452,32.7157,-117.165,America/Los_Angeles
+San Felipe - VE,206270,10.3401,-68.743,America/Caracas
+San Fernando - PH,251248,15.0343,120.684,Asia/Manila
+San Fernando - TT,55419,10.2797,-61.4684,America/Port_of_Spain
+San Fernando de Apure - VE,229197,7.88963,-67.4718,America/Caracas
+San Fernando de Monte Cristi - DO,17001,19.848,-71.646,America/Santo_Domingo
+San Francisco - US,827526,37.7749,-122.419,America/Los_Angeles
+San Francisco - SV,16152,13.6941,-88.1041,America/El_Salvador
+San Francisco de Macoris - DO,124763,19.2938,-70.2528,America/Santo_Domingo
+San German - PR,12055,18.0816,-67.0449,America/Puerto_Rico
+San Giljan - MT,13792,35.9184,14.4898,Europe/Malta
+San Gwann - MT,14720,35.9056,14.4761,Europe/Malta
+San Ignacio de Sabaneta - DO,16380,19.4784,-71.3393,America/Santo_Domingo
+San Jose - US,997368,37.3394,-121.895,America/Los_Angeles
+San Jose - CR,335007,9.93388,-84.0849,America/Costa_Rica
+San Jose de las Lajas - CU,54847,22.9612,-82.1515,America/Havana
+San Jose de Mayo - UY,36529,-34.339,-56.7134,America/Montevideo
+San Jose de Ocoa - DO,21148,18.5468,-70.5069,America/Santo_Domingo
+San Jose del Guaviare - CO,52815,2.56799,-72.6397,America/Bogota
+San Jose Village - MP,15000,14.9682,145.62,Pacific/Saipan
+San Juan - PR,418140,18.4663,-66.1057,America/Puerto_Rico
+San Juan - AR,109123,-31.5373,-68.5257,America/Argentina/San_Juan
+San Juan Bautista - PY,16593,-26.6703,-57.1407,America/Asuncion
+San Juan de la Maguana - DO,72950,18.8064,-71.2263,America/Santo_Domingo
+San Juan de los Morros - VE,160868,9.91246,-67.354,America/Caracas
+San Luis - AR,169947,-33.2914,-66.3247,America/Argentina/San_Luis
+San Luis Potosi - MX,722772,22.1523,-100.971,America/Monterrey
+San Marcos - GT,47063,14.9644,-91.7949,America/Guatemala
+San Marino - SM,4500,43.9367,12.4464,Europe/San_Marino
+San Miguel - SV,247126,13.4826,-88.1821,America/El_Salvador
+San Miguel de Tucuman - AR,548866,-26.816,-65.2105,America/Argentina/Tucuman
+San Pawl il-Bahar - MT,32042,35.9506,14.4156,Europe/Malta
+San Pedro de Macoris - DO,217899,18.4539,-69.3086,America/Santo_Domingo
+San Pedro de Ycuamandyyu - PY,11548,-24.0853,-57.0874,America/Asuncion
+San Pedro Sula - HN,801259,15.5059,-88.0259,America/Tegucigalpa
+San Salvador - SV,525990,13.6893,-89.1872,America/El_Salvador
+San Salvador de Jujuy - AR,257970,-24.1928,-65.2934,America/Argentina/Jujuy
+San Sebastian - PR,11590,18.3366,-66.9902,America/Puerto_Rico
+San Vicente - SV,41504,13.6411,-88.7846,America/El_Salvador
+San-Pedro - CI,390654,4.74851,-6.6363,Africa/Abidjan
+Sanaa - YE,1937451,15.3545,44.2065,Asia/Aden
+Sanandaj - IR,349176,35.315,46.9988,Asia/Tehran
+Sancti Spiritus - CU,127069,21.9343,-79.4398,America/Havana
+Sangre Grande - TT,15968,10.587,-61.1301,America/Port_of_Spain
+Sankt Gallen - CH,75833,47.4239,9.37477,Europe/Zurich
+Sankt Poelten - AT,21911,48.2076,15.6372,Europe/Vienna
+Sanliurfa - TR,449549,37.1671,38.7939,Europe/Istanbul
+Sanmenxia - CN,669307,34.7808,111.193,Asia/Shanghai
+Sanming - CN,602166,26.2486,117.619,Asia/Shanghai
+Sanniquellie - LR,17895,7.36215,-8.71326,Africa/Monrovia
+Santa Ana - SV,176661,13.9883,-89.5568,America/El_Salvador
+Santa Barbara - HN,15119,14.9222,-88.2376,America/Tegucigalpa
+Santa Clara - CU,250512,22.4071,-79.9658,America/Havana
+Santa Cruz de Barahona - DO,77160,18.2086,-71.1007,America/Santo_Domingo
+Santa Cruz de El Seibo - DO,23547,18.7648,-69.0399,America/Santo_Domingo
+Santa Cruz de la Sierra - BO,1831434,-17.7863,-63.1812,America/La_Paz
+Santa Cruz de Tenerife - ES,211436,28.4682,-16.2546,Atlantic/Canary
+Santa Cruz del Quiche - GT,78279,15.0299,-91.1488,America/Guatemala
+Santa Elena - EC,42214,-2.22652,-80.8581,America/Guayaquil
+Santa Fe - AR,391164,-31.6488,-60.7087,America/Argentina/Cordoba
+Santa Fe - US,87505,35.687,-105.938,America/Denver
+Santa Marta - CO,499192,11.2386,-74.1943,America/Bogota
+Santa Rosa - AR,102860,-36.6162,-64.2899,America/Argentina/Salta
+Santa Rosa de Copan - HN,27753,14.7739,-88.7756,America/Tegucigalpa
+Santa Tecla - SV,124694,13.6774,-89.2833,America/El_Salvador
+Santander - ES,174101,43.4659,-3.80493,Europe/Madrid
+Santarem - PT,29385,39.2338,-8.68617,Europe/Lisbon
+Santiago - CL,4837295,-33.4569,-70.6483,America/Santiago
+Santiago de Compostela - ES,97849,42.8805,-8.54569,Europe/Madrid
+Santiago de Cuba - CU,555865,20.0229,-75.8217,America/Havana
+Santiago de los Caballeros - DO,1200000,19.4504,-70.6908,America/Santo_Domingo
+Santiago de Queretaro - MX,1594212,20.5881,-100.388,America/Mexico_City
+Santiago de Veraguas - PA,45355,8.1,-80.9833,America/Panama
+Santiago del Estero - AR,252192,-27.8005,-64.2629,America/Argentina/Cordoba
+Santo Domingo - DO,2201941,18.4719,-69.8923,America/Santo_Domingo
+Santo Domingo de los Colorados - EC,458580,-0.25368,-79.1763,America/Guayaquil
+Santo Domingo Este - DO,700000,18.4851,-69.8476,America/Santo_Domingo
+Sanya - CN,1031396,18.2543,109.509,Asia/Shanghai
+Sao Filipe - CV,10097,14.8961,-24.4956,Atlantic/Cape_Verde
+Sao Jose dos Campos - BR,729737,-23.1794,-45.8869,America/Sao_Paulo
+Sao Luis - BR,917237,-2.52972,-44.3028,America/Fortaleza
+Sao Paulo - BR,12400232,-23.5475,-46.6361,America/Sao_Paulo
+Sao Tome - ST,53300,0.33756,6.7299,Africa/Sao_Tome
+Sapporo - JP,1973832,43.0667,141.35,Asia/Tokyo
+Sar-e Pul - AF,52121,36.2154,65.9325,Asia/Kabul
+Saraburi - TH,67763,14.5333,100.917,Asia/Bangkok
+Sarajevo - BA,696731,43.8486,18.3564,Europe/Sarajevo
+Saransk - RU,318841,54.1848,45.1717,Europe/Moscow
+Saratov - RU,844858,51.5405,45.9901,Europe/Saratov
+Sargodha - PK,975886,32.0859,72.6742,Asia/Karachi
+Sarh - TD,138928,9.14555,18.3833,Africa/Ndjamena
+Sari - IR,255396,36.5633,53.0601,Asia/Tehran
+Sariwon-si - KP,310100,38.5072,125.756,Asia/Pyongyang
+Sarnen - CH,10368,46.8961,8.24531,Europe/Zurich
+Sarpang - BT,10416,26.8639,90.2674,Asia/Thimphu
+Sarpsborg - NO,59038,59.2839,11.1096,Europe/Oslo
+Satu Mare - RO,112490,47.7993,22.8625,Europe/Bucharest
+Satun - TH,34544,6.62314,100.067,Asia/Bangkok
+Saurimo - AO,393000,-9.66078,20.3915,Africa/Luanda
+Savanna-la-Mar - JM,16553,18.2189,-78.1332,America/Jamaica
+Savannakhet - LA,125760,16.5703,104.762,Asia/Vientiane
+Saynshand - MN,19891,44.8824,110.116,Asia/Ulaanbaatar
+Scarborough - TT,17000,11.1823,-60.7353,America/Port_of_Spain
+Schaffhausen - CH,36587,47.6973,8.63493,Europe/Zurich
+Schwerin - DE,96641,53.6294,11.4132,Europe/Berlin
+Schwyz - CH,15181,47.0208,8.65414,Europe/Zurich
+Seattle - US,780995,47.6062,-122.332,America/Los_Angeles
+Sedhiou - SN,31511,12.7081,-15.5569,Africa/Dakar
+Segou - ML,205787,13.4403,-6.25947,Africa/Bamako
+Seguela - CI,103980,7.96111,-6.67306,Africa/Abidjan
+Seinaejoki - FI,64743,62.7945,22.8282,Europe/Helsinki
+Sejong - KR,394630,36.5924,127.292,Asia/Seoul
+Sekondi-Takoradi - GH,138872,4.92678,-1.75773,Africa/Accra
+Sekong - LA,35000,15.3458,106.724,Asia/Vientiane
+Selibaby - MR,32653,15.1585,-12.1843,Africa/Nouakchott
+Semarang - ID,1653524,-6.99306,110.421,Asia/Jakarta
+Semey - KZ,292780,50.4206,80.2502,Asia/Almaty
+Semnan - IR,124826,35.5769,53.392,Asia/Tehran
+Sendai - JP,1096704,38.2667,140.867,Asia/Tokyo
+Sensuntepeque - SV,20386,13.8758,-88.6273,America/El_Salvador
+Seoul - KR,10349312,37.566,126.978,Asia/Seoul
+Serang - ID,692101,-6.11528,106.154,Asia/Jakarta
+Seremban - MY,372917,2.7297,101.938,Asia/Kuala_Lumpur
+Serowe - BW,55676,-22.3875,26.7108,Africa/Gaborone
+Setif - DZ,252127,36.1911,5.41373,Africa/Algiers
+Setubal - PT,117110,38.5244,-8.8882,Europe/Lisbon
+Sevastopol - UA,547820,44.608,33.5213,Europe/Simferopol
+Sevilla - ES,687488,37.3828,-5.97317,Europe/Madrid
+Sfantu Gheorghe - RO,50080,45.8667,25.7833,Europe/Bucharest
+Sfax - TN,280566,34.7406,10.7603,Africa/Tunis
+Sha Tin - HK,495200,22.3833,114.183,Asia/Hong_Kong
+Shahr-e Kord - IR,129153,32.3261,50.8572,Asia/Tehran
+Sham Shui Po - HK,431090,22.3302,114.159,Asia/Hong_Kong
+Shamakhi - AZ,29403,40.6314,48.6414,Asia/Baku
+Shamkhor - AZ,35421,40.8297,46.0178,Asia/Baku
+Shanghai - CN,24874500,31.2222,121.458,Asia/Shanghai
+Shangluo - CN,531696,33.8667,109.931,Asia/Shanghai
+Shangqiu - CN,1536392,34.45,115.65,Asia/Shanghai
+Shangrao - CN,1116486,28.4518,117.943,Asia/Shanghai
+Shantou - CN,3838900,23.3549,116.679,Asia/Shanghai
+Shaoguan - CN,1028460,24.8,113.583,Asia/Shanghai
+Shaoxing - CN,2300000,30.0024,120.579,Asia/Shanghai
+Shaoyang - CN,753194,27.2382,111.462,Asia/Shanghai
+Sharjah - AE,1800000,25.3342,55.4122,Asia/Dubai
+Sheffield - GB,556500,53.383,-1.4659,Europe/London
+Shekhupura - PK,591424,31.7129,73.9856,Asia/Karachi
+Sheki - AZ,68400,41.1919,47.1706,Asia/Baku
+Shenyang - CN,7050000,41.7922,123.433,Asia/Shanghai
+Shenzhen - CN,17494398,22.5455,114.068,Asia/Shanghai
+Shevchenko - KZ,147443,43.6611,51.1739,Asia/Aqtau
+Shibin al Kawm - EG,267945,30.5526,31.009,Africa/Cairo
+Shibirghan - AF,55641,36.6676,65.7529,Asia/Kabul
+Shihezi - CN,572772,44.3023,86.0369,Asia/Urumqi
+Shijiazhuang - CN,3938513,38.0414,114.479,Asia/Shanghai
+Shillong - IN,143229,25.5689,91.8831,Asia/Kolkata
+Shimla - IN,173503,31.1044,77.1666,Asia/Kolkata
+Shinyanga - TZ,139727,-3.66393,33.4212,Africa/Dar_es_Salaam
+Shiraz - IR,1249942,29.6103,52.5311,Asia/Tehran
+Shiyan - CN,3460000,32.6475,110.778,Asia/Shanghai
+Shizuishan - CN,739400,38.9808,106.389,Asia/Shanghai
+Shizuoka - JP,693389,34.9833,138.383,Asia/Tokyo
+Shkoder - AL,95553,42.0683,19.5126,Europe/Tirane
+Shtip - MK,48279,41.7458,22.1958,Europe/Skopje
+Shuangyashan - CN,600000,46.6769,131.133,Asia/Shanghai
+Shubra al Khaymah - EG,1240289,30.1251,31.2505,Africa/Cairo
+Shumen - BG,72342,43.2706,26.9229,Europe/Sofia
+Shymkent - KZ,1200000,42.3099,69.6004,Asia/Almaty
+Si Sa Ket - TH,44751,15.1148,104.329,Asia/Bangkok
+Sialkot - PK,911817,32.4927,74.5313,Asia/Karachi
+Siauliai - LT,99462,55.9333,23.3167,Europe/Vilnius
+Siaya - KE,33153,0.0607,34.2881,Africa/Nairobi
+Sibenik - HR,31115,43.7343,15.8942,Europe/Zagreb
+Sibiti - CG,33122,-3.68192,13.3498,Africa/Brazzaville
+Sibiu - RO,134309,45.8,24.15,Europe/Bucharest
+Sibut - CF,31986,5.71801,19.0739,Africa/Bangui
+Sidi Bel Abbes - DZ,210146,35.1899,-0.63085,Africa/Algiers
+Sidi Bouzid - TN,47595,35.0382,9.48494,Africa/Tunis
+Sidon - LB,163554,33.5575,35.3715,Asia/Beirut
+Siem Reap - KH,139458,13.3618,103.861,Asia/Phnom_Penh
+Sigulda - LV,10422,57.1538,24.8595,Europe/Riga
+Sihanoukville - KH,73036,10.6093,103.53,Asia/Phnom_Penh
+Siirt - TR,114034,37.9293,41.9413,Europe/Istanbul
+Sikasso - ML,349324,11.3176,-5.66654,Africa/Bamako
+Siliana - TN,31251,36.085,9.37082,Africa/Tunis
+Silistra - BG,29498,44.1171,27.2606,Europe/Sofia
+Sincelejo - CO,277773,9.3045,-75.3905,America/Bogota
+Sing Buri - TH,20046,14.8879,100.405,Asia/Bangkok
+Singa - SD,250000,13.1483,33.9312,Africa/Khartoum
+Singapore - SG,5638700,1.28967,103.85,Asia/Singapore
+Singerei - MD,14600,47.6369,28.1407,Europe/Chisinau
+Singida - TZ,232459,-4.81629,34.7436,Africa/Dar_es_Salaam
+Sinop - TR,34834,42.0268,35.1625,Europe/Istanbul
+Sinuiju - KP,288112,40.1006,124.398,Asia/Pyongyang
+Sirnak - TR,67662,37.5139,42.4543,Europe/Istanbul
+Sirte - LY,106705,31.2089,16.5887,Africa/Tripoli
+Sirvan - AZ,70220,39.9378,48.929,Asia/Baku
+Sisak - HR,27859,45.4661,16.3775,Europe/Zagreb
+Sisophon - KH,23218,13.5859,102.974,Asia/Phnom_Penh
+Sitten - CH,34708,46.2274,7.35559,Europe/Zurich
+Sittwe - MM,177743,20.1462,92.8983,Asia/Yangon
+Situbondo - ID,685967,-7.70623,114.01,Asia/Jakarta
+Sivas - TR,264022,39.7483,37.0161,Europe/Istanbul
+Skien - NO,50595,59.2096,9.60897,Europe/Oslo
+Skikda - DZ,182903,36.8762,6.90921,Africa/Algiers
+Skofja Loka - SI,11619,46.1655,14.3063,Europe/Ljubljana
+Skopje - MK,474889,41.9965,21.4314,Europe/Skopje
+Slatina - RO,63487,44.4333,24.3667,Europe/Bucharest
+Slavonski Brod - HR,45005,45.1616,18.0163,Europe/Zagreb
+Sliema - MT,22591,35.9125,14.5017,Europe/Malta
+Sliven - BG,83740,42.6861,26.3256,Europe/Sofia
+Slobozia - RO,41550,44.5647,27.3633,Europe/Bucharest
+Smolensk - RU,330025,54.7783,32.0509,Europe/Moscow
+Smolyan - BG,26167,41.5744,24.712,Europe/Sofia
+Soacha - CO,655025,4.57937,-74.2168,America/Bogota
+Soc Trang - VN,221430,9.59995,105.972,Asia/Ho_Chi_Minh
+Sodo - ET,204100,6.86,37.7616,Africa/Addis_Ababa
+Sofia - BG,1152556,42.6975,23.3241,Europe/Sofia
+Sofifi - ID,36197,0.73729,127.559,Asia/Jayapura
+Sohag - EG,266944,26.557,31.6948,Africa/Cairo
+Sohar - OM,108274,24.3474,56.7094,Asia/Muscat
+Sokhumi - GE,65439,43.007,40.9893,Asia/Tbilisi
+Sokode - TG,117811,8.98333,1.13333,Africa/Lome
+Sokoto - NG,1040000,13.0627,5.24322,Africa/Lagos
+Solola - GT,45373,14.7707,-91.1834,America/Guatemala
+Solothurn - CH,16777,47.2079,7.53714,Europe/Zurich
+Solwezi - ZM,301370,-12.1688,26.3894,Africa/Lusaka
+Somoto - NI,20316,13.4841,-86.5823,America/Managua
+Son La - VN,106052,21.3256,103.919,Asia/Bangkok
+Songea - TZ,286285,-10.6833,35.65,Africa/Dar_es_Salaam
+Songkhla - TH,61758,7.19882,100.595,Asia/Bangkok
+Sonsonate - SV,59468,13.7173,-89.723,America/El_Salvador
+Soroca - MD,27423,48.1566,28.2849,Europe/Chisinau
+Sorocaba - BR,687357,-23.5017,-47.4581,America/Sao_Paulo
+Sorong - ID,254294,-0.87956,131.261,Asia/Jayapura
+Souk Ahras - DZ,153479,36.2864,7.95111,Africa/Algiers
+Sousse - TN,221715,35.8254,10.637,Africa/Tunis
+South Tangerang - ID,1404785,-6.28862,106.718,Asia/Jakarta
+Soweto - ZA,1695047,-26.2678,27.8585,Africa/Johannesburg
+Spanish Town - JM,145018,17.9911,-76.9574,America/Jamaica
+Split - HR,149830,43.5089,16.4392,Europe/Zagreb
+Springfield - US,114394,39.8017,-89.6437,America/Chicago
+Srinagar - IN,1206419,34.0857,74.8055,Asia/Kolkata
+St. John's - CA,110525,47.5649,-52.7093,America/St_Johns
+Stanley - FK,2213,-51.6938,-57.857,Atlantic/Stanley
+Stara Zagora - BG,143431,42.432,25.6426,Europe/Sofia
+Stavanger - NO,148682,58.9701,5.73332,Europe/Oslo
+Stavropol' - RU,433931,45.0344,41.9642,Europe/Moscow
+Steinkjer - NO,13060,64.0149,11.4954,Europe/Oslo
+Stockholm - SE,1515017,59.3294,18.0687,Europe/Stockholm
+Strasbourg - FR,274845,48.5839,7.74553,Europe/Paris
+Straseni - MD,19225,47.1422,28.6077,Europe/Chisinau
+Struga - MK,37387,41.1779,20.6789,Europe/Skopje
+Strumica - MK,33825,41.4376,22.6429,Europe/Skopje
+Studenicani - MK,18219,41.9221,21.5348,Europe/Skopje
+Stung Treng - KH,25000,13.5259,105.968,Asia/Phnom_Penh
+Stuttgart - DE,630305,48.7823,9.17702,Europe/Berlin
+Suai - TL,21539,-9.31286,125.256,Asia/Dili
+Suceava - RO,84308,47.6333,26.25,Europe/Bucharest
+Sucre - BO,224838,-19.0333,-65.2627,America/La_Paz
+Suehbaatar - MN,22741,50.2314,106.208,Asia/Ulaanbaatar
+Suez - EG,699541,29.9737,32.5263,Africa/Cairo
+Suining - CN,656760,30.508,105.573,Asia/Shanghai
+Suizhou - CN,618582,31.7111,113.363,Asia/Shanghai
+Sukhothai - TH,37000,17.0078,99.823,Asia/Bangkok
+Sukkur - PK,563851,27.7032,68.8589,Asia/Karachi
+Sumbawanga - TZ,303986,-7.96667,31.6167,Africa/Dar_es_Salaam
+Sumbe - AO,205832,-11.206,13.8437,Africa/Luanda
+Sumqayit - AZ,358675,40.5897,49.6686,Asia/Baku
+Sumy - UA,259660,50.9174,34.7991,Europe/Kyiv
+Sunyani - GH,92825,7.33991,-2.32676,Africa/Accra
+Suong - KH,30000,11.9118,105.658,Asia/Phnom_Penh
+Suphan Buri - TH,53399,14.4742,100.122,Asia/Bangkok
+Suqian - CN,1437685,33.9492,118.296,Asia/Shanghai
+Sur - OM,71152,22.5667,59.5289,Asia/Muscat
+Surabaya - ID,2874314,-7.24917,112.751,Asia/Jakarta
+Surat - IN,4591246,21.1959,72.8302,Asia/Kolkata
+Surat Thani - TH,132040,9.14011,99.3331,Asia/Bangkok
+Surin - TH,46673,14.8818,103.494,Asia/Bangkok
+Susa - AZ,18662,39.7601,46.7499,Asia/Baku
+Suva - FJ,77366,-18.1368,178.425,Pacific/Fiji
+Suwon - KR,1191063,37.2911,127.009,Asia/Seoul
+Suzhou - CN,6715559,31.3041,120.595,Asia/Shanghai
+Svay Rieng - KH,23956,11.0878,105.799,Asia/Phnom_Penh
+Sveti Nikole - MK,13292,41.8696,21.9527,Europe/Skopje
+Swakopmund - NA,53009,-22.6784,14.5266,Africa/Windhoek
+Swieqi - MT,14452,35.9215,14.48,Europe/Malta
+Swords - IE,42738,53.4597,-6.21806,Europe/Dublin
+Sydney - AU,5557233,-33.8678,151.207,Australia/Sydney
+Syktyvkar - RU,245083,61.6639,50.8163,Europe/Moscow
+Sylhet - BD,237000,24.899,91.872,Asia/Dhaka
+Szczecin - PL,407811,53.4289,14.553,Europe/Warsaw
+Szeged - HU,160766,46.253,20.1482,Europe/Budapest
+Szekesfehervar - HU,101600,47.19,18.4103,Europe/Budapest
+Szekszard - HU,34174,46.3472,18.7119,Europe/Budapest
+Szolnok - HU,71285,47.1807,20.1984,Europe/Budapest
+Szombathely - HU,78025,47.2309,16.6215,Europe/Budapest
+Ta Khmau - KH,52066,11.4833,104.95,Asia/Phnom_Penh
+Tabora - TZ,308741,-5.01622,32.8266,Africa/Dar_es_Salaam
+Tabriz - IR,1424641,38.08,46.2919,Asia/Tehran
+Tabuk - SA,667000,28.3998,36.5715,Asia/Riyadh
+Tacna - PE,286240,-18.0146,-70.2536,America/Lima
+Tacuarembo - UY,51854,-31.7188,-55.9793,America/Montevideo
+Tadjoura - DJ,19533,11.7878,42.8822,Africa/Djibouti
+Taguig - PH,1308085,14.5243,121.079,Asia/Manila
+Tahoua - NE,159468,14.8888,5.2692,Africa/Niamey
+Tai Po - HK,274100,22.4501,114.169,Asia/Hong_Kong
+Tai'an - CN,1735425,36.1853,117.12,Asia/Shanghai
+Taicang - CN,831113,31.4478,121.094,Asia/Shanghai
+Taichung - TW,2850285,24.1469,120.684,Asia/Taipei
+Tainan - TW,1856642,22.9908,120.213,Asia/Taipei
+Taipei - TW,7871900,25.0531,121.526,Asia/Taipei
+Taiyuan - CN,4303673,37.8694,112.56,Asia/Shanghai
+Taiz - YE,940600,13.5795,44.0209,Asia/Aden
+Taizhou - CN,1607108,32.4907,119.908,Asia/Shanghai
+Tak - TH,24149,16.8697,99.129,Asia/Bangkok
+Takamatsu - JP,418994,34.3333,134.05,Asia/Tokyo
+Takeo - KH,843931,10.9908,104.785,Asia/Phnom_Penh
+Talas - KG,40308,42.5226,72.2417,Asia/Bishkek
+Talca - CL,197479,-35.4232,-71.6497,America/Santiago
+Taldykorgan - KZ,116558,45.0156,78.3739,Asia/Almaty
+Tallahassee - US,201731,30.4383,-84.2807,America/New_York
+Tallinn - EE,394024,59.437,24.7535,Europe/Tallinn
+Taloqan - AF,64256,36.736,69.5345,Asia/Kabul
+Talsi - LV,12022,57.2456,22.5814,Europe/Riga
+Tam Ky - VN,165240,15.5736,108.474,Asia/Ho_Chi_Minh
+Tamale - GH,464316,9.40079,-0.8393,Africa/Accra
+Tamanghasset - DZ,81752,22.785,5.52278,Africa/Algiers
+Tambacounda - SN,149071,13.7707,-13.6673,Africa/Dakar
+Tambov - RU,293661,52.7363,41.441,Europe/Moscow
+Tampere - FI,244315,61.4991,23.7871,Europe/Helsinki
+Tamuning-Tumon-Harmon Village - GU,19685,13.4877,144.781,Pacific/Guam
+Tan An - VN,215250,10.5359,106.414,Asia/Ho_Chi_Minh
+Tanga - TZ,393429,-5.06893,39.0988,Africa/Dar_es_Salaam
+Tangerang - ID,1912679,-6.17806,106.63,Asia/Jakarta
+Tangier - MA,1035141,35.7673,-5.79975,Africa/Casablanca
+Tangshan - CN,3372102,39.6438,118.183,Asia/Shanghai
+Tanjung Selor - ID,56569,2.8375,117.365,Asia/Makassar
+Tanta - EG,576648,30.7885,31.0019,Africa/Cairo
+Taraclia - MD,13512,45.9032,28.6663,Europe/Chisinau
+Tarawa - KI,40311,1.3278,172.977,Pacific/Tarawa
+Taraz - KZ,358153,42.898,71.3733,Asia/Almaty
+Targovishte - BG,34793,43.2512,26.5722,Europe/Sofia
+Targoviste - RO,66965,44.9254,25.4567,Europe/Bucharest
+Targu Jiu - RO,73545,45.05,23.2833,Europe/Bucharest
+Targu Mures - RO,212752,46.5425,24.5575,Europe/Bucharest
+Tarija - BO,159269,-21.5355,-64.7296,America/La_Paz
+Tarrafal - CV,13483,15.2788,-23.7519,Atlantic/Cape_Verde
+Tartu - EE,91407,58.3806,26.7251,Europe/Tallinn
+Tartus - SY,458327,34.889,35.8866,Asia/Damascus
+Tashkent - UZ,1978028,41.2647,69.2163,Asia/Tashkent
+Tatabanya - HU,65849,47.5925,18.381,Europe/Budapest
+Tataouine - TN,66924,32.9297,10.4518,Africa/Tunis
+Taunggyi - MM,160115,20.7892,97.0378,Asia/Yangon
+Taurage - LT,21203,55.2522,22.2897,Europe/Vilnius
+Tay Ninh - VN,135254,11.31,106.098,Asia/Ho_Chi_Minh
+Tbeng Meanchey - KH,24380,13.8073,104.98,Asia/Phnom_Penh
+Tbilisi - GE,1049498,41.6914,44.8341,Asia/Tbilisi
+Tchibanga - GA,36108,-2.93323,10.9818,Africa/Libreville
+Tearce - MK,23096,42.0759,21.0518,Europe/Skopje
+Tebessa - DZ,194461,35.4042,8.12417,Africa/Algiers
+Techiman - GH,84074,7.59054,-1.93947,Africa/Accra
+Tegucigalpa - HN,850848,14.0818,-87.2068,America/Tegucigalpa
+Tehran - IR,7153309,35.6944,51.4215,Asia/Tehran
+Tekirdag - TR,122287,40.9781,27.511,Europe/Istanbul
+Tel Aviv - IL,432892,32.0809,34.7806,Asia/Jerusalem
+Telavi - GE,19875,41.9196,45.47,Asia/Tbilisi
+Telsiai - LT,21294,55.9814,22.2472,Europe/Vilnius
+Temuco - CL,238129,-38.7363,-72.5974,America/Santiago
+Tena - EC,17172,-0.9961,-77.8131,America/Guayaquil
+Tenkodogo - BF,61936,11.78,-0.36972,Africa/Ouagadougou
+Tepic - MX,332863,21.5073,-104.893,America/Mazatlan
+Teresina - BR,871126,-5.08917,-42.8019,America/Fortaleza
+Ternopil - UA,225238,49.554,25.5907,Europe/Kyiv
+Terter - AZ,18185,40.342,46.9316,Asia/Baku
+Tete - MZ,357000,-16.1564,33.5867,Africa/Maputo
+Tetovo - MK,63176,42.0099,20.9714,Europe/Skopje
+Tevragh Zeina - MR,48093,18.0989,-15.9885,Africa/Nouakchott
+Teyateyaneng - LS,27272,-29.1472,27.749,Africa/Maseru
+Thaba-Tseka - LS,16765,-29.522,28.6084,Africa/Maseru
+Thai Nguyen - VN,420000,21.5942,105.848,Asia/Bangkok
+Thakhek - LA,85000,17.4103,104.831,Asia/Vientiane
+Thane - IN,1841488,19.197,72.9635,Asia/Kolkata
+Thanh Hoa - VN,850000,19.8,105.767,Asia/Bangkok
+Thanh Pho Ba Ria - VN,235192,10.4963,107.168,Asia/Ho_Chi_Minh
+Thanh pho Tra Vinh - VN,160310,9.94719,106.342,Asia/Ho_Chi_Minh
+The Bronx - US,1385108,40.8499,-73.8664,America/New_York
+The Valley - AI,2035,18.217,-63.0578,America/Anguilla
+Thessaloniki - GR,317778,40.6407,22.9349,Europe/Athens
+Thimphu - BT,98676,27.4661,89.6419,Asia/Thimphu
+Thiruvananthapuram - IN,788271,8.4855,76.9492,Asia/Kolkata
+Thu Dau Mot - VN,373105,10.9804,106.652,Asia/Ho_Chi_Minh
+Thu GJuc - VN,524670,10.8486,106.772,Asia/Ho_Chi_Minh
+Thuan An - VN,588616,10.9239,106.714,Asia/Ho_Chi_Minh
+Tianjin - CN,11090314,39.1422,117.177,Asia/Shanghai
+Tianshui - CN,1212791,34.5795,105.742,Asia/Shanghai
+Tiaret - DZ,178915,35.371,1.31699,Africa/Algiers
+Tidjikja - MR,13479,18.5564,-11.4271,Africa/Nouakchott
+Tijuana - MX,1922523,32.5027,-117.004,America/Tijuana
+Tikrit - IQ,42477,34.6158,43.6786,Asia/Baghdad
+Tillaberi - NE,30822,14.2071,1.45418,Africa/Niamey
+Timbuktu - ML,84208,16.7735,-3.00742,Africa/Bamako
+Timimoun - DZ,22086,29.2642,0.23583,Africa/Algiers
+Timisoara - RO,250849,45.7537,21.2257,Europe/Bucharest
+Tindouf - DZ,45610,27.6711,-8.14743,Africa/Algiers
+Tipasa - DZ,15180,36.5897,2.44889,Africa/Algiers
+Tirana - AL,418495,41.3274,19.8187,Europe/Tirane
+Tiraspol - MD,157000,46.8428,29.6284,Europe/Chisinau
+Tirmiz - UZ,182800,37.2242,67.2783,Asia/Samarkand
+Tiruchirappalli - IN,1022518,10.8155,78.6965,Asia/Kolkata
+Tirunelveli - IN,1435844,8.72742,77.6838,Asia/Kolkata
+Tissemsilt - DZ,66084,35.6072,1.81081,Africa/Algiers
+Tizi Ouzou - DZ,104312,36.7118,4.04591,Africa/Algiers
+Tlaquepaque - MX,650123,20.6412,-103.293,America/Mexico_City
+Tlaxcala - MX,84670,19.3178,-98.2385,America/Mexico_City
+Tlemcen - DZ,173531,34.8783,-1.315,Africa/Algiers
+Toamasina - MG,345107,-18.1492,49.4023,Indian/Antananarivo
+Tobruk - LY,141499,32.0896,23.9538,Africa/Tripoli
+Tokat - TR,129702,40.3139,36.5544,Europe/Istanbul
+Tokushima - JP,267345,34.0667,134.567,Asia/Tokyo
+Tokyo - JP,9733276,35.6895,139.692,Asia/Tokyo
+Tolanaro - MG,71258,-25.0325,46.9833,Indian/Antananarivo
+Toledo - ES,84282,39.8581,-4.02263,Europe/Madrid
+Toliara - MG,178725,-23.35,43.6667,Indian/Antananarivo
+Toluca - MX,489333,19.2879,-99.6532,America/Mexico_City
+Tomsk - RU,574002,56.5005,84.9822,Asia/Tomsk
+Tonghua - CN,510000,41.7197,125.926,Asia/Shanghai
+Tonsberg - NO,55387,59.2675,10.4076,Europe/Oslo
+Topeka - US,125963,39.0483,-95.678,America/Chicago
+Torit - SS,20048,4.41177,32.5705,Africa/Juba
+Toronto - CA,2794356,43.7064,-79.3986,America/Toronto
+Torreon - MX,735340,25.5439,-103.419,America/Monterrey
+Torshavn - FO,13200,62.0097,-6.77164,Atlantic/Faroe
+Totonicapan - GT,103952,14.9119,-91.3605,America/Guatemala
+Tottori-shi - JP,188465,35.5,134.233,Asia/Tokyo
+Touba - SN,1120824,14.85,-15.8833,Africa/Dakar
+Touggourt - DZ,143270,33.1108,6.07,Africa/Algiers
+Toulouse - FR,493465,43.6043,1.44367,Europe/Paris
+Tovuz - AZ,177200,40.9925,45.6284,Asia/Baku
+Toyama - JP,415844,36.7,137.217,Asia/Tokyo
+Tozeur - TN,37370,33.9197,8.13352,Africa/Tunis
+Trabzon - TR,244083,41.005,39.7269,Europe/Istanbul
+Trang - TH,66713,7.55633,99.6114,Asia/Bangkok
+Trat - TH,21590,12.2436,102.515,Asia/Bangkok
+Trbovlje - SI,15163,46.1541,15.0518,Europe/Ljubljana
+Treinta y Tres - UY,25653,-33.231,-54.3858,America/Montevideo
+Trencin - SK,58278,48.8945,18.0444,Europe/Bratislava
+Trento - IT,120709,46.0679,11.1211,Europe/Rome
+Trenton - US,89620,40.2171,-74.7429,America/New_York
+Trieste - IT,204338,45.6495,13.7768,Europe/Rome
+Trincomalee - LK,108420,8.5778,81.2289,Asia/Colombo
+Trinidad - BO,84259,-14.8322,-64.9034,America/La_Paz
+Trinidad - UY,21429,-33.5165,-56.8996,America/Montevideo
+Tripoli - LY,1302947,32.8874,13.1873,Africa/Tripoli
+Tripoli - LB,229398,34.4335,35.8441,Asia/Beirut
+Tripoli - GR,26561,37.5096,22.3788,Europe/Athens
+Trnava - SK,62806,48.3777,17.586,Europe/Bratislava
+Tromso - NO,41915,69.6489,18.9551,Europe/Oslo
+Trujillo - PE,919899,-8.11599,-79.03,America/Lima
+Trujillo - VE,71362,9.36587,-70.4366,America/Caracas
+Trujillo Alto - PR,75243,18.3547,-66.0074,America/Puerto_Rico
+Tsetserleg - MN,21620,47.475,101.454,Asia/Ulaanbaatar
+Tsevie - TG,55775,6.42611,1.21333,Africa/Lome
+Tshabong - BW,11651,-26.05,22.45,Africa/Gaborone
+Tshikapa - CD,634529,-6.41621,20.7999,Africa/Lubumbashi
+Tsirang - BT,22376,27.0219,90.1229,Asia/Thimphu
+Tsiroanomandidy - MG,47087,-18.7697,46.0465,Indian/Antananarivo
+Tsu - JP,274537,34.7333,136.517,Asia/Tokyo
+Tsuen Wan - HK,318916,22.3714,114.113,Asia/Hong_Kong
+Tubmanburg - LR,22005,6.87064,-10.8211,Africa/Monrovia
+Tucson - US,542629,32.2217,-110.926,America/Phoenix
+Tucupita - VE,99778,9.06263,-62.0521,America/Caracas
+Tuen Mun - HK,507900,22.3917,113.972,Asia/Hong_Kong
+Tuguegarao - PH,167297,17.6158,121.723,Asia/Manila
+Tukums - LV,16318,56.9676,23.1555,Europe/Riga
+Tula - RU,482873,54.1961,37.6182,Europe/Moscow
+Tulcan - EC,86498,0.8124,-77.7171,America/Guayaquil
+Tulcea - RO,65624,45.1787,28.805,Europe/Bucharest
+Tumbes - PE,96946,-3.55592,-80.4426,America/Lima
+Tunapuna - TT,17758,10.6524,-61.3888,America/Port_of_Spain
+Tunceli - TR,35161,39.0992,39.5435,Europe/Istanbul
+Tunis - TN,693210,36.819,10.1658,Africa/Tunis
+Tunja - CO,172548,5.54481,-73.3576,America/Bogota
+Turin - IT,847287,45.0705,7.68682,Europe/Rome
+Turkestan - KZ,227098,43.2946,68.2569,Asia/Almaty
+Turkmenabat - TM,234817,39.0733,63.5786,Asia/Ashgabat
+Turku - FI,195301,60.4515,22.2687,Europe/Helsinki
+Tutong - BN,19151,4.80278,114.649,Asia/Brunei
+Tuxtla - MX,604147,16.7536,-93.1158,America/Merida
+Tuy Hoa - VN,155921,13.0955,109.321,Asia/Ho_Chi_Minh
+Tuyen Quang - VN,104645,21.8236,105.214,Asia/Bangkok
+Tver - RU,420065,56.8584,35.9006,Europe/Moscow
+Tyumen - RU,768358,57.1522,65.5272,Asia/Yekaterinburg
+Ubari - LY,33569,26.5903,12.7751,Africa/Tripoli
+Ubon Ratchathani - TH,122533,15.2384,104.849,Asia/Bangkok
+Udon Thani - TH,130531,17.4157,102.786,Asia/Bangkok
+UEruemqi - CN,3029372,43.801,87.6005,Asia/Urumqi
+Ufa - RU,1120547,54.7431,55.9678,Asia/Yekaterinburg
+Uige - AO,322531,-7.60874,15.0613,Africa/Luanda
+Ujar - AZ,15741,40.519,47.6542,Asia/Baku
+Ulaangom - MN,30092,49.9811,92.0667,Asia/Hovd
+Ulan Bator - MN,844818,47.9077,106.883,Asia/Ulaanbaatar
+Ulan-Ude - RU,360278,51.8265,107.6,Asia/Irkutsk
+Ulanqab - CN,550231,40.993,113.133,Asia/Shanghai
+Ulcinj - ME,10828,41.9294,19.2244,Europe/Podgorica
+Uliastay - MN,16265,47.7417,96.8444,Asia/Hovd
+Ulsan - KR,1095014,35.5372,129.317,Asia/Seoul
+Ulyanovsk - RU,626540,54.3282,48.3866,Europe/Ulyanovsk
+Umea - SE,130224,63.8284,20.2597,Europe/Stockholm
+Umm Al Quwain City - AE,59098,25.5647,55.5552,Asia/Dubai
+Umuahia - NG,370000,5.52491,7.49461,Africa/Lagos
+Undurkhaan - MN,22741,47.3194,110.656,Asia/Ulaanbaatar
+Ungheni - MD,34422,47.2102,27.8001,Europe/Chisinau
+Uppsala - SE,177074,59.8588,17.6389,Europe/Stockholm
+Urganch - UZ,145000,41.5518,60.6314,Asia/Samarkand
+Usak - TR,369433,38.6735,29.4058,Europe/Istanbul
+Ushuaia - AR,56825,-54.8108,-68.3159,America/Argentina/Ushuaia
+Ust-Kamenogorsk - KZ,319067,49.9714,82.6059,Asia/Almaty
+Usti nad Labem - CZ,90378,50.6607,14.0323,Europe/Prague
+Usulutan - SV,51910,13.3447,-88.4399,America/El_Salvador
+Utena - LT,25397,55.4978,25.6046,Europe/Vilnius
+Uthai Thani - TH,22219,15.3794,100.025,Asia/Bangkok
+Utrecht - NL,375161,52.0908,5.12222,Europe/Amsterdam
+Utsunomiya - JP,518757,36.5667,139.883,Asia/Tokyo
+Uttaradit - TH,58313,17.6256,100.094,Asia/Bangkok
+Uyo - NG,436606,5.05127,7.9335,Africa/Lagos
+Uzhhorod - UA,115449,48.6242,22.2947,Europe/Kyiv
+Vaasa - FI,67631,63.096,21.6158,Europe/Helsinki
+Vadodara - IN,1822221,22.2994,73.2081,Asia/Kolkata
+Vaduz - LI,5197,47.1415,9.52154,Europe/Vaduz
+Vaesteras - SE,127799,59.6162,16.5528,Europe/Stockholm
+Vaexjoe - SE,71282,56.8777,14.8091,Europe/Stockholm
+Valdivia - CL,133419,-39.8142,-73.2459,America/Santiago
+Valencia - VE,1619470,10.1615,-68.0004,America/Caracas
+Valencia - ES,825948,39.4739,-0.37966,Europe/Madrid
+Valenzuela - PH,725173,14.7,120.967,Asia/Manila
+Valga - EE,11792,57.7778,26.0473,Europe/Tallinn
+Valladolid - ES,300618,41.6554,-4.72353,Europe/Madrid
+Valledupar - CO,490075,10.4654,-73.2531,America/Bogota
+Valletta - MT,6794,35.8997,14.5148,Europe/Malta
+Valmiera - LV,22376,57.5411,25.4275,Europe/Riga
+Valparaiso - CL,282448,-33.036,-71.6296,America/Santiago
+Van - TR,525016,38.4946,43.3832,Europe/Istanbul
+Vanadzor - AM,78100,40.8074,44.497,Asia/Yerevan
+Vanimo - PG,11204,-2.68372,141.302,Pacific/Port_Moresby
+Varanasi - IN,1164404,25.3167,83.0104,Asia/Kolkata
+Varazdin - HR,36187,46.3044,16.3378,Europe/Zagreb
+Varna - BG,312770,43.2191,27.9102,Europe/Sofia
+Vasilevo - MK,12382,41.4742,22.6451,Europe/Skopje
+Vaslui - RO,63035,46.6333,27.7333,Europe/Bucharest
+Vatican City - VA,829,41.9027,12.4541,Europe/Vatican
+Vega Alta - PR,12036,18.4122,-66.3313,America/Puerto_Rico
+Vega Baja - PR,29325,18.4444,-66.3877,America/Puerto_Rico
+Vejle - DK,60231,55.7093,9.5357,Europe/Copenhagen
+Velenje - SI,24327,46.3572,15.1128,Europe/Ljubljana
+Veles - MK,57873,41.7172,21.772,Europe/Skopje
+Velikiy Novgorod - RU,222868,58.5213,31.271,Europe/Moscow
+Veliko Turnovo - BG,66217,43.0812,25.629,Europe/Sofia
+Venice - IT,51298,45.4371,12.3326,Europe/Rome
+Ventspils - LV,32634,57.3948,21.5612,Europe/Riga
+Veszprem - HU,56927,47.0933,17.9115,Europe/Budapest
+Vi Thanh - VN,24477,9.78449,105.47,Asia/Ho_Chi_Minh
+Viana do Castelo - PT,36148,41.6932,-8.83287,Europe/Lisbon
+Viborg - DK,41239,56.4532,9.40201,Europe/Copenhagen
+Victoria - CA,289625,48.4359,-123.352,America/Vancouver
+Victoria - SC,22881,-4.62001,55.455,Indian/Mahe
+Vidin - BG,40422,43.9916,22.8824,Europe/Sofia
+Viedma - AR,48940,-40.8152,-63.0004,America/Argentina/Salta
+Vienna - AT,1691468,48.2085,16.3721,Europe/Vienna
+Vientiane - LA,196731,17.9667,102.6,Asia/Vientiane
+Viet Tri - VN,415280,21.3227,105.402,Asia/Bangkok
+Vijayawada - IN,1143232,16.5074,80.6466,Asia/Kolkata
+Vila Real - PT,17001,41.3001,-7.7432,Europe/Lisbon
+Viljandi - EE,17407,58.3632,25.5916,Europe/Tallinn
+Villa Hayes - PY,57217,-25.093,-57.5273,America/Asuncion
+Villa Nueva - GT,618397,14.5251,-90.5854,America/Guatemala
+Villahermosa - MX,353577,17.9862,-92.9393,America/Merida
+Villarrica - PY,41157,-25.7495,-56.4352,America/Asuncion
+Villavicencio - CO,321717,4.13238,-73.6256,America/Bogota
+Vilnius - LT,542366,54.6892,25.2798,Europe/Vilnius
+Vinh - VN,790000,18.6734,105.692,Asia/Bangkok
+Vinh Long - VN,137870,10.2537,105.972,Asia/Ho_Chi_Minh
+Vinica - MK,18218,41.8812,22.5107,Europe/Skopje
+Vinnytsya - UA,369839,49.2322,28.4687,Europe/Kyiv
+Virar - IN,1222390,19.4559,72.8114,Asia/Kolkata
+Virovitica - HR,13486,45.8345,17.3855,Europe/Zagreb
+Visakhapatnam - IN,1063178,17.6801,83.2016,Asia/Kolkata
+Visby - SE,23402,57.6409,18.296,Europe/Stockholm
+Viseu - PT,26364,40.6617,-7.90905,Europe/Lisbon
+Vitebsk - BY,358395,55.1904,30.2049,Europe/Minsk
+Vitoria - BR,312656,-20.3194,-40.3378,America/Sao_Paulo
+Vladikavkaz - RU,306258,43.041,44.6699,Europe/Moscow
+Vladimir - RU,357024,56.1385,40.3998,Europe/Moscow
+Vladivostok - RU,604901,43.1056,131.874,Asia/Vladivostok
+Vlore - AL,115261,40.4696,19.4838,Europe/Tirane
+Voinjama - LR,23051,8.42194,-9.74778,Africa/Monrovia
+Volgograd - RU,1013533,48.7138,44.4976,Europe/Volgograd
+Vologda - RU,312420,59.2239,39.884,Europe/Moscow
+Voronezh - RU,1047549,51.6683,39.192,Europe/Moscow
+Voru - EE,12367,57.8339,27.0194,Europe/Tallinn
+Vratsa - BG,64941,43.2105,23.5631,Europe/Sofia
+Vukovar - HR,22255,45.3516,19.0023,Europe/Zagreb
+Vwawa - TZ,85000,-9.10806,32.9347,Africa/Dar_es_Salaam
+Wa - GH,78107,10.0607,-2.50192,Africa/Accra
+Wad Medani - SD,332714,14.4012,33.5199,Africa/Khartoum
+Wajir - KE,90116,1.7471,40.0573,Africa/Nairobi
+Wakayama - JP,356729,34.2333,135.167,Asia/Tokyo
+Wamena - ID,41844,-4.09583,138.948,Asia/Jayapura
+Wan Chai - HK,166695,22.2814,114.173,Asia/Hong_Kong
+Wanning - CN,545992,18.7993,110.384,Asia/Shanghai
+Wanxian - CN,859662,30.816,108.374,Asia/Shanghai
+Wanzhou - CN,1545900,30.7645,108.396,Asia/Shanghai
+Warangal - IN,704570,18.0,79.5833,Asia/Kolkata
+Warri - NG,910000,5.51737,5.75006,Africa/Lagos
+Warsaw - PL,1702139,52.2298,21.0118,Europe/Warsaw
+Washington - US,689545,38.8951,-77.0364,America/New_York
+Wau - SS,127384,7.70111,27.9897,Africa/Juba
+We - NC,10375,-20.9169,167.265,Pacific/Noumea
+Weifang - CN,2044028,36.71,119.102,Asia/Shanghai
+Weihai - CN,844310,37.5091,122.114,Asia/Shanghai
+Weinan - CN,1199290,34.5035,109.509,Asia/Shanghai
+Wellington - NZ,381900,-41.2866,174.776,Pacific/Auckland
+Wenchang - CN,560894,19.5516,110.803,Asia/Shanghai
+Weno - FM,13856,7.44648,151.841,Pacific/Chuuk
+Wenzhou - CN,2650000,27.9994,120.667,Asia/Shanghai
+West Bay - KY,15335,19.382,-81.3928,America/Cayman
+West End - BS,12724,26.6871,-78.977,America/Nassau
+West Island - CC,120,-12.1568,96.8225,Indian/Cocos
+Wete - TZ,35951,-5.05589,39.7294,Africa/Dar_es_Salaam
+Wewak - PG,18230,-3.54964,143.632,Pacific/Port_Moresby
+Whakatane - NZ,18602,-37.9586,176.985,Pacific/Auckland
+Whangarei - NZ,50900,-35.7317,174.324,Pacific/Auckland
+Whitehorse - CA,28201,60.7161,-135.054,America/Whitehorse
+Wiesbaden - DE,278609,50.086,8.24435,Europe/Berlin
+Willemstad - CW,125000,12.1225,-68.8864,America/Curacao
+Windhoek - NA,386219,-22.5594,17.0832,Africa/Windhoek
+Winnipeg - CA,749607,49.8844,-97.147,America/Winnipeg
+Wong Tai Sin - HK,425235,22.35,114.183,Asia/Hong_Kong
+Wonsan - KP,329207,39.1528,127.444,Asia/Pyongyang
+Wote - KE,19725,-1.78079,37.6288,Africa/Nairobi
+Wroclaw - PL,634893,51.1029,17.0301,Europe/Warsaw
+Wuhan - CN,10392693,30.5833,114.267,Asia/Shanghai
+Wuhu - CN,1598165,31.3526,118.429,Asia/Shanghai
+Wuwei - CN,1010295,37.9267,102.632,Asia/Shanghai
+Wuxi - CN,4396835,31.5689,120.289,Asia/Shanghai
+Wuzhou - CN,761948,23.4805,111.288,Asia/Shanghai
+Xacmaz - AZ,37175,41.4643,48.8056,Asia/Baku
+Xai-Xai - MZ,154356,-25.0519,33.6442,Africa/Maputo
+Xalapa de Enriquez - MX,424755,19.5312,-96.9159,America/Mexico_City
+Xam Nua - LA,46800,20.4164,104.045,Asia/Vientiane
+Xi'an - CN,9600000,34.2583,108.929,Asia/Shanghai
+Xiamen - CN,4617251,24.4798,118.082,Asia/Shanghai
+Xiangtan - CN,959303,27.85,112.9,Asia/Shanghai
+Xiangyang - CN,1294733,32.0422,112.145,Asia/Shanghai
+Xianning - CN,512517,29.8435,114.322,Asia/Shanghai
+Xianyang - CN,1034081,34.3378,108.703,Asia/Shanghai
+Xiaogan - CN,908266,30.9269,113.922,Asia/Shanghai
+Xingtai - CN,798770,37.0622,114.493,Asia/Shanghai
+Xining - CN,1677177,36.6255,101.757,Asia/Shanghai
+Xinxiang - CN,1047088,35.1903,113.802,Asia/Shanghai
+Xinyang - CN,1230042,32.1228,114.066,Asia/Shanghai
+Xinyu - CN,839488,27.8043,114.933,Asia/Shanghai
+Xinzhou - CN,544683,38.4092,112.733,Asia/Shanghai
+Xuancheng - CN,774332,30.9525,118.755,Asia/Shanghai
+Xuchang - CN,1265536,34.0319,113.863,Asia/Shanghai
+Xuddur - SO,12500,4.12129,43.8894,Africa/Mogadishu
+Xuzhou - CN,1253991,34.2044,117.284,Asia/Shanghai
+Ya'an - CN,612056,29.9852,102.999,Asia/Shanghai
+Yakutsk - RU,235600,62.0311,129.723,Asia/Yakutsk
+Yala - TH,93558,6.53995,101.281,Asia/Bangkok
+Yalova - TR,71289,40.655,29.2769,Europe/Istanbul
+Yamagata - JP,248772,38.2333,140.367,Asia/Tokyo
+Yamaguchi - JP,193966,34.1833,131.467,Asia/Tokyo
+Yambio - SS,40382,4.57083,28.3942,Africa/Juba
+Yambol - BG,63656,42.4824,26.5001,Europe/Sofia
+Yamoussoukro - CI,275686,6.82055,-5.27674,Africa/Abidjan
+Yancheng - CN,1615717,33.3575,120.157,Asia/Shanghai
+Yangjiang - CN,1292987,21.8556,111.963,Asia/Shanghai
+Yangon - MM,4477638,16.8053,96.1561,Asia/Yangon
+Yangquan - CN,731228,37.8575,113.563,Asia/Shanghai
+Yangzhou - CN,1584237,32.3972,119.436,Asia/Shanghai
+Yantai - CN,2227733,37.4765,121.441,Asia/Shanghai
+Yaounde - CM,1299369,3.86667,11.5167,Africa/Douala
+Yaren - NR,1100,-0.55085,166.925,Pacific/Nauru
+Yaroslavl - RU,608722,57.6299,39.8737,Europe/Moscow
+Yasothon - TH,21643,15.7941,104.145,Asia/Bangkok
+Yasuj - IR,96786,30.6682,51.588,Asia/Tehran
+Yauco - PR,20295,18.035,-66.8499,America/Puerto_Rico
+Yazd - IR,477905,31.8972,54.3675,Asia/Tehran
+Yekaterinburg - RU,1495066,56.8573,60.6153,Asia/Yekaterinburg
+Yellowknife - CA,20340,62.4541,-114.372,America/Edmonton
+Yenagoa - NG,365000,4.92675,6.26764,Africa/Lagos
+Yerevan - AM,1141100,40.1776,44.5126,Asia/Yerevan
+Yevlakh - AZ,127400,40.6183,47.1501,Asia/Baku
+Yibin - CN,836340,28.7593,104.64,Asia/Shanghai
+Yichang - CN,1350150,30.7144,111.285,Asia/Shanghai
+Yichun - CN,1045952,27.8333,114.4,Asia/Shanghai
+Yigo Village - GU,20539,13.536,144.889,Pacific/Guam
+Yinchuan - CN,1487579,38.4681,106.273,Asia/Shanghai
+Yingkou - CN,591159,40.6647,122.232,Asia/Shanghai
+Yiwu - CN,1481384,29.3151,120.077,Asia/Shanghai
+Yixing - CN,1285785,31.3606,119.82,Asia/Shanghai
+Yogyakarta - ID,373589,-7.80139,110.365,Asia/Jakarta
+Yokohama - JP,3777491,35.4333,139.65,Asia/Tokyo
+Yola - NG,460000,9.20839,12.4815,Africa/Lagos
+Yongzhou - CN,1020715,26.4239,111.613,Asia/Shanghai
+Yopal - CO,168433,5.33573,-72.3939,America/Bogota
+Yoro - HN,15774,15.1382,-87.1284,America/Tegucigalpa
+Yoshkar-Ola - RU,268272,56.6388,47.8908,Europe/Moscow
+Yozgat - TR,87881,39.82,34.8044,Europe/Istanbul
+Yuen Long - HK,200000,22.4452,114.026,Asia/Hong_Kong
+Yulin - CN,1056743,22.6305,110.147,Asia/Shanghai
+Yuncheng - CN,680036,35.0231,110.993,Asia/Shanghai
+Yunfu - CN,2612800,22.9279,112.038,Asia/Shanghai
+Yuzhno-Sakhalinsk - RU,198973,46.9543,142.736,Asia/Sakhalin
+Zabbar - MT,15648,35.8769,14.5359,Europe/Malta
+Zacapa - GT,60424,14.9687,-89.5273,America/Guatemala
+Zacatecas - MX,129011,22.7684,-102.581,America/Mexico_City
+Zacatecoluca - SV,39613,13.5087,-88.8702,America/El_Salvador
+Zadar - HR,67309,44.1158,15.2251,Europe/Zagreb
+Zagazig - EG,430445,30.5877,31.502,Africa/Cairo
+Zaghouan - TN,20798,36.4029,10.1429,Africa/Tunis
+Zagreb - HR,663592,45.8144,15.978,Europe/Zagreb
+Zahedan - IR,551980,29.4963,60.8629,Asia/Tehran
+Zahle - LB,78145,33.8468,35.902,Asia/Beirut
+Zalaegerszeg - HU,61898,46.837,16.844,Europe/Budapest
+Zalau - RO,52359,47.2,23.05,Europe/Bucharest
+Zalinguei - SD,35061,12.9092,23.4706,Africa/Khartoum
+Zamboanga - PH,1018849,6.91028,122.074,Asia/Manila
+Zamora - EC,15276,-4.06446,-78.9512,America/Guayaquil
+Zanjan - IR,357471,36.6764,48.4963,Asia/Tehran
+Zanzibar - TZ,709809,-6.16394,39.1979,Africa/Dar_es_Salaam
+Zapopan - MX,1476491,20.7211,-103.387,America/Mexico_City
+Zaporizhzhya - UA,710052,47.8517,35.1171,Europe/Kyiv
+Zaqatala - AZ,32171,41.6316,46.6448,Asia/Baku
+Zaragoza - ES,686986,41.6561,-0.87734,Europe/Madrid
+Zaranj - AF,49851,30.9596,61.8604,Asia/Kabul
+Zardob - AZ,10612,40.2184,47.7121,Asia/Baku
+Zarqa - JO,792665,32.0727,36.088,Asia/Amman
+Zejtun - MT,11549,35.8555,14.5334,Europe/Malta
+Zelino - MK,25422,41.9803,21.0642,Europe/Skopje
+Zhangjiagang - CN,1432044,31.865,120.539,Asia/Shanghai
+Zhangjiakou - CN,692602,40.7834,114.871,Asia/Shanghai
+Zhangye - CN,507433,38.9342,100.452,Asia/Shanghai
+Zhangzhou - CN,589831,24.5133,117.656,Asia/Shanghai
+Zhanjiang - CN,1400709,21.2339,110.387,Asia/Shanghai
+Zhaoqing - CN,1553109,23.0489,112.461,Asia/Shanghai
+Zhengzhou - CN,4253913,34.7578,113.649,Asia/Shanghai
+Zhenjiang - CN,950516,32.2109,119.455,Asia/Shanghai
+Zhezqazghan - KZ,104357,47.7941,67.7063,Asia/Almaty
+Zhongshan - CN,3841873,22.5231,113.379,Asia/Shanghai
+Zhongxing New Village - TW,25549,23.9591,120.685,Asia/Taipei
+Zhoukou - CN,505171,33.6333,114.633,Asia/Shanghai
+Zhoushan - CN,882932,29.9887,122.205,Asia/Shanghai
+Zhu Cheng City - CN,1000000,35.995,119.403,Asia/Shanghai
+Zhuhai - CN,2207090,22.2769,113.568,Asia/Shanghai
+Zhumadian - CN,721670,32.9794,114.029,Asia/Shanghai
+Zhuzhou - CN,1129687,27.8333,113.15,Asia/Shanghai
+Zhytomyr - UA,261624,50.2623,28.6791,Europe/Kyiv
+Zibo - CN,3129228,36.7906,118.063,Asia/Shanghai
+Zielona Gora - PL,118433,51.9355,15.5064,Europe/Warsaw
+Zigong - CN,1262064,29.3416,104.777,Asia/Shanghai
+Ziguinchor - SN,214874,12.568,-16.2733,Africa/Dakar
+Zilina - SK,81219,49.2231,18.7394,Europe/Bratislava
+Zinder - NE,318874,13.8072,8.9881,Africa/Niamey
+Ziniare - BF,33296,12.5819,-1.2971,Africa/Ouagadougou
+Zinjibar - YE,19879,13.1287,45.3807,Asia/Aden
+Ziyang - CN,905729,30.1211,104.648,Asia/Shanghai
+Zlin - CZ,72973,49.2264,17.6706,Europe/Prague
+Zonguldak - TR,101749,41.4514,31.7931,Europe/Istanbul
+Zouerat - MR,55183,22.7354,-12.4713,Africa/Nouakchott
+Zuerich - CH,415367,47.3667,8.55,Europe/Zurich
+Zug - CH,30542,47.1724,8.51745,Europe/Zurich
+Zugdidi - GE,40067,42.5084,41.868,Asia/Tbilisi
+Zunyi - CN,2037775,27.6867,106.907,Asia/Shanghai
+Zurrieq - MT,10962,35.8296,14.4759,Europe/Malta
+Zuwarah - LY,33887,32.9312,12.082,Africa/Tripoli
+Zwedru - LR,38269,6.06846,-8.13559,Africa/Monrovia
+Zwolle - NL,129840,52.5125,6.09444,Europe/Amsterdam
