@@ -26,6 +26,7 @@ from utils import (
     stats_html,
     step,
     sync,
+    validate_lat,
 )
 
 
@@ -59,7 +60,7 @@ def general_opt():
         options=HOUSE_SYS,
         key="house_sys",
         format_func=i,
-        on_change=lambda: update_db("house_sys"),
+        on_change=lambda: validate_lat() and update_db("house_sys"),
     )
 
     SESS.lang_num = VAR.lang_num
@@ -247,7 +248,7 @@ def input_ui(id: int):
             key=lat,
             min_value=-89.99,
             max_value=89.99,
-            on_change=lambda: sync(lat),
+            on_change=lambda: validate_lat() and sync(lat),
         )
 
         SESS[lon] = VAR[lon]

@@ -216,6 +216,19 @@ def all_charts() -> pd.DataFrame | None:
     return df
 
 
+def validate_lat() -> bool:
+    lat1, lat2 = SESS.lat1, SESS.lat2
+    matched_lat1 = lat1 is not None and (lat1 < -66.5 or lat1 > 66.5)
+    matched_lat2 = lat2 is not None and (lat2 < -66.5 or lat2 > 66.5)
+    matched_house = SESS.house_sys in ["Placidus", "Koch"]
+    if matched_house and (matched_lat1 or matched_lat2):
+        st.error(i(SESS.house_sys) + i("latitude-error"), width=600)
+        if st.button("ok", width=300):
+            st.rerun()
+        st.stop()
+    return True
+
+
 # stats and pdf report =========================================================
 
 

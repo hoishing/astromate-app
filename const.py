@@ -176,6 +176,7 @@ I18N = {
     "Porphyry": ("Porphyry", "波菲利"),
     "Campanus": ("Campanus", "坎帕努斯"),
     "Regiomontanus": ("Regiomontanus", "雷格蒙塔努斯"),
+    "latitude-error": (": latitude must be between -66.5 and 66.5", ": 緯度必須在 -66.5 和 66.5 之間"),
     # ai chat
     "thinking": ("thinking", "思考中"),
     "chat-placeholder": ("chat about the astrological chart...", "聊聊這個星盤吧～"),
