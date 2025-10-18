@@ -12,10 +12,6 @@
 
 ## TODO
 
-- lat lon validation
-  - Placidus and Koch: -66.5 < lat < 66.5
-  - float convertable
-
 - AI
   - startup questions
 - chart lists update according to page type

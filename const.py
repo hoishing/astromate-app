@@ -72,6 +72,11 @@ MODELS = [
     # "gemini-2.5-flash",
 ]
 I18N = {
+    # pages
+    "natal_page": ("Natal Chart", "命盤"),
+    "synastry_page": ("Synastry Chart", "合盤"),
+    "transit_page": ("Transit Chart", "行運"),
+    "solar_return_page": ("Solar Return", "太陽回歸"),
     # auth
     "login": ("Login", "登入"),
     "logout": ("Logout", "登出"),
