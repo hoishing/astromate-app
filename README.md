@@ -12,10 +12,9 @@
 
 ## TODO
 
-- i18n to simple namespace
+- chart lists update according to page type
 - AI
   - startup questions
-- chart lists update according to page type
 - PDF for diff page types
 - Synastry: ai system prompt
 - Transit: ai system prompt + 推運功能 tool call
