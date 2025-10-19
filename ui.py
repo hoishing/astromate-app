@@ -17,6 +17,7 @@ from utils import (
     all_charts,
     all_timezones,
     cities_df,
+    clear_input,
     data_db,
     i,
     new_chat,
@@ -28,6 +29,47 @@ from utils import (
     sync,
     validate_lat,
 )
+
+
+def segmented_ui():
+    with st.container(key="chart-type-selector"):
+        # st.subheader(i("chart-type"))
+        SESS.chart_type = VAR.chart_type
+        st.segmented_control(
+            i("chart-type"),
+            options=["birth_page", "synastry_page", "transit_page", "solar_return_page"],
+            key="chart_type",
+            width="stretch",
+            format_func=lambda x: i(x),
+            label_visibility="collapsed",
+            on_change=lambda: clear_input() and sync("chart_type"),
+        )
+
+
+def sidebar_ui():
+    with st.sidebar:
+        with st.expander(i("options"), expanded=True):
+            labels = ["general", "orbs", "birth", "synastry"]
+            t1, t2, t3, t4 = st.tabs([i(label) for label in labels])
+            with t1:
+                general_opt()
+            with t2:
+                orb_opt()
+            with t3:
+                display_opt(1)
+            with t4:
+                display_opt(2)
+
+        if st.user.is_logged_in:
+            saved_charts_ui()
+            st.button(
+                i("logout"),
+                icon=":material/logout:",
+                width="stretch",
+                on_click=lambda: clear_input() and st.logout(),
+            )
+        else:
+            st.button(i("login"), icon=":material/login:", width="stretch", on_click=st.login)
 
 
 def general_opt():
@@ -215,28 +257,45 @@ def input_ui(id: int):
             VAR[f"{prop}{id}"] = row[prop]
 
     def name_and_city():
-        c1, c2 = st.columns(2)
+        # c1, c2 = st.columns(2)
 
         name_key = f"name{id}"
-        SESS[name_key] = VAR[name_key]
-        c1.text_input(
-            i("name"),
-            key=name_key,
-            on_change=lambda: sync(name_key),
-        )
+        is_transit = id == 2 and SESS.chart_type == "transit_page"
+        with st.container(key=f"name-and-city{id}", horizontal=True, horizontal_alignment="center"):
+            container_key = f"transit-name{id}" if is_transit else f"synastry-name{id}"
+            with st.container(key=container_key):
+                SESS[name_key] = VAR[name_key]
+                st.text_input(
+                    i("name"),
+                    key=name_key,
+                    disabled=is_transit,
+                    on_change=lambda: sync(name_key),
+                )
 
-        city_key = f"city{id}"
-        city = VAR[city_key]
-        SESS[city_key] = None if city == ("", "") else city
-        c2.selectbox(
-            i("city"),
-            options=cities_df(),
-            key=city_key,
-            placeholder=i("city-placeholder"),
-            accept_new_options=True,
-            help=i("city-help"),
-            on_change=set_lat_lon_dt_tz,
-        )
+            if id == 1 and SESS.chart_type == "solar_return_page":
+                SESS["solar_return_year"] = VAR["solar_return_year"]
+                st.number_input(
+                    i("solar_return_year"),
+                    key="solar_return_year",
+                    min_value=1900,
+                    max_value=2100,
+                    step=1,
+                    format="%i",
+                    on_change=lambda: sync("solar_return_year"),
+                )
+
+            city_key = f"city{id}"
+            city = VAR[city_key]
+            SESS[city_key] = None if city == ("", "") else city
+            st.selectbox(
+                i("city"),
+                options=cities_df(),
+                key=city_key,
+                placeholder=i("city-placeholder"),
+                accept_new_options=True,
+                help=i("city-help"),
+                on_change=set_lat_lon_dt_tz,
+            )
 
     def lat_lon_tz():
         c1, c2, c3 = st.columns(3)

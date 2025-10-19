@@ -1,15 +1,13 @@
 import streamlit as st
 from archive import delete_chart
-from const import LOGO, PAGE_CONFIG, STYLE, VAR
+from const import LOGO, PAGE_CONFIG, SESS, STYLE, VAR
 from st_screenwidth_detector import screenwidth_detector
 from ui import (
     ai_ui,
     chart_ui,
-    display_opt,
-    general_opt,
     input_ui,
-    orb_opt,
-    saved_charts_ui,
+    segmented_ui,
+    sidebar_ui,
     stats_ui,
     utils_ui,
 )
@@ -29,34 +27,13 @@ st.html(STYLE)
 VAR.chart_size = min(screenwidth_detector() + 16, 650)
 
 
-def sidebar():
-    with st.sidebar:
-        with st.expander(i("options"), expanded=True):
-            labels = ["general", "orbs", "birth", "synastry"]
-            t1, t2, t3, t4 = st.tabs([i(label) for label in labels])
-            with t1:
-                general_opt()
-            with t2:
-                orb_opt()
-            with t3:
-                display_opt(1)
-            with t4:
-                display_opt(2)
-
-        if st.user.is_logged_in:
-            saved_charts_ui()
-            st.button(i("logout"), icon=":material/logout:", width="stretch", on_click=st.logout)
-        else:
-            st.button(i("login"), icon=":material/login:", width="stretch", on_click=st.login)
-
-
 def input1():
-    with st.expander(i("birth-chart"), expanded=True):
+    with st.expander(i("birth"), expanded=True):
         input_ui(1)
 
 
-def input2():
-    with st.expander(i("synastry-chart")):
+def input2(title: str):
+    with st.expander(title, expanded=True):
         input_ui(2)
 
 
@@ -72,51 +49,38 @@ def chart():
             ai_ui(data1, data2)
 
 
-def natal_page():
-    sidebar()
+def birth_page():
     input1()
     chart()
 
 
 def synastry_page():
-    sidebar()
     input1()
-    input2()
+    input2(i("synastry_page"))
     chart()
 
 
 def transit_page():
-    sidebar()
     input1()
-    input2()
+    input2(i("transit_page"))
     chart()
 
 
 def solar_return_page():
-    sidebar()
     input1()
     chart()
 
 
-pages = []
+sidebar_ui()
+segmented_ui()
 
-icons = {
-    "natal": "person",
-    "synastry": "group",
-    "transit": "calendar_today",
-    "solar_return": "sunny",
-}
 
-for func in [natal_page, synastry_page, transit_page, solar_return_page]:
-    page_name = func.__name__.removesuffix("_page")
-    pages.append(
-        st.Page(
-            page=func,
-            title=i(func.__name__),
-            icon=f":material/{icons[page_name]}:",
-            url_path=page_name,
-        )
-    )
-
-pg = st.navigation(pages=pages)
-pg.run()
+match SESS.chart_type:
+    case "birth_page":
+        birth_page()
+    case "synastry_page":
+        synastry_page()
+    case "transit_page":
+        transit_page()
+    case "solar_return_page":
+        solar_return_page()

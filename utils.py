@@ -229,6 +229,15 @@ def validate_lat() -> bool:
     return True
 
 
+def clear_input():
+    for num in "12":
+        for key in ["name", "city", "tz"]:
+            VAR[f"{key}{num}"] = ""
+        for key in ["lat", "lon"]:
+            VAR[f"{key}{num}"] = None
+    return True
+
+
 # stats and pdf report =========================================================
 
 

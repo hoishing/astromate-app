@@ -24,6 +24,7 @@ for key in DEFAULT_GENERAL_OPTS:
 for aspect in ORBS:
     VAR.setdefault(aspect, ORBS[aspect])
 
+VAR.setdefault("chart_type", "birth_page")
 VAR.setdefault("name1", "")
 VAR.setdefault("name2", "")
 VAR.setdefault("city1", "")
@@ -41,6 +42,7 @@ VAR.setdefault("hr2", datetime.now().hour)
 VAR.setdefault("min1", 0)
 VAR.setdefault("min2", datetime.now().minute)
 VAR.setdefault("stepper_unit", "day")
+VAR.setdefault("solar_return_year", datetime.now().year + 1)
 
 # Non UI variables, no need to handle SESS None bug
 VAR.setdefault("chat", None)
@@ -73,10 +75,12 @@ MODELS = [
 ]
 I18N = {
     # pages
-    "natal_page": ("Natal Chart", "命盤"),
-    "synastry_page": ("Synastry Chart", "合盤"),
-    "transit_page": ("Transit Chart", "行運"),
+    "chart-type": ("Chart Type", "星盤"),
+    "birth_page": ("Birth", "命盤"),
+    "synastry_page": ("Synastry", "合盤"),
+    "transit_page": ("Transit", "行運"),
     "solar_return_page": ("Solar Return", "太陽回歸"),
+    "solar_return_year": ("Return Year", "回歸年份"),
     # auth
     "login": ("Login", "登入"),
     "logout": ("Logout", "登出"),
@@ -125,7 +129,7 @@ I18N = {
     "northern": ("Northern", "北半球"),
     "southern": ("Southern", "南半球"),
     # planet display
-    "birth": ("Birth", "命盤"),
+    "birth": ("Birth Data", "出生資料"),
     "synastry": ("Synastry", "合盤"),
     "sun": ("Sun", "日"),
     "moon": ("Moon", "月"),
@@ -155,8 +159,6 @@ I18N = {
     "latitude": ("Latitude", "緯度"),
     "longitude": ("Longitude", "經度"),
     "timezone": ("Timezone", "時區"),
-    "birth-chart": ("Birth Chart", "命盤"),
-    "synastry-chart": ("Synastry Chart", "合盤"),
     "city-placeholder": ("city", "城市"),
     "city-help": ("select or type in the city name", "選擇或輸入城市名稱"),
     "year": ("yr", "年"),
@@ -169,7 +171,7 @@ I18N = {
     "daylight-saving-time": ("Daylight Saving Time(if applicable)", "夏令時間(如適用)"),
     "adjustment": ("Adjustment", "調整"),
     # saved charts
-    "saved-charts": ("Saved Charts", "星盤存檔"),
+    "saved-charts": ("Saved Charts", "存檔"),
     "no-saved-charts": ("No saved charts", "沒有星盤存檔"),
     "chart-created": ("Chart Created", "星盤已保存"),
     "chart-updated": ("Chart Updated", "星盤已更新"),

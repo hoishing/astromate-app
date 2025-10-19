@@ -12,14 +12,16 @@
 
 ## TODO
 
+- i18n to simple namespace
 - AI
   - startup questions
 - chart lists update according to page type
-- MultiPages
-  - Natal: no input_ui(2)
-  - Synastry: has input_ui(2), disable ai
-  - Transit: input_ui(2).name = i("transit"), disable ai
-  - Solar Return: add target year select box, default next birthday year
+- PDF for diff page types
+- Synastry: ai system prompt
+- Transit: ai system prompt + 推運功能 tool call
+- Solar Return
+  - PDF generation
+  - ai system prompt
 - learning mode
 
 ## Questions

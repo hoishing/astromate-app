@@ -133,3 +133,18 @@ input[aria-label="North Node"] ~ div p {
 [data-testid="stToast"] p {
   margin-bottom: 0.6rem;
 }
+
+@media (min-width: 768px) {
+  .st-key-chart-type-selector {
+    margin-bottom: 1rem;
+  }
+}
+
+/* has direct child with specific class */
+[data-testid="stLayoutWrapper"]:has(> .st-key-transit-name2) {
+  display: none;
+}
+
+[class*="st-key-date-row"] {
+  flex-wrap: nowrap;
+}
