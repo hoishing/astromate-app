@@ -58,7 +58,6 @@ PAGE_CONFIG = dict(
     layout="wide",
 )
 
-HOUSE_SYS = ["Placidus", "Koch", "Equal", "Whole Sign", "Porphyry", "Campanus", "Regiomontanus"]
 STYLE = f"<style>{Path('style.css').read_text()}</style>"
 LOGO = "static/astrobro-logo.png"
 CHART_SIZE = 650
@@ -75,7 +74,7 @@ MODELS = [
 ]
 I18N = {
     # pages
-    "chart-type": ("Chart Type", "星盤"),
+    "chart_type": ("Chart Type", "星盤"),
     "birth_page": ("Birth", "命盤"),
     "synastry_page": ("Synastry", "合盤"),
     "transit_page": ("Transit", "行運"),
@@ -87,14 +86,14 @@ I18N = {
     # general options
     "options": ("Options", "選項"),
     "general": ("General", "一般"),
-    "house-system": ("House System", "宮位系統"),
-    "pdf-color": ("PDF Color", "PDF 顏色"),
+    "house_system": ("House System", "宮位系統"),
+    "pdf_color": ("PDF Color", "PDF 顏色"),
     "language": ("Language", "語言"),
     "statistics": ("Statistics", "統計"),
     # utils ui
-    "gen-pdf": ("Generate PDF", "生成 PDF"),
-    "download-pdf": ("Download PDF", "下載 PDF"),
-    "save-chart": ("Save Chart", "保存星盤"),
+    "gen_pdf": ("Generate PDF", "生成 PDF"),
+    "download_pdf": ("Download PDF", "下載 PDF"),
+    "save_chart": ("Save Chart", "保存星盤"),
     "prev": ("Prev ", "上一"),
     "next": ("Next ", "下一"),
     # "ai_chat": ("AI Chat", "AI 聊天"),
@@ -151,7 +150,7 @@ I18N = {
     "pallas": ("Pallas", "智神"),
     "juno": ("Juno", "婚神"),
     "vesta": ("Vesta", "灶神"),
-    "inner-planets": ("Inner", "內行星"),
+    "inner_planets": ("Inner", "內行星"),
     "classic": ("Classic", "經典"),
     # input form
     "name": ("Name", "名稱"),
@@ -159,8 +158,8 @@ I18N = {
     "latitude": ("Latitude", "緯度"),
     "longitude": ("Longitude", "經度"),
     "timezone": ("Timezone", "時區"),
-    "city-placeholder": ("city", "城市"),
-    "city-help": ("select or type in the city name", "選擇或輸入城市名稱"),
+    "city_placeholder": ("city", "城市"),
+    "city_help": ("select or type in the city name", "選擇或輸入城市名稱"),
     "year": ("yr", "年"),
     "month": ("mo", "月"),
     "week": ("wk", "週"),
@@ -168,62 +167,62 @@ I18N = {
     "hour": ("hr", "時"),
     "minute": ("min", "分"),
     "date": ("Date", "日期"),
-    "daylight-saving-time": ("Daylight Saving Time(if applicable)", "夏令時間(如適用)"),
+    "daylight_saving_time": ("Daylight Saving Time(if applicable)", "夏令時間(如適用)"),
     "adjustment": ("Adjustment", "調整"),
     # saved charts
-    "saved-charts": ("Saved Charts", "存檔"),
-    "no-saved-charts": ("No saved charts", "沒有星盤存檔"),
-    "chart-created": ("Chart Created", "星盤已保存"),
-    "chart-updated": ("Chart Updated", "星盤已更新"),
+    "saved_charts": ("Saved Charts", "存檔"),
+    "no_saved_charts": ("No saved charts", "沒有星盤存檔"),
+    "chart_created": ("Chart Created", "星盤已保存"),
+    "chart_updated": ("Chart Updated", "星盤已更新"),
     # house sys
     "Placidus": ("Placidus", "普拉西度"),
     "Koch": ("Koch", "科赫"),
     "Equal": ("Equal", "等宫制"),
-    "Whole Sign": ("Whole Sign", "整宫制"),
+    "Whole_Sign": ("Whole Sign", "整宫制"),
     "Porphyry": ("Porphyry", "波菲利"),
     "Campanus": ("Campanus", "坎帕努斯"),
     "Regiomontanus": ("Regiomontanus", "雷格蒙塔努斯"),
-    "latitude-error": (": latitude must be between -66.5 and 66.5", ": 緯度必須在 -66.5 和 66.5 之間"),
+    "latitude_error": (": latitude must be between -66.5 and 66.5", ": 緯度必須在 -66.5 和 66.5 之間"),
     # ai chat
     "thinking": ("thinking", "思考中"),
-    "chat-placeholder": ("chat about the astrological chart...", "聊聊這個星盤吧～"),
-    "question-1": (
+    "chat_placeholder": ("chat about the astrological chart...", "聊聊這個星盤吧～"),
+    "question_1": (
         "What does my birth chart reveal about my personality, strengths, and challenges?",
         "我的出生圖對我的個性、優勢和挑戰有何啟示？",
     ),
-    "question-2": (
+    "question_2": (
         "What are my key relationships and how can I improve them?",
         "我的關鍵關係是什麼，如何改善？",
     ),
-    "question-3": (
+    "question_3": (
         "What are my career opportunities and how can I make the most of them?",
         "我的職業機會是什麼，如何最大化利用？",
     ),
-    "question-4": (
+    "question_4": (
         "Any suggestions on my love life and relationships?",
         "在愛情和人際關係方面有什麼建議？",
     ),
-    "question-5": (
+    "question_5": (
         "What are my spiritual and emotional needs, and how can I fulfill them?",
         "我的精神需求和情感需求是什麼，如何滿足？",
     ),
-    "question-6": (
+    "question_6": (
         "What are my financial goals and how can I achieve them?",
         "我的財務目標是什麼，如何實現？",
     ),
-    "question-7": (
+    "question_7": (
         "What is my career path or life direction? Which way should I be heading?",
         "我的職業生涯或人生方向是什麼？我該朝哪個方向努力？",
     ),
     # stats
-    "basic-info": ("Basic Info", "基本資料"),
-    "element-vs-modality": ("Element vs Modality", "四元素與三態"),
-    "quad-vs-hemi": ("Quadrants vs Hemisphere", "象限與半球"),
+    "basic_info": ("Basic Info", "基本資料"),
+    "element_vs_modality": ("Element vs Modality", "四元素與三態"),
+    "quad_vs_hemi": ("Quadrants vs Hemisphere", "象限與半球"),
     "aspects": ("Aspects", "相位"),
     "aspect": ("Aspect", "相位"),
     # basic info
     "coordinates": ("Coordinates", "座標"),
-    "local-time": ("Local Time", "當地時間"),
+    "local_time": ("Local Time", "當地時間"),
     # celestial bodies
     "celestial_body": ("Celestial Bodies", "星體"),
     "body": ("Body", "星體"),

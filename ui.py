@@ -7,10 +7,10 @@ from archive import (
     load_chart,
     save_chart,
 )
-from const import HOUSE_SYS, LANGS, ORBS, PDF_COLOR, ROW_HEIGHT, SESS, VAR
+from const import LANGS, ORBS, PDF_COLOR, ROW_HEIGHT, SESS, VAR
 from datetime import date as Date
 from natal import Chart, Data
-from natal.config import Display
+from natal.config import Display, HouseSys
 from natal.const import ASPECT_NAMES, PLANET_NAMES
 from streamlit.column_config import DatetimeColumn, LinkColumn
 from utils import (
@@ -32,11 +32,11 @@ from utils import (
 
 
 def segmented_ui():
-    with st.container(key="chart-type-selector"):
-        # st.subheader(i("chart-type"))
+    with st.container(key="chart_type_selector"):
+        # st.subheader(i("chart_type"))
         SESS.chart_type = VAR.chart_type
         st.segmented_control(
-            i("chart-type"),
+            i("chart_type"),
             options=["birth_page", "synastry_page", "transit_page", "solar_return_page"],
             key="chart_type",
             width="stretch",
@@ -98,8 +98,8 @@ def general_opt():
 
     SESS.house_sys = VAR.house_sys
     c1.selectbox(
-        i("house-system"),
-        options=HOUSE_SYS,
+        i("house_system"),
+        options=HouseSys._member_names_,
         key="house_sys",
         format_func=i,
         on_change=lambda: validate_lat() and update_db("house_sys"),
@@ -118,7 +118,7 @@ def general_opt():
 
     SESS.pdf_color = VAR.pdf_color
     c1.segmented_control(
-        i("pdf-color"),
+        i("pdf_color"),
         options=PDF_COLOR,
         key="pdf_color",
         width="stretch",
@@ -221,7 +221,7 @@ def display_opt(id: int):
 
     c1, c2, c3 = st.columns(3)
     c1.button(
-        i("inner-planets"),
+        i("inner_planets"),
         key=f"inner_display{id}",
         use_container_width=True,
         on_click=lambda: update_display(id, "inner"),
@@ -262,7 +262,7 @@ def input_ui(id: int):
         name_key = f"name{id}"
         is_transit = id == 2 and SESS.chart_type == "transit_page"
         with st.container(key=f"name-and-city{id}", horizontal=True, horizontal_alignment="center"):
-            container_key = f"transit-name{id}" if is_transit else f"synastry-name{id}"
+            container_key = f"transit_name{id}" if is_transit else f"synastry-name{id}"
             with st.container(key=container_key):
                 SESS[name_key] = VAR[name_key]
                 st.text_input(
@@ -291,9 +291,9 @@ def input_ui(id: int):
                 i("city"),
                 options=cities_df(),
                 key=city_key,
-                placeholder=i("city-placeholder"),
+                placeholder=i("city_placeholder"),
                 accept_new_options=True,
-                help=i("city-help"),
+                help=i("city_help"),
                 on_change=set_lat_lon_dt_tz,
             )
 
@@ -346,7 +346,7 @@ def input_ui(id: int):
                 i("hour"),
                 range(24),
                 key=hr_key,
-                help=i("daylight-saving-time"),
+                help=i("daylight_saving_time"),
                 on_change=lambda: sync(hr_key),
             )
 
@@ -405,10 +405,10 @@ def utils_ui(id: int, data1: Data, data2: Data | None):
                 "",
                 icon=":material/save:",
                 key="save",
-                on_click=lambda: st.toast(i("chart-created"), icon=":material/check:")
+                on_click=lambda: st.toast(i("chart_created"), icon=":material/check:")
                 if save_chart(st.user.email) == "create"
-                else st.toast(i("chart-updated"), icon=":material/check:"),
-                help=i("save-chart"),
+                else st.toast(i("chart_updated"), icon=":material/check:"),
+                help=i("save_chart"),
             )
         else:
             st.button(
@@ -421,7 +421,7 @@ def utils_ui(id: int, data1: Data, data2: Data | None):
 
         with st.container(width=50, key="print-container"):
             with st.empty():
-                if st.button("", icon=":material/print:", key="pdf-button", help=i("gen-pdf")):
+                if st.button("", icon=":material/print:", key="pdf-button", help=i("gen_pdf")):
                     with st.spinner("", width="stretch"):
                         html = pdf_html(data1, data2)
                         pdf = pdf_io(html)
@@ -432,7 +432,7 @@ def utils_ui(id: int, data1: Data, data2: Data | None):
                         data=pdf,
                         file_name=f"{filename}.pdf",
                         mime="application/pdf",
-                        help=i("download-pdf"),
+                        help=i("download_pdf"),
                     )
 
 
@@ -446,7 +446,7 @@ def chart_ui(data1: Data, data2: Data = None):
 
 
 def stats_ui(data1: Data, data2: Data | None):
-    with st.container(key="stats-ui"):
+    with st.container(key="status_ui"):
         html = stats_html(data1, data2)
         st.markdown(html, unsafe_allow_html=True)
 
@@ -464,7 +464,7 @@ def ai_ui(data1: Data, data2: Data | None) -> None:
             st.markdown(text)
 
     # Accept user input
-    if prompt := st.chat_input(i("chat-placeholder")):
+    if prompt := st.chat_input(i("chat_placeholder")):
         # Display user message
         with st.chat_message("user", avatar=avatar["user"]):
             st.markdown(prompt)
@@ -491,10 +491,10 @@ def saved_charts_ui():
             row = data.iloc[selected[0][0]]  # first value of first cell
             load_chart(row.to_dict())
 
-    st.subheader(i("saved-charts"))
+    st.subheader(i("saved_charts"))
     data = all_charts()
     if data is None:
-        st.info(i("no-saved-charts"))
+        st.info(i("no_saved_charts"))
     else:
         height = (len(data) + 1) * ROW_HEIGHT + 2
         column_config = {

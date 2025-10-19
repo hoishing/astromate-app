@@ -7,7 +7,7 @@
   --bg-color: #282d31;
 }
 
-.st-key-stats-ui {
+.st-key-status_ui {
   .title {
     font-size: 1.1rem;
     margin: 2rem 0 0.8rem 0.5rem;
@@ -135,13 +135,13 @@ input[aria-label="North Node"] ~ div p {
 }
 
 @media (min-width: 768px) {
-  .st-key-chart-type-selector {
+  .st-key-chart_type_selector {
     margin-bottom: 1rem;
   }
 }
 
 /* has direct child with specific class */
-[data-testid="stLayoutWrapper"]:has(> .st-key-transit-name2) {
+[data-testid="stLayoutWrapper"]:has(> .st-key-transit_name2) {
   display: none;
 }
 

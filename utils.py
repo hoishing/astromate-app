@@ -222,7 +222,7 @@ def validate_lat() -> bool:
     matched_lat2 = lat2 is not None and (lat2 < -66.5 or lat2 > 66.5)
     matched_house = SESS.house_sys in ["Placidus", "Koch"]
     if matched_house and (matched_lat1 or matched_lat2):
-        st.error(i(SESS.house_sys) + i("latitude-error"), width=600)
+        st.error(i(SESS.house_sys) + i("latitude_error"), width=600)
         if st.button("ok", width=300):
             st.rerun()
         st.stop()
@@ -272,18 +272,18 @@ def pdf_io(html: str) -> BytesIO:
 
 def stats_html(data1: Data, data2: Data = None):
     stats = Stats(data1=data1, data2=data2, city1=VAR.city1, city2=VAR.city2, tz1=VAR.tz1, tz2=VAR.tz2)
-    basic_info_headers = [i("name"), i("city"), i("coordinates"), i("local-time")]
-    basic_info = html_section(i("basic-info"), stats.basic_info(basic_info_headers))
+    basic_info_headers = [i("name"), i("city"), i("coordinates"), i("local_time")]
+    basic_info = html_section(i("basic_info"), stats.basic_info(basic_info_headers))
 
     ele_mod_headers = [i("fire"), i("air"), i("water"), i("earth"), i("sum")]
     ele_mod_row = [i("cardinal"), i("fixed"), i("mutable"), i("sum")]
     ele_mod_polor = [i("polarity"), i("pos"), i("neg")]
     ele_mod_grid = stats.element_vs_modality(ele_mod_headers, ele_mod_row, ele_mod_polor)
-    ele_mod = html_section(i("element-vs-modality"), ele_mod_grid)
+    ele_mod = html_section(i("element_vs_modality"), ele_mod_grid)
 
     quad_hemi_headers = [i("eastern"), i("western"), i("northern"), i("southern"), i("sum")]
     quad_hemi_grid = stats.quadrants_vs_hemisphere(quad_hemi_headers)
-    quad_hemi = html_section(i("quad-vs-hemi"), quad_hemi_grid)
+    quad_hemi = html_section(i("quad_vs_hemi"), quad_hemi_grid)
 
     body_headers = [i("body"), i("sign"), i("house"), i("dignity")]
     dignity_labels = [i("domicile"), i("exaltation"), i("fall"), i("detriment")]
@@ -334,13 +334,13 @@ def pdf_html(data1: Data, data2: Data = None):
     stats = Stats(data1=data1, data2=data2, city1=VAR.city1, city2=VAR.city2, tz1=VAR.tz1, tz2=VAR.tz2)
     chart = Chart(data1, width=400, data2=data2)
 
-    basic_info_title = i("basic-info")
-    basic_info_headers = [i("name"), i("city"), i("coordinates"), i("local-time")]
-    ele_vs_mod_title = i("element-vs-modality")
+    basic_info_title = i("basic_info")
+    basic_info_headers = [i("name"), i("city"), i("coordinates"), i("local_time")]
+    ele_vs_mod_title = i("element_vs_modality")
     ele_vs_mod_headers = ["🜂", "🜁", "🜄", "🜃", "∑"]
     ele_vs_mod_row_label = ["⟑", "⊟", "𛰣", "∑"]
     ele_vs_mod_polarity_label = ["◐", "+", "-"]
-    quad_vs_hemi_title = i("quad-vs-hemi")
+    quad_vs_hemi_title = i("quad_vs_hemi")
     quad_vs_hemi_headers = [i("eastern"), i("western"), i("northern"), i("southern"), "∑"]
     body_headers = [i("body"), i("sign"), i("house"), i("dignity")]
     dignity_labels = ["⏫", "🔼", "⏬", "🔽"]
