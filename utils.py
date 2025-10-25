@@ -213,7 +213,18 @@ def all_charts() -> pd.DataFrame | None:
     df.set_index("hash", inplace=True, drop=False)
     df.rename(columns={"hash": "delete"}, inplace=True)
     df["delete"] = "?delete=" + df["delete"]
-    return df
+
+    match VAR.chart_type:
+        case "birth_page":
+            filter = (df["name2"] == "") | pd.isna(df["lat2"]) | pd.isna(df["lon2"]) | (df["tz2"] == "")
+        case "synastry_page":
+            filter = (df["name2"] != "") & pd.notna(df["lat2"]) & pd.notna(df["lon2"]) & (df["tz2"] != "")
+        case "transit_page":
+            filter = df["name2"] == "__transit__"
+        case "solar_return_page":
+            filter = df["name2"] == "__solar_return__"
+    output = df[filter]
+    return output if len(output) else None
 
 
 def validate_lat() -> bool:

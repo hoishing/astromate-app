@@ -257,18 +257,26 @@ def input_ui(id: int):
             VAR[f"{prop}{id}"] = row[prop]
 
     def name_and_city():
-        # c1, c2 = st.columns(2)
-
         name_key = f"name{id}"
-        is_transit = id == 2 and SESS.chart_type == "transit_page"
-        with st.container(key=f"name-and-city{id}", horizontal=True, horizontal_alignment="center"):
-            container_key = f"transit_name{id}" if is_transit else f"synastry-name{id}"
-            with st.container(key=container_key):
+        name_container_key = f"name_container{id}"
+        name_disabled = False
+
+        if id == 2:
+            match SESS.chart_type:
+                case "transit_page":
+                    name_container_key = f"transit_name{id}"
+                    VAR[name_key] = "__transit__"
+                    name_disabled = True
+                case "solar_return_page":
+                    VAR[name_key] = "__solar_return__"
+
+        with st.container(key=f"name_and_city{id}", horizontal=True, horizontal_alignment="center"):
+            with st.container(key=name_container_key):
                 SESS[name_key] = VAR[name_key]
                 st.text_input(
                     i("name"),
                     key=name_key,
-                    disabled=is_transit,
+                    disabled=name_disabled,
                     on_change=lambda: sync(name_key),
                 )
 
