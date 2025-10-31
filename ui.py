@@ -27,6 +27,7 @@ from utils import (
     stats_html,
     step,
     sync,
+    update_orbs,
     validate_lat,
 )
 
@@ -42,23 +43,33 @@ def segmented_ui():
             width="stretch",
             format_func=lambda x: i(x),
             label_visibility="collapsed",
-            on_change=lambda: clear_input() and sync("chart_type"),
+            on_change=lambda: clear_input() and update_orbs() and sync("chart_type"),
         )
 
 
 def sidebar_ui():
     with st.sidebar:
         with st.expander(i("options"), expanded=True):
-            labels = ["general", "orbs", "birth", "synastry"]
-            t1, t2, t3, t4 = st.tabs([i(label) for label in labels])
-            with t1:
+            labels = ["general", "orbs"]
+            match VAR.chart_type:
+                case "birth_page":
+                    labels.append("birth")
+                case "synastry_page":
+                    labels += ["birth", "synastry"]
+                case "transit_page":
+                    labels += ["birth", "transit"]
+                case "solar_return_page":
+                    labels.append("solar_return_page")
+            tabs = list(st.tabs([i(label) for label in labels]))
+            with tabs[0]:
                 general_opt()
-            with t2:
+            with tabs[1]:
                 orb_opt()
-            with t3:
+            with tabs[2]:
                 display_opt(1)
-            with t4:
-                display_opt(2)
+            if len(labels) > 3:
+                with tabs[3]:
+                    display_opt(2)
 
         if st.user.is_logged_in:
             saved_charts_ui()
@@ -338,6 +349,9 @@ def input_ui(id: int):
     def date_hr_min():
         with st.container(key=f"date-row{id}", horizontal=True):
             date_key = f"date{id}"
+
+            if id == 2 and VAR.chart_type == "solar_return_page":
+                VAR[date_key] = Date(VAR["solar_return_year"], 1, 1)
             SESS[date_key] = VAR[date_key]
             st.date_input(
                 i("date"),
@@ -409,6 +423,17 @@ def utils_ui(id: int, data1: Data, data2: Data | None):
         )
 
         if st.user.is_logged_in:
+
+            def disable_save():
+                lat_lon_tz = VAR.lat2 and VAR.lon2 and VAR.tz2
+                match VAR.chart_type:
+                    case "birth_page" | "solar_return_page":
+                        return False
+                    case "synastry_page":
+                        return not (VAR.name2 and lat_lon_tz)
+                    case "transit_page":
+                        return not lat_lon_tz
+
             st.button(
                 "",
                 icon=":material/save:",
@@ -417,6 +442,7 @@ def utils_ui(id: int, data1: Data, data2: Data | None):
                 if save_chart(st.user.email) == "create"
                 else st.toast(i("chart_updated"), icon=":material/check:"),
                 help=i("save_chart"),
+                disabled=disable_save(),
             )
         else:
             st.button(
@@ -506,25 +532,33 @@ def saved_charts_ui():
     else:
         height = (len(data) + 1) * ROW_HEIGHT + 2
         column_config = {
-            "name1": i("birth"),
+            "name1": i("name"),
             "name2": i("synastry"),
             "city1": i("city"),
             "city2": i("city"),
-            "dt1": DatetimeColumn(i("date"), format="YYYY-MM-DD HH:MM"),
-            "dt2": DatetimeColumn(i("date"), format="YYYY-MM-DD HH:MM"),
-            "theme_type": None,
-            "house_sys": None,
+            "age1": i("age"),
+            "age2": i("age"),
+            "dt2": DatetimeColumn(i("transit_date"), format="YYYY-MM-DD"),
+            "solar_return_year": i("solar_return_year"),
             "delete": LinkColumn("", display_text=":material/delete:"),
         }
-        column_config |= {f"{prop}{num}": None for num in "12" for prop in ["lat", "lon", "tz"]}
-        column_config |= {aspect: None for aspect in ASPECT_NAMES}
-        column_config |= {f"{body}{num}": None for num in "12" for body in Display.model_fields}
+
+        column_order = ["name1", "city1", "age1"]
+        match VAR.chart_type:
+            case "synastry_page":
+                column_order.extend(["name2", "city2", "age2"])
+            case "transit_page":
+                column_order.append("dt2")
+            case "solar_return_page":
+                column_order.append("solar_return_year")
+        column_order.append("delete")
+
         st.dataframe(
             data,
             hide_index=True,
             height=height,
             column_config=column_config,
-            column_order=["name1", "city1", "dt1", "name2", "city2", "dt2", "delete"],
+            column_order=column_order,
             row_height=ROW_HEIGHT,
             key="saved_charts",
             selection_mode="single-cell",

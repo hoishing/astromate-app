@@ -862,7 +862,10 @@ requires-dist = [
 ]
 
 [package.metadata.requires-dev]
-dev = [{ name = "pytest", specifier = ">=8.4.1" }]
+dev = [
+    { name = "ipykernel", specifier = ">=7.1.0" },
+    { name = "pytest", specifier = ">=8.4.1" },
+]
 
 [[package]]
 name = "nest-asyncio"

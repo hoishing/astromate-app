@@ -12,8 +12,6 @@
 
 ## TODO
 
-- calculate solar return chart
-- chart lists update according to page type
 - AI
   - startup questions
 - PDF for diff page types

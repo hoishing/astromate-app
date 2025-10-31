@@ -36,13 +36,13 @@ VAR.setdefault("lat2", None)
 VAR.setdefault("lon2", None)
 VAR.setdefault("tz2", "")
 VAR.setdefault("date1", Date(2000, 1, 1))
-VAR.setdefault("date2", datetime.now().date())
+VAR.setdefault("date2", Date.today())
 VAR.setdefault("hr1", 13)
 VAR.setdefault("hr2", datetime.now().hour)
 VAR.setdefault("min1", 0)
 VAR.setdefault("min2", datetime.now().minute)
 VAR.setdefault("stepper_unit", "day")
-VAR.setdefault("solar_return_year", datetime.now().year + 1)
+VAR.setdefault("solar_return_year", Date.today().year + (1 if Date.today().month > 6 else 0))
 
 # Non UI variables, no need to handle SESS None bug
 VAR.setdefault("chat", None)
@@ -79,7 +79,8 @@ I18N = {
     "synastry_page": ("Synastry", "合盤"),
     "transit_page": ("Transit", "行運"),
     "solar_return_page": ("Solar Return", "太陽回歸"),
-    "solar_return_year": ("Return Year", "回歸年份"),
+    "solar_return_year": ("Return Year", "回歸年"),
+    "return": ("Return", "回歸"),
     # auth
     "login": ("Login", "登入"),
     "logout": ("Logout", "登出"),
@@ -128,8 +129,10 @@ I18N = {
     "northern": ("Northern", "北半球"),
     "southern": ("Southern", "南半球"),
     # planet display
-    "birth": ("Birth Data", "出生資料"),
+    "birth": ("Birth", "命盤"),
+    "birth_data": ("Birth Data", "出生資料"),
     "synastry": ("Synastry", "合盤"),
+    "synastry/transit": ("Synastry / Transit", "合盤 / 行運"),
     "sun": ("Sun", "日"),
     "moon": ("Moon", "月"),
     "mercury": ("Mercury", "水"),
@@ -171,6 +174,8 @@ I18N = {
     "adjustment": ("Adjustment", "調整"),
     # saved charts
     "saved_charts": ("Saved Charts", "存檔"),
+    "age": ("Age", "年齡"),
+    "transit_date": ("Transit Date", "行運日期"),
     "no_saved_charts": ("No saved charts", "沒有星盤存檔"),
     "chart_created": ("Chart Created", "星盤已保存"),
     "chart_updated": ("Chart Updated", "星盤已更新"),
@@ -182,7 +187,10 @@ I18N = {
     "Porphyry": ("Porphyry", "波菲利"),
     "Campanus": ("Campanus", "坎帕努斯"),
     "Regiomontanus": ("Regiomontanus", "雷格蒙塔努斯"),
-    "latitude_error": (": latitude must be between -66.5 and 66.5", ": 緯度必須在 -66.5 和 66.5 之間"),
+    "latitude_error": (
+        ": latitude must be between -66.5 and 66.5",
+        ": 緯度必須在 -66.5 和 66.5 之間",
+    ),
     # ai chat
     "thinking": ("thinking", "思考中"),
     "chat_placeholder": ("chat about the astrological chart...", "聊聊這個星盤吧～"),

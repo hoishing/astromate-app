@@ -140,7 +140,7 @@ input[aria-label="North Node"] ~ div p {
   }
 }
 
-/* has direct child with specific class */
+[data-testid="stLayoutWrapper"]:has(.st-key-input2_solar_return_page),
 [data-testid="stLayoutWrapper"]:has(> .st-key-transit_name2) {
   display: none;
 }

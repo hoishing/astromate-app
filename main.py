@@ -28,18 +28,21 @@ VAR.chart_size = min(screenwidth_detector() + 16, 650)
 
 
 def input1():
-    with st.expander(i("birth"), expanded=True):
+    with st.expander(i("birth_data"), expanded=True):
         input_ui(1)
 
 
 def input2(title: str):
-    with st.expander(title, expanded=True):
-        input_ui(2)
+    with st.container(key=f"input2_{title}"):
+        with st.expander(title, expanded=True):
+            input_ui(2)
 
 
 def chart():
     if VAR.name1 and VAR.lat1 and VAR.lon1 and VAR.tz1:
         data1 = natal_data(1)
+        if VAR.chart_type == "solar_return_page":
+            data1 = data1.solar_return(target_yr=VAR.solar_return_year)
         data2 = natal_data(2) if VAR.name2 and VAR.lat2 and VAR.lon2 and VAR.tz2 else None
         chart_ui(data1, data2)
         utils_ui(2 if data2 else 1, data1, data2)
@@ -68,6 +71,7 @@ def transit_page():
 
 def solar_return_page():
     input1()
+    input2("solar_return_page")
     chart()
 
 

@@ -28,7 +28,11 @@ def archive_str(var: DotDict = VAR) -> str:
     """Return a JSON string of the current chart data."""
 
     try:
-        data = {f"{prop}{i}": var[f"{prop}{i}"] for prop in ["name", "city", "lat", "lon", "tz"] for i in "12"}
+        data = {
+            f"{prop}{i}": var[f"{prop}{i}"]
+            for prop in ["name", "city", "lat", "lon", "tz"]
+            for i in "12"
+        }
         data |= {f"dt{i}": get_dt(i) for i in [1, 2]}
         data |= {asp: var[asp] for asp in ASPECT_NAMES}
         data |= {f"{body}{i}": var[f"{body}{i}"] for body in Display.model_fields for i in "12"}
@@ -42,7 +46,9 @@ def archive_str(var: DotDict = VAR) -> str:
 def data_hash(var: DotDict = VAR) -> str:
     """hash the data to avoid inserting duplicate charts"""
     raw_data = {
-        f"{prop}{i}": var[f"{prop}{i}"] for prop in ["name", "city", "lat", "lon", "tz", "hr", "min"] for i in "12"
+        f"{prop}{i}": var[f"{prop}{i}"]
+        for prop in ["name", "city", "lat", "lon", "tz", "hr", "min"]
+        for i in "12"
     }
     raw_data |= {f"date{i}": var[f"date{i}"].strftime("%Y-%m-%d") for i in "12"}
     return md5(json.dumps(raw_data).encode()).hexdigest()
@@ -68,6 +74,9 @@ def load_chart(data: dict, var: DotDict = VAR):
 
     for asp in ASPECT_NAMES:
         var[asp] = data[asp]
+
+    if var.chart_type == "solar_return_page":
+        var["solar_return_year"] = data["dt2"].year
 
 
 def save_chart(email: str) -> Literal["overwrite", "create"]:

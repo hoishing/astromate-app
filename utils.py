@@ -3,8 +3,9 @@ import logging
 import pandas as pd
 import sqlite3
 import streamlit as st
-from const import I18N, MODELS, SESS, VAR
-from datetime import datetime, timedelta
+from const import I18N, MODELS, ORBS, SESS, VAR
+from datetime import date as Date
+from datetime import datetime, timedelta, timezone
 from functools import reduce
 from io import BytesIO
 from natal import Chart, Config, Data, Stats
@@ -144,7 +145,9 @@ class OpenRouterChat:
 
 
 def new_chat(data1: Data, data2: Data = None) -> OpenRouterChat:
-    stats = Stats(data1=data1, data2=data2, city1=VAR.city1, city2=VAR.city2, tz1=VAR.tz1, tz2=VAR.tz2)
+    stats = Stats(
+        data1=data1, data2=data2, city1=VAR.city1, city2=VAR.city2, tz1=VAR.tz1, tz2=VAR.tz2
+    )
     chart_data = reduce(
         lambda x, y: x + y,
         (stats.ai_md(tb) for tb in ["celestial_body", "house", "aspect", "quadrant", "hemisphere"]),
@@ -175,7 +178,9 @@ def new_chat(data1: Data, data2: Data = None) -> OpenRouterChat:
               - do aspects between celestial bodies form certain patterns?
             - Use {lang} to reply.
             """)
-    client = OpenAI(base_url="https://openrouter.ai/api/v1", api_key=st.secrets["OPENROUTER_API_KEY"])
+    client = OpenAI(
+        base_url="https://openrouter.ai/api/v1", api_key=st.secrets["OPENROUTER_API_KEY"]
+    )
     model = MODELS[0]  # Use x-ai/grok-4-fast:free instead of Gemini
     return OpenRouterChat(client, model, sys_prompt)
 
@@ -203,28 +208,43 @@ def scroll_to_bottom():
 
 
 def all_charts() -> pd.DataFrame | None:
+    def calculate_age(birth: str) -> str:
+        birth_dt = pd.to_datetime(birth).replace(tzinfo=timezone.utc)
+        today = pd.Timestamp.now(tz="UTC")
+        age = today.year - birth_dt.year
+        if (today.month, today.day) < (birth_dt.month, birth_dt.day):
+            age -= 1
+        return str(age)
+
     sql = "select data, hash from charts where email = ? order by updated_at desc"
     cursor = data_db().cursor()
     cursor.execute(sql, (st.user.email,))
     all_data = cursor.fetchall()
     if not all_data:
         return None
-    df = pd.DataFrame([{**json.loads(d), "hash": h} for (d, h) in all_data])
+
+    raw = pd.DataFrame([{**json.loads(d), "hash": h} for (d, h) in all_data])
+    match VAR.chart_type:
+        case "birth_page":
+            filter = raw["name2"] == ""
+        case "synastry_page":
+            filter = ~raw["name2"].isin(["", "__solar_return__", "__transit__"])
+        case "transit_page":
+            filter = raw["name2"] == "__transit__"
+        case "solar_return_page":
+            filter = raw["name2"] == "__solar_return__"
+    df = raw[filter]
+    if len(df) == 0:
+        return None
+
+    df = df.copy()  # avoid warning from modifying view of dataframe
     df.set_index("hash", inplace=True, drop=False)
     df.rename(columns={"hash": "delete"}, inplace=True)
     df["delete"] = "?delete=" + df["delete"]
-
-    match VAR.chart_type:
-        case "birth_page":
-            filter = (df["name2"] == "") | pd.isna(df["lat2"]) | pd.isna(df["lon2"]) | (df["tz2"] == "")
-        case "synastry_page":
-            filter = (df["name2"] != "") & pd.notna(df["lat2"]) & pd.notna(df["lon2"]) & (df["tz2"] != "")
-        case "transit_page":
-            filter = df["name2"] == "__transit__"
-        case "solar_return_page":
-            filter = df["name2"] == "__solar_return__"
-    output = df[filter]
-    return output if len(output) else None
+    df["solar_return_year"] = df["dt2"].str[:4]
+    df["age1"] = df["dt1"].apply(calculate_age)
+    df["age2"] = df["dt2"].apply(calculate_age)
+    return df
 
 
 def validate_lat() -> bool:
@@ -242,12 +262,22 @@ def validate_lat() -> bool:
     return True
 
 
-def clear_input():
+def clear_input() -> bool:
     for num in "12":
         for key in ["name", "city", "tz"]:
             VAR[f"{key}{num}"] = ""
         for key in ["lat", "lon"]:
             VAR[f"{key}{num}"] = None
+    VAR["date1"] = Date(2000, 1, 1)
+    VAR["date2"] = Date.today()
+    return True
+
+
+def update_orbs() -> bool:
+    if SESS.chart_type == "transit_page":
+        VAR.update(dict(zip(ASPECT_NAMES, [2, 2, 2, 2, 1, 0])))
+    else:
+        VAR.update(ORBS)
     return True
 
 
@@ -284,7 +314,9 @@ def pdf_io(html: str) -> BytesIO:
 
 
 def stats_html(data1: Data, data2: Data = None):
-    stats = Stats(data1=data1, data2=data2, city1=VAR.city1, city2=VAR.city2, tz1=VAR.tz1, tz2=VAR.tz2)
+    stats = Stats(
+        data1=data1, data2=data2, city1=VAR.city1, city2=VAR.city2, tz1=VAR.tz1, tz2=VAR.tz2
+    )
     basic_info_headers = [i("name"), i("city"), i("coordinates"), i("local_time")]
     basic_info = html_section(i("basic_info"), stats.basic_info(basic_info_headers))
 
@@ -344,7 +376,9 @@ def pdf_html(data1: Data, data2: Data = None):
     data1.config.theme_type = VAR.pdf_color
     data1.config.chart.stroke_width = 0.7
 
-    stats = Stats(data1=data1, data2=data2, city1=VAR.city1, city2=VAR.city2, tz1=VAR.tz1, tz2=VAR.tz2)
+    stats = Stats(
+        data1=data1, data2=data2, city1=VAR.city1, city2=VAR.city2, tz1=VAR.tz1, tz2=VAR.tz2
+    )
     chart = Chart(data1, width=400, data2=data2)
 
     basic_info_title = i("basic_info")
