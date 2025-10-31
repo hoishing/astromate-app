@@ -7,7 +7,6 @@ from pathlib import Path
 SESS = st.session_state
 SESS.setdefault("var", DotDict())
 VAR = st.session_state.var
-
 ORBS = Orb().model_dump()
 
 DEFAULT_GENERAL_OPTS = {
@@ -170,6 +169,7 @@ I18N = {
     "hour": ("hr", "時"),
     "minute": ("min", "分"),
     "date": ("Date", "日期"),
+    "birth_date": ("Birth Date", "出生日期"),
     "daylight_saving_time": ("Daylight Saving Time(if applicable)", "夏令時間(如適用)"),
     "adjustment": ("Adjustment", "調整"),
     # saved charts
@@ -231,6 +231,9 @@ I18N = {
     # basic info
     "coordinates": ("Coordinates", "座標"),
     "local_time": ("Local Time", "當地時間"),
+    "time": ("Time", "時間"),
+    "birth_time": ("Birth Time", "出生時間"),
+    "return_time": ("Return Time", "回歸時間"),
     # celestial bodies
     "celestial_body": ("Celestial Bodies", "星體"),
     "body": ("Body", "星體"),

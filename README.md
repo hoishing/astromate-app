@@ -12,6 +12,13 @@
 
 ## TODO
 
+- Stats
+  - Chart type before Basic Info
+  - Transit:
+    - name with i18n
+  - Solar Return: local time -> transit time
+  - birth: local time -> birth time
+
 - AI
   - startup questions
 - PDF for diff page types

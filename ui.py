@@ -12,10 +12,10 @@ from datetime import date as Date
 from natal import Chart, Data
 from natal.config import Display, HouseSys
 from natal.const import ASPECT_NAMES, PLANET_NAMES
-from streamlit.column_config import DatetimeColumn, LinkColumn
+from streamlit.column_config import DatetimeColumn, LinkColumn, TextColumn
 from utils import (
-    all_charts,
     all_timezones,
+    charts_df,
     cities_df,
     clear_input,
     data_db,
@@ -272,14 +272,10 @@ def input_ui(id: int):
         name_container_key = f"name_container{id}"
         name_disabled = False
 
-        if id == 2:
-            match SESS.chart_type:
-                case "transit_page":
-                    name_container_key = f"transit_name{id}"
-                    VAR[name_key] = "__transit__"
-                    name_disabled = True
-                case "solar_return_page":
-                    VAR[name_key] = "__solar_return__"
+        if id == 2 and VAR.chart_type == "transit_page":
+            name_container_key = f"transit_name{id}"
+            VAR[name_key] = "__transit__"
+            name_disabled = True
 
         with st.container(key=f"name_and_city{id}", horizontal=True, horizontal_alignment="center"):
             with st.container(key=name_container_key):
@@ -349,12 +345,9 @@ def input_ui(id: int):
     def date_hr_min():
         with st.container(key=f"date-row{id}", horizontal=True):
             date_key = f"date{id}"
-
-            if id == 2 and VAR.chart_type == "solar_return_page":
-                VAR[date_key] = Date(VAR["solar_return_year"], 1, 1)
             SESS[date_key] = VAR[date_key]
             st.date_input(
-                i("date"),
+                i("birth_date") if id == 1 or VAR.chart_type == "synastry_page" else i("transit_date"),
                 max_value=Date(2300, 1, 1),
                 min_value=Date(1800, 1, 1),
                 format="YYYY-MM-DD",
@@ -526,7 +519,7 @@ def saved_charts_ui():
             load_chart(row.to_dict())
 
     st.subheader(i("saved_charts"))
-    data = all_charts()
+    data = charts_df()
     if data is None:
         st.info(i("no_saved_charts"))
     else:

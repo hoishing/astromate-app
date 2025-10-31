@@ -207,7 +207,7 @@ def scroll_to_bottom():
     st.components.v1.html(js, height=0, width=0)
 
 
-def all_charts() -> pd.DataFrame | None:
+def charts_df() -> pd.DataFrame | None:
     def calculate_age(birth: str) -> str:
         birth_dt = pd.to_datetime(birth).replace(tzinfo=timezone.utc)
         today = pd.Timestamp.now(tz="UTC")
@@ -216,34 +216,25 @@ def all_charts() -> pd.DataFrame | None:
             age -= 1
         return str(age)
 
-    sql = "select data, hash from charts where email = ? order by updated_at desc"
+    sql = (
+        "select data, hash from charts where email = ? and chart_type = ? order by updated_at desc"
+    )
     cursor = data_db().cursor()
-    cursor.execute(sql, (st.user.email,))
+    cursor.execute(sql, (st.user.email, VAR.chart_type))
     all_data = cursor.fetchall()
     if not all_data:
         return None
 
-    raw = pd.DataFrame([{**json.loads(d), "hash": h} for (d, h) in all_data])
-    match VAR.chart_type:
-        case "birth_page":
-            filter = raw["name2"] == ""
-        case "synastry_page":
-            filter = ~raw["name2"].isin(["", "__solar_return__", "__transit__"])
-        case "transit_page":
-            filter = raw["name2"] == "__transit__"
-        case "solar_return_page":
-            filter = raw["name2"] == "__solar_return__"
-    df = raw[filter]
+    df = pd.DataFrame([{**json.loads(d), "hash": h} for (d, h) in all_data])
     if len(df) == 0:
         return None
 
-    df = df.copy()  # avoid warning from modifying view of dataframe
     df.set_index("hash", inplace=True, drop=False)
     df.rename(columns={"hash": "delete"}, inplace=True)
     df["delete"] = "?delete=" + df["delete"]
-    df["solar_return_year"] = df["dt2"].str[:4]
     df["age1"] = df["dt1"].apply(calculate_age)
     df["age2"] = df["dt2"].apply(calculate_age)
+    df["solar_return_year"] = df["solar_return_year"].astype(str)
     return df
 
 
