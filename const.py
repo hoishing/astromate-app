@@ -74,7 +74,7 @@ MODELS = [
 I18N = {
     # pages
     "chart_type": ("Chart Type", "星盤"),
-    "birth_page": ("Birth", "命盤"),
+    "birth_page": ("Birth", "出生星盤"),
     "synastry_page": ("Synastry", "合盤"),
     "transit_page": ("Transit", "行運"),
     "solar_return_page": ("Solar Return", "太陽回歸"),
@@ -128,7 +128,7 @@ I18N = {
     "northern": ("Northern", "北半球"),
     "southern": ("Southern", "南半球"),
     # planet display
-    "birth": ("Birth", "命盤"),
+    "birth": ("Birth", "出生星盤"),
     "birth_data": ("Birth Data", "出生資料"),
     "synastry": ("Synastry", "合盤"),
     "synastry/transit": ("Synastry / Transit", "合盤 / 行運"),
@@ -233,7 +233,7 @@ I18N = {
     "local_time": ("Local Time", "當地時間"),
     "time": ("Time", "時間"),
     "birth_time": ("Birth Time", "出生時間"),
-    "return_time": ("Return Time", "回歸時間"),
+    "solar_return_time": ("Solar Return Time", "太陽回歸時間"),
     # celestial bodies
     "celestial_body": ("Celestial Bodies", "星體"),
     "body": ("Body", "星體"),

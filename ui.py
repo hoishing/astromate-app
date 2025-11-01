@@ -274,7 +274,7 @@ def input_ui(id: int):
 
         if id == 2 and VAR.chart_type == "transit_page":
             name_container_key = f"transit_name{id}"
-            VAR[name_key] = "__transit__"
+            VAR[name_key] = i("transit")
             name_disabled = True
 
         with st.container(key=f"name_and_city{id}", horizontal=True, horizontal_alignment="center"):
@@ -347,7 +347,9 @@ def input_ui(id: int):
             date_key = f"date{id}"
             SESS[date_key] = VAR[date_key]
             st.date_input(
-                i("birth_date") if id == 1 or VAR.chart_type == "synastry_page" else i("transit_date"),
+                i("birth_date")
+                if id == 1 or VAR.chart_type == "synastry_page"
+                else i("transit_date"),
                 max_value=Date(2300, 1, 1),
                 min_value=Date(1800, 1, 1),
                 format="YYYY-MM-DD",

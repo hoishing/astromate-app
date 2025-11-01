@@ -304,12 +304,23 @@ def pdf_io(html: str) -> BytesIO:
     return fp
 
 
+def local_time_label() -> str:
+    match VAR.chart_type:
+        case "birth_page" | "synastry_page":
+            return i("birth_time")
+        case "transit_page":
+            return i("local_time")
+        case "solar_return_page":
+            return i("solar_return_time")
+
+
 def stats_html(data1: Data, data2: Data = None):
     stats = Stats(
         data1=data1, data2=data2, city1=VAR.city1, city2=VAR.city2, tz1=VAR.tz1, tz2=VAR.tz2
     )
-    basic_info_headers = [i("name"), i("city"), i("coordinates"), i("local_time")]
-    basic_info = html_section(i("basic_info"), stats.basic_info(basic_info_headers))
+    basic_info_headers = [i("name"), i("city"), i("coordinates"), local_time_label()]
+    basic_info_title = f"{i(VAR.chart_type)} - {i('basic_info')}"
+    basic_info = html_section(basic_info_title, stats.basic_info(basic_info_headers))
 
     ele_mod_headers = [i("fire"), i("air"), i("water"), i("earth"), i("sum")]
     ele_mod_row = [i("cardinal"), i("fixed"), i("mutable"), i("sum")]
@@ -372,8 +383,8 @@ def pdf_html(data1: Data, data2: Data = None):
     )
     chart = Chart(data1, width=400, data2=data2)
 
-    basic_info_title = i("basic_info")
-    basic_info_headers = [i("name"), i("city"), i("coordinates"), i("local_time")]
+    basic_info_title = f"{i(VAR.chart_type)} - {i('basic_info')}"
+    basic_info_headers = [i("name"), i("city"), i("coordinates"), local_time_label()]
     ele_vs_mod_title = i("element_vs_modality")
     ele_vs_mod_headers = ["🜂", "🜁", "🜄", "🜃", "∑"]
     ele_vs_mod_row_label = ["⟑", "⊟", "𛰣", "∑"]
