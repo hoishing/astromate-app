@@ -148,3 +148,7 @@ input[aria-label="North Node"] ~ div p {
 [class*="st-key-date-row"] {
   flex-wrap: nowrap;
 }
+
+.st-key-random_questions {
+  margin-bottom: -2rem;
+}

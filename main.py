@@ -48,7 +48,7 @@ def chart():
         utils_ui(2 if data2 else 1, data1, data2)
         if VAR.show_stats:
             stats_ui(data1, data2)
-        if VAR.ai_chat:
+        if VAR.ai_chat and VAR.chart_type == "birth_page":
             ai_ui(data1, data2)
 
 

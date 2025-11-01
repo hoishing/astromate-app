@@ -13,13 +13,14 @@
 ## TODO
 
 - AI
-  - startup questions
-- PDF for diff page types
-- Synastry: ai system prompt
-- Transit: ai system prompt + 推運功能 tool call
-- Solar Return
-  - PDF generation
-  - ai system prompt
+  - model failover
+    - Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'deepseek/deepseek-chat-v3-0324:free is temporarily rate-limited upstream.
+  - stat data from charts
+  - startup questions for each chart type
+  - Synastry: ai system prompt
+  - Transit: ai system prompt + 推運功能 tool call
+  - Solar Return
+    - ai system prompt
 - learning mode
 
 ## Questions

@@ -3,19 +3,16 @@ import logging
 import pandas as pd
 import sqlite3
 import streamlit as st
-from const import I18N, MODELS, ORBS, SESS, VAR
+from const import I18N, ORBS, SESS, VAR
 from datetime import date as Date
 from datetime import datetime, timedelta, timezone
-from functools import reduce
 from io import BytesIO
 from natal import Chart, Config, Data, Stats
 from natal.config import Display
 from natal.const import ASPECT_NAMES
-from openai import OpenAI
 from pathlib import Path
 from tagit import div, main, style, table, td, tr
-from textwrap import dedent
-from typing import Iterable, Literal, TypedDict
+from typing import Iterable, Literal
 from weasyprint import HTML
 from zoneinfo import ZoneInfo
 
@@ -111,78 +108,6 @@ def step(chart_id: int, delta: Literal[1, -1]):
     VAR[f"date{chart_id}"] = dt.date()
     VAR[f"hr{chart_id}"] = dt.hour
     VAR[f"min{chart_id}"] = dt.minute
-
-
-class Message(TypedDict):
-    role: Literal["developer", "user", "assistant"]
-    content: str
-
-
-class OpenRouterChat:
-    def __init__(self, client: OpenAI, model: str, system_message: str):
-        self.client = client
-        self.model = model
-        self.messages = [Message(role="developer", content=system_message)]
-
-    def send_message_stream(self, prompt: str):
-        """Send message and return streaming response"""
-        self.messages.append(Message(role="user", content=prompt))
-
-        response = self.client.chat.completions.create(
-            model=self.model,
-            messages=self.messages,
-            stream=True,
-        )
-
-        full_response = ""
-        for chunk in response:
-            if content := chunk.choices[0].delta.content:
-                full_response += content
-                yield content
-
-        # Add assistant response to history
-        self.messages.append(Message(role="assistant", content=full_response))
-
-
-def new_chat(data1: Data, data2: Data = None) -> OpenRouterChat:
-    stats = Stats(
-        data1=data1, data2=data2, city1=VAR.city1, city2=VAR.city2, tz1=VAR.tz1, tz2=VAR.tz2
-    )
-    chart_data = reduce(
-        lambda x, y: x + y,
-        (stats.ai_md(tb) for tb in ["celestial_body", "house", "aspect", "quadrant", "hemisphere"]),
-    )
-    lang = "Traditional Chinese" if VAR.lang_num else "English"
-    sys_prompt = dedent(f"""\
-            You are an expert astrologer. You answer questions about this astrological chart data:
-            
-            <chart_data>
-            {chart_data}
-            </chart_data>
-
-            # Chart Data Tables Description
-            - Celestial Bodies: sign, house and dignity of specific celestial body
-            - Signs: distribution of celestial bodies in the 12 signs
-            - Houses: distribution of celestial bodies in the 12 houses
-            - Elements: distribution of celestial bodies in the 4 elements
-            - Modality: distribution of celestial bodies in the 3 modalities
-            - Polarity: distribution of celestial bodies in the 2 polarities
-            - Aspects: aspects between celestial bodies
-            - Quadrants: distribution of celestial bodies in the 4 quadrants
-            - Hemispheres: distribution of celestial bodies in the 4 hemispheres
-
-            # Instructions
-            - Answer the user's questions based on the chart data.
-            - think about the followings when answering the user's questions:
-              - do celestial bodies concentrate in certain signs, houses, elements, modality, polarity, quadrant, or hemisphere?
-              - do aspects between celestial bodies form certain patterns?
-            - Use {lang} to reply.
-            """)
-    client = OpenAI(
-        base_url="https://openrouter.ai/api/v1", api_key=st.secrets["OPENROUTER_API_KEY"]
-    )
-    model = MODELS[0]  # Use x-ai/grok-4-fast:free instead of Gemini
-    return OpenRouterChat(client, model, sys_prompt)
 
 
 def scroll_to_bottom():
@@ -325,23 +250,23 @@ def stats_html(data1: Data, data2: Data = None):
     ele_mod_headers = [i("fire"), i("air"), i("water"), i("earth"), i("sum")]
     ele_mod_row = [i("cardinal"), i("fixed"), i("mutable"), i("sum")]
     ele_mod_polor = [i("polarity"), i("pos"), i("neg")]
-    ele_mod_grid = stats.element_vs_modality(ele_mod_headers, ele_mod_row, ele_mod_polor)
-    ele_mod = html_section(i("element_vs_modality"), ele_mod_grid)
+    ele_mod_grid = stats.elements_vs_modalities(ele_mod_headers, ele_mod_row, ele_mod_polor)
+    ele_mod = html_section(i("elements_vs_modalities"), ele_mod_grid)
 
     quad_hemi_headers = [i("eastern"), i("western"), i("northern"), i("southern"), i("sum")]
-    quad_hemi_grid = stats.quadrants_vs_hemisphere(quad_hemi_headers)
+    quad_hemi_grid = stats.quadrants_vs_hemispheres(quad_hemi_headers)
     quad_hemi = html_section(i("quad_vs_hemi"), quad_hemi_grid)
 
     body_headers = [i("body"), i("sign"), i("house"), i("dignity")]
     dignity_labels = [i("domicile"), i("exaltation"), i("fall"), i("detriment")]
-    bodies_grid = stats.celestial_body(1, body_headers, dignity_labels)
+    bodies_grid = stats.celestial_bodies(1, body_headers, dignity_labels)
     user_name = f" - {data1.name}" if data2 else ""
     bodies = html_section(i("celestial_body") + user_name, bodies_grid)
     houses_title = f"{i('houses')} - {i(VAR.house_sys)}"
 
     if data2:
         # bodies 2
-        bodies_grid2 = stats.celestial_body(2, body_headers, dignity_labels)
+        bodies_grid2 = stats.celestial_bodies(2, body_headers, dignity_labels)
         bodies2 = html_section(i("celestial_body") + f" - {data2.name}", bodies_grid2)
         bodies += bodies2
         # sign distribution 1 & 2
@@ -385,7 +310,7 @@ def pdf_html(data1: Data, data2: Data = None):
 
     basic_info_title = f"{i(VAR.chart_type)} - {i('basic_info')}"
     basic_info_headers = [i("name"), i("city"), i("coordinates"), local_time_label()]
-    ele_vs_mod_title = i("element_vs_modality")
+    ele_vs_mod_title = i("elements_vs_modalities")
     ele_vs_mod_headers = ["🜂", "🜁", "🜄", "🜃", "∑"]
     ele_vs_mod_row_label = ["⟑", "⊟", "𛰣", "∑"]
     ele_vs_mod_polarity_label = ["◐", "+", "-"]
@@ -414,7 +339,7 @@ def pdf_html(data1: Data, data2: Data = None):
         html_section(basic_info_title, stats.basic_info(basic_info_headers))
         + html_section(
             ele_vs_mod_title,
-            stats.element_vs_modality(
+            stats.elements_vs_modalities(
                 headers=ele_vs_mod_headers,
                 row_label=ele_vs_mod_row_label,
                 polarity_label=ele_vs_mod_polarity_label,
@@ -423,16 +348,16 @@ def pdf_html(data1: Data, data2: Data = None):
         )
         + html_section(
             quad_vs_hemi_title,
-            stats.quadrants_vs_hemisphere(headers=quad_vs_hemi_headers, pdf=True),
+            stats.quadrants_vs_hemispheres(headers=quad_vs_hemi_headers, pdf=True),
         ),
         class_="info_col",
     ) + div(chart.svg, class_="chart")
 
     body_params = {"headers": body_headers, "dignity_labels": dignity_labels, "pdf": True}
-    row2 = html_section(body_title1, stats.celestial_body(1, **body_params))
+    row2 = html_section(body_title1, stats.celestial_bodies(1, **body_params))
 
     if stats.data2:
-        row2 += html_section(body_title2, stats.celestial_body(2, **body_params))
+        row2 += html_section(body_title2, stats.celestial_bodies(2, **body_params))
 
     row2 += html_section(
         aspects_title,

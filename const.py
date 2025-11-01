@@ -65,11 +65,10 @@ PDF_COLOR = dict(light=":material/palette:", mono=":material/contrast:")
 
 LANGS = ["English", "中文"]
 MODELS = [
+    "deepseek/deepseek-chat-v3-0324:free",
+    "minimax/minimax-m2:free",
+    "z-ai/glm-4.5-air:free",
     "deepseek/deepseek-chat-v3.1:free",
-    "google/gemini-2.0-flash-exp:free",
-    # "gemini-2.0-flash-lite",
-    # "gemini-2.5-flash-lite",
-    # "gemini-2.5-flash",
 ]
 I18N = {
     # pages
@@ -224,8 +223,8 @@ I18N = {
     ),
     # stats
     "basic_info": ("Basic Info", "基本資料"),
-    "element_vs_modality": ("Element vs Modality", "四元素與三態"),
-    "quad_vs_hemi": ("Quadrants vs Hemisphere", "象限與半球"),
+    "elements_vs_modalities": ("Elements vs Modalities", "四元素與三態"),
+    "quad_vs_hemi": ("Quadrants vs Hemispheres", "象限與半球"),
     "aspects": ("Aspects", "相位"),
     "aspect": ("Aspect", "相位"),
     # basic info

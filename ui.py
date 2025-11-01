@@ -1,5 +1,7 @@
 import pandas as pd
+import random
 import streamlit as st
+from ai import new_chat
 from archive import (
     DEFAULT_GENERAL_OPTS,
     create_user,
@@ -12,7 +14,7 @@ from datetime import date as Date
 from natal import Chart, Data
 from natal.config import Display, HouseSys
 from natal.const import ASPECT_NAMES, PLANET_NAMES
-from streamlit.column_config import DatetimeColumn, LinkColumn, TextColumn
+from streamlit.column_config import DatetimeColumn, LinkColumn
 from utils import (
     all_timezones,
     charts_df,
@@ -20,7 +22,6 @@ from utils import (
     clear_input,
     data_db,
     i,
-    new_chat,
     pdf_html,
     pdf_io,
     scroll_to_bottom,
@@ -481,19 +482,31 @@ def stats_ui(data1: Data, data2: Data | None):
 
 
 def ai_ui(data1: Data, data2: Data | None) -> None:
-    # Initialize new chat only when new chart is loaded, this keeps the history during rerun
-    VAR.chat = VAR.get("chat", new_chat(data1, data2))
+    q1, q2 = random.sample(range(1, 8), 2)
+    with st.container(
+        key="random_questions", border=True, horizontal=True, horizontal_alignment="center"
+    ):
+        for q in [q1, q2]:
+            st.button(
+                i(f"question_{q}"),
+                key=f"question_{q}",
+                width="stretch",
+                on_click=lambda: SESS.update({"chat_input": i(f"question_{q}")}),
+            )
 
+    # Initialize new chat only when new chart is loaded, this keeps the history during rerun
+    if VAR.get("chat") is None:
+        VAR["chat"] = new_chat(data1, data2)
     # Display chat history
     avatar = {"user": "👤", "assistant": "💫"}
-    for message in VAR.chat.messages[1:]:
+    for message in VAR["chat"].messages[1:]:
         role = message["role"]
         text = message["content"]
         with st.chat_message(role, avatar=avatar[role]):
             st.markdown(text)
 
     # Accept user input
-    if prompt := st.chat_input(i("chat_placeholder")):
+    if prompt := st.chat_input(i("chat_placeholder"), key="chat_input"):
         # Display user message
         with st.chat_message("user", avatar=avatar["user"]):
             st.markdown(prompt)
