@@ -6,6 +6,7 @@ from natal.stats import AIContext
 from openai import OpenAI
 from textwrap import dedent
 from typing import Literal, TypedDict
+from utils import i
 
 
 class Message(TypedDict):
@@ -14,29 +15,46 @@ class Message(TypedDict):
 
 
 class OpenRouterChat:
-    def __init__(self, client: OpenAI, model: str, system_message: str):
+    def __init__(self, client: OpenAI, system_message: str):
         self.client = client
-        self.model = model
+        self.current_model_index = 0
         self.messages = [Message(role="developer", content=system_message)]
 
+    def is_retryable_error(self, error: Exception) -> bool:
+        """Check if error is retryable (network, temporary issues)"""
+        error_codes = ["429", "500", "502", "503", "504"]
+        return any(str(error).lower().startswith(f"error code: {code}") for code in error_codes)
+
     def send_message_stream(self, prompt: str):
-        """Send message and return streaming response"""
+        """Send message with failover support and return streaming response"""
         self.messages.append(Message(role="user", content=prompt))
+        while self.current_model_index < len(MODELS):
+            try:
+                model = MODELS[self.current_model_index]
+                st.write(f"using model: {model}")
+                response = self.client.chat.completions.create(
+                    model=model,
+                    messages=self.messages,
+                    stream=True,
+                )
 
-        response = self.client.chat.completions.create(
-            model=self.model,
-            messages=self.messages,
-            stream=True,
-        )
+                full_response = ""
+                for chunk in response:
+                    if content := chunk.choices[0].delta.content:
+                        full_response += content
+                        yield content
 
-        full_response = ""
-        for chunk in response:
-            if content := chunk.choices[0].delta.content:
-                full_response += content
-                yield content
+                self.messages.append(Message(role="assistant", content=full_response))
+                return
 
-        # Add assistant response to history
-        self.messages.append(Message(role="assistant", content=full_response))
+            except Exception as e:
+                if self.is_retryable_error(e):
+                    # st.write("found retryable error")
+                    self.current_model_index += 1
+                    continue
+                else:
+                    st.error(e)
+                    return
 
 
 def new_chat(data1: Data, data2: Data = None) -> OpenRouterChat:
@@ -50,7 +68,7 @@ def new_chat(data1: Data, data2: Data = None) -> OpenRouterChat:
     lang = "Traditional Chinese" if VAR.lang_num else "English"
     chart_type = I18N[VAR.chart_type][0]
     sys_prompt = dedent(f"""\
-            You are an expert astrologer. You answer {chart_type} questions about this astrological chart data:
+            You are an expert astrologer. You answer questions about this astrological {chart_type} chart data:
             
             <chart_data>
             {chart_data}
@@ -78,5 +96,4 @@ def new_chat(data1: Data, data2: Data = None) -> OpenRouterChat:
     client = OpenAI(
         base_url="https://openrouter.ai/api/v1", api_key=st.secrets["OPENROUTER_API_KEY"]
     )
-    model = MODELS[1]  # Use x-ai/grok-4-fast:free instead of Gemini
-    return OpenRouterChat(client, model, sys_prompt)
+    return OpenRouterChat(client, sys_prompt)

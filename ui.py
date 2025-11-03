@@ -1,5 +1,4 @@
 import pandas as pd
-import random
 import streamlit as st
 from ai import new_chat
 from archive import (
@@ -9,7 +8,7 @@ from archive import (
     load_chart,
     save_chart,
 )
-from const import LANGS, ORBS, PDF_COLOR, ROW_HEIGHT, SESS, VAR
+from const import AI_Q, LANGS, ORBS, PDF_COLOR, ROW_HEIGHT, SESS, VAR
 from datetime import date as Date
 from natal import Chart, Data
 from natal.config import Display, HouseSys
@@ -198,7 +197,7 @@ def orb_opt():
 def display_opt(id: int):
     """options for displaying a celestial body or not"""
 
-    def update_display(id: int, kind: str):
+    def update_display(kind: str):
         presets = {
             "inner": PLANET_NAMES[:5],
             "classic": PLANET_NAMES[:7],
@@ -236,19 +235,19 @@ def display_opt(id: int):
         i("inner_planets"),
         key=f"inner_display{id}",
         use_container_width=True,
-        on_click=lambda: update_display(id, "inner"),
+        on_click=lambda: update_display("inner"),
     )
     c2.button(
         i("classic"),
         key=f"classic_display{id}",
         use_container_width=True,
-        on_click=lambda: update_display(id, "classic"),
+        on_click=lambda: update_display("classic"),
     )
     c3.button(
         i("default"),
         key=f"default_display{id}",
         use_container_width=True,
-        on_click=lambda: update_display(id, "default"),
+        on_click=lambda: update_display("default"),
     )
 
 
@@ -472,7 +471,8 @@ def chart_ui(data1: Data, data2: Data = None):
     with st.container(key="chart_svg"):
         st.markdown(chart.svg, unsafe_allow_html=True)
     # reset chat history when loading new chart
-    VAR.chat = None
+    if "chat" in VAR:
+        del VAR["chat"]
 
 
 def stats_ui(data1: Data, data2: Data | None):
@@ -482,17 +482,19 @@ def stats_ui(data1: Data, data2: Data | None):
 
 
 def ai_ui(data1: Data, data2: Data | None) -> None:
-    q1, q2 = random.sample(range(1, 8), 2)
-    with st.container(
-        key="random_questions", border=True, horizontal=True, horizontal_alignment="center"
-    ):
-        for q in [q1, q2]:
-            st.button(
-                i(f"question_{q}"),
-                key=f"question_{q}",
-                width="stretch",
-                on_click=lambda: SESS.update({"chat_input": i(f"question_{q}")}),
-            )
+    st.write("")
+    with st.expander(i("question_ideas"), expanded=True):
+        with st.container(key="question_ideas_container", height=140, border=False):
+            for questions in AI_Q[VAR.chart_type]:
+                question = questions[VAR.lang_num]
+                st.button(
+                    question,
+                    width="stretch",
+                    type="tertiary",
+                    icon=":material/arrow_right:",
+                    on_click=SESS.update,
+                    args=({"chat_input": question},),
+                )
 
     # Initialize new chat only when new chart is loaded, this keeps the history during rerun
     if VAR.get("chat") is None:
@@ -505,8 +507,7 @@ def ai_ui(data1: Data, data2: Data | None) -> None:
         with st.chat_message(role, avatar=avatar[role]):
             st.markdown(text)
 
-    # Accept user input
-    if prompt := st.chat_input(i("chat_placeholder"), key="chat_input"):
+    def handle_user_input(prompt: str):
         # Display user message
         with st.chat_message("user", avatar=avatar["user"]):
             st.markdown(prompt)
@@ -524,6 +525,13 @@ def ai_ui(data1: Data, data2: Data | None) -> None:
             except Exception as e:
                 st.error(e)
                 st.stop()
+
+    # user input
+    st.chat_input(
+        i("chat_placeholder"),
+        key="chat_input",
+        on_submit=lambda: handle_user_input(SESS.chat_input),
+    )
 
 
 def saved_charts_ui():
@@ -570,5 +578,5 @@ def saved_charts_ui():
             row_height=ROW_HEIGHT,
             key="saved_charts",
             selection_mode="single-cell",
-            on_select=lambda: on_select(data),
+            on_select=lambda d=data: on_select(d),
         )

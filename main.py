@@ -1,7 +1,8 @@
 import streamlit as st
 from archive import delete_chart
 from const import LOGO, PAGE_CONFIG, SESS, STYLE, VAR
-from st_screenwidth_detector import screenwidth_detector
+
+# from st_screenwidth_detector import screenwidth_detector
 from ui import (
     ai_ui,
     chart_ui,
@@ -24,7 +25,8 @@ st.set_page_config(**PAGE_CONFIG)
 st.logo(LOGO)
 st.html(STYLE)
 
-VAR.chart_size = min(screenwidth_detector() + 16, 650)
+# VAR.chart_size = min(screenwidth_detector() + 16, 650)
+VAR.chart_size = 650
 
 
 def input1():

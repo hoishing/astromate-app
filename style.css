@@ -149,6 +149,32 @@ input[aria-label="North Node"] ~ div p {
   flex-wrap: nowrap;
 }
 
-.st-key-random_questions {
-  margin-bottom: -2rem;
+/* ai chat ========================================= */
+
+[data-testid="stExpanderDetails"]:has(.st-key-question_ideas_container) {
+  padding-right: 0;
+}
+
+.st-key-question_ideas_container {
+  gap: 0;
+  button {
+    justify-content: left;
+    min-height: min-content;
+  }
+}
+
+[data-testid="stChatMessageContent"] {
+  strong,
+  b {
+    font-weight: normal;
+  }
+  h1 {
+    font-size: 1.1rem;
+  }
+  h2 {
+    font-size: 1.05rem;
+  }
+  h3 {
+    font-size: 1rem;
+  }
 }

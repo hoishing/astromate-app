@@ -42,6 +42,7 @@ VAR.setdefault("min1", 0)
 VAR.setdefault("min2", datetime.now().minute)
 VAR.setdefault("stepper_unit", "day")
 VAR.setdefault("solar_return_year", Date.today().year + (1 if Date.today().month > 6 else 0))
+# VAR.setdefault("question_ideas", None)
 
 # Non UI variables, no need to handle SESS None bug
 VAR.setdefault("chat", None)
@@ -65,15 +66,15 @@ PDF_COLOR = dict(light=":material/palette:", mono=":material/contrast:")
 
 LANGS = ["English", "中文"]
 MODELS = [
-    "deepseek/deepseek-chat-v3-0324:free",
-    "minimax/minimax-m2:free",
     "z-ai/glm-4.5-air:free",
+    "minimax/minimax-m2:free",
     "deepseek/deepseek-chat-v3.1:free",
+    "deepseek/deepseek-chat-v3-0324:free",
 ]
 I18N = {
     # pages
     "chart_type": ("Chart Type", "星盤"),
-    "birth_page": ("Birth", "出生星盤"),
+    "birth_page": ("Birth", "本命盤"),
     "synastry_page": ("Synastry", "合盤"),
     "transit_page": ("Transit", "行運"),
     "solar_return_page": ("Solar Return", "太陽回歸"),
@@ -127,7 +128,7 @@ I18N = {
     "northern": ("Northern", "北半球"),
     "southern": ("Southern", "南半球"),
     # planet display
-    "birth": ("Birth", "出生星盤"),
+    "birth": ("Birth", "本命盤"),
     "birth_data": ("Birth Data", "出生資料"),
     "synastry": ("Synastry", "合盤"),
     "synastry/transit": ("Synastry / Transit", "合盤 / 行運"),
@@ -192,34 +193,14 @@ I18N = {
     ),
     # ai chat
     "thinking": ("thinking", "思考中"),
-    "chat_placeholder": ("chat about the astrological chart...", "聊聊這個星盤吧～"),
-    "question_1": (
-        "What does my birth chart reveal about my personality, strengths, and challenges?",
-        "我的出生圖對我的個性、優勢和挑戰有何啟示？",
+    "question_ideas": (
+        " Some question ideas &nbsp;",
+        " 一些問題靈感 &nbsp;",
     ),
-    "question_2": (
-        "What are my key relationships and how can I improve them?",
-        "我的關鍵關係是什麼，如何改善？",
-    ),
-    "question_3": (
-        "What are my career opportunities and how can I make the most of them?",
-        "我的職業機會是什麼，如何最大化利用？",
-    ),
-    "question_4": (
-        "Any suggestions on my love life and relationships?",
-        "在愛情和人際關係方面有什麼建議？",
-    ),
-    "question_5": (
-        "What are my spiritual and emotional needs, and how can I fulfill them?",
-        "我的精神需求和情感需求是什麼，如何滿足？",
-    ),
-    "question_6": (
-        "What are my financial goals and how can I achieve them?",
-        "我的財務目標是什麼，如何實現？",
-    ),
-    "question_7": (
-        "What is my career path or life direction? Which way should I be heading?",
-        "我的職業生涯或人生方向是什麼？我該朝哪個方向努力？",
+    "chat_placeholder": ("Ask the Universe", "向宇宙提問"),
+    "error_exhausted": (
+        "Free credits exhausted, please try again later.",
+        "免費額度已用完，請稍後再試。",
     ),
     # stats
     "basic_info": ("Basic Info", "基本資料"),
@@ -252,4 +233,189 @@ I18N = {
     "rows": ("rows", "列"),
     "cols": ("cols", "行"),
     # pdf
+}
+
+AI_Q = {
+    "birth_page": [
+        [
+            "What does my birth chart reveal about my personality, strengths, and challenges?",
+            "我的本命盤對我的個性、優勢和挑戰有何啟示？",
+        ],
+        [
+            "What is my career opportunities, and how can I make the most of them?",
+            "我的職業發展有哪些可能性？我應如何有效利用這些機會？",
+        ],
+        [
+            "Any advice on my love life and relationships?",
+            "關於我的愛情生活和兩性關係，有什麼建議嗎？",
+        ],
+        [
+            "How does my chart describe my relationship with money and my potential for wealth?",
+            "我的星盤如何描述我與金錢的關係和致富潛力？",
+        ],
+        [
+            "What challenges will I encounter in interpersonal relationships?",
+            "我在人際關係上會遇到什麼挑戰？",
+        ],
+        [
+            "How can I improve my relationship with my family of origin?",
+            "我如何能改善與原生家庭的關係？",
+        ],
+        [
+            "How about my health? Any potential health issues?",
+            "我的健康狀況如何，有任何潛在的健康問題嗎？",
+        ],
+        [
+            "How can I unleash my creativity or inspiration?",
+            "我該如何發揮我的創造力和靈感？",
+        ],
+        [
+            "What challenges or life lessons do the birth chart show for me?",
+            "我的本命盤給我揭示了哪些挑戰或人生課題？",
+        ],
+        [
+            "What kind of investment strategy is right for me?",
+            "什麼類型的投資策略比較適合我？",
+        ],
+        [
+            "How can I best fulfill my spiritual and emotional needs?",
+            "我該如何最好地滿足我的靈性與情感需求？",
+        ],
+        [
+            "How can I best use my natural talents to create abundance?",
+            "我如何最好地運用我的天賦來創造豐盛？",
+        ],
+        [
+            "What should I be aware of in romantic relationships?",
+            "在戀愛關係中，我該注意些什麼？",
+        ],
+        [
+            "What area will bring me the most success or fulfillment?",
+            "哪一方面能帶給我最大的成功和成就感？",
+        ],
+        [
+            "Am I better suited to start my own business or work for someone else?",
+            "我比較適合自己創業，還是為他人工作？",
+        ],
+        [
+            "What kind of partner is most compatible with me?",
+            "哪種類型的伴侶最適合我？",
+        ],
+        [
+            "What is the best approach to achieve my financial goals?",
+            "達成財務目標的最佳途徑是什麼？",
+        ],
+        [
+            "Which fields offer potential for career development?",
+            "哪些領域有發展事業的潛力？",
+        ],
+        [
+            "What potential difficulties or obstacles do I need to overcome?",
+            "我有什麼需要克服的潛在困難或障礙？",
+        ],
+        [
+            "What natural strengths or talents does my birth chart show?",
+            "我的本命盤顯示我有哪些天生的優勢或才能？",
+        ],
+        [
+            "How can I feel more at ease and comfortable in my social circle?",
+            "我該如何在社交圈中讓自己感到更自在與舒適？",
+        ],
+        [
+            "Which area of life can give me more sense of security or stability?",
+            "生命中的哪個領域，可以讓我覺得更穩定或更有安全感或？",
+        ],
+        [
+            "How to improve my communication style?",
+            "如何改善我的溝通風格？",
+        ],
+        [
+            "Any hidden talents or potential that I might not be aware of?",
+            "有哪些我可能沒有意識到的隱藏才能或潛力？",
+        ],
+        [
+            "How will my journey of self-healing unfold?",
+            "我的自我療癒之路如何展開？",
+        ],
+        [
+            "What kind of partner do I truly need in a romantic relationship?",
+            "在愛情中，我真正需要什麼樣的伴侶？",
+        ],
+    ],
+    "synastry_page": [],
+    "transit_page": [],
+    "solar_return_page": [
+        [
+            "What are my advantages and challenges this year?",
+            "這一年我有什麼優勢和挑戰？",
+        ],
+        [
+            "What is my career opportunities, and how can I make the most of them?",
+            "我的職業發展有哪些可能性？我應如何有效利用這些機會？",
+        ],
+        [
+            "Any advice on my love life and relationships?",
+            "對於我的愛情生活和兩性關係，有什麼建議嗎？",
+        ],
+        [
+            "What is the best investment strategy this year?",
+            "這一年最佳的理財策略是什麼？",
+        ],
+        [
+            "How about my health? Any potential health issues?",
+            "我的健康狀況如何，有任何潛在的健康問題嗎？",
+        ],
+        [
+            "What challenges will I encounter in interpersonal relationships?",
+            "我在人際關係上會遇到什麼挑戰？",
+        ],
+        [
+            "How can I expand my social circle?",
+            "如何擴大我的社交圈子？",
+        ],
+        [
+            "Which field has the greatest potential for career development?",
+            "哪個領域最有發展事業的潛力？",
+        ],
+        [
+            "Is this a good year to start a business?",
+            "這一年適合創業嗎？",
+        ],
+        [
+            "How can I improve my relationship with my family of origin?",
+            "我如何能改善與原生家庭的關係？",
+        ],
+        [
+            "How can I best fulfill my spiritual and emotional needs?",
+            "我該如何最好地滿足我的靈性與情感需求？",
+        ],
+        [
+            "How can I best use my natural talents to create abundance this year?",
+            "這一年我如何最好地運用我的天賦來創造豐盛？",
+        ],
+        [
+            "Any advice on achieving my financial goals this year?",
+            "關於我今年要如何達成財務目標，有什麼建議嗎？",
+        ],
+        [
+            "How can I unleash my creativity or inspiration?",
+            "我該如何發揮我的創造力和靈感？",
+        ],
+        [
+            "What potential difficulties or obstacles do I need to overcome?",
+            "我有什麼需要克服的潛在困難或障礙？",
+        ],
+        [
+            "What area will bring me the most success or fulfillment?",
+            "哪一方面會讓我最容易成功或獲得成就感？",
+        ],
+        [
+            "How will my journey of self-healing unfold?",
+            "我的自我療癒之路如何展開？",
+        ],
+        [
+            "What should I be aware of in romantic relationships?",
+            "在戀愛關係中，我該注意些什麼？",
+        ],
+    ],
 }

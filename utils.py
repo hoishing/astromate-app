@@ -29,11 +29,13 @@ def sync(key: str) -> None:
     """sync SESS to VAR, ignore None value which is Streamlit's bug"""
     # BUG: workaround for None values in session state bug during multiple reruns
     # it will trigger on_change event with session state of None
-    if SESS[key] is None:
+    nullable_keys = ["question_ideas", "hr1", "hr2", "min1", "min2"]
+    if SESS[key] is None and key not in nullable_keys:
         # restore session state from VAR
         SESS[key] = VAR[key]
         return
-    VAR[key] = SESS[key]
+    if VAR[key] != SESS[key]:
+        VAR[key] = SESS[key]
 
 
 def utc_of(id: int) -> datetime:

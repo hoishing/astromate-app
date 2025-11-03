@@ -14,7 +14,6 @@
 
 - AI
   - model failover
-    - Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'deepseek/deepseek-chat-v3-0324:free is temporarily rate-limited upstream.
   - stat data from charts
   - startup questions for each chart type
   - Synastry: ai system prompt
