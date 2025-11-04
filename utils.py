@@ -3,7 +3,7 @@ import logging
 import pandas as pd
 import sqlite3
 import streamlit as st
-from const import I18N, ORBS, SESS, VAR
+from const import I18N, ORBS, SESS
 from datetime import date as Date
 from datetime import datetime, timedelta, timezone
 from io import BytesIO
@@ -20,41 +20,35 @@ from zoneinfo import ZoneInfo
 logging.getLogger("fontTools").setLevel(logging.ERROR)
 
 
+def lang_num() -> int:
+    """get language number from subdomain"""
+    if st.context.url.startswith("https://en"):
+        return 0
+    return 1
+
+
 def i(key: str) -> str:
     """get i18n string"""
-    return I18N[key][VAR["lang_num"]]
-
-
-def sync(key: str) -> None:
-    """sync SESS to VAR, ignore None value which is Streamlit's bug"""
-    # BUG: workaround for None values in session state bug during multiple reruns
-    # it will trigger on_change event with session state of None
-    nullable_keys = ["question_ideas", "hr1", "hr2", "min1", "min2"]
-    if SESS[key] is None and key not in nullable_keys:
-        # restore session state from VAR
-        SESS[key] = VAR[key]
-        return
-    if VAR[key] != SESS[key]:
-        VAR[key] = SESS[key]
+    return I18N[key][lang_num()]
 
 
 def utc_of(id: int) -> datetime:
     """convert local datetime to utc datetime"""
     naive_dt = get_dt(id)
-    tzinfo = ZoneInfo(VAR[f"tz{id}"])
+    tzinfo = ZoneInfo(SESS[f"tz{id}"])
     dt = naive_dt.replace(tzinfo=tzinfo)
     return dt.astimezone(ZoneInfo("UTC"))
 
 
 def get_dt(id: int) -> datetime:
     """get datetime from session state"""
-    date = VAR[f"date{id}"]
-    hr = VAR[f"hr{id}"]
-    minute = VAR[f"min{id}"]
+    date = SESS[f"date{id}"]
+    hr = SESS[f"hr{id}"]
+    minute = SESS[f"min{id}"]
     return datetime(date.year, date.month, date.day, hr, minute)
 
 
-@st.cache_resource
+@st.cache_data
 def cities_df() -> pd.DataFrame:
     return pd.read_csv("cities.csv")
 
@@ -71,13 +65,13 @@ def all_timezones() -> list[str]:
 
 def natal_data(id: int) -> Data:
     """return natal data from a chart input ui"""
-    display = {key: VAR[f"{key}{id}"] for key in Display.model_fields}
-    aspects = {aspect: VAR[aspect] for aspect in ASPECT_NAMES}
-    hse_1st_char = VAR.house_sys[0]
+    display = {key: SESS[f"{key}{id}"] for key in Display.model_fields}
+    aspects = {aspect: SESS[aspect] for aspect in ASPECT_NAMES}
+    hse_1st_char = SESS.house_sys[0]
     return Data(
-        name=VAR[f"name{id}"],
-        lat=VAR[f"lat{id}"],
-        lon=VAR[f"lon{id}"],
+        name=SESS[f"name{id}"],
+        lat=SESS[f"lat{id}"],
+        lon=SESS[f"lon{id}"],
         utc_dt=utc_of(id),
         config=Config(house_sys=hse_1st_char, orb=aspects, display=display),
     )
@@ -86,7 +80,7 @@ def natal_data(id: int) -> Data:
 def step(chart_id: int, delta: Literal[1, -1]):
     """step implementation for stepper ui"""
     dt = get_dt(chart_id)
-    unit = VAR.stepper_unit
+    unit = SESS.stepper_unit
     match unit:
         case "week":
             delta = timedelta(weeks=delta)
@@ -107,9 +101,9 @@ def step(chart_id: int, delta: Literal[1, -1]):
     if unit not in ["month", "year"]:
         dt += delta
 
-    VAR[f"date{chart_id}"] = dt.date()
-    VAR[f"hr{chart_id}"] = dt.hour
-    VAR[f"min{chart_id}"] = dt.minute
+    SESS[f"date{chart_id}"] = dt.date()
+    SESS[f"hr{chart_id}"] = dt.hour
+    SESS[f"min{chart_id}"] = dt.minute
 
 
 def scroll_to_bottom():
@@ -147,7 +141,7 @@ def charts_df() -> pd.DataFrame | None:
         "select data, hash from charts where email = ? and chart_type = ? order by updated_at desc"
     )
     cursor = data_db().cursor()
-    cursor.execute(sql, (st.user.email, VAR.chart_type))
+    cursor.execute(sql, (st.user.email, SESS.chart_type))
     all_data = cursor.fetchall()
     if not all_data:
         return None
@@ -181,21 +175,20 @@ def validate_lat() -> bool:
 
 
 def clear_input() -> bool:
-    for num in "12":
-        for key in ["name", "city", "tz"]:
-            VAR[f"{key}{num}"] = ""
-        for key in ["lat", "lon"]:
-            VAR[f"{key}{num}"] = None
-    VAR["date1"] = Date(2000, 1, 1)
-    VAR["date2"] = Date.today()
+    for key in ["name", "city", "tz", "lat", "lon", "date", "hr", "min"]:
+        for num in "12":
+            if f"{key}{num}" in SESS:
+                del SESS[f"{key}{num}"]
     return True
 
 
 def update_orbs() -> bool:
     if SESS.chart_type == "transit_page":
-        VAR.update(dict(zip(ASPECT_NAMES, [2, 2, 2, 2, 1, 0])))
+        SESS.update(dict(zip(ASPECT_NAMES, [2, 2, 2, 2, 1, 0])))
+    elif SESS.chart_type == "synastry_page":
+        SESS.update(dict(zip(ASPECT_NAMES, [3, 3, 3, 3, 2, 0])))
     else:
-        VAR.update(ORBS)
+        SESS.update(ORBS)
     return True
 
 
@@ -232,7 +225,7 @@ def pdf_io(html: str) -> BytesIO:
 
 
 def local_time_label() -> str:
-    match VAR.chart_type:
+    match SESS.chart_type:
         case "birth_page" | "synastry_page":
             return i("birth_time")
         case "transit_page":
@@ -243,10 +236,10 @@ def local_time_label() -> str:
 
 def stats_html(data1: Data, data2: Data = None):
     stats = Stats(
-        data1=data1, data2=data2, city1=VAR.city1, city2=VAR.city2, tz1=VAR.tz1, tz2=VAR.tz2
+        data1=data1, data2=data2, city1=SESS.city1, city2=SESS.city2, tz1=SESS.tz1, tz2=SESS.tz2
     )
     basic_info_headers = [i("name"), i("city"), i("coordinates"), local_time_label()]
-    basic_info_title = f"{i(VAR.chart_type)} - {i('basic_info')}"
+    basic_info_title = f"{i(SESS.chart_type)} - {i('basic_info')}"
     basic_info = html_section(basic_info_title, stats.basic_info(basic_info_headers))
 
     ele_mod_headers = [i("fire"), i("air"), i("water"), i("earth"), i("sum")]
@@ -264,7 +257,7 @@ def stats_html(data1: Data, data2: Data = None):
     bodies_grid = stats.celestial_bodies(1, body_headers, dignity_labels)
     user_name = f" - {data1.name}" if data2 else ""
     bodies = html_section(i("celestial_body") + user_name, bodies_grid)
-    houses_title = f"{i('houses')} - {i(VAR.house_sys)}"
+    houses_title = f"{i('houses')} - {i(SESS.house_sys)}"
 
     if data2:
         # bodies 2
@@ -302,15 +295,15 @@ def stats_html(data1: Data, data2: Data = None):
 
 def pdf_html(data1: Data, data2: Data = None):
     """html source for PDF report"""
-    data1.config.theme_type = VAR.pdf_color
+    data1.config.theme_type = SESS.pdf_color
     data1.config.chart.stroke_width = 0.7
 
     stats = Stats(
-        data1=data1, data2=data2, city1=VAR.city1, city2=VAR.city2, tz1=VAR.tz1, tz2=VAR.tz2
+        data1=data1, data2=data2, city1=SESS.city1, city2=SESS.city2, tz1=SESS.tz1, tz2=SESS.tz2
     )
     chart = Chart(data1, width=400, data2=data2)
 
-    basic_info_title = f"{i(VAR.chart_type)} - {i('basic_info')}"
+    basic_info_title = f"{i(SESS.chart_type)} - {i('basic_info')}"
     basic_info_headers = [i("name"), i("city"), i("coordinates"), local_time_label()]
     ele_vs_mod_title = i("elements_vs_modalities")
     ele_vs_mod_headers = ["🜂", "🜁", "🜄", "🜃", "∑"]
@@ -323,7 +316,7 @@ def pdf_html(data1: Data, data2: Data = None):
     aspects_title = i("aspects")
     signs_title = i("signs")
     signs_headers = [i("sign")]
-    houses_title = f"{i('houses')} - {i(VAR.house_sys)}"
+    houses_title = f"{i('houses')} - {i(SESS.house_sys)}"
     if data2:
         body_title1 = i("celestial_body") + f" - {data1.name}"
         body_title2 = i("celestial_body") + f" - {data2.name}"

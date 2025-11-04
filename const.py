@@ -1,55 +1,69 @@
 import streamlit as st
 from datetime import date as Date
 from datetime import datetime
-from natal.config import Display, DotDict, Orb
+from natal.config import Display, Orb
 from pathlib import Path
 
 SESS = st.session_state
-SESS.setdefault("var", DotDict())
-VAR = st.session_state.var
 ORBS = Orb().model_dump()
 
+
+def assign(key, val):
+    """assign a value to a key in SESS if the key does not exist"""
+    if key not in SESS:
+        SESS[key] = val
+
+
+assign("rerun_cnt", 0)
+
+# default values ==============================================================
 DEFAULT_GENERAL_OPTS = {
     "house_sys": "Placidus",
-    "lang_num": int(st.query_params.get("lang", 1)),
     "pdf_color": "light",
     "show_stats": True,
     "ai_chat": True,
 }
 
-for key in DEFAULT_GENERAL_OPTS:
-    VAR.setdefault(key, DEFAULT_GENERAL_OPTS[key])
+DEFAULT_INPUT_OPTS = [
+    ("chart_type", "birth_page"),
+    ("solar_return_year", int(Date.today().year + (1 if Date.today().month > 6 else 0))),
+    ("name1", ""),
+    ("name2", ""),
+    ("city1", ""),
+    ("city2", ""),
+    ("lat1", None),
+    ("lat2", None),
+    ("lon1", None),
+    ("lon2", None),
+    ("tz1", ""),
+    ("tz2", ""),
+    ("date1", Date(2000, 1, 1)),
+    ("date2", Date.today()),
+    ("hr1", 13),
+    ("hr2", datetime.now().hour),
+    ("min1", 0),
+    ("min2", datetime.now().minute),
+    ("stepper_unit", "day"),
+]
 
-for aspect in ORBS:
-    VAR.setdefault(aspect, ORBS[aspect])
 
-VAR.setdefault("chart_type", "birth_page")
-VAR.setdefault("name1", "")
-VAR.setdefault("name2", "")
-VAR.setdefault("city1", "")
-VAR.setdefault("city2", "")
-VAR.setdefault("lat1", None)
-VAR.setdefault("lon1", None)
-VAR.setdefault("tz1", "")
-VAR.setdefault("lat2", None)
-VAR.setdefault("lon2", None)
-VAR.setdefault("tz2", "")
-VAR.setdefault("date1", Date(2000, 1, 1))
-VAR.setdefault("date2", Date.today())
-VAR.setdefault("hr1", 13)
-VAR.setdefault("hr2", datetime.now().hour)
-VAR.setdefault("min1", 0)
-VAR.setdefault("min2", datetime.now().minute)
-VAR.setdefault("stepper_unit", "day")
-VAR.setdefault("solar_return_year", Date.today().year + (1 if Date.today().month > 6 else 0))
-# VAR.setdefault("question_ideas", None)
+def set_default_values():
+    for key, val in DEFAULT_GENERAL_OPTS.items():
+        assign(key, val)
 
-# Non UI variables, no need to handle SESS None bug
-VAR.setdefault("chat", None)
+    for key, val in ORBS.items():
+        assign(key, val)
 
-for body, val in Display().items():
-    for num in "12":
-        VAR.setdefault(f"{body}{num}", val)
+    for key, val in DEFAULT_INPUT_OPTS:
+        assign(key, val)
+
+    for body, val in Display().items():
+        for num in "12":
+            key = f"{body}{num}"
+            assign(key, val)
+
+
+# =============================================================================
 
 
 PAGE_CONFIG = dict(
@@ -66,9 +80,9 @@ PDF_COLOR = dict(light=":material/palette:", mono=":material/contrast:")
 
 LANGS = ["English", "中文"]
 MODELS = [
-    "z-ai/glm-4.5-air:free",
     "minimax/minimax-m2:free",
     "deepseek/deepseek-chat-v3.1:free",
+    "z-ai/glm-4.5-air:free",
     "deepseek/deepseek-chat-v3-0324:free",
 ]
 I18N = {
@@ -233,189 +247,4 @@ I18N = {
     "rows": ("rows", "列"),
     "cols": ("cols", "行"),
     # pdf
-}
-
-AI_Q = {
-    "birth_page": [
-        [
-            "What does my birth chart reveal about my personality, strengths, and challenges?",
-            "我的本命盤對我的個性、優勢和挑戰有何啟示？",
-        ],
-        [
-            "What is my career opportunities, and how can I make the most of them?",
-            "我的職業發展有哪些可能性？我應如何有效利用這些機會？",
-        ],
-        [
-            "Any advice on my love life and relationships?",
-            "關於我的愛情生活和兩性關係，有什麼建議嗎？",
-        ],
-        [
-            "How does my chart describe my relationship with money and my potential for wealth?",
-            "我的星盤如何描述我與金錢的關係和致富潛力？",
-        ],
-        [
-            "What challenges will I encounter in interpersonal relationships?",
-            "我在人際關係上會遇到什麼挑戰？",
-        ],
-        [
-            "How can I improve my relationship with my family of origin?",
-            "我如何能改善與原生家庭的關係？",
-        ],
-        [
-            "How about my health? Any potential health issues?",
-            "我的健康狀況如何，有任何潛在的健康問題嗎？",
-        ],
-        [
-            "How can I unleash my creativity or inspiration?",
-            "我該如何發揮我的創造力和靈感？",
-        ],
-        [
-            "What challenges or life lessons do the birth chart show for me?",
-            "我的本命盤給我揭示了哪些挑戰或人生課題？",
-        ],
-        [
-            "What kind of investment strategy is right for me?",
-            "什麼類型的投資策略比較適合我？",
-        ],
-        [
-            "How can I best fulfill my spiritual and emotional needs?",
-            "我該如何最好地滿足我的靈性與情感需求？",
-        ],
-        [
-            "How can I best use my natural talents to create abundance?",
-            "我如何最好地運用我的天賦來創造豐盛？",
-        ],
-        [
-            "What should I be aware of in romantic relationships?",
-            "在戀愛關係中，我該注意些什麼？",
-        ],
-        [
-            "What area will bring me the most success or fulfillment?",
-            "哪一方面能帶給我最大的成功和成就感？",
-        ],
-        [
-            "Am I better suited to start my own business or work for someone else?",
-            "我比較適合自己創業，還是為他人工作？",
-        ],
-        [
-            "What kind of partner is most compatible with me?",
-            "哪種類型的伴侶最適合我？",
-        ],
-        [
-            "What is the best approach to achieve my financial goals?",
-            "達成財務目標的最佳途徑是什麼？",
-        ],
-        [
-            "Which fields offer potential for career development?",
-            "哪些領域有發展事業的潛力？",
-        ],
-        [
-            "What potential difficulties or obstacles do I need to overcome?",
-            "我有什麼需要克服的潛在困難或障礙？",
-        ],
-        [
-            "What natural strengths or talents does my birth chart show?",
-            "我的本命盤顯示我有哪些天生的優勢或才能？",
-        ],
-        [
-            "How can I feel more at ease and comfortable in my social circle?",
-            "我該如何在社交圈中讓自己感到更自在與舒適？",
-        ],
-        [
-            "Which area of life can give me more sense of security or stability?",
-            "生命中的哪個領域，可以讓我覺得更穩定或更有安全感或？",
-        ],
-        [
-            "How to improve my communication style?",
-            "如何改善我的溝通風格？",
-        ],
-        [
-            "Any hidden talents or potential that I might not be aware of?",
-            "有哪些我可能沒有意識到的隱藏才能或潛力？",
-        ],
-        [
-            "How will my journey of self-healing unfold?",
-            "我的自我療癒之路如何展開？",
-        ],
-        [
-            "What kind of partner do I truly need in a romantic relationship?",
-            "在愛情中，我真正需要什麼樣的伴侶？",
-        ],
-    ],
-    "synastry_page": [],
-    "transit_page": [],
-    "solar_return_page": [
-        [
-            "What are my advantages and challenges this year?",
-            "這一年我有什麼優勢和挑戰？",
-        ],
-        [
-            "What is my career opportunities, and how can I make the most of them?",
-            "我的職業發展有哪些可能性？我應如何有效利用這些機會？",
-        ],
-        [
-            "Any advice on my love life and relationships?",
-            "對於我的愛情生活和兩性關係，有什麼建議嗎？",
-        ],
-        [
-            "What is the best investment strategy this year?",
-            "這一年最佳的理財策略是什麼？",
-        ],
-        [
-            "How about my health? Any potential health issues?",
-            "我的健康狀況如何，有任何潛在的健康問題嗎？",
-        ],
-        [
-            "What challenges will I encounter in interpersonal relationships?",
-            "我在人際關係上會遇到什麼挑戰？",
-        ],
-        [
-            "How can I expand my social circle?",
-            "如何擴大我的社交圈子？",
-        ],
-        [
-            "Which field has the greatest potential for career development?",
-            "哪個領域最有發展事業的潛力？",
-        ],
-        [
-            "Is this a good year to start a business?",
-            "這一年適合創業嗎？",
-        ],
-        [
-            "How can I improve my relationship with my family of origin?",
-            "我如何能改善與原生家庭的關係？",
-        ],
-        [
-            "How can I best fulfill my spiritual and emotional needs?",
-            "我該如何最好地滿足我的靈性與情感需求？",
-        ],
-        [
-            "How can I best use my natural talents to create abundance this year?",
-            "這一年我如何最好地運用我的天賦來創造豐盛？",
-        ],
-        [
-            "Any advice on achieving my financial goals this year?",
-            "關於我今年要如何達成財務目標，有什麼建議嗎？",
-        ],
-        [
-            "How can I unleash my creativity or inspiration?",
-            "我該如何發揮我的創造力和靈感？",
-        ],
-        [
-            "What potential difficulties or obstacles do I need to overcome?",
-            "我有什麼需要克服的潛在困難或障礙？",
-        ],
-        [
-            "What area will bring me the most success or fulfillment?",
-            "哪一方面會讓我最容易成功或獲得成就感？",
-        ],
-        [
-            "How will my journey of self-healing unfold?",
-            "我的自我療癒之路如何展開？",
-        ],
-        [
-            "What should I be aware of in romantic relationships?",
-            "在戀愛關係中，我該注意些什麼？",
-        ],
-    ],
 }

@@ -1,6 +1,6 @@
 import streamlit as st
 from archive import delete_chart
-from const import LOGO, PAGE_CONFIG, SESS, STYLE, VAR
+from const import LOGO, PAGE_CONFIG, SESS, STYLE, set_default_values
 
 # from st_screenwidth_detector import screenwidth_detector
 from ui import (
@@ -25,8 +25,8 @@ st.set_page_config(**PAGE_CONFIG)
 st.logo(LOGO)
 st.html(STYLE)
 
-# VAR.chart_size = min(screenwidth_detector() + 16, 650)
-VAR.chart_size = 650
+# SESS.chart_size = min(screenwidth_detector() + 16, 650)
+SESS.chart_size = 650
 
 
 def input1():
@@ -35,22 +35,21 @@ def input1():
 
 
 def input2(title: str):
-    with st.container(key=f"input2_{title}"):
-        with st.expander(title, expanded=True):
-            input_ui(2)
+    with st.expander(title, expanded=True):
+        input_ui(2)
 
 
 def chart():
-    if VAR.name1 and VAR.lat1 and VAR.lon1 and VAR.tz1:
+    if SESS.name1 and SESS.lat1 and SESS.lon1 and SESS.tz1:
         data1 = natal_data(1)
-        if VAR.chart_type == "solar_return_page":
-            data1 = data1.solar_return(target_yr=VAR.solar_return_year)
-        data2 = natal_data(2) if VAR.name2 and VAR.lat2 and VAR.lon2 and VAR.tz2 else None
+        if SESS.chart_type == "solar_return_page":
+            data1 = data1.solar_return(target_yr=SESS.solar_return_year)
+        data2 = natal_data(2) if SESS.name2 and SESS.lat2 and SESS.lon2 and SESS.tz2 else None
         chart_ui(data1, data2)
         utils_ui(2 if data2 else 1, data1, data2)
-        if VAR.show_stats:
+        if SESS.show_stats:
             stats_ui(data1, data2)
-        if VAR.ai_chat and VAR.chart_type == "birth_page":
+        if SESS.ai_chat and SESS.chart_type == "birth_page":
             ai_ui(data1, data2)
 
 
@@ -73,10 +72,12 @@ def transit_page():
 
 def solar_return_page():
     input1()
-    input2("solar_return_page")
     chart()
 
 
+set_default_values()
+if SESS.chart_type is None:
+    SESS.chart_type = SESS.selected_chart_type
 sidebar_ui()
 segmented_ui()
 

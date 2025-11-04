@@ -1,6 +1,6 @@
 import json
 import streamlit as st
-from const import DEFAULT_GENERAL_OPTS, VAR
+from const import DEFAULT_GENERAL_OPTS, SESS
 from datetime import datetime
 from hashlib import md5
 from natal.config import Dictable, Display
@@ -25,19 +25,19 @@ DataArchive = create_model(
 class DataArchiveDict(DataArchive, Dictable): ...
 
 
-def archive_str(var: DotDict = VAR) -> str:
+def archive_str(sess: DotDict = SESS) -> str:
     """Return a JSON string of the current chart data."""
 
     try:
         data = {
-            f"{prop}{i}": var[f"{prop}{i}"]
+            f"{prop}{i}": sess[f"{prop}{i}"]
             for prop in ["name", "city", "lat", "lon", "tz"]
             for i in "12"
         }
         data |= {f"dt{i}": get_dt(i) for i in [1, 2]}
-        data |= {asp: var[asp] for asp in ASPECT_NAMES}
-        data |= {f"{body}{i}": var[f"{body}{i}"] for body in Display.model_fields for i in "12"}
-        data |= {"solar_return_year": var["solar_return_year"]}
+        data |= {asp: sess[asp] for asp in ASPECT_NAMES}
+        data |= {f"{body}{i}": sess[f"{body}{i}"] for body in Display.model_fields for i in "12"}
+        data |= {"solar_return_year": sess["solar_return_year"]}
         model = DataArchive.model_validate(data)
     except ValidationError as e:
         st.error(e)
@@ -45,19 +45,19 @@ def archive_str(var: DotDict = VAR) -> str:
     return model.model_dump_json()
 
 
-def data_hash(var: DotDict = VAR) -> str:
+def data_hash(sess: DotDict = SESS) -> str:
     """hash the data to avoid inserting duplicate charts"""
     raw_data = [
-        var[f"{prop}{i}"]
+        sess[f"{prop}{i}"]
         for prop in ["name", "city", "lat", "lon", "tz", "hr", "min"]
         for i in "12"
     ]
-    raw_data += [var[f"date{i}"].strftime("%Y-%m-%d") for i in "12"]
-    raw_data += [var["chart_type"], var["solar_return_year"]]
+    raw_data += [sess[f"date{i}"].strftime("%Y-%m-%d") for i in "12"]
+    raw_data += [sess["chart_type"], sess["solar_return_year"]]
     return md5(json.dumps(raw_data).encode()).hexdigest()
 
 
-def load_chart(data: dict, var: DotDict = VAR):
+def load_chart(data: dict, sess: DotDict = SESS):
     """Import chart data from a dictionary."""
     try:
         data = DataArchiveDict.model_validate(data)
@@ -67,18 +67,18 @@ def load_chart(data: dict, var: DotDict = VAR):
 
     for i in "12":
         for prop in ["name", "city", "lat", "lon", "tz"]:
-            var[f"{prop}{i}"] = data[f"{prop}{i}"]
-        var[f"date{i}"] = data[f"dt{i}"].date()
-        var[f"hr{i}"] = data[f"dt{i}"].hour
-        var[f"min{i}"] = data[f"dt{i}"].minute
+            sess[f"{prop}{i}"] = data[f"{prop}{i}"]
+        sess[f"date{i}"] = data[f"dt{i}"].date()
+        sess[f"hr{i}"] = data[f"dt{i}"].hour
+        sess[f"min{i}"] = data[f"dt{i}"].minute
 
         for body in Display.model_fields:
-            var[f"{body}{i}"] = data[f"{body}{i}"]
+            sess[f"{body}{i}"] = data[f"{body}{i}"]
 
     for asp in ASPECT_NAMES:
-        var[asp] = data[asp]
+        sess[asp] = data[asp]
 
-    var["solar_return_year"] = data["solar_return_year"]
+    sess["solar_return_year"] = data["solar_return_year"]
 
 
 def save_chart(email: str) -> Literal["overwrite", "create"]:
@@ -86,7 +86,7 @@ def save_chart(email: str) -> Literal["overwrite", "create"]:
     hash = data_hash()
     cursor = data_db().cursor()
     data = archive_str()
-    values = [data, hash, VAR.chart_type]
+    values = [data, hash, SESS.chart_type]
     # print(data)
     if hash_exists(email, hash):
         sql = "UPDATE charts SET data = ? WHERE hash = ? and chart_type = ?"

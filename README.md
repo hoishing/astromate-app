@@ -12,6 +12,9 @@
 
 ## TODO
 
+- custom component v2
+  - scroll to bottom
+  - screenwidth detector
 - AI
   - model failover
   - stat data from charts
