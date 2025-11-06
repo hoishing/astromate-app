@@ -4,7 +4,6 @@ import pandas as pd
 import sqlite3
 import streamlit as st
 from const import I18N, ORBS, SESS
-from datetime import date as Date
 from datetime import datetime, timedelta, timezone
 from io import BytesIO
 from natal import Chart, Config, Data, Stats
@@ -22,9 +21,17 @@ logging.getLogger("fontTools").setLevel(logging.ERROR)
 
 def lang_num() -> int:
     """get language number from subdomain"""
-    if st.context.url.startswith("https://en"):
-        return 0
-    return 1
+    match st.query_params.get("lang"):
+        case "en":
+            return 0
+        case _:
+            return 1
+
+
+def debug_print(key: str | None = None) -> None:
+    SESS.rerun_cnt += 1
+    val = f"{key}: {SESS[key]}" if key else ""
+    print(SESS.rerun_cnt, val)
 
 
 def i(key: str) -> str:

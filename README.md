@@ -16,7 +16,6 @@
   - scroll to bottom
   - screenwidth detector
 - AI
-  - model failover
   - stat data from charts
   - startup questions for each chart type
   - Synastry: ai system prompt

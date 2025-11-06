@@ -1,12 +1,78 @@
+import json
+import random
 import streamlit as st
-from const import I18N, MODELS, SESS
+from const import SESS
+from dataclasses import dataclass, field
 from functools import reduce
 from natal import Data
 from natal.stats import AIContext
 from openai import OpenAI
-from textwrap import dedent
 from typing import Literal, TypedDict
 from utils import i, lang_num, scroll_to_bottom
+
+MODELS = {
+    "google/gemma-3-27b-it:free": (
+        "Google Gemma 3: Fast all-rounder 🌟",
+        "Google Gemma 3: 快速全能型 🌟",
+    ),
+    "meta-llama/llama-4-maverick:free": (
+        "Meta LLama 4 Maverick: ok speed, concise answers 🤠",
+        "Meta LLama 4 Maverick: 中等速度, 簡潔回答 🤠",
+    ),
+    "meituan/longcat-flash-chat:free": (
+        "Meituan LongCat Flash Chat: Fast and powerful 🚀",
+        "美團 LongCat Flash Chat: 快速且強大 🚀",
+    ),
+    "meta-llama/llama-4-scout:free": (
+        "Meta LLama 4 Scout: For quick and short answers 💨",
+        "Meta LLama 4 Scout: 用於快速且簡短的回答 💨",
+    ),
+    "mistralai/mistral-small-3.2-24b-instruct:free": (
+        "Mistral Small 3.2: moderate speed, good performance 👌",
+        "Mistral Small 3.2: 中等速度，表現不錯 👌",
+    ),
+    "qwen/qwen3-235b-a22b:free": ("Qwen 3 235B: Slow but detail 🐌", "Qwen 3 235B: 慢但詳細 🐌"),
+    "deepseek/deepseek-chat-v3.1:free": (
+        "DeepSeek Chat V3.1: Moderate speed, average performance ⚖️",
+        "DeepSeek Chat V3.1: 中等速度, 表現平均 ⚖️",
+    ),
+    "meta-llama/llama-3.3-70b-instruct:free": (
+        "Meta LLama 3.3 70B: Fast simple answer 🏃",
+        "Meta LLama 3.3 70B: 快速簡單回答 🏃",
+    ),
+    "openai/gpt-oss-20b:free": (
+        "OpenAI GPT-OSS: Super busy, average performance 🤷‍♀️",
+        "OpenAI GPT-OSS: 超級忙碌，表現還好 🤷‍♀️",
+    ),
+}
+
+SYS_PROMPT = """\
+You are an expert astrologer. You answer questions about this astrological {chart_type} chart data:
+
+Please reply in {lang}.
+
+<chart_data>
+{chart_data}
+</chart_data>
+
+# Chart Data Tables Description
+- Celestial Bodies: sign, house and dignity of specific celestial body
+- Signs: distribution of celestial bodies in the 12 signs
+- Houses: distribution of celestial bodies in the 12 houses
+- Elements: distribution of celestial bodies in the 4 elements
+- Modalities: distribution of celestial bodies in the 3 modalities
+- Polarities: distribution of celestial bodies in the 2 polarities
+- Aspects: aspects between celestial bodies
+- Quadrants: distribution of celestial bodies in the 4 quadrants
+- Hemispheres: distribution of celestial bodies in the 4 hemispheres
+
+# Instructions
+- Answer the user's questions based on the chart data.
+- think about the followings when answering the user's questions:
+- do celestial bodies concentrate in certain signs, houses, elements, modality, polarity, quadrant, or hemisphere?
+- do aspects between celestial bodies form certain patterns?
+"""
+
 
 AI_Q = {
     "birth_page": [
@@ -202,7 +268,6 @@ class Message(TypedDict):
 class OpenRouterChat:
     def __init__(self, client: OpenAI, system_message: str):
         self.client = client
-        self.current_model_index = 0
         self.messages = [Message(role="developer", content=system_message)]
 
     def is_retryable_error(self, error: Exception) -> bool:
@@ -213,104 +278,100 @@ class OpenRouterChat:
     def send_message_stream(self, prompt: str):
         """Send message with failover support and return streaming response"""
         self.messages.append(Message(role="user", content=prompt))
-        while self.current_model_index < len(MODELS):
-            try:
-                model = MODELS[self.current_model_index]
-                st.write(f"using model: {model}")
-                response = self.client.chat.completions.create(
-                    model=model,
-                    messages=self.messages,
-                    stream=True,
-                )
 
-                full_response = ""
-                for chunk in response:
-                    if content := chunk.choices[0].delta.content:
-                        full_response += content
-                        yield content
+        try:
+            # st.write(f"using model: {self.model}")
+            response = self.client.chat.completions.create(
+                model=SESS.ai_model,
+                messages=self.messages,
+                stream=True,
+            )
 
-                self.messages.append(Message(role="assistant", content=full_response))
-                return
+            full_response = ""
+            for chunk in response:
+                if content := chunk.choices[0].delta.content:
+                    full_response += content
+                    yield content
 
-            except Exception as e:
-                if self.is_retryable_error(e):
-                    # st.write("found retryable error")
-                    self.current_model_index += 1
-                    continue
-                else:
-                    st.error(e)
-                    return
+            self.messages.append(Message(role="assistant", content=full_response))
+            return
+
+        except Exception as e:
+            if self.is_retryable_error(e):
+                st.warning(f"{SESS.ai_model} {i('model_busy')}")
+            else:
+                st.error(f"{SESS.ai_model} {i('model_unavailable')}")
+            del self.messages[-1]
 
 
+@dataclass
 class AI:
-    @staticmethod
-    def new_chat(data1: Data, data2: Data = None) -> OpenRouterChat:
+    chart_type: str
+    data1: Data
+    data2: Data | None
+    city1: str | None = field(init=False)
+    city2: str | None = field(init=False)
+    tz1: str | None = field(init=False)
+    tz2: str | None = field(init=False)
+    chat: OpenRouterChat = field(init=False)
+    suffled_questions: list[list[str]] = field(init=False)
+
+    def __post_init__(self) -> None:
         ai_context = AIContext(
-            data1=data1, data2=data2, city1=SESS.city1, city2=SESS.city2, tz1=SESS.tz1, tz2=SESS.tz2
+            data1=self.data1,
+            data2=self.data2,
+            city1=SESS.city1,
+            city2=SESS.city2,
+            tz1=SESS.tz1,
+            tz2=SESS.tz2,
         )
         chart_data = reduce(
             lambda x, y: x + y,
             (ai_context.ai_md(tb) for tb in ["celestial_bodies", "houses", "aspects"]),
         )
-        lang = "Traditional Chinese" if lang_num() else "English"
-        chart_type = I18N[SESS.chart_type][0]
-        sys_prompt = dedent(f"""\
-                You are an expert astrologer. You answer questions about this astrological {chart_type} chart data:
-                
-                <chart_data>
-                {chart_data}
-                </chart_data>
-
-                # Chart Data Tables Description
-                - Celestial Bodies: sign, house and dignity of specific celestial body
-                - Signs: distribution of celestial bodies in the 12 signs
-                - Houses: distribution of celestial bodies in the 12 houses
-                - Elements: distribution of celestial bodies in the 4 elements
-                - Modalities: distribution of celestial bodies in the 3 modalities
-                - Polarities: distribution of celestial bodies in the 2 polarities
-                - Aspects: aspects between celestial bodies
-                - Quadrants: distribution of celestial bodies in the 4 quadrants
-                - Hemispheres: distribution of celestial bodies in the 4 hemispheres
-
-                # Instructions
-                - Answer the user's questions based on the chart data.
-                - think about the followings when answering the user's questions:
-                - do celestial bodies concentrate in certain signs, houses, elements, modality, polarity, quadrant, or hemisphere?
-                - do aspects between celestial bodies form certain patterns?
-                - Use {lang} to reply.
-                """)
+        lang = ["English", "Traditional Chinese"][lang_num()]
+        chart_type = self.chart_type
+        sys_prompt = SYS_PROMPT.format(chart_type=chart_type, lang=lang, chart_data=chart_data)
         # st.text(sys_prompt)
         client = OpenAI(
             base_url="https://openrouter.ai/api/v1", api_key=st.secrets["OPENROUTER_API_KEY"]
         )
-        return OpenRouterChat(client, sys_prompt)
+        self.suffled_questions = AI_Q[self.chart_type]
+        random.shuffle(self.suffled_questions)
+        self.chat = OpenRouterChat(client, sys_prompt)
 
-    @staticmethod
-    def questions_ideas():
-        st.write("")
+    def questions_ideas(self):
         with st.expander(i("question_ideas"), expanded=True):
-            with st.container(key="question_ideas_container", height=140, border=False):
-                for questions in AI_Q[SESS.chart_type]:
-                    question = questions[lang_num()]
+            with st.container(key="question_ideas_container", height=145, border=False):
+                for question in self.suffled_questions:
+                    question = question[lang_num()]
                     st.button(
                         question,
                         width="stretch",
                         type="tertiary",
                         icon=":material/arrow_right:",
                         on_click=SESS.update,
-                        args=({"chat_input": question},),
+                        args=({f"chat_input_{self.chart_type}": question},),
                     )
 
-    @staticmethod
-    def previous_chat_messages():
-        for message in SESS["chat"].messages[1:]:
+    def model_selector(self):
+        st.write("")
+        st.selectbox(
+            i("ai_model"),
+            options=MODELS,
+            key="ai_model",
+            format_func=lambda x: MODELS[x][lang_num()],
+            # width=450,
+        )
+
+    def previous_chat_messages(self):
+        for message in self.chat.messages[1:]:
             role = message["role"]
             text = message["content"]
             with st.chat_message(role, avatar="👤" if role == "user" else "💫"):
                 st.markdown(text)
 
-    @staticmethod
-    def handle_user_input(prompt: str):
+    def handle_user_input(self, prompt: str):
         # Display user message
         with st.chat_message("user", avatar="👤"):
             st.markdown(prompt)
@@ -318,7 +379,7 @@ class AI:
         # Generate and display assistant response
         with st.chat_message("assistant", avatar="💫"):
             try:
-                response = SESS["chat"].send_message_stream(prompt)
+                response = self.chat.send_message_stream(prompt)
 
                 with st.spinner(f"{i('thinking')}...", show_time=True):
                     scroll_to_bottom()

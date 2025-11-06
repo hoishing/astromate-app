@@ -25,7 +25,9 @@ DEFAULT_GENERAL_OPTS = {
 }
 
 DEFAULT_INPUT_OPTS = [
+    ("data_hash", ""),
     ("chart_type", "birth_page"),
+    ("selected_chart_type", "birth_page"),
     ("solar_return_year", int(Date.today().year + (1 if Date.today().month > 6 else 0))),
     ("name1", ""),
     ("name2", ""),
@@ -79,12 +81,6 @@ ROW_HEIGHT = 35
 PDF_COLOR = dict(light=":material/palette:", mono=":material/contrast:")
 
 LANGS = ["English", "中文"]
-MODELS = [
-    "minimax/minimax-m2:free",
-    "deepseek/deepseek-chat-v3.1:free",
-    "z-ai/glm-4.5-air:free",
-    "deepseek/deepseek-chat-v3-0324:free",
-]
 I18N = {
     # pages
     "chart_type": ("Chart Type", "星盤"),
@@ -215,6 +211,12 @@ I18N = {
     "error_exhausted": (
         "Free credits exhausted, please try again later.",
         "免費額度已用完，請稍後再試。",
+    ),
+    "ai_model": ("AI Model", "AI 模型"),
+    "model_busy": ("model busy, please try another model.", "模型忙碌，請嘗試其他模型。"),
+    "model_unavailable": (
+        "model unavailable, please use another model.",
+        "模型不可用，請使用其他模型。",
     ),
     # stats
     "basic_info": ("Basic Info", "基本資料"),

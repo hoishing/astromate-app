@@ -3,6 +3,7 @@ import streamlit as st
 from ai import AI
 from archive import (
     create_user,
+    data_hash,
     fetch_user_record,
     load_chart,
     save_chart,
@@ -19,6 +20,7 @@ from utils import (
     cities_df,
     clear_input,
     data_db,
+    debug_print,
     i,
     pdf_html,
     pdf_io,
@@ -49,6 +51,7 @@ def segmented_ui():
 
 
 def sidebar_ui():
+    # debug_print()
     with st.sidebar:
         with st.expander(i("options"), expanded=True):
             labels = ["general", "orbs"]
@@ -250,9 +253,9 @@ def input_ui(id: int):
 
     def solar_return_year():
         if id == 1 and SESS.chart_type == "solar_return_page":
-            # SESS.solar_return_year = SESS.solar_return_year
+            SESS.solar_return_year = SESS.solar_return_year
             st.number_input(
-                i("solar_return_year"),
+                label=i("solar_return_year"),
                 key="solar_return_year",
                 min_value=1900,
                 max_value=2100,
@@ -427,30 +430,36 @@ def utils_ui(id: int, data1: Data, data2: Data | None):
                     )
 
 
-def chart_ui(data1: Data, data2: Data = None):
-    st.write("")
-    chart = Chart(data1=data1, data2=data2, width=SESS.chart_size)
-    with st.container(key="chart_svg"):
-        st.markdown(chart.svg, unsafe_allow_html=True)
-    # reset chat history when loading new chart
-    if "chat" in SESS:
-        del SESS["chat"]
-
-
 def stats_ui(data1: Data, data2: Data | None):
     with st.container(key="status_ui"):
         html = stats_html(data1, data2)
         st.markdown(html, unsafe_allow_html=True)
 
 
+def chart_ui(data1: Data, data2: Data = None):
+    st.write("")
+    chart = Chart(data1=data1, data2=data2, width=SESS.chart_size)
+    with st.container(key="chart_svg"):
+        st.markdown(chart.svg, unsafe_allow_html=True)
+    # check if chart data has changed
+    if SESS["data_hash"] != data_hash():
+        SESS["data_hash"] = data_hash()
+        # reset chat history and ai questions
+        if "ai" in SESS:
+            del SESS["ai"]  # reset chat history
+
+
 def ai_ui(data1: Data, data2: Data | None) -> None:
-    if SESS.get("chat") is None:
-        SESS["chat"] = AI.new_chat(data1, data2)
-    AI.questions_ideas()
-    AI.previous_chat_messages()
-    prompt = st.chat_input(i("chat_placeholder"), key="chat_input")
-    if prompt:
-        AI.handle_user_input(prompt, data1, data2)
+    # debug_print()
+    chart_type = SESS.chart_type
+    if "ai" not in SESS:
+        SESS["ai"] = AI(chart_type, data1, data2)
+    ai: AI = SESS["ai"]
+    ai.model_selector()
+    ai.questions_ideas()
+    ai.previous_chat_messages()
+    if prompt := st.chat_input(i("chat_placeholder"), key=f"chat_input_{chart_type}"):
+        ai.handle_user_input(prompt)
 
 
 def saved_charts_ui():
