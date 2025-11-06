@@ -1,6 +1,6 @@
 import streamlit as st
-from archive import delete_chart
 from const import LOGO, PAGE_CONFIG, SESS, STYLE, set_default_values
+from archive import delete_chart
 
 # from st_screenwidth_detector import screenwidth_detector
 from ui import (

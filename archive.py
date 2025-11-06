@@ -1,6 +1,6 @@
 import json
 import streamlit as st
-from const import DEFAULT_GENERAL_OPTS, SESS
+from const import GENERAL_OPTS, SESS
 from datetime import datetime
 from hashlib import md5
 from natal.config import Dictable, Display
@@ -112,8 +112,8 @@ def create_user(options: Iterable) -> None:
     cursor = data_db().cursor()
     cursor.execute(
         f"""INSERT INTO users 
-        (email, {", ".join(DEFAULT_GENERAL_OPTS)}) 
-        VALUES (?, {", ".join(["?"] * len(DEFAULT_GENERAL_OPTS))});""",
+        (email, {", ".join(GENERAL_OPTS)}) 
+        VALUES (?, {", ".join(["?"] * len(GENERAL_OPTS))});""",
         options,
     )
     data_db().commit()
@@ -128,10 +128,10 @@ def hash_exists(email: str, hash: str) -> bool:
 
 
 def fetch_user_record(email: str) -> dict | None:
-    sql = f"SELECT {', '.join(DEFAULT_GENERAL_OPTS)} FROM users WHERE email = ?"
+    sql = f"SELECT {', '.join(GENERAL_OPTS)} FROM users WHERE email = ?"
     cursor = data_db().cursor()
     cursor.execute(sql, (email,))
     saved_vals = cursor.fetchone()
     if saved_vals is None:
         return None
-    return dict(zip(DEFAULT_GENERAL_OPTS, saved_vals))
+    return dict(zip(GENERAL_OPTS, saved_vals))

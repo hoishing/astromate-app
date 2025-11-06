@@ -3,7 +3,7 @@ import logging
 import pandas as pd
 import sqlite3
 import streamlit as st
-from const import I18N, ORBS, SESS
+from const import DEFAULT_INPUTS, I18N, ORBS, SESS
 from datetime import datetime, timedelta, timezone
 from io import BytesIO
 from natal import Chart, Config, Data, Stats
@@ -181,11 +181,9 @@ def validate_lat() -> bool:
     return True
 
 
-def clear_input() -> bool:
-    for key in ["name", "city", "tz", "lat", "lon", "date", "hr", "min"]:
-        for num in "12":
-            if f"{key}{num}" in SESS:
-                del SESS[f"{key}{num}"]
+def reset_inputs() -> bool:
+    for key, val in DEFAULT_INPUTS.items():
+        SESS[key] = val
     return True
 
 

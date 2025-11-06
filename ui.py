@@ -8,22 +8,22 @@ from archive import (
     load_chart,
     save_chart,
 )
-from const import DEFAULT_GENERAL_OPTS, ORBS, PDF_COLOR, ROW_HEIGHT, SESS
+from const import DISPLAY, GENERAL_OPTS, ORBS, PDF_COLOR, ROW_HEIGHT, SESS
 from datetime import date as Date
 from natal import Chart, Data
-from natal.config import Display, HouseSys
+from natal.config import HouseSys
 from natal.const import ASPECT_NAMES, PLANET_NAMES
 from streamlit.column_config import DatetimeColumn, LinkColumn
 from utils import (
     all_timezones,
     charts_df,
     cities_df,
-    clear_input,
     data_db,
     debug_print,
     i,
     pdf_html,
     pdf_io,
+    reset_inputs,
     stats_html,
     step,
     update_orbs,
@@ -33,7 +33,7 @@ from utils import (
 
 def segmented_ui():
     def handle_change():
-        clear_input()
+        reset_inputs()
         if SESS.chart_type is not None:
             SESS.selected_chart_type = SESS.chart_type
             update_orbs()
@@ -102,11 +102,11 @@ def general_opt():
         # get user options from db
         if user_record := fetch_user_record(st.user.email):
             # user found, set general options from db
-            for field in DEFAULT_GENERAL_OPTS:
+            for field in GENERAL_OPTS:
                 SESS[field] = user_record[field]
         else:
             # create user with default options
-            create_user([st.user.email] + [SESS[field] for field in DEFAULT_GENERAL_OPTS])
+            create_user([st.user.email] + [SESS[field] for field in GENERAL_OPTS])
 
     st.selectbox(
         i("house_system"),
@@ -190,16 +190,18 @@ def display_opt(id: int):
             "default": PLANET_NAMES,
         }
         planets = presets[kind] + ["asc"]
-        data = dict.fromkeys(Display.model_fields, False) | dict.fromkeys(planets, True)
+        data = dict.fromkeys(DISPLAY, False) | dict.fromkeys(planets, True)
         for body in data:
             SESS[f"{body}{id}"] = data[body]
 
     def toggle(body: str):
         key = f"{body}{id}"
+        # prevent sess clean up if widget is not drawn on screen
+        SESS[key] = SESS[key]
         st.toggle(i(body), key=key)
 
     c1, c2, c3 = st.columns(3)
-    bodies = list(Display.model_fields)
+    bodies = list(DISPLAY)
     with c1:
         for body in bodies[:7]:
             toggle(body)
@@ -239,6 +241,7 @@ def input_ui(id: int):
         name_container_key = f"name_container{id}"
         name_disabled = False
 
+        SESS[name_num] = SESS[name_num]  # prevent sess clean up
         if id == 2 and SESS.chart_type == "transit_page":
             name_container_key = f"transit_name{id}"
             SESS[name_num] = i("transit")
@@ -253,6 +256,7 @@ def input_ui(id: int):
 
     def solar_return_year():
         if id == 1 and SESS.chart_type == "solar_return_page":
+            # prevent sess clean up if widget is not drawn on screen
             SESS.solar_return_year = SESS.solar_return_year
             st.number_input(
                 label=i("solar_return_year"),
@@ -269,7 +273,7 @@ def input_ui(id: int):
 
         def set_lat_lon_tz():
             """set lat, lon, tz from a city index"""
-            if not SESS[city_num]:
+            if SESS.get(city_num) is None:
                 return
             idx = df.index[df["city"] == SESS[city_num]][0]
             columns = ["lat", "lon", "tz"]
@@ -277,6 +281,7 @@ def input_ui(id: int):
             for prop in columns:
                 SESS[f"{prop}{id}"] = row[prop]
 
+        SESS[city_num] = SESS[city_num]  # prevent sess clean up
         st.selectbox(
             i("city"),
             options=df["city"],
@@ -290,6 +295,9 @@ def input_ui(id: int):
     def lat_lon_tz():
         c1, c2, c3 = st.columns(3)
         lat, lon, tz = f"lat{id}", f"lon{id}", f"tz{id}"
+        for key in [lat, lon, tz]:
+            # prevent sess clean up if widget is not drawn on screen
+            SESS[key] = SESS[key]
 
         c1.number_input(
             i("latitude"),
@@ -310,11 +318,17 @@ def input_ui(id: int):
             i("timezone"),
             all_timezones(),
             key=tz,
+            placeholder=i("timezone_placeholder"),
         )
 
     def date_hr_min():
+        date_key, hr_key, min_key = f"date{id}", f"hr{id}", f"min{id}"
+        # prevent sess clean up if widget is not drawn on screen
+        SESS[date_key] = SESS[date_key]
+        SESS[hr_key] = SESS[hr_key]
+        SESS[min_key] = SESS[min_key]
+
         with st.container(key=f"date-row{id}", horizontal=True):
-            date_key = f"date{id}"
             st.date_input(
                 i("birth_date")
                 if id == 1 or SESS.chart_type == "synastry_page"
@@ -325,7 +339,6 @@ def input_ui(id: int):
                 key=date_key,
             )
 
-            hr_key = f"hr{id}"
             st.selectbox(
                 i("hour"),
                 range(24),
@@ -333,7 +346,6 @@ def input_ui(id: int):
                 help=i("daylight_saving_time"),
             )
 
-            min_key = f"min{id}"
             st.selectbox(
                 i("minute"),
                 range(60),
@@ -364,7 +376,8 @@ def utils_ui(id: int, data1: Data, data2: Data | None):
             key="prev",
             help=i("prev") + i(SESS.stepper_unit),
         )
-
+        # prevent sess clean up if widget is not drawn on screen
+        SESS.stepper_unit = SESS.stepper_unit
         st.selectbox(
             i("adjustment"),
             stepper_options,

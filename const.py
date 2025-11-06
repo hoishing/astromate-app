@@ -5,64 +5,66 @@ from natal.config import Display, Orb
 from pathlib import Path
 
 SESS = st.session_state
-ORBS = Orb().model_dump()
-
-
-def assign(key, val):
-    """assign a value to a key in SESS if the key does not exist"""
-    if key not in SESS:
-        SESS[key] = val
-
-
-assign("rerun_cnt", 0)
+ORBS = Orb()  # ModelDict
+DISPLAY = Display()  # ModelDict
 
 # default values ==============================================================
-DEFAULT_GENERAL_OPTS = {
+GENERAL_OPTS = {
     "house_sys": "Placidus",
     "pdf_color": "light",
     "show_stats": True,
     "ai_chat": True,
 }
 
-DEFAULT_INPUT_OPTS = [
-    ("data_hash", ""),
-    ("chart_type", "birth_page"),
-    ("selected_chart_type", "birth_page"),
-    ("solar_return_year", int(Date.today().year + (1 if Date.today().month > 6 else 0))),
-    ("name1", ""),
-    ("name2", ""),
-    ("city1", ""),
-    ("city2", ""),
-    ("lat1", None),
-    ("lat2", None),
-    ("lon1", None),
-    ("lon2", None),
-    ("tz1", ""),
-    ("tz2", ""),
-    ("date1", Date(2000, 1, 1)),
-    ("date2", Date.today()),
-    ("hr1", 13),
-    ("hr2", datetime.now().hour),
-    ("min1", 0),
-    ("min2", datetime.now().minute),
-    ("stepper_unit", "day"),
-]
+DEFAULT_OPTS = {
+    "rerun_cnt": 0,
+    "data_hash": "",
+    "chart_type": "birth_page",
+    "selected_chart_type": "birth_page",
+    "stepper_unit": "day",
+}
+
+DEFAULT_INPUTS = {
+    "solar_return_year": int(Date.today().year + (1 if Date.today().month > 6 else 0)),
+    "name1": "",
+    "name2": "",
+    "city1": None,
+    "city2": None,
+    "lat1": None,
+    "lat2": None,
+    "lon1": None,
+    "lon2": None,
+    "tz1": None,
+    "tz2": None,
+    "date1": Date(2000, 1, 1),
+    "date2": Date.today(),
+    "hr1": 13,
+    "hr2": datetime.now().hour,
+    "min1": 0,
+    "min2": datetime.now().minute,
+}
 
 
 def set_default_values():
-    for key, val in DEFAULT_GENERAL_OPTS.items():
+    def assign(key, val):
+        if key not in SESS:
+            SESS[key] = val
+
+    for key, val in GENERAL_OPTS.items():
         assign(key, val)
 
     for key, val in ORBS.items():
         assign(key, val)
 
-    for key, val in DEFAULT_INPUT_OPTS:
+    for key, val in DEFAULT_INPUTS.items():
         assign(key, val)
 
-    for body, val in Display().items():
-        for num in "12":
-            key = f"{body}{num}"
-            assign(key, val)
+    for key, val in DEFAULT_OPTS.items():
+        assign(key, val)
+
+    for key, val in DISPLAY.items():
+        for i in "12":
+            assign(f"{key}{i}", val)
 
 
 # =============================================================================
@@ -170,7 +172,8 @@ I18N = {
     "latitude": ("Latitude", "緯度"),
     "longitude": ("Longitude", "經度"),
     "timezone": ("Timezone", "時區"),
-    "city_placeholder": ("city", "城市"),
+    "timezone_placeholder": ("select timezone", "選擇時區"),
+    "city_placeholder": ("select city", "選擇城市"),
     "city_help": ("select or type in the city name", "選擇或輸入城市名稱"),
     "year": ("yr", "年"),
     "month": ("mo", "月"),
