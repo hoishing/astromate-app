@@ -113,26 +113,19 @@ def step(chart_id: int, delta: Literal[1, -1]):
     SESS[f"min{chart_id}"] = dt.minute
 
 
-def scroll_to_bottom():
-    import random
-    import string
-
-    # random chars to avoid cache, make sure execute after rerun
-    random_chars = random.choices(string.ascii_lowercase, k=10)
-    js = f"""
-    <script>
-    function scrollToBottom(dummy_var) {{
-        const target = parent.document.querySelector(".stMainBlockContainer");
-        target.scrollTo({{
+scroll_to_bottom = st.components.v2.component(
+    "scroll_to_bottom",
+    js="""
+    export default function(component) {
+        const target = document.querySelector(".stMainBlockContainer");
+        target.scrollTo({
             top: target.scrollHeight,
             behavior: "smooth",
-        }});
-        console.log(target.scrollHeight);
-    }}
-    scrollToBottom({random_chars});
-    </script>
-    """
-    st.components.v1.html(js, height=0, width=0)
+        });
+        // console.log(target.scrollHeight);
+    }
+    """,
+)
 
 
 def charts_df() -> pd.DataFrame | None:

@@ -1,4 +1,3 @@
-import json
 import random
 import streamlit as st
 from const import SESS
@@ -382,9 +381,9 @@ class AI:
                 response = self.chat.send_message_stream(prompt)
 
                 with st.spinner(f"{i('thinking')}...", show_time=True):
-                    scroll_to_bottom()
+                    scroll_to_bottom(key="start_response")
                     st.write_stream(chunk for chunk in response)
-                    scroll_to_bottom()
+                    scroll_to_bottom(key="finish_response")
 
             except Exception as e:
                 st.error(e)
