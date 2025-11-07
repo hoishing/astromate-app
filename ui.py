@@ -8,7 +8,7 @@ from archive import (
     load_chart,
     save_chart,
 )
-from const import DISPLAY, GENERAL_OPTS, ORBS, PDF_COLOR, ROW_HEIGHT, SESS
+from const import DISPLAY, GENERAL_OPTS, MAX_CHART_SIZE, ORBS, PDF_COLOR, ROW_HEIGHT, SESS
 from datetime import date as Date
 from natal import Chart, Data
 from natal.config import HouseSys
@@ -24,6 +24,7 @@ from utils import (
     pdf_html,
     pdf_io,
     reset_inputs,
+    screenwidth_detector,
     stats_html,
     step,
     update_orbs,
@@ -450,7 +451,17 @@ def stats_ui(data1: Data, data2: Data | None):
 
 
 def chart_ui(data1: Data, data2: Data = None):
+    def update_chart_size():
+        # print("screen width changed:", SESS.screen_detector["width"])
+        SESS.chart_size = min(SESS.screen_detector["width"] + 48, MAX_CHART_SIZE)
+
     st.write("")
+    screenwidth_detector(
+        data=MAX_CHART_SIZE,
+        key="screen_detector",
+        isolate_styles=False,
+        on_width_change=update_chart_size,
+    )
     chart = Chart(data1=data1, data2=data2, width=SESS.chart_size)
     with st.container(key="chart_svg"):
         st.markdown(chart.svg, unsafe_allow_html=True)

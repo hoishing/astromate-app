@@ -10,6 +10,7 @@ from natal import Chart, Config, Data, Stats
 from natal.config import Display
 from natal.const import ASPECT_NAMES
 from pathlib import Path
+from streamlit.components.v2 import component as custom_component
 from tagit import div, main, style, table, td, tr
 from typing import Iterable, Literal
 from weasyprint import HTML
@@ -111,21 +112,6 @@ def step(chart_id: int, delta: Literal[1, -1]):
     SESS[f"date{chart_id}"] = dt.date()
     SESS[f"hr{chart_id}"] = dt.hour
     SESS[f"min{chart_id}"] = dt.minute
-
-
-scroll_to_bottom = st.components.v2.component(
-    "scroll_to_bottom",
-    js="""
-    export default function(component) {
-        const target = document.querySelector(".stMainBlockContainer");
-        target.scrollTo({
-            top: target.scrollHeight,
-            behavior: "smooth",
-        });
-        // console.log(target.scrollHeight);
-    }
-    """,
-)
 
 
 def charts_df() -> pd.DataFrame | None:
@@ -366,3 +352,26 @@ def pdf_html(data1: Data, data2: Data = None):
     rows = div(row1, class_="row1") + div(row2, class_="row2") + div(row3, class_="row3")
     html = style(css) + main(rows)
     return html
+
+
+# custom components ============================================================
+
+scroll_to_bottom = custom_component(
+    "scroll_to_bottom",
+    js="""
+    export default function(component) {
+        const target = document.querySelector(".stMainBlockContainer");
+        target.scrollTo({
+            top: target.scrollHeight,
+            behavior: "smooth",
+        });
+        // console.log(target.scrollHeight);
+    }
+    """,
+)
+
+
+screenwidth_detector = custom_component(
+    "screen_width_detector",
+    js=Path("screenwidth_detector.js").read_text(),
+)

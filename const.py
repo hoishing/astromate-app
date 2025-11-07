@@ -7,6 +7,7 @@ from pathlib import Path
 SESS = st.session_state
 ORBS = Orb()  # ModelDict
 DISPLAY = Display()  # ModelDict
+MAX_CHART_SIZE = 650
 
 # default values ==============================================================
 GENERAL_OPTS = {
@@ -17,6 +18,7 @@ GENERAL_OPTS = {
 }
 
 DEFAULT_OPTS = {
+    "chart_size": MAX_CHART_SIZE,
     "rerun_cnt": 0,
     "data_hash": "",
     "chart_type": "birth_page",
@@ -78,7 +80,6 @@ PAGE_CONFIG = dict(
 
 STYLE = f"<style>{Path('style.css').read_text()}</style>"
 LOGO = "static/astrobro-logo.png"
-CHART_SIZE = 650
 ROW_HEIGHT = 35
 PDF_COLOR = dict(light=":material/palette:", mono=":material/contrast:")
 
