@@ -8,7 +8,7 @@ from archive import (
     load_chart,
     save_chart,
 )
-from const import DISPLAY, GENERAL_OPTS, MAX_CHART_SIZE, ORBS, PDF_COLOR, ROW_HEIGHT, SESS
+from const import DISPLAY, GENERAL_OPTS, MAX_CHART_SIZE, ORBS, PDF_COLOR, ROW_HEIGHT, SESS, SYMBOLS
 from datetime import date as Date
 from natal import Chart, Data
 from natal.config import HouseSys
@@ -199,39 +199,40 @@ def display_opt(id: int):
         key = f"{body}{id}"
         # prevent sess clean up if widget is not drawn on screen
         SESS[key] = SESS[key]
-        st.toggle(i(body), key=key)
+        st.toggle(SYMBOLS[body], key=key)
 
-    c1, c2, c3 = st.columns(3)
-    bodies = list(DISPLAY)
-    with c1:
-        for body in bodies[:7]:
-            toggle(body)
-    with c2:
-        for body in bodies[7:14]:
-            toggle(body)
-    with c3:
-        for body in bodies[14:]:
-            toggle(body)
+    with st.container(key=f"display_opt{id}"):
+        c1, c2, c3 = st.columns(3)
+        bodies = list(DISPLAY)
+        with c1:
+            for body in bodies[:7]:
+                toggle(body)
+        with c2:
+            for body in bodies[7:14]:
+                toggle(body)
+        with c3:
+            for body in bodies[14:]:
+                toggle(body)
 
-    c1, c2, c3 = st.columns(3)
-    c1.button(
-        i("inner_planets"),
-        key=f"inner_display{id}",
-        use_container_width=True,
-        on_click=lambda: update_display("inner"),
-    )
-    c2.button(
-        i("classic"),
-        key=f"classic_display{id}",
-        use_container_width=True,
-        on_click=lambda: update_display("classic"),
-    )
-    c3.button(
-        i("default"),
-        key=f"default_display{id}",
-        use_container_width=True,
-        on_click=lambda: update_display("default"),
-    )
+        c1, c2, c3 = st.columns(3)
+        c1.button(
+            i("inner_planets"),
+            key=f"inner_display{id}",
+            use_container_width=True,
+            on_click=lambda: update_display("inner"),
+        )
+        c2.button(
+            i("classic"),
+            key=f"classic_display{id}",
+            use_container_width=True,
+            on_click=lambda: update_display("classic"),
+        )
+        c3.button(
+            i("default"),
+            key=f"default_display{id}",
+            use_container_width=True,
+            on_click=lambda: update_display("default"),
+        )
 
 
 def input_ui(id: int):

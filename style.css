@@ -98,7 +98,7 @@
 
 /* sidebar min width */
 [data-testid="stSidebar"][aria-expanded="true"] {
-  min-width: 440px;
+  min-width: 375px;
 }
 
 /* center every child element */
@@ -125,8 +125,12 @@
   flex-wrap: nowrap;
 }
 
-input[aria-label="North Node"] ~ div p {
-  white-space: nowrap;
+.st-key-display_opt1,
+.st-key-display_opt2 {
+  div p {
+    min-width: 1.8rem;
+    text-align: center;
+  }
 }
 
 /* align st.toast text position to its icon*/

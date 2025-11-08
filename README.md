@@ -12,7 +12,6 @@
 
 ## TODO
 
-- sidebar < 375px
 - fix theme color warnings
   - Invalid color passed for textColor in theme. sidebar: "'
   - Invalid color passed for widgetBackgroundColor in theme. sidebar: "'
