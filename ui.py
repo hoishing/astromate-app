@@ -188,7 +188,7 @@ def display_opt(id: int):
         presets = {
             "inner": PLANET_NAMES[:5],
             "classic": PLANET_NAMES[:7],
-            "default": PLANET_NAMES,
+            "default": PLANET_NAMES + ["north_node"],
         }
         planets = presets[kind] + ["asc"]
         data = dict.fromkeys(DISPLAY, False) | dict.fromkeys(planets, True)

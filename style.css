@@ -154,14 +154,21 @@
 
 /* ai chat ========================================= */
 
-[data-testid="stExpanderDetails"]:has(.st-key-question_ideas_container) {
-  padding-right: 0;
+@media (max-width: 430px) {
+  [data-testid="stExpanderDetails"]:has(.st-key-question_ideas_container) {
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+    button span {
+      margin-right: 0.3rem;
+    }
+  }
 }
 
 .st-key-question_ideas_container {
   gap: 0;
   button {
     justify-content: left;
+    text-align: left;
     min-height: min-content;
   }
 }

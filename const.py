@@ -2,7 +2,6 @@ import streamlit as st
 from datetime import date as Date
 from datetime import datetime
 from natal.config import Display, Orb
-from pathlib import Path
 
 SESS = st.session_state
 ORBS = Orb()  # ModelDict
@@ -71,15 +70,6 @@ def set_default_values():
 
 # =============================================================================
 
-
-PAGE_CONFIG = dict(
-    page_title="AstroBro",
-    page_icon="💫",
-    layout="wide",
-)
-
-STYLE = f"<style>{Path('style.css').read_text()}</style>"
-LOGO = "static/astrobro-logo.png"
 ROW_HEIGHT = 35
 PDF_COLOR = dict(light=":material/palette:", mono=":material/contrast:")
 
@@ -266,7 +256,8 @@ SYMBOLS = {
     "uranus": "♅",
     "neptune": "♆",
     "pluto": "♇",
-    "asc_node": "☊",
+    "north_node": "☊",
+    "south_node": "☋",
     "chiron": "⚷",
     "ceres": "⚳",
     "pallas": "⚴",

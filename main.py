@@ -1,6 +1,7 @@
 import streamlit as st
 from archive import delete_chart
-from const import LOGO, PAGE_CONFIG, SESS, STYLE, set_default_values
+from const import SESS, set_default_values
+from pathlib import Path
 from ui import (
     ai_ui,
     chart_ui,
@@ -19,19 +20,19 @@ if delete_hash and st.user.is_logged_in:
     st.query_params.clear()
 
 
-st.set_page_config(**PAGE_CONFIG)
-st.logo(LOGO)
-st.html(STYLE)
+st.set_page_config(
+    page_title="AstroBro",
+    page_icon="💫",
+    layout="wide",
+    initial_sidebar_state="auto",
+)
+st.logo("static/astrobro-logo.png")
+st.html(f"<style>{Path('style.css').read_text()}</style>")
 
 
-def input1():
-    with st.expander(i("birth_data"), expanded=True):
-        input_ui(1)
-
-
-def input2(title: str):
+def input(id: int, title: str):
     with st.expander(title, expanded=True):
-        input_ui(2)
+        input_ui(id)
 
 
 def chart():
@@ -49,24 +50,24 @@ def chart():
 
 
 def birth_page():
-    input1()
+    input(1, i("birth_data"))
     chart()
 
 
 def synastry_page():
-    input1()
-    input2(i("synastry_page"))
+    input(1, i("birth_data"))
+    input(2, i("synastry_page"))
     chart()
 
 
 def transit_page():
-    input1()
-    input2(i("transit_page"))
+    input(1, i("birth_data"))
+    input(2, i("transit_page"))
     chart()
 
 
 def solar_return_page():
-    input1()
+    input(1, i("birth_data"))
     chart()
 
 

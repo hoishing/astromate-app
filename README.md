@@ -12,11 +12,6 @@
 
 ## TODO
 
-- fix theme color warnings
-  - Invalid color passed for textColor in theme. sidebar: "'
-  - Invalid color passed for widgetBackgroundColor in theme. sidebar: "'
-  - Invalid color passed for widgetBorderColor in theme sidebar: "'
-  - Invalid color passed for skeletonBackgroundColor in theme. sidebar: ".
 - AI
   - stat data from charts
   - startup questions for each chart type
