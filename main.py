@@ -45,7 +45,7 @@ def chart():
         utils_ui(2 if data2 else 1, data1, data2)
         if SESS.show_stats:
             stats_ui(data1, data2)
-        if SESS.ai_chat and SESS.chart_type == "birth_page":
+        if SESS.ai_chat:
             ai_ui(data1, data2)
 
 

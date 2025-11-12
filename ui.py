@@ -243,11 +243,12 @@ def input_ui(id: int):
         name_container_key = f"name_container{id}"
         name_disabled = False
 
-        SESS[name_num] = SESS[name_num]  # prevent sess clean up
         if id == 2 and SESS.chart_type == "transit_page":
             name_container_key = f"transit_name{id}"
             SESS[name_num] = i("transit")
             name_disabled = True
+        else:
+            SESS[name_num] = SESS[name_num]  # prevent sess clean up
 
         with st.container(key=name_container_key):
             st.text_input(
@@ -476,14 +477,14 @@ def chart_ui(data1: Data, data2: Data = None):
 
 def ai_ui(data1: Data, data2: Data | None) -> None:
     # debug_print()
-    chart_type = SESS.chart_type
     if "ai" not in SESS:
-        SESS["ai"] = AI(chart_type, data1, data2)
+        SESS["ai"] = AI(data1, data2)
     ai: AI = SESS["ai"]
+    # print(ai.sys_prompt)
     ai.model_selector()
     ai.questions_ideas()
     ai.previous_chat_messages()
-    if prompt := st.chat_input(i("chat_placeholder"), key=f"chat_input_{chart_type}"):
+    if prompt := st.chat_input(i("chat_placeholder"), key=f"chat_input_{SESS.chart_type}"):
         ai.handle_user_input(prompt)
 
 

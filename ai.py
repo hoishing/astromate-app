@@ -2,35 +2,36 @@ import random
 import streamlit as st
 from const import SESS
 from dataclasses import dataclass, field
-from functools import reduce
-from natal import Data
-from natal.stats import AIContext
+from natal import AIContext, Data
 from openai import OpenAI
 from typing import Literal, TypedDict
 from utils import i, lang_num, scroll_to_bottom
 
 MODELS = {
+    "meituan/longcat-flash-chat:free": (
+        "Meituan LongCat Flash Chat: Fast and powerful 🚀",
+        "美團 LongCat Flash Chat: 快速且強大 🚀",
+    ),
     "google/gemma-3-27b-it:free": (
         "Google Gemma 3: Fast all-rounder 🌟",
         "Google Gemma 3: 快速全能型 🌟",
     ),
     "meta-llama/llama-4-maverick:free": (
-        "Meta LLama 4 Maverick: ok speed, concise answers 🤠",
-        "Meta LLama 4 Maverick: 中等速度, 簡潔回答 🤠",
-    ),
-    "meituan/longcat-flash-chat:free": (
-        "Meituan LongCat Flash Chat: Fast and powerful 🚀",
-        "美團 LongCat Flash Chat: 快速且強大 🚀",
+        "Meta LLama 4 Maverick: Speedy with concise answers 🤠",
+        "Meta LLama 4 Maverick: 速度蠻快, 回答簡潔 🤠",
     ),
     "meta-llama/llama-4-scout:free": (
         "Meta LLama 4 Scout: For quick and short answers 💨",
-        "Meta LLama 4 Scout: 用於快速且簡短的回答 💨",
+        "Meta LLama 4 Scout: 快速簡短的回答 💨",
     ),
     "mistralai/mistral-small-3.2-24b-instruct:free": (
         "Mistral Small 3.2: moderate speed, good performance 👌",
         "Mistral Small 3.2: 中等速度，表現不錯 👌",
     ),
-    "qwen/qwen3-235b-a22b:free": ("Qwen 3 235B: Slow but detail 🐌", "Qwen 3 235B: 慢但詳細 🐌"),
+    "qwen/qwen3-235b-a22b:free": (
+        "Qwen 3 235B: Slow but detail 🐌",
+        "Qwen 3 235B: 很慢，但詳細 🐌",
+    ),
     "deepseek/deepseek-chat-v3.1:free": (
         "DeepSeek Chat V3.1: Moderate speed, average performance ⚖️",
         "DeepSeek Chat V3.1: 中等速度, 表現平均 ⚖️",
@@ -39,14 +40,12 @@ MODELS = {
         "Meta LLama 3.3 70B: Fast simple answer 🏃",
         "Meta LLama 3.3 70B: 快速簡單回答 🏃",
     ),
-    "openai/gpt-oss-20b:free": (
-        "OpenAI GPT-OSS: Super busy, average performance 🤷‍♀️",
-        "OpenAI GPT-OSS: 超級忙碌，表現還好 🤷‍♀️",
-    ),
 }
 
 SYS_PROMPT = """\
-You are an expert astrologer. You answer questions about this astrological {chart_type} chart data:
+You are an expert astrologer. You answer questions about this astrological chart based on the chart_data provided.
+
+Chart Type: {chart_type_en} Chart
 
 Please reply in {lang}.
 
@@ -56,22 +55,91 @@ Please reply in {lang}.
 
 # Chart Data Tables Description
 - Celestial Bodies: sign, house and dignity of specific celestial body
+    - For Synastry Chart, the two Celestial Bodies tables are data of the first and second person respectively.
+    - For Transit Chart, the two Celestial Bodies tables are data of the person and the transit date respectively.
+    - For Solar Return Chart, the Celestial Bodies table is data of the solar return date.
 - Signs: distribution of celestial bodies in the 12 signs
 - Houses: distribution of celestial bodies in the 12 houses
+- Aspects: aspects between celestial bodies
+    - For Synastry Chart, the Aspects table represents the aspects between the first and second person's celestial bodies.
+    - For Transit Chart, the Aspects table represents the aspects between the person's celestial bodies and the transit date's celestial bodies.
 - Elements: distribution of celestial bodies in the 4 elements
 - Modalities: distribution of celestial bodies in the 3 modalities
 - Polarities: distribution of celestial bodies in the 2 polarities
-- Aspects: aspects between celestial bodies
 - Quadrants: distribution of celestial bodies in the 4 quadrants
 - Hemispheres: distribution of celestial bodies in the 4 hemispheres
 
-# Instructions
-- Answer the user's questions based on the chart data.
-- think about the followings when answering the user's questions:
-- do celestial bodies concentrate in certain signs, houses, elements, modality, polarity, quadrant, or hemisphere?
-- do aspects between celestial bodies form certain patterns?
-"""
+# Instructions for Different Chart Types
+- Birth Chart
+    - Focus on analyzing the person's personality, strengths, and challenges.
+    - DO NOT try to answer questions about when something will happen, or events in the past or future. Tell the user to create transit charts with the date of the event.
+- Synastry Chart
+    - The first person is the primary object of analysis, focus on how the second person's celestial bodies affect the first person.
+    - The two Celestial Bodies tables are data of the first and second person respectively.
+    - Focus on analyzing the relationship between two people.
+    - You can analyze the personality, strengths, and challenges of both people.
+    - Emphasize on the compatibility between two people when answering the user's questions.
+    - The Aspects table represents the aspects between the first and second person's celestial bodies.
+    - The Elements, Modalities, Polarities, Quadrants, and Hemispheres tables are data of the first person.
+- Transit Chart
+    - Focus on analyzing the person's life events on the near future of the transit date.
+    - If the user asks about the past, say that you can only analyze the near future.
+    - If the user asks about when a particular event will happen, say that you can only analyze the near future, and ask the user to create a new transit chart with the date of the event.
+- Solar Return Chart
+    - The local time stated in the User's Basic Info table is the time of the Solar Return.
+    - Only analyze the person's life events within one year of the solar return date.
 
+# Notes on Quadrants
+- First Quadrant (Houses 1-3)
+    - This is about self-discovery and personal identity. 
+    - It relates to how you see yourself, your personal values, thought patterns, and direct environment. 
+    - People with many planets here are often self-focused and their early lives revolve around building a strong sense of self.
+
+- Second Quadrant (Houses 4-6)
+    - This section deals with building your inner foundation: family, emotional roots, creativity, and day-to-day routines. 
+    - It's about connecting with your inner world and shaping your environment through personal efforts and care.
+
+- Third Quadrant (Houses 7-9)
+    - This quadrant highlights relationships, partnerships, and expansion beyond the self—through marriage, deep bonds, and learning about the larger world. 
+    - There's a focus on social interactions, joint ventures, and growing through others.
+
+- Fourth Quadrant (Houses 10-12)
+    - This area is about self-actualization and your place in the wider world, covering career, social status, community, and spiritual growth. 
+    - Here, you express your individuality in public, establish your reputation, and explore your highest aspirations or sense of purpose.
+
+
+# Notes on Hemispheres
+- Northern Hemisphere
+    - comprises of Houses 1 through 6. 
+    - This is the personal and subjective portion of the chart. 
+    - These houses rule areas of life that directly impact the development of a person's personalities and help shape their individual identities. 
+    - They tend to be private and more subjective.
+- Southern Hemisphere 
+    - comprises of Houses 7 through 12. 
+    - This is the social, objective, and collective portion of the chart. 
+    - They tend to be more objective, sociable, and concerned with outside events.
+- Eastern Hemisphere
+    - comprised of Houses 1, 2, 3, 10, 11, and 12
+    - The native is generally self-motivated, initiating, action-oriented, and self-assertive. 
+    - They tend to believe strongly in free will.
+- Western Hemisphere
+    - comprised of Houses 4, 5, 6, 7, 8, and 9
+    - This is the right half of the chart.
+    - They tend to be other-oriented and receptive rather than self-motivated. 
+    - The needs of others are considered before taking action. 
+
+# Notes on Celestial Bodies Names
+- Use `name(symbol)` format for celestial bodies names.
+- For English: `Sun(☉)`, `Moon(☽)`, `Mercury(☿)`, `Venus(♀)`, `Mars(♂)`, `Jupiter(♃)`, `Saturn(♄)`, `Uranus(♅)`, `Neptune(♆)`, `Pluto(♇)`, `North Node(☊)`, `South Node(☋)`, `Chiron(⚷)`, `Ceres(⚳)`, `Pallas(⚴)`, `Juno(⚵)`, `Vesta(⚶)`.
+- For Traditional Chinese: `太陽(☉)`, `月亮(☽)`, `水星(☿)`, `金星(♀)`, `火星(♂)`, `木星(♃)`, `土星(♄)`, `天王星(♅)`, `海王星(♆)`, `冥王星(♇)`, `北交點(☊)`, `南交點(☋)`, `凱龍星(⚷)`, `穀神星(⚳)`, `智神星(⚴)`, `婚神星(⚵)`, `灶神星(⚶)`, `上升(Asc)`, `天底(IC)`, `下降(Dsc)`, `天頂(MC)`.
+
+# General Instructions
+- Answer the user's questions based on the chart data.
+- Keep the people's name as is. Do not translate them.
+- Think about the followings when answering the user's questions:
+    - check if celestial bodies concentrate in certain signs, houses, elements, modality, polarity, quadrant, or hemisphere. If so, describe the meaning of such concentration
+    - emphasize on the aspects between celestial bodies and their meanings
+"""
 
 AI_Q = {
     "birth_page": [
@@ -180,8 +248,186 @@ AI_Q = {
             "在愛情中，我真正需要什麼樣的伴侶？",
         ],
     ],
-    "synastry_page": [],
-    "transit_page": [],
+    "synastry_page": [
+        [
+            "What communication strategies work best for our specific chart dynamics?",
+            "根據合盤，我們適合採用哪些溝通策略？",
+        ],
+        [
+            "How can we manage differences in decision-making or problem-solving styles?",
+            "我們要如何處理在決策或解決問題方式上的差異？",
+        ],
+        [
+            "What practical steps can help us handle emotional triggers in the relationship?",
+            "為了處理情緒雷點，我們可以採取哪些具體做法？",
+        ],
+        [
+            "How should we divide responsibilities (household, financial, planning) to stay balanced?",
+            "我們在家庭、財務或生活規劃上的分工該如何調整才更平衡？",
+        ],
+        [
+            "What are the most effective ways to support each other during stress?",
+            "在壓力時期，我們能以最實際、有效的方式如何支持彼此？",
+        ],
+        [
+            "How can we build healthier boundaries based on our chart interactions?",
+            "根據合盤，我們如何建立更健康的界線？",
+        ],
+        [
+            "What habits or behaviors should each of us be mindful of to avoid conflicts?",
+            "為避免衝突，我們各自應注意哪些習慣或行為？",
+        ],
+        [
+            "How can we align our long-term goals (career, lifestyle, family) more effectively?",
+            "我們如何更有效地對齊彼此的長期目標（如職涯、生活方式、家庭規劃）？",
+        ],
+        [
+            "What concrete relationship practices can strengthen trust between us?",
+            "有哪些具體的相處方式能加強我們之間的信任？",
+        ],
+        [
+            "What is the overall compatibility between us?",
+            "我們之間的整體契合度如何？",
+        ],
+        [
+            "What strengths does this relationship naturally have?",
+            "這段關係天生具備哪些優勢？",
+        ],
+        [
+            "What are the main challenges we may face together?",
+            "我們可能會遇到哪些主要挑戰？",
+        ],
+        [
+            "How do our emotional needs align?",
+            "我們的情感需求是否相容？",
+        ],
+        [
+            "What does the chart say about long-term potential?",
+            "合盤顯示我們的長期發展潛力如何？",
+        ],
+        [
+            "How does each person influence the other's personal growth?",
+            "我們彼此如何影響對方的成長？",
+        ],
+        [
+            "How compatible are we in terms of love and affection?",
+            "在愛與親密的方式上，我們的契合度如何？",
+        ],
+        [
+            "Which areas of life do we most support each other in?",
+            "我們在哪些生活領域最能互相支持？",
+        ],
+        [
+            "Where do potential struggles or conflicts appear?",
+            "我們哪些地方可能會出現矛盾？",
+        ],
+        [
+            "What can we do to strengthen the harmony in this relationship?",
+            "我們可以做些什麼來提升關係的和諧度？",
+        ],
+        [
+            "How does the chart describe our conflict-resolution patterns?",
+            "合盤如何呈現我們的衝突處理方式？",
+        ],
+        [
+            "What themes appear in our shared life purpose or destiny?",
+            "合盤是否顯示我們共同的生命課題或使命？",
+        ],
+        [
+            "Are there indicators of soulmate or twin-flame connections?",
+            "是否有靈魂伴侶或雙生火焰的跡象？",
+        ],
+        [
+            "How stable or changeable is this relationship based on our charts?",
+            "根據合盤，這段關係的穩定度或變動性如何？",
+        ],
+        [
+            "Any suggestions for making this relationship thrive?",
+            "有什麼建議可以促進這段關係的發展？",
+        ],
+    ],
+    "transit_page": [
+        [
+            "What major themes are influencing me on this transit chart?",
+            "這行運盤的主要能量與影響主題是什麼？",
+        ],
+        [
+            "Are there any challenging transits I should be aware of?",
+            "有哪些需要注意的挑戰性過境影響？",
+        ],
+        [
+            "Does this transit period support making important decisions?",
+            "近期是否適合做出重要決策？",
+        ],
+        [
+            "Is this a good time to start a new project or plan?",
+            "近期是否適合開始新的計畫或專案？",
+        ],
+        [
+            "Are there supportive transits for career progress?",
+            "近期是否有有利職涯發展？",
+        ],
+        [
+            "How will the transits affect my work performance or workflow?",
+            "這行運期間將如何影響我的工作表現或工作流程？",
+        ],
+        [
+            "Is this a favorable time for financial actions such as investing or saving?",
+            "這是否是適合投資或進行財務調整的時機？",
+        ],
+        [
+            "Do this transit period highlight any financial risks or caution points?",
+            "這行運期間是否暗示財務風險或需要留意的地方？",
+        ],
+        [
+            "Is the energy this transit period supportive for relationship communication or resolving issues?",
+            "這行運期間的能量是否有利於感情中的溝通或解決問題？",
+        ],
+        [
+            "Are there emotional triggers in this transit period?",
+            "這行運期間是否有影響情緒的事情發生？",
+        ],
+        [
+            "Is this a good time for signing contracts or formal agreements?",
+            "近期是否適合簽署合約或重要文件？",
+        ],
+        [
+            "What areas of my life are being activated the most by this transit chart?",
+            "這行運盤對我生活的哪些方面影響最大？",
+        ],
+        [
+            "Are there health-related influences I should pay attention to now?",
+            "我近期應該注意哪些與健康相關的事情？",
+        ],
+        [
+            "Is it a good time for travel or movement?",
+            "近期是否適合旅行或移動？",
+        ],
+        [
+            "Do current transits support learning, studying, or taking exams?",
+            "這行運期間是否有利於學習或考試？",
+        ],
+        [
+            "Is this a productive time for creative work or brainstorming?",
+            "近期是否適合進行創作或發想工作？",
+        ],
+        [
+            "Are there signs of delays or obstacles I should expect in the near future?",
+            "近期是否可能遇到延誤或阻礙？",
+        ],
+        [
+            "Should I avoid making decisions in this transit period?",
+            "這行運期間是否適合做決定？",
+        ],
+        [
+            "Does this transit period indicate opportunities for networking or meeting helpful people?",
+            "這行運期間是否有認識貴人或拓展人脈的機會？",
+        ],
+        [
+            "What practical advice can help me use today’s transit energy effectively?",
+            "有哪些務實建議能讓我更有效運用今天的行運能量？",
+        ],
+    ],
     "solar_return_page": [
         [
             "What are my advantages and challenges this year?",
@@ -305,7 +551,6 @@ class OpenRouterChat:
 
 @dataclass
 class AI:
-    chart_type: str
     data1: Data
     data2: Data | None
     city1: str | None = field(init=False)
@@ -314,9 +559,12 @@ class AI:
     tz2: str | None = field(init=False)
     chat: OpenRouterChat = field(init=False)
     suffled_questions: list[list[str]] = field(init=False)
+    sys_prompt: str = field(init=False)
+    chart_type: str = field(init=False)
 
     def __post_init__(self) -> None:
-        ai_context = AIContext(
+        chart_type = SESS.chart_type
+        ai = AIContext(
             data1=self.data1,
             data2=self.data2,
             city1=SESS.city1,
@@ -324,20 +572,50 @@ class AI:
             tz1=SESS.tz1,
             tz2=SESS.tz2,
         )
-        chart_data = reduce(
-            lambda x, y: x + y,
-            (ai_context.ai_md(tb) for tb in ["celestial_bodies", "houses", "aspects"]),
-        )
+        name1 = self.data1.name
+        name1_cel_bodies = name1 + " celestial bodies"
+        data = [ai.markdown("User's Basic Info", ai.basic_info())]
+        if self.data2:
+            name2 = self.data2.name
+            name2_cel_bodies = f"{name2} celestial bodies in {name1}'s chart"
+            cel_headers = ["Celestial Body", "Sign", f"{name1}'s House", "Dignity"]
+            signs_headers = ["Sign", name1_cel_bodies, name2_cel_bodies, "sum"]
+            houses_headers = ["House", "Cusp", name1_cel_bodies, name2_cel_bodies, "sum"]
+            data += [
+                ai.markdown(name1_cel_bodies, ai.celestial_bodies(1, cel_headers)),
+                ai.markdown(name2_cel_bodies, ai.celestial_bodies(2, cel_headers)),
+                ai.markdown("Signs", ai.signs(headers=signs_headers)),
+                ai.markdown("Houses", ai.houses(headers=houses_headers)),
+                ai.markdown(f"Aspects between {name1} and {name2}", ai.aspects()),
+            ]
+        else:
+            data += [
+                ai.markdown("Celestial Bodies", ai.celestial_bodies(1)),
+                ai.markdown("Signs", ai.signs()),
+                ai.markdown("Houses", ai.houses()),
+                ai.markdown("Aspects", ai.aspects()),
+            ]
+        data += [
+            ai.markdown(f"{name1} Elements", ai.elements()),
+            ai.markdown(f"{name1} Modalities", ai.modalities()),
+            ai.markdown(f"{name1} Polarities", ai.polarities()),
+            ai.markdown(f"{name1} Quadrants", ai.quadrants()),
+            ai.markdown(f"{name1} Hemispheres", ai.hemispheres()),
+        ]
+
         lang = ["English", "Traditional Chinese"][lang_num()]
-        chart_type = self.chart_type
-        sys_prompt = SYS_PROMPT.format(chart_type=chart_type, lang=lang, chart_data=chart_data)
-        # st.text(sys_prompt)
+        chart_type_en = chart_type.replace("_page", "").replace("_", " ").title()
+        self.sys_prompt = SYS_PROMPT.format(
+            chart_type_en=chart_type_en,
+            lang=lang,
+            chart_data="\n".join(data),
+        )
         client = OpenAI(
             base_url="https://openrouter.ai/api/v1", api_key=st.secrets["OPENROUTER_API_KEY"]
         )
-        self.suffled_questions = AI_Q[self.chart_type]
+        self.suffled_questions = AI_Q[chart_type]
         random.shuffle(self.suffled_questions)
-        self.chat = OpenRouterChat(client, sys_prompt)
+        self.chat = OpenRouterChat(client, self.sys_prompt)
 
     def questions_ideas(self):
         with st.expander(i("question_ideas"), expanded=True):
@@ -350,7 +628,7 @@ class AI:
                         type="tertiary",
                         icon=":material/arrow_right:",
                         on_click=SESS.update,
-                        args=({f"chat_input_{self.chart_type}": question},),
+                        args=({f"chat_input_{SESS.chart_type}": question},),
                     )
 
     def model_selector(self):
