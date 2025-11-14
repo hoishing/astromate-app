@@ -22,11 +22,19 @@ logging.getLogger("fontTools").setLevel(logging.ERROR)
 
 def lang_num() -> int:
     """get language number from subdomain"""
-    match st.query_params.get("lang"):
+    # explicit path parameter
+    match st.context.url.split("/")[-1]:
         case "en":
             return 0
-        case _:
+        case "zh":
             return 1
+    # implicit browser locale
+    locale = st.context.locale
+    match locale[:2].lower():
+        case "zh":
+            return 1
+        case _:
+            return 0
 
 
 def debug_print(key: str | None = None) -> None:

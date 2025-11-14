@@ -3,6 +3,7 @@
 [server]
 enableStaticServing = true
 runOnSave = true
+baseUrlPath = "/app"
 
 [client]
 toolbarMode = "minimal"
