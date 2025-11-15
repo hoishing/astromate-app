@@ -1,7 +1,7 @@
 [project]
 name = "astromate-app"
 version = "1.0.1"
-description = "Your Cosmic Companion Awaits"
+description = "A handy astrology app"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [

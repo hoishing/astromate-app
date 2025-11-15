@@ -1,7 +1,6 @@
 import streamlit as st
 from archive import delete_chart
 from const import SESS, set_default_values
-from pathlib import Path
 from ui import (
     ai_ui,
     chart_ui,
@@ -21,13 +20,13 @@ if delete_hash and st.user.is_logged_in:
 
 
 st.set_page_config(
-    page_title="AstroBro",
-    page_icon="💫",
+    page_title="AstroMate",
+    page_icon="static/favicon.png",
     layout="wide",
     initial_sidebar_state="auto",
 )
-st.logo("static/astrobro-logo.png")
-st.html(f"<style>{Path('style.css').read_text()}</style>")
+st.logo("static/astromate-logo.png")
+st.html("style.css")
 
 
 def input(id: int, title: str):

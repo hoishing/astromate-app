@@ -42,8 +42,17 @@ wheels = [
 ]
 
 [[package]]
-name = "app-astromate"
-version = "1.0.0"
+name = "appnope"
+version = "0.1.4"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/35/5d/752690df9ef5b76e169e68d6a129fa6d08a7100ca7f754c89495db3c6019/appnope-0.1.4.tar.gz", hash = "sha256:1de3860566df9caf38f01f86f65e0e13e379af54f9e4bee1e66b48f2efffd1ee", size = 4170, upload-time = "2024-02-06T09:43:11.258Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/81/29/5ecc3a15d5a33e31b26c11426c45c501e439cb865d0bff96315d86443b78/appnope-0.1.4-py2.py3-none-any.whl", hash = "sha256:502575ee11cd7a28c0205f379b525beefebab9d161b7c964670864014ed7213c", size = 4321, upload-time = "2024-02-06T09:43:09.663Z" },
+]
+
+[[package]]
+name = "astromate-app"
+version = "1.0.1"
 source = { virtual = "." }
 dependencies = [
     { name = "authlib" },
@@ -76,15 +85,6 @@ dev = [
     { name = "ipykernel" },
     { name = "pytest" },
     { name = "watchdog" },
-]
-
-[[package]]
-name = "appnope"
-version = "0.1.4"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/35/5d/752690df9ef5b76e169e68d6a129fa6d08a7100ca7f754c89495db3c6019/appnope-0.1.4.tar.gz", hash = "sha256:1de3860566df9caf38f01f86f65e0e13e379af54f9e4bee1e66b48f2efffd1ee", size = 4170, upload-time = "2024-02-06T09:43:11.258Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/81/29/5ecc3a15d5a33e31b26c11426c45c501e439cb865d0bff96315d86443b78/appnope-0.1.4-py2.py3-none-any.whl", hash = "sha256:502575ee11cd7a28c0205f379b525beefebab9d161b7c964670864014ed7213c", size = 4321, upload-time = "2024-02-06T09:43:09.663Z" },
 ]
 
 [[package]]
@@ -878,15 +878,16 @@ wheels = [
 
 [[package]]
 name = "natal"
-version = "1.0.0"
+version = "1.0.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "pydantic" },
     { name = "pyswisseph" },
     { name = "tagit" },
 ]
+sdist = { url = "https://files.pythonhosted.org/packages/c5/3f/3d2a3cdd0cf58de3add4a8e5d6babdd98a9859c71208bf1acda8709e1bbe/natal-1.0.1.tar.gz", hash = "sha256:03e783d4903d24184a9400684530f847721460a1ffbb8501da33301df48491c3", size = 463238, upload-time = "2025-11-15T11:48:42.822Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/98/c5/47d1f08f7eba7958ee258fd6a339c4963aa591718b7f5755fa0c09c80e17/natal-1.0.0-py3-none-any.whl", hash = "sha256:10026ff3a50c56e6f5f5bdbc8333c841ee80c783fe88382b41979efca5806da4", size = 254512, upload-time = "2025-11-14T13:37:58.518Z" },
+    { url = "https://files.pythonhosted.org/packages/27/94/f3f5790109e2551ce8b01d119fe7eaf3b126a4525cc38b2782543e7012b7/natal-1.0.1-py3-none-any.whl", hash = "sha256:d80115fd370bb71fc9370adc998532330761792ac34bec9339cbc8dcfdf8480c", size = 254420, upload-time = "2025-11-15T11:48:41.649Z" },
 ]
 
 [[package]]

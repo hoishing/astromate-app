@@ -1,18 +1,16 @@
-version: '3.8'
-
 services:
-  astrobro:
+  astromate-app:
     build:
       context: .
-      secrets:
-        - github_token
-    container_name: astrobro-app
+      dockerfile: Dockerfile
+    container_name: astromate-app
     ports:
-      - "8508:8508"
+    - "8501:8501"
+    environment:
+      - STREAMLIT_SERVER_PORT=8501
+      - STREAMLIT_SERVER_HEADLESS=true
     volumes:
       - .:/app
+      - /app/.venv # Exclude virtual environment from volume mount
+    working_dir: /app
     restart: unless-stopped
-
-secrets:
-  github_token:
-    environment: GITHUB_TOKEN
