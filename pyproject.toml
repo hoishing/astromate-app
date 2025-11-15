@@ -1,6 +1,6 @@
 [project]
-name = "app-astromate"
-version = "1.0.0"
+name = "astromate-app"
+version = "1.0.1"
 description = "Your Cosmic Companion Awaits"
 readme = "README.md"
 requires-python = ">=3.12"

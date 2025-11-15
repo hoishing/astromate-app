@@ -1,19 +1,24 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
   "manifest_version": 2,
-  "id": "https://hoishing.github.io/astrobro",
+  "id": "https://hoishing.github.io/astromate-app",
   "version": "1.0.0",
-  "name": "AstroBro",
-  "short_name": "AstroBro",
-  "description": "Your Astrology Bro",
-  "start_url": "https://hoishing.github.io/astrobro",
+  "name": "AstroMate",
+  "short_name": "AstroMate",
+  "description": "YYour Cosmic Companion Awaits",
+  "start_url": "https://hoishing.github.io/astromate-app",
   "display": "standalone",
   "background_color": "#212529",
   "theme_color": "#343a40",
   "icons": [
     {
-      "src": "./astrobro-256.png",
+      "src": "./astromate-icon-circle-256.png",
       "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "./astromate-icon-circle-512.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ]
