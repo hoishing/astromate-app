@@ -67,7 +67,6 @@ Please reply in {lang}.
 - Modalities: distribution of celestial bodies in the 3 modalities
 - Polarities: distribution of celestial bodies in the 2 polarities
 - Quadrants: distribution of celestial bodies in the 4 quadrants
-- Hemispheres: distribution of celestial bodies in the 4 hemispheres
 
 # Instructions for Different Chart Types
 - Birth Chart
@@ -107,26 +106,6 @@ Please reply in {lang}.
     - This area is about self-actualization and your place in the wider world, covering career, social status, community, and spiritual growth. 
     - Here, you express your individuality in public, establish your reputation, and explore your highest aspirations or sense of purpose.
 
-
-# Notes on Hemispheres
-- Northern Hemisphere
-    - comprises of Houses 1 through 6. 
-    - This is the personal and subjective portion of the chart. 
-    - These houses rule areas of life that directly impact the development of a person's personalities and help shape their individual identities. 
-    - They tend to be private and more subjective.
-- Southern Hemisphere 
-    - comprises of Houses 7 through 12. 
-    - This is the social, objective, and collective portion of the chart. 
-    - They tend to be more objective, sociable, and concerned with outside events.
-- Eastern Hemisphere
-    - comprised of Houses 1, 2, 3, 10, 11, and 12
-    - The native is generally self-motivated, initiating, action-oriented, and self-assertive. 
-    - They tend to believe strongly in free will.
-- Western Hemisphere
-    - comprised of Houses 4, 5, 6, 7, 8, and 9
-    - This is the right half of the chart.
-    - They tend to be other-oriented and receptive rather than self-motivated. 
-    - The needs of others are considered before taking action. 
 
 # Notes on Celestial Bodies Names
 - Use `name(symbol)` format for celestial bodies names.
@@ -600,7 +579,6 @@ class AI:
             ai.markdown(f"{name1} Modalities", ai.modalities()),
             ai.markdown(f"{name1} Polarities", ai.polarities()),
             ai.markdown(f"{name1} Quadrants", ai.quadrants()),
-            ai.markdown(f"{name1} Hemispheres", ai.hemispheres()),
         ]
 
         lang = ["English", "Traditional Chinese"][lang_num()]

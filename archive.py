@@ -52,7 +52,7 @@ def data_hash(sess: DotDict = SESS) -> str:
         for prop in ["name", "city", "lat", "lon", "tz", "hr", "min"]
         for i in "12"
     ]
-    raw_data += [sess[f"date{i}"].strftime("%Y-%m-%d") for i in "12"]
+    raw_data += [sess[f"date{i}"].strftime("%Y-%m-%d") if sess[f"date{i}"] else None for i in "12"]
     raw_data += [sess["chart_type"], sess["solar_return_year"]]
     return md5(json.dumps(raw_data).encode()).hexdigest()
 
