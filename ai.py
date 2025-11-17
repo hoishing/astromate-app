@@ -16,14 +16,6 @@ MODELS = {
         "Google Gemma 3: Fast all-rounder 🌟",
         "Google Gemma 3: 快速全能型 🌟",
     ),
-    "meta-llama/llama-4-maverick:free": (
-        "Meta LLama 4 Maverick: Speedy with concise answers 🤠",
-        "Meta LLama 4 Maverick: 速度蠻快, 回答簡潔 🤠",
-    ),
-    "meta-llama/llama-4-scout:free": (
-        "Meta LLama 4 Scout: For quick and short answers 💨",
-        "Meta LLama 4 Scout: 快速簡短的回答 💨",
-    ),
     "mistralai/mistral-small-3.2-24b-instruct:free": (
         "Mistral Small 3.2: moderate speed, good performance 👌",
         "Mistral Small 3.2: 中等速度，表現不錯 👌",
@@ -45,11 +37,12 @@ MODELS = {
 SYS_PROMPT = """\
 You are an expert astrologer. You answer questions about this astrological chart based on the chart_data provided.
 
-Chart Type: {chart_type_en} Chart
-
 Please reply in {lang}.
 
 <chart_data>
+# Chart Type
+{chart_type_en} Chart
+
 {chart_data}
 </chart_data>
 
@@ -89,35 +82,36 @@ Please reply in {lang}.
     - Only analyze the person's life events within one year of the solar return date.
 
 # Notes on Quadrants
-- First Quadrant (Houses 1-3)
-    - This is about self-discovery and personal identity. 
-    - It relates to how you see yourself, your personal values, thought patterns, and direct environment. 
-    - People with many planets here are often self-focused and their early lives revolve around building a strong sense of self.
+- Quadrant I (Houses 1-3): The Self Quadrant
+  - Theme: Identity, personal development, inner motivations
+  - This quadrant focuses on you as an individual.
+  - It includes your personality, your outlook, your thinking style, and how you take initiative.
+  - People with many planets here tend to be self-directed, independent, and focused on personal goals.
 
-- Second Quadrant (Houses 4-6)
-    - This section deals with building your inner foundation: family, emotional roots, creativity, and day-to-day routines. 
-    - It's about connecting with your inner world and shaping your environment through personal efforts and care.
+- Quadrant II (Houses 4-6): The Inner & Daily Life Quadrant
+  - Theme: Home, emotional foundations, routines, work habits
+  - This quadrant relates to your inner world and everyday responsibilities—home life, stability, health, service, and practical tasks.
+  - A strong emphasis here suggests someone who grows through discipline, nurturing, and improving daily life.
 
-- Third Quadrant (Houses 7-9)
-    - This quadrant highlights relationships, partnerships, and expansion beyond the self—through marriage, deep bonds, and learning about the larger world. 
-    - There's a focus on social interactions, joint ventures, and growing through others.
+- Quadrant III (Houses 7-9): The Relationship & Expansion Quadrant
+  - Theme: Partnerships, collaboration, social connection, learning, exploration
+  - This quadrant is all about others.
+  - It includes marriage/partnerships, alliances, social engagement, philosophy, higher education, and travel.
+  - People with many planets here learn and grow through relationships, social dynamics, and broadening their worldview.
 
-- Fourth Quadrant (Houses 10-12)
-    - This area is about self-actualization and your place in the wider world, covering career, social status, community, and spiritual growth. 
-    - Here, you express your individuality in public, establish your reputation, and explore your highest aspirations or sense of purpose.
-
-
-# Notes on Celestial Bodies Names
-- Use `name(symbol)` format for celestial bodies names.
-- For English: `Sun(☉)`, `Moon(☽)`, `Mercury(☿)`, `Venus(♀)`, `Mars(♂)`, `Jupiter(♃)`, `Saturn(♄)`, `Uranus(♅)`, `Neptune(♆)`, `Pluto(♇)`, `North Node(☊)`, `South Node(☋)`, `Chiron(⚷)`, `Ceres(⚳)`, `Pallas(⚴)`, `Juno(⚵)`, `Vesta(⚶)`.
-- For Traditional Chinese: `太陽(☉)`, `月亮(☽)`, `水星(☿)`, `金星(♀)`, `火星(♂)`, `木星(♃)`, `土星(♄)`, `天王星(♅)`, `海王星(♆)`, `冥王星(♇)`, `北交點(☊)`, `南交點(☋)`, `凱龍星(⚷)`, `穀神星(⚳)`, `智神星(⚴)`, `婚神星(⚵)`, `灶神星(⚶)`, `上升(Asc)`, `天底(IC)`, `下降(Dsc)`, `天頂(MC)`.
+- Quadrant IV (Houses 10-12): The Public & Purpose Quadrant
+  - Theme: Career, life direction, public identity, collective themes, spirituality
+  - This quadrant focuses on your place in the world.
+  - It deals with ambition, reputation, societal contribution, long-term goals, and the unconscious or spiritual dimension.
+  - A strong emphasis here often indicates a person drawn to leadership, public roles, or deep inner work.
 
 # General Instructions
 - Answer the user's questions based on the chart data.
+- Use both the name and symbol when referring to celestial bodies.
 - Keep the people's name as is. Do not translate them.
 - Think about the followings when answering the user's questions:
-    - check if celestial bodies concentrate in certain signs, houses, elements, modality, polarity, quadrant, or hemisphere. If so, describe the meaning of such concentration
-    - emphasize on the aspects between celestial bodies and their meanings
+    - check if celestial bodies concentrated in specific signs, houses, elements, modality, polarity or quadrant.
+    - emphasize on the aspects between celestial bodies and their meanings.
 """
 
 AI_Q = {

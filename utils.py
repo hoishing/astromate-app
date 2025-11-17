@@ -294,11 +294,9 @@ def pdf_html(data1: Data, data2: Data = None):
 
     basic_info_title = f"{i(SESS.chart_type)} - {i('basic_info')}"
     basic_info_headers = [i("name"), i("city"), i("coordinates"), local_time_label()]
-    ele_vs_mod_title = i("elements_vs_modalities")
     ele_vs_mod_headers = ["🜂", "🜁", "🜄", "🜃", "∑"]
     ele_vs_mod_row_label = ["⟑", "⊟", "𛰣", "∑"]
     ele_vs_mod_polarity_label = ["◐", "+", "-"]
-    quad_vs_hemi_title = i("quad_vs_hemi")
     quad_vs_hemi_headers = [i("eastern"), i("western"), i("northern"), i("southern"), "∑"]
     body_headers = [i("body"), i("sign"), i("house"), i("dignity")]
     dignity_labels = ["⏫", "🔼", "⏬", "🔽"]
@@ -307,11 +305,15 @@ def pdf_html(data1: Data, data2: Data = None):
     signs_headers = [i("sign")]
     houses_title = f"{i('houses')} - {i(SESS.house_sys)}"
     if data2:
+        ele_vs_mod_title = i("elements_vs_modalities") + f" - {data1.name}"
+        quad_vs_hemi_title = i("quad_vs_hemi") + f" - {data1.name}"
         body_title1 = i("celestial_body") + f" - {data1.name}"
         body_title2 = i("celestial_body") + f" - {data2.name}"
         signs_headers = [i("sign"), data1.name, data2.name, "∑"]
         houses_headers = [i("house"), i("cusp"), data1.name, data2.name, "∑"]
     else:
+        ele_vs_mod_title = i("elements_vs_modalities")
+        quad_vs_hemi_title = i("quad_vs_hemi")
         body_title1 = i("celestial_body")
         signs_headers = [i("sign"), i("bodies"), "∑"]
         houses_headers = [i("house"), i("cusp"), i("bodies"), "∑"]

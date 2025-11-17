@@ -21,7 +21,7 @@ if delete_hash and st.user.is_logged_in:
 
 st.set_page_config(
     page_title="AstroMate",
-    page_icon="static/favicon.png",
+    page_icon="static/favicon-256.png",
     layout="wide",
     initial_sidebar_state="auto",
 )
