@@ -91,8 +91,7 @@ svg {
   }
 }
 
-/* svg stroke color override with css not supported by weasyprint */
-/* .aspect_grid {
+.aspect_grid {
   tr:nth-child(n + 2) td:nth-child(2),
   tr:nth-child(n + 3) td:nth-child(3),
   tr:nth-child(n + 4) td:nth-child(4),
@@ -117,7 +116,7 @@ svg {
   tr:nth-child(n + 23) td:nth-child(23),
   tr:nth-child(n + 24) td:nth-child(24) {
     svg {
-      stroke: var(--color-dim-text);
+      opacity: 0.3;
     }
   }
-} */
+}
