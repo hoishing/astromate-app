@@ -153,21 +153,6 @@ def charts_df() -> pd.DataFrame | None:
     return df
 
 
-def validate_lat() -> bool:
-    matched_lat1 = SESS.lat1 is not None and (SESS.lat1 < -66.5 or SESS.lat1 > 66.5)
-    if "lat2" in SESS:
-        matched_lat2 = SESS.lat2 is not None and (SESS.lat2 < -66.5 or SESS.lat2 > 66.5)
-    else:
-        matched_lat2 = False
-    matched_house = SESS.house_sys in ["Placidus", "Koch"]
-    if matched_house and (matched_lat1 or matched_lat2):
-        st.error(i(SESS.house_sys) + i("latitude_error"), width=600)
-        if st.button("ok", width=300):
-            st.rerun()
-        st.stop()
-    return True
-
-
 def reset_inputs() -> bool:
     for key, val in DEFAULT_INPUTS.items():
         SESS[key] = val
@@ -181,6 +166,18 @@ def update_orbs() -> bool:
         SESS.update(dict(zip(ASPECT_NAMES, [3, 3, 3, 3, 2, 0])))
     else:
         SESS.update(ORBS)
+    return True
+
+
+def is_form_valid(num: int) -> bool:
+    for name in ["name", "tz", "date"]:
+        key = f"{name}{num}"
+        if not SESS.get(key):
+            return False
+    for name in ["lat", "lon"]:
+        key = f"{name}{num}"
+        if SESS.get(key) is None:
+            return False
     return True
 
 

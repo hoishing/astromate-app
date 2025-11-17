@@ -28,7 +28,6 @@ from utils import (
     stats_html,
     step,
     update_orbs,
-    validate_lat,
 )
 
 
@@ -114,7 +113,7 @@ def general_opt():
         options=HouseSys._member_names_,
         key="house_sys",
         format_func=i,
-        on_change=lambda: validate_lat() and update_db("house_sys"),
+        on_change=lambda: update_db("house_sys"),
     )
 
     c1, c2, c3 = st.columns(3)
@@ -151,6 +150,7 @@ def orb_opt():
     """orb settings"""
 
     def orb_input(aspect: str):
+        SESS[aspect] = SESS[aspect]
         st.number_input(
             label=i(aspect),
             min_value=0,
@@ -302,13 +302,17 @@ def input_ui(id: int):
             # prevent sess clean up if widget is not drawn on screen
             SESS[key] = SESS[key]
 
-        c1.number_input(
-            i("latitude"),
-            key=lat,
-            min_value=-89.99,
-            max_value=89.99,
-            on_change=validate_lat,
-        )
+        max_lat = 66.5 if SESS.house_sys in ["Placidus", "Koch"] else 89.99
+        try:
+            c1.number_input(
+                i("latitude"),
+                key=lat,
+                min_value=-max_lat,
+                max_value=max_lat,
+            )
+        except Exception:
+            st.error(i(SESS.house_sys) + i("latitude_error"))
+            st.stop()
 
         c2.number_input(
             i("longitude"),

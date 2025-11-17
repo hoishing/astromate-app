@@ -10,7 +10,7 @@ from ui import (
     stats_ui,
     utils_ui,
 )
-from utils import i, natal_data
+from utils import i, is_form_valid, natal_data
 
 # Handle delete requests
 delete_hash = st.query_params.get("delete")
@@ -35,11 +35,11 @@ def input(id: int, title: str):
 
 
 def chart():
-    if SESS.name1 and SESS.lat1 and SESS.lon1 and SESS.tz1:
+    if is_form_valid(1):
         data1 = natal_data(1)
         if SESS.chart_type == "solar_return_page":
             data1 = data1.solar_return(target_yr=SESS.solar_return_year)
-        data2 = natal_data(2) if SESS.name2 and SESS.lat2 and SESS.lon2 and SESS.tz2 else None
+        data2 = natal_data(2) if is_form_valid(2) else None
         chart_ui(data1, data2)
         utils_ui(2 if data2 else 1, data1, data2)
         if SESS.show_stats:
