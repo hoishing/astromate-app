@@ -12,8 +12,8 @@ from utils import data_db, get_dt
 
 DataArchive = create_model(
     "DataArchive",
-    **{f"{prop}{i}": (str) for i in "12" for prop in ["name", "tz"]},
-    **{f"city{i}": (str) for i in "12"},
+    **{f"name{i}": (str) for i in "12"},
+    **{f"{prop}{i}": (str | None, None) for i in "12" for prop in ["city", "tz"]},
     **{f"{prop}{i}": (float | None, None) for i in "12" for prop in ["lat", "lon"]},
     **{f"dt{i}": (datetime) for i in "12"},
     **{aspect: (int, 0) for aspect in ASPECT_NAMES},
