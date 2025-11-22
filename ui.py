@@ -34,7 +34,9 @@ from utils import (
 def segmented_ui():
     def handle_change():
         reset_inputs()
-        if SESS.chart_type is not None:
+        if SESS.chart_type is None:
+            SESS.chart_type = SESS.selected_chart_type
+        else:
             SESS.selected_chart_type = SESS.chart_type
             update_orbs()
 
@@ -139,10 +141,10 @@ def general_opt():
     c3.segmented_control(
         "AI",
         options=[True, False],
-        key="ai_chat",
+        key="enable_ai",
         width="stretch",
         format_func=lambda x: ":material/check: " if x else ":material/close:",
-        on_change=lambda: update_db("ai_chat"),
+        on_change=lambda: update_db("enable_ai"),
     )
 
 
@@ -367,7 +369,8 @@ def input_ui(id: int):
     date_hr_min()
 
 
-def utils_ui(id: int, data1: Data, data2: Data | None):
+def utils_ui(data1: Data, data2: Data | None):
+    chart_id = 2 if data2 else 1
     st.write("")
     with st.container(
         key="utils-container",
@@ -379,7 +382,7 @@ def utils_ui(id: int, data1: Data, data2: Data | None):
         st.button(
             "",
             icon=":material/arrow_left:",
-            on_click=lambda: step(id, -1),
+            on_click=lambda: step(chart_id, -1),
             key="prev",
             help=i("prev") + i(SESS.stepper_unit),
         )
@@ -397,7 +400,7 @@ def utils_ui(id: int, data1: Data, data2: Data | None):
         st.button(
             "",
             icon=":material/arrow_right:",
-            on_click=lambda: step(id, 1),
+            on_click=lambda: step(chart_id, 1),
             key="next",
             help=i("next") + i(SESS.stepper_unit),
         )
@@ -451,6 +454,8 @@ def utils_ui(id: int, data1: Data, data2: Data | None):
 
 
 def stats_ui(data1: Data, data2: Data | None):
+    if not SESS.show_stats:
+        return
     with st.container(key="status_ui"):
         html = stats_html(data1, data2)
         st.markdown(html, unsafe_allow_html=True)
@@ -475,21 +480,16 @@ def chart_ui(data1: Data, data2: Data = None):
     if SESS["data_hash"] != data_hash():
         SESS["data_hash"] = data_hash()
         # reset chat history and ai questions
-        if "ai" in SESS:
-            del SESS["ai"]  # reset chat history
+        SESS.ai = None
 
 
 def ai_ui(data1: Data, data2: Data | None) -> None:
-    # debug_print()
-    if "ai" not in SESS:
-        SESS["ai"] = AI(data1, data2)
-    ai: AI = SESS["ai"]
-    # print(ai.sys_prompt)
-    ai.model_selector()
-    ai.questions_ideas()
-    ai.previous_chat_messages()
-    if prompt := st.chat_input(i("chat_placeholder"), key=f"chat_input_{SESS.chart_type}"):
-        ai.handle_user_input(prompt)
+    if not SESS.enable_ai:
+        return
+    if SESS.ai is None:
+        SESS.ai = AI(data1, data2)
+    # st.code(ai.sys_prompt, language="markdown")
+    SESS.ai.ui()
 
 
 def saved_charts_ui():

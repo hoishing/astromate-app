@@ -34,55 +34,33 @@ def input(id: int, title: str):
         input_ui(id)
 
 
-def chart():
-    if is_form_valid(1):
-        data1 = natal_data(1)
-        if SESS.chart_type == "solar_return_page":
-            data1 = data1.solar_return(target_yr=SESS.solar_return_year)
-        data2 = natal_data(2) if is_form_valid(2) else None
-        chart_ui(data1, data2)
-        utils_ui(2 if data2 else 1, data1, data2)
-        if SESS.show_stats:
-            stats_ui(data1, data2)
-        if SESS.ai_chat:
-            ai_ui(data1, data2)
-
-
-def birth_page():
-    input(1, i("birth_data"))
-    chart()
-
-
-def synastry_page():
-    input(1, i("birth_data"))
-    input(2, i("synastry_page"))
-    chart()
-
-
-def transit_page():
-    input(1, i("birth_data"))
-    input(2, i("transit_page"))
-    chart()
-
-
-def solar_return_page():
-    input(1, i("birth_data"))
-    chart()
-
-
 set_default_values()
-if SESS.chart_type is None:
-    SESS.chart_type = SESS.selected_chart_type
 sidebar_ui()
 segmented_ui()
 
-
+# input data for different chart types
 match SESS.chart_type:
     case "birth_page":
-        birth_page()
+        input(1, i("birth_data"))
     case "synastry_page":
-        synastry_page()
+        input(1, i("birth_data"))
+        input(2, i("synastry_page"))
     case "transit_page":
-        transit_page()
+        input(1, i("birth_data"))
+        input(2, i("transit_page"))
     case "solar_return_page":
-        solar_return_page()
+        input(1, i("solar_return_page"))
+
+data1 = natal_data(1) if is_form_valid(1) else None
+if not data1:
+    st.stop()
+
+if SESS.chart_type == "solar_return_page":
+    data1 = data1.solar_return(target_yr=SESS.solar_return_year)
+
+data2 = natal_data(2) if is_form_valid(2) else None
+
+chart_ui(data1, data2)
+utils_ui(data1, data2)
+stats_ui(data1, data2)
+ai_ui(data1, data2)

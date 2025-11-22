@@ -13,10 +13,11 @@ GENERAL_OPTS = {
     "house_sys": "Placidus",
     "pdf_color": "light",
     "show_stats": True,
-    "ai_chat": True,
+    "enable_ai": True,
 }
 
 DEFAULT_OPTS = {
+    "ai": None,
     "chart_size": MAX_CHART_SIZE,
     "rerun_cnt": 0,
     "data_hash": "",
@@ -26,6 +27,7 @@ DEFAULT_OPTS = {
 }
 
 DEFAULT_INPUTS = {
+    "chat_input": "",
     "solar_return_year": int(Date.today().year + (1 if Date.today().month > 6 else 0)),
     "name1": "",
     "name2": "",
@@ -99,7 +101,6 @@ I18N = {
     "save_chart": ("Save Chart", "保存星盤"),
     "prev": ("Prev ", "上一"),
     "next": ("Next ", "下一"),
-    # "ai_chat": ("AI Chat", "AI 聊天"),
     # orbs
     "orbs": ("Orbs", "容許度"),
     "orb": ("Orb", "容許度"),

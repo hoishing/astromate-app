@@ -9,28 +9,28 @@ from utils import i, lang_num, scroll_to_bottom
 
 MODELS = {
     "meituan/longcat-flash-chat:free": (
-        "Meituan LongCat Flash Chat: Fast and powerful 🚀",
-        "美團 LongCat Flash Chat: 快速且強大 🚀",
+        "Meituan LongCat Flash Chat: Fast and powerful 💫",
+        "美團 LongCat Flash Chat: 快速且強大 💫",
     ),
     "google/gemma-3-27b-it:free": (
         "Google Gemma 3: Fast all-rounder 🌟",
         "Google Gemma 3: 快速全能型 🌟",
     ),
-    "mistralai/mistral-small-3.2-24b-instruct:free": (
-        "Mistral Small 3.2: moderate speed, good performance 👌",
-        "Mistral Small 3.2: 中等速度，表現不錯 👌",
+    "x-ai/grok-4.1-fast:free": (
+        "Grok 4.1 Fast: moderate speed and detail 🚀",
+        "Grok 4.1 Fast: 速度中等且詳細 🚀",
     ),
-    "qwen/qwen3-235b-a22b:free": (
-        "Qwen 3 235B: Slow but detail 🐌",
-        "Qwen 3 235B: 很慢，但詳細 🐌",
-    ),
-    "deepseek/deepseek-chat-v3.1:free": (
-        "DeepSeek Chat V3.1: Moderate speed, average performance ⚖️",
-        "DeepSeek Chat V3.1: 中等速度, 表現平均 ⚖️",
+    "tngtech/deepseek-r1t2-chimera:free": (
+        "TNG Tech DeepSeek R1T2 Chimera: good at giving advices 🗣️",
+        "TNG Tech DeepSeek R1T2 Chimera: 擅長給予建議 🗣️",
     ),
     "meta-llama/llama-3.3-70b-instruct:free": (
         "Meta LLama 3.3 70B: Fast simple answer 🏃",
         "Meta LLama 3.3 70B: 快速簡單回答 🏃",
+    ),
+    "qwen/qwen3-235b-a22b:free": (
+        "Qwen 3 235B: Slow but detail 🐌",
+        "Qwen 3 235B: 很慢，但詳細 🐌",
     ),
 }
 
@@ -600,7 +600,7 @@ class AI:
                         type="tertiary",
                         icon=":material/arrow_right:",
                         on_click=SESS.update,
-                        args=({f"chat_input_{SESS.chart_type}": question},),
+                        args=({"chat_input": question},),
                     )
 
     def model_selector(self):
@@ -620,21 +620,34 @@ class AI:
             with st.chat_message(role, avatar="👤" if role == "user" else "💫"):
                 st.markdown(text)
 
-    def handle_user_input(self, prompt: str):
+    def handle_user_input(self):
         # Display user message
-        with st.chat_message("user", avatar="👤"):
+        prompt = SESS.chat_input
+        # wrap in container for putting in st.empty()
+        msg = st.container(key="ai_messages")
+        with msg.chat_message("user", avatar="👤"):
             st.markdown(prompt)
 
         # Generate and display assistant response
-        with st.chat_message("assistant", avatar="💫"):
+        with msg.chat_message("assistant", avatar="💫"):
             try:
                 response = self.chat.send_message_stream(prompt)
-
                 with st.spinner(f"{i('thinking')}...", show_time=True):
                     scroll_to_bottom(key="start_response")
                     st.write_stream(chunk for chunk in response)
                     scroll_to_bottom(key="finish_response")
-
             except Exception as e:
                 st.error(e)
-                st.stop()
+
+    def ui(self):
+        self.model_selector()
+        self.questions_ideas()
+        self.previous_chat_messages()
+        # wrap st.chat_input in st.container to avoid unnecessary reruns, which resets the user input
+        with st.container(key="chat_container"):
+            response_holder = st.empty()
+            prompt = st.chat_input(i("chat_placeholder"), key="chat_input")
+            if prompt:
+                with response_holder:
+                    ai: AI = SESS.ai
+                    ai.handle_user_input()

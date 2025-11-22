@@ -156,6 +156,7 @@ def charts_df() -> pd.DataFrame | None:
 def reset_inputs() -> bool:
     for key, val in DEFAULT_INPUTS.items():
         SESS[key] = val
+    SESS.ai = None
     return True
 
 
