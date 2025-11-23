@@ -55,10 +55,12 @@ data1 = natal_data(1) if is_form_valid(1) else None
 if not data1:
     st.stop()
 
+data2 = natal_data(2) if is_form_valid(2) else None
+if SESS.chart_type in ["synastry_page", "transit_page"] and not data2:
+    st.stop()
+
 if SESS.chart_type == "solar_return_page":
     data1 = data1.solar_return(target_yr=SESS.solar_return_year)
-
-data2 = natal_data(2) if is_form_valid(2) else None
 
 chart_ui(data1, data2)
 utils_ui(data1, data2)
