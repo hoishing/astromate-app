@@ -29,9 +29,14 @@ st.logo("static/astromate-logo.png")
 st.html("style.css")
 
 
-def input(id: int, title: str):
-    with st.expander(title, expanded=True):
-        input_ui(id)
+def input(title1: str, icon2: str | None = None, title2: str | None = None):
+    with st.expander(title1, expanded=True):
+        input_ui(1)
+        if icon2 and title2:
+            with st.container(key="input_container"):
+                st.write("")
+                st.markdown(f"###### :material/{icon2}: {title2}")
+                input_ui(2)
 
 
 set_default_values()
@@ -41,15 +46,13 @@ segmented_ui()
 # input data for different chart types
 match SESS.chart_type:
     case "birth_page":
-        input(1, i("birth_data"))
+        input(i("birth_data"))
     case "synastry_page":
-        input(1, i("birth_data"))
-        input(2, i("synastry_page"))
+        input(i("birth_data"), "group", i("synastry_data"))
     case "transit_page":
-        input(1, i("birth_data"))
-        input(2, i("transit_page"))
+        input(i("birth_data"), "calendar_clock", i("transit_data"))
     case "solar_return_page":
-        input(1, i("solar_return_page"))
+        input(i("birth_data"))
 
 data1 = natal_data(1) if is_form_valid(1) else None
 if not data1:
@@ -58,9 +61,6 @@ if not data1:
 data2 = natal_data(2) if is_form_valid(2) else None
 if SESS.chart_type in ["synastry_page", "transit_page"] and not data2:
     st.stop()
-
-if SESS.chart_type == "solar_return_page":
-    data1 = data1.solar_return(target_yr=SESS.solar_return_year)
 
 chart_ui(data1, data2)
 utils_ui(data1, data2)

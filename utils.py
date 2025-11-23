@@ -84,13 +84,15 @@ def natal_data(id: int) -> Data:
     display = {key: SESS[f"{key}{id}"] for key in Display.model_fields}
     aspects = {aspect: SESS[aspect] for aspect in ASPECT_NAMES}
     hse_1st_char = SESS.house_sys[0]
-    return Data(
+    data = Data(
         name=SESS[f"name{id}"],
         lat=SESS[f"lat{id}"],
         lon=SESS[f"lon{id}"],
         utc_dt=utc_of(id),
         config=Config(house_sys=hse_1st_char, orb=aspects, display=display),
     )
+    is_solar_return = id == 1 and SESS.chart_type == "solar_return_page"
+    return data.solar_return(target_yr=SESS.solar_return_year) if is_solar_return else data
 
 
 def step(chart_id: int, delta: Literal[1, -1]):

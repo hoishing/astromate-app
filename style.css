@@ -7,7 +7,7 @@
   --bg-color: #282d31;
 }
 
-.st-key-status_ui {
+.st-key-stats_ui {
   .title {
     font-size: 1.1rem;
     margin: 2rem 0 0.8rem 0.5rem;
@@ -154,13 +154,17 @@
 
 /* ai chat ========================================= */
 
-@media (max-width: 430px) {
+@media (max-width: 540px) {
   [data-testid="stExpanderDetails"]:has(.st-key-question_ideas_container) {
     padding-left: 0.3rem;
     padding-right: 0.3rem;
     button span {
       margin-right: 0.3rem;
     }
+  }
+  .stChatMessage:has([aria-label="Chat message from assistant"]) {
+    flex-direction: column;
+    gap: 0;
   }
 }
 
@@ -189,5 +193,17 @@
   h5,
   h6 {
     font-size: 1rem;
+  }
+}
+
+/* input container */
+.st-key-input_container h6 {
+  border-bottom: 1px solid #4c5052;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.8rem;
+  span[role="img"] {
+    margin-left: 0.3rem;
+    margin-right: 0.5rem;
   }
 }

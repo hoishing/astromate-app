@@ -361,9 +361,9 @@ def input_ui(id: int):
                 key=min_key,
             )
 
-    with st.container(key=f"name_and_city{id}", horizontal=True, horizontal_alignment="center"):
+    solar_return_year()
+    with st.container(key=f"name_and_city{id}", horizontal=True):
         name()
-        solar_return_year()
         city()
     lat_lon_tz()
     date_hr_min()
@@ -456,7 +456,7 @@ def utils_ui(data1: Data, data2: Data | None):
 def stats_ui(data1: Data, data2: Data | None):
     if not SESS.show_stats:
         return
-    with st.container(key="status_ui"):
+    with st.container(key="stats_ui"):
         html = stats_html(data1, data2)
         st.markdown(html, unsafe_allow_html=True)
 
