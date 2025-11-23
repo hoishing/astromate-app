@@ -14,6 +14,7 @@ from streamlit.components.v2 import component as custom_component
 from tagit import div, main, style, table, td, tr
 from typing import Iterable, Literal
 from weasyprint import HTML
+from weasyprint.text.fonts import FontConfiguration
 from zoneinfo import ZoneInfo
 
 # suppress fontTools warnings
@@ -212,7 +213,8 @@ def html_section(title: str, grid: list[Iterable], class_: str = "") -> str:
 def pdf_io(html: str) -> BytesIO:
     """PDF generation from HTML string"""
     fp = BytesIO()
-    HTML(string=html).write_pdf(fp)
+    font_config = FontConfiguration()
+    HTML(string=html).write_pdf(fp, font_config=font_config)
     return fp
 
 

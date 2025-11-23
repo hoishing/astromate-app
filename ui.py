@@ -442,7 +442,11 @@ def utils_ui(data1: Data, data2: Data | None):
                     with st.spinner("", width="stretch"):
                         html = pdf_html(data1, data2)
                         pdf = pdf_io(html)
-                    filename = f"{SESS.name1}_{SESS.name2}" if SESS.name2 else SESS.name1
+                    name_parts = [SESS.name1]
+                    if SESS.name2 and SESS.chart_type == "synastry_page":
+                        name_parts.append(SESS.name2)
+                    name_parts.append(i(SESS.chart_type))
+                    filename = "_".join(name_parts)
                     st.download_button(
                         "",
                         icon=":material/download:",

@@ -6,7 +6,7 @@ ENV UV_COMPILE_BYTECODE=1
 
 WORKDIR /app
 
-# Install build dependencies
+# Install build dependencies and fonts
 RUN apt-get update && apt-get install -y \
     gcc \
     g++ \
@@ -17,7 +17,12 @@ RUN apt-get update && apt-get install -y \
     libpango-1.0-0 \
     libpangoft2-1.0-0 \
     libgdk-pixbuf2.0-0 \
-    libffi-dev
+    libffi-dev \
+    fonts-noto-cjk \
+    fontconfig
+
+# Update font cache
+RUN fc-cache -fv
 
 RUN rm -rf /var/lib/apt/lists/*
 

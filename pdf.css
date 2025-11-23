@@ -31,7 +31,7 @@
 }
 
 main {
-  font-family: sans-serif, serif, monospace;
+  font-family: 'Noto Sans SC', sans-serif, serif, monospace;
   margin: 0;
   padding: 0;
   display: flex;
