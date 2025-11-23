@@ -32,9 +32,6 @@ COPY uv.lock pyproject.toml $HOME/app
 # Install Python dependencies with uv
 RUN uv sync --frozen || uv sync
 
-# Copy application code
-COPY . .
-
 # Expose port
 EXPOSE 8501
 
