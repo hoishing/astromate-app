@@ -159,6 +159,11 @@ def charts_df() -> pd.DataFrame | None:
 def reset_inputs() -> bool:
     for key, val in DEFAULT_INPUTS.items():
         SESS[key] = val
+    SESS.date2 = (
+        datetime.now(ZoneInfo(st.context.timezone)).date()
+        if SESS.chart_type == "transit_page"
+        else datetime(2000, 1, 1).date()
+    )
     SESS.ai = None
     return True
 

@@ -33,12 +33,12 @@ from utils import (
 
 def segmented_ui():
     def handle_change():
-        reset_inputs()
         if SESS.chart_type is None:
             SESS.chart_type = SESS.selected_chart_type
         else:
             SESS.selected_chart_type = SESS.chart_type
             update_orbs()
+        reset_inputs()
 
     with st.container(key="chart_type_selector"):
         st.segmented_control(

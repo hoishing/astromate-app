@@ -1,6 +1,5 @@
 import streamlit as st
 from datetime import date as Date
-from datetime import datetime
 from natal.config import Display, Orb
 
 SESS = st.session_state
@@ -28,7 +27,7 @@ DEFAULT_OPTS = {
 
 DEFAULT_INPUTS = {
     "chat_input": "",
-    "solar_return_year": int(Date.today().year + (1 if Date.today().month > 6 else 0)),
+    "solar_return_year": Date.today().year,
     "name1": "",
     "name2": "",
     "city1": None,
@@ -42,9 +41,9 @@ DEFAULT_INPUTS = {
     "date1": Date(2000, 1, 1),
     "date2": Date.today(),
     "hr1": 13,
-    "hr2": datetime.now().hour,
+    "hr2": 13,
     "min1": 0,
-    "min2": datetime.now().minute,
+    "min2": 0,
 }
 
 
