@@ -149,7 +149,7 @@ def charts_df() -> pd.DataFrame | None:
 
     df.set_index("hash", inplace=True, drop=False)
     df.rename(columns={"hash": "delete"}, inplace=True)
-    df["delete"] = "?delete=" + df["delete"]
+    df["delete"] = "?delete=" + df["delete"] + "&chart_type=" + SESS.chart_type
     df["age1"] = df["dt1"].apply(calculate_age)
     df["age2"] = df["dt2"].apply(calculate_age)
     df["solar_return_year"] = df["solar_return_year"].astype(str)

@@ -12,11 +12,15 @@ from ui import (
 )
 from utils import i, is_form_valid, natal_data
 
-# Handle delete requests
-delete_hash = st.query_params.get("delete")
-if delete_hash and st.user.is_logged_in:
-    delete_chart(st.user.email, delete_hash)
-    st.query_params.clear()
+
+def handle_delete_request():
+    delete_hash = st.query_params.get("delete")
+    if delete_hash and st.user.is_logged_in:
+        chart_type = st.query_params.get("chart_type")
+        delete_chart(st.user.email, delete_hash)
+        st.query_params.clear()
+        SESS.chart_type = chart_type
+        SESS.selected_chart_type = chart_type
 
 
 st.set_page_config(
@@ -40,6 +44,7 @@ def input(title1: str, icon2: str | None = None, title2: str | None = None):
 
 
 set_default_values()
+handle_delete_request()
 sidebar_ui()
 segmented_ui()
 
