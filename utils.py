@@ -321,12 +321,14 @@ def pdf_html(data1: Data, data2: Data = None):
         body_title2 = i("celestial_body") + f" - {data2.name}"
         signs_headers = [i("sign"), data1.name, data2.name, "∑"]
         houses_headers = [i("house"), i("cusp"), data1.name, data2.name, "∑"]
+        aspects_title = f"{i('aspects')} - {data1.name}: {i('rows')} / {data2.name}: {i('cols')}"
     else:
         ele_vs_mod_title = i("elements_vs_modalities")
         quad_vs_hemi_title = i("quad_vs_hemi")
         body_title1 = i("celestial_body")
         signs_headers = [i("sign"), i("bodies"), "∑"]
         houses_headers = [i("house"), i("cusp"), i("bodies"), "∑"]
+        aspects_title = i("aspects")
 
     orb_title = i("orbs")
     orb_headers = [i("aspect"), i("orb")]
