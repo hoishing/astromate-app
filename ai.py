@@ -107,7 +107,26 @@ Please reply in {lang}.
 
 # General Instructions
 - Answer the user's questions based on the chart data.
-- Use both the name and symbol when referring to celestial bodies.
+- Use both the name and symbol when referring to celestial bodies. Here provides some examples:
+    - Sun(☉)
+    - Moon(☽)
+    - Mercury(☿)
+    - Venus(♀)
+    - Mars(♂)
+    - Jupiter(♃)
+    - Saturn(♄)
+    - Uranus(♅)
+    - Neptune(♆)
+    - Pluto(♇)
+    - North Node(☊)
+    - South Node(☋)
+    - Chiron(⚷)
+    - Ceres(⚳)
+    - Pallas(⚴)
+    - Juno(⚵)
+    - Vesta(⚶)
+    - Ascendant(Asc)
+    - Descendant(Dsc)
 - Keep the people's name as is. Do not translate them.
 - Think about the followings when answering the user's questions:
     - check if celestial bodies concentrated in specific signs, houses, elements, modality, polarity or quadrant.
@@ -587,6 +606,7 @@ class AI:
         )
         self.suffled_questions = AI_Q[chart_type]
         random.shuffle(self.suffled_questions)
+        # st.code(self.sys_prompt, language="markdown")
         self.chat = OpenRouterChat(client, self.sys_prompt)
 
     def questions_ideas(self):
