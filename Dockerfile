@@ -31,9 +31,3 @@ COPY uv.lock pyproject.toml $HOME/app
 
 # Install Python dependencies with uv
 RUN uv sync --frozen || uv sync
-
-# Expose port
-EXPOSE 8501
-
-# Run the Streamlit app
-CMD ["uv", "run", "streamlit", "run", "main.py", "--server.port=8501", "--server.address=0.0.0.0"]

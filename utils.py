@@ -394,3 +394,13 @@ screenwidth_detector = custom_component(
     "screen_width_detector",
     js=Path("screenwidth_detector.js").read_text(),
 )
+
+external_ai = custom_component(
+    "external_link",
+    js="""
+    export default function (component) {
+        const { data } = component;
+        window.open(data, '_blank');
+    }
+    """,
+)

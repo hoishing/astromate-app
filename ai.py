@@ -5,9 +5,29 @@ from dataclasses import dataclass, field
 from natal import AIContext, Data
 from openai import OpenAI
 from typing import Literal, TypedDict
-from utils import i, lang_num, scroll_to_bottom
+from urllib.parse import quote_plus
+from utils import external_ai, i, lang_num, scroll_to_bottom
+
+EXTERNAL_AI = {
+    "chatgpt": "https://chatgpt.com/?prompt=",
+    "grok": "https://grok.com/?q=",
+    "claude": "https://claude.ai/new?q=",
+}
+
 
 MODELS = {
+    "chatgpt": (
+        "ChatGPT (open in new tab)",
+        "ChatGPT (在新標籤頁中開啟)",
+    ),
+    "grok": (
+        "Grok (open in new tab)",
+        "Grok (在新標籤頁中開啟)",
+    ),
+    "claude=": (
+        "Claude (open in new tab)",
+        "Claude (在新標籤頁中開啟)",
+    ),
     "meituan/longcat-flash-chat:free": (
         "Meituan LongCat Flash Chat: Fast and powerful 💫",
         "美團 LongCat Flash Chat: 快速且強大 💫",
@@ -131,6 +151,8 @@ Please reply in {lang}.
 - Think about the followings when answering the user's questions:
     - check if celestial bodies concentrated in specific signs, houses, elements, modality, polarity or quadrant.
     - emphasize on the aspects between celestial bodies and their meanings.
+
+Now, answer the question asked by the user given the chart data, notes and instructions above.
 """
 
 AI_Q = {
@@ -663,11 +685,33 @@ class AI:
         self.model_selector()
         self.questions_ideas()
         self.previous_chat_messages()
+
+        if SESS.ai_model in ["chatgpt", "grok", "claude"]:
+            with st.container(key="external_link_container", horizontal=True):
+                st.text_input(
+                    "prompt (external AI)",
+                    label_visibility="collapsed",
+                    placeholder=i("chat_placeholder"),
+                    key="ext_ai_input",
+                )
+                st.button(
+                    "",
+                    icon=":material/send:",
+                    key="ext_ai_button",
+                    on_click=self.send_external_ai,
+                )
+
+            return
+
         # wrap st.chat_input in st.container to avoid unnecessary reruns, which resets the user input
         with st.container(key="chat_container"):
             response_holder = st.empty()
             prompt = st.chat_input(i("chat_placeholder"), key="chat_input")
             if prompt:
                 with response_holder:
-                    ai: AI = SESS.ai
-                    ai.handle_user_input()
+                    self.handle_user_input()
+
+    def send_external_ai(self) -> None:
+        prompt = self.sys_prompt + "\n\n" + SESS.ext_ai_input
+        data = EXTERNAL_AI[SESS.ai_model] + quote_plus(prompt)
+        external_ai(data=data, key="ext_ai")
