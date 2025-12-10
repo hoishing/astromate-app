@@ -8,17 +8,9 @@ from typing import Literal, TypedDict
 from utils import i, lang_num, scroll_to_bottom
 
 MODELS = {
-    "meituan/longcat-flash-chat:free": (
-        "Meituan LongCat Flash Chat: Fast and powerful 💫",
-        "美團 LongCat Flash Chat: 快速且強大 💫",
-    ),
     "google/gemma-3-27b-it:free": (
         "Google Gemma 3: Fast all-rounder 🌟",
         "Google Gemma 3: 快速全能型 🌟",
-    ),
-    "x-ai/grok-4.1-fast:free": (
-        "Grok 4.1 Fast: moderate speed and detail 🚀",
-        "Grok 4.1 Fast: 速度中等且詳細 🚀",
     ),
     "tngtech/deepseek-r1t2-chimera:free": (
         "TNG Tech DeepSeek R1T2 Chimera: good at giving advices 🗣️",
