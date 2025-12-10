@@ -131,6 +131,8 @@ Please reply in {lang}.
 - Think about the followings when answering the user's questions:
     - check if celestial bodies concentrated in specific signs, houses, elements, modality, polarity or quadrant.
     - emphasize on the aspects between celestial bodies and their meanings.
+
+Now, answer the question asked by the user given the chart data, notes and instructions above.
 """
 
 AI_Q = {

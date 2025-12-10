@@ -3,14 +3,24 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: astromate-app
+    container_name: ${CONTAINER_NAME}
     ports:
-    - "8501:8501"
+      - "${STREAMLIT_PORT}:${STREAMLIT_PORT}"
     environment:
-      - STREAMLIT_SERVER_PORT=8501
+      - STREAMLIT_SERVER_PORT=${STREAMLIT_PORT}
       - STREAMLIT_SERVER_HEADLESS=true
     volumes:
       - .:/app
       - /app/.venv # Exclude virtual environment from volume mount
     working_dir: /app
     restart: unless-stopped
+    command:
+      [
+        "uv",
+        "run",
+        "streamlit",
+        "run",
+        "main.py",
+        "--server.port=${STREAMLIT_PORT}",
+        "--server.address=0.0.0.0",
+      ]
