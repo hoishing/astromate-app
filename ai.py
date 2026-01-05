@@ -21,8 +21,12 @@ MODELS = {
         "Meta LLama 3.3 70B: 快速簡單回答 🏃",
     ),
     "qwen/qwen3-235b-a22b:free": (
-        "Qwen 3 235B: Slow but detail 🐌",
-        "Qwen 3 235B: 很慢，但詳細 🐌",
+        "Qwen 3 235B: Slow but detail 🐢",
+        "Qwen 3 235B: 慢，但詳細 🐢",
+    ),
+    "z-ai/glm-4.5-air:free": (
+        "Z AI GLM 4.5 Air: Quality takes time.. 🐌",
+        "Z AI GLM 4.5 Air: 慢工出細活.. 🐌",
     ),
 }
 
@@ -600,6 +604,7 @@ class AI:
         )
         self.suffled_questions = AI_Q[chart_type]
         random.shuffle(self.suffled_questions)
+        # debug
         # st.code(self.sys_prompt, language="markdown")
         self.chat = OpenRouterChat(client, self.sys_prompt)
 
