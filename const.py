@@ -168,7 +168,7 @@ I18N = {
     "daylight_saving_time": ("Daylight Saving Time(if applicable)", "夏令時間(如適用)"),
     "adjustment": ("Adjustment", "調整"),
     # saved charts
-    "saved_charts": ("Saved Charts", "存檔"),
+    "saved_charts": ("Saved {chart_type} Charts", "{chart_type}存檔"),
     "age": ("Age", "年齡"),
     "transit_date": ("Transit Date", "行運日期"),
     "no_saved_charts": ("No saved charts", "沒有星盤存檔"),

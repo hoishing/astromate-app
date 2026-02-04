@@ -290,9 +290,8 @@ def input_ui(id: int):
             SESS[name_num] = SESS[name_num]  # prevent sess clean up
 
         with st.container(key=name_container_key):
-            use_selectbox = (
-                SESS.chart_type == "synastry_page"
-                or (id == 1 and SESS.chart_type in ["transit_page", "solar_return_page"])
+            use_selectbox = SESS.chart_type == "synastry_page" or (
+                id == 1 and SESS.chart_type in ["transit_page", "solar_return_page"]
             )
             if use_selectbox:
                 options = get_saved_natal_names(st.user.email if st.user.is_logged_in else None)
@@ -554,7 +553,7 @@ def saved_charts_ui():
             row = data.iloc[selected[0][0]]  # first value of first cell
             load_chart(row.to_dict())
 
-    st.subheader(i("saved_charts"))
+    st.subheader(i("saved_charts").format(chart_type=i(SESS.chart_type)))
     data = charts_df()
     if data is None:
         st.info(i("no_saved_charts"))
