@@ -94,6 +94,15 @@ I18N = {
     "pdf_color": ("PDF Color", "PDF 顏色"),
     "language": ("Language", "語言"),
     "statistics": ("Statistics", "統計"),
+    "openrouter_api_key": ("OpenRouter API Key", "OpenRouter API 密鑰"),
+    "openrouter_api_key_help": (
+        "visit https://openrouter.ai/ to get your API key",
+        "訪問 https://openrouter.ai/ 獲取 API 密鑰",
+    ),
+    "openrouter_api_key_required": (
+        "Please set your OpenRouter API key in Options.",
+        "請在選項中設定 OpenRouter API 密鑰。",
+    ),
     # utils ui
     "gen_pdf": ("Generate PDF", "生成 PDF"),
     "download_pdf": ("Download PDF", "下載 PDF"),

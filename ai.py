@@ -7,28 +7,13 @@ from openai import OpenAI
 from typing import Literal, TypedDict
 from utils import i, lang_num, scroll_to_bottom
 
-MODELS = {
-    "google/gemma-3-27b-it:free": (
-        "Google Gemma 3: Fast all-rounder 🌟",
-        "Google Gemma 3: 快速全能型 🌟",
-    ),
-    "tngtech/deepseek-r1t2-chimera:free": (
-        "TNG Tech DeepSeek R1T2 Chimera: good at giving advices 🗣️",
-        "TNG Tech DeepSeek R1T2 Chimera: 擅長給予建議 🗣️",
-    ),
-    "meta-llama/llama-3.3-70b-instruct:free": (
-        "Meta LLama 3.3 70B: Fast simple answer 🏃",
-        "Meta LLama 3.3 70B: 快速簡單回答 🏃",
-    ),
-    "qwen/qwen3-235b-a22b:free": (
-        "Qwen 3 235B: Slow but detail 🐢",
-        "Qwen 3 235B: 慢，但詳細 🐢",
-    ),
-    "z-ai/glm-4.5-air:free": (
-        "Z AI GLM 4.5 Air: Quality takes time.. 🐌",
-        "Z AI GLM 4.5 Air: 慢工出細活.. 🐌",
-    ),
-}
+MODELS = [
+    "google/gemma-3-27b-it:free",
+    "tngtech/deepseek-r1t2-chimera:free",
+    "meta-llama/llama-3.3-70b-instruct:free",
+    "qwen/qwen3-235b-a22b:free",
+    "z-ai/glm-4.5-air:free",
+]
 
 SYS_PROMPT = """\
 You are an expert astrologer. You answer questions about this astrological chart based on the chart_data provided.
@@ -600,7 +585,7 @@ class AI:
             chart_data="\n".join(data),
         )
         client = OpenAI(
-            base_url="https://openrouter.ai/api/v1", api_key=st.secrets["OPENROUTER_API_KEY"]
+            base_url="https://openrouter.ai/api/v1", api_key=SESS.openrouter_api_key
         )
         self.suffled_questions = AI_Q[chart_type]
         random.shuffle(self.suffled_questions)
@@ -628,8 +613,6 @@ class AI:
             i("ai_model"),
             options=MODELS,
             key="ai_model",
-            format_func=lambda x: MODELS[x][lang_num()],
-            # width=450,
         )
 
     def previous_chat_messages(self):
@@ -640,6 +623,9 @@ class AI:
                 st.markdown(text)
 
     def handle_user_input(self):
+        if not (SESS.get("openrouter_api_key") or "").strip():
+            st.toast(i("openrouter_api_key_required"), icon=":material/warning:")
+            return
         # Display user message
         prompt = SESS.chat_input
         # wrap in container for putting in st.empty()
