@@ -1,8 +1,8 @@
 # Commands
 
 ## Build/Lint/Test
-- `uv run ruff check .` - lint code
-- `uv run ruff format .` - format code
+- `uv run ruff check . --config pyproject.toml` - lint code
+- `uv run ruff format . --config pyproject.toml` - format code
 - `uv run pytest` - run all tests
 - `uv run pytest tests/test_birth.py::test_default_name -v` - run single test
 - `uv run streamlit run main.py` - run the app locally

@@ -388,9 +388,7 @@ def input_ui(id: int):
 
         with st.container(key=f"date-row{id}", horizontal=True):
             st.date_input(
-                i("birth_date")
-                if id == 1 or SESS.chart_type == "synastry_page"
-                else i("transit_date"),
+                i("birth_date") if id == 1 or SESS.chart_type == "synastry_page" else i("transit_date"),
                 max_value=Date(2300, 1, 1),
                 min_value=Date(1800, 1, 1),
                 format="YYYY-MM-DD",
