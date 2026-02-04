@@ -153,6 +153,7 @@ def general_opt():
 
     st.text_input(
         i("openrouter_api_key"),
+        type="password",
         disabled=not SESS.enable_ai,
         key="openrouter_api_key",
         help=i("openrouter_api_key_help"),

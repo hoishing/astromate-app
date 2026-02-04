@@ -626,7 +626,7 @@ class AI:
 
     def handle_user_input(self):
         if not (SESS.get("openrouter_api_key") or "").strip():
-            st.toast(i("openrouter_api_key_required"), icon=":material/warning:")
+            st.toast(i("openrouter_api_key_required"), icon="⚠️", duration="long")
             return
         # Display user message
         prompt = SESS.chat_input
