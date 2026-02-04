@@ -7,6 +7,7 @@ from openai import OpenAI
 from typing import Literal, TypedDict
 from utils import i, lang_num, scroll_to_bottom
 
+AI_BASE_URL = "https://openrouter.ai/api/v1"
 MODELS = [
     "google/gemma-3-27b-it:free",
     "tngtech/deepseek-r1t2-chimera:free",
@@ -486,8 +487,8 @@ class Message(TypedDict):
 
 
 class OpenRouterChat:
-    def __init__(self, client: OpenAI, system_message: str):
-        self.client = client
+    def __init__(self, system_message: str):
+        self.client = OpenAI(base_url=AI_BASE_URL, api_key=SESS.openrouter_api_key)
         self.messages = [Message(role="developer", content=system_message)]
 
     def is_retryable_error(self, error: Exception) -> bool:
@@ -584,14 +585,15 @@ class AI:
             lang=lang,
             chart_data="\n".join(data),
         )
-        client = OpenAI(
-            base_url="https://openrouter.ai/api/v1", api_key=SESS.openrouter_api_key
-        )
         self.suffled_questions = AI_Q[chart_type]
         random.shuffle(self.suffled_questions)
         # debug
         # st.code(self.sys_prompt, language="markdown")
-        self.chat = OpenRouterChat(client, self.sys_prompt)
+        self.chat = OpenRouterChat(self.sys_prompt)
+
+    def renew_chat(self) -> None:
+        """Recreate chat so it uses the current OpenRouter API key."""
+        self.chat = OpenRouterChat(self.sys_prompt)
 
     def questions_ideas(self):
         with st.expander(i("question_ideas"), expanded=True):

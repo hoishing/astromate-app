@@ -147,6 +147,18 @@ def general_opt():
         on_change=lambda: update_db("enable_ai"),
     )
 
+    def on_openrouter_key_change() -> None:
+        if SESS.get("ai") is not None:
+            SESS.ai.renew_chat()
+
+    st.text_input(
+        i("openrouter_api_key"),
+        disabled=not SESS.enable_ai,
+        key="openrouter_api_key",
+        help=i("openrouter_api_key_help"),
+        on_change=on_openrouter_key_change,
+    )
+
 
 def orb_opt():
     """orb settings"""
