@@ -13,6 +13,7 @@ GENERAL_OPTS = {
     "pdf_color": "light",
     "show_stats": True,
     "enable_ai": True,
+    "openrouter_api_key": "",
 }
 
 DEFAULT_OPTS = {

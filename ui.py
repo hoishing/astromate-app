@@ -148,6 +148,8 @@ def general_opt():
     )
 
     def on_openrouter_key_change() -> None:
+        if st.user.is_logged_in:
+            update_db("openrouter_api_key")
         if SESS.get("ai") is not None:
             SESS.ai.renew_chat()
 
