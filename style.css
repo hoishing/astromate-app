@@ -170,11 +170,17 @@
 
 .st-key-question_ideas_container {
   gap: 0;
-  button {
+  button > div {
     justify-content: left;
     text-align: left;
-    min-height: min-content;
   }
+  > .stElementContainer {
+    height: 1.8rem;
+  }
+}
+
+[data-testid="stExpanderDetails"]:has(.st-key-question_ideas_container) {
+  padding-top: 0.5rem;
 }
 
 [data-testid="stChatMessageContent"] {

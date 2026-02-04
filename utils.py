@@ -421,4 +421,5 @@ scroll_to_bottom = custom_component(
 screenwidth_detector = custom_component(
     "screen_width_detector",
     js=Path("screenwidth_detector.js").read_text(),
+    isolate_styles=False,
 )

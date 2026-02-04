@@ -524,7 +524,6 @@ def chart_ui(data1: Data, data2: Data = None):
     screenwidth_detector(
         data=MAX_CHART_SIZE,
         key="screen_detector",
-        isolate_styles=False,
         on_width_change=update_chart_size,
     )
     chart = Chart(data1=data1, data2=data2, width=SESS.chart_size)
