@@ -290,7 +290,11 @@ def input_ui(id: int):
             SESS[name_num] = SESS[name_num]  # prevent sess clean up
 
         with st.container(key=name_container_key):
-            if SESS.chart_type == "synastry_page":
+            use_selectbox = (
+                SESS.chart_type == "synastry_page"
+                or (id == 1 and SESS.chart_type in ["transit_page", "solar_return_page"])
+            )
+            if use_selectbox:
                 options = get_saved_natal_names(st.user.email if st.user.is_logged_in else None)
                 st.selectbox(
                     i("name"),
