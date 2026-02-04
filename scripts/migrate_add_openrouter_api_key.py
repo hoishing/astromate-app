@@ -9,9 +9,7 @@ DB_PATH = Path(__file__).resolve().parent.parent / "data.db"
 def main() -> None:
     conn = sqlite3.connect(DB_PATH)
     try:
-        conn.execute(
-            "ALTER TABLE users ADD COLUMN openrouter_api_key TEXT DEFAULT ''"
-        )
+        conn.execute("ALTER TABLE users ADD COLUMN openrouter_api_key TEXT DEFAULT ''")
         conn.commit()
         print("Migration applied.")
     except sqlite3.OperationalError as e:

@@ -10,6 +10,7 @@ from archive import (
 )
 from const import DISPLAY, GENERAL_OPTS, MAX_CHART_SIZE, ORBS, PDF_COLOR, ROW_HEIGHT, SESS, SYMBOLS
 from datetime import date as Date
+from datetime import datetime as Dt
 from natal import Chart, Data
 from natal.config import HouseSys
 from natal.const import ASPECT_NAMES, PLANET_NAMES
@@ -20,6 +21,8 @@ from utils import (
     cities_df,
     data_db,
     debug_print,
+    get_chart_by_name,
+    get_saved_natal_names,
     i,
     pdf_html,
     pdf_io,
@@ -255,6 +258,25 @@ def display_opt(id: int):
 def input_ui(id: int):
     """natal data input ui"""
 
+    def populate_chart_data() -> None:
+        """Fill city, lat, lon, tz, date, hr, min from saved natal chart for selected name."""
+        name_val = SESS.get(f"name{id}")
+        if not name_val or not st.user.is_logged_in:
+            return
+        data = get_chart_by_name(name_val, st.user.email)
+        if data is None:
+            return
+        SESS[f"city{id}"] = data.get("city1")
+        SESS[f"lat{id}"] = data.get("lat1")
+        SESS[f"lon{id}"] = data.get("lon1")
+        SESS[f"tz{id}"] = data.get("tz1")
+        dt_str = data.get("dt1")
+        if dt_str:
+            dt_obj = Dt.fromisoformat(dt_str.replace("Z", "+00:00"))
+            SESS[f"date{id}"] = dt_obj.date()
+            SESS[f"hr{id}"] = dt_obj.hour
+            SESS[f"min{id}"] = dt_obj.minute
+
     def name():
         name_num = f"name{id}"
         name_container_key = f"name_container{id}"
@@ -268,11 +290,23 @@ def input_ui(id: int):
             SESS[name_num] = SESS[name_num]  # prevent sess clean up
 
         with st.container(key=name_container_key):
-            st.text_input(
-                i("name"),
-                key=name_num,
-                disabled=name_disabled,
-            )
+            if SESS.chart_type == "synastry_page":
+                options = get_saved_natal_names(st.user.email if st.user.is_logged_in else None)
+                st.selectbox(
+                    i("name"),
+                    options=options,
+                    key=name_num,
+                    placeholder=i("name"),
+                    accept_new_options=True,
+                    on_change=populate_chart_data,
+                    help="select a saved natal chart or add a new one",
+                )
+            else:
+                st.text_input(
+                    i("name"),
+                    key=name_num,
+                    disabled=name_disabled,
+                )
 
     def solar_return_year():
         if id == 1 and SESS.chart_type == "solar_return_page":

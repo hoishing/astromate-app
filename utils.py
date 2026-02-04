@@ -134,9 +134,7 @@ def charts_df() -> pd.DataFrame | None:
             age -= 1
         return str(age)
 
-    sql = (
-        "select data, hash from charts where email = ? and chart_type = ? order by updated_at desc"
-    )
+    sql = "select data, hash from charts where email = ? and chart_type = ? order by updated_at desc"
     cursor = data_db().cursor()
     cursor.execute(sql, (st.user.email, SESS.chart_type))
     all_data = cursor.fetchall()
@@ -154,6 +152,40 @@ def charts_df() -> pd.DataFrame | None:
     df["age2"] = df["dt2"].apply(calculate_age)
     df["solar_return_year"] = df["solar_return_year"].astype(str)
     return df
+
+
+@st.cache_data(ttl=60)
+def get_saved_natal_names(email: str | None) -> list[str]:
+    """Return unique name1 values from saved birth_page charts for the user."""
+    if not email:
+        return []
+    sql = "SELECT data FROM charts WHERE email = ? AND chart_type = 'birth_page' ORDER BY updated_at DESC"
+    cursor = data_db().cursor()
+    cursor.execute(sql, (email,))
+    rows = cursor.fetchall()
+    seen: set[str] = set()
+    names: list[str] = []
+    for (row,) in rows:
+        data = json.loads(row)
+        name1 = data.get("name1") or ""
+        if name1 and name1 not in seen:
+            seen.add(name1)
+            names.append(name1)
+    return names
+
+
+def get_chart_by_name(name: str, email: str) -> dict | None:
+    """Return most recent birth_page chart data for the given name and user, or None."""
+    if not name or not email:
+        return None
+    sql = "SELECT data FROM charts WHERE email = ? AND chart_type = 'birth_page' ORDER BY updated_at DESC"
+    cursor = data_db().cursor()
+    cursor.execute(sql, (email,))
+    for (row,) in cursor.fetchall():
+        data = json.loads(row)
+        if data.get("name1") == name:
+            return data
+    return None
 
 
 def reset_inputs() -> bool:
@@ -234,9 +266,7 @@ def local_time_label() -> str:
 
 
 def stats_html(data1: Data, data2: Data = None):
-    stats = Stats(
-        data1=data1, data2=data2, city1=SESS.city1, city2=SESS.city2, tz1=SESS.tz1, tz2=SESS.tz2
-    )
+    stats = Stats(data1=data1, data2=data2, city1=SESS.city1, city2=SESS.city2, tz1=SESS.tz1, tz2=SESS.tz2)
     basic_info_headers = [i("name"), i("city"), i("coordinates"), local_time_label()]
     basic_info_title = f"{i(SESS.chart_type)} - {i('basic_info')}"
     basic_info = html_section(basic_info_title, stats.basic_info(basic_info_headers))
@@ -297,9 +327,7 @@ def pdf_html(data1: Data, data2: Data = None):
     data1.config.theme_type = SESS.pdf_color
     data1.config.chart.stroke_width = 0.7
 
-    stats = Stats(
-        data1=data1, data2=data2, city1=SESS.city1, city2=SESS.city2, tz1=SESS.tz1, tz2=SESS.tz2
-    )
+    stats = Stats(data1=data1, data2=data2, city1=SESS.city1, city2=SESS.city2, tz1=SESS.tz1, tz2=SESS.tz2)
     chart = Chart(data1, width=400, data2=data2)
 
     basic_info_title = f"{i(SESS.chart_type)} - {i('basic_info')}"

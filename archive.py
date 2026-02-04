@@ -29,11 +29,7 @@ def archive_str(sess: DotDict = SESS) -> str:
     """Return a JSON string of the current chart data."""
 
     try:
-        data = {
-            f"{prop}{i}": sess[f"{prop}{i}"]
-            for prop in ["name", "city", "lat", "lon", "tz"]
-            for i in "12"
-        }
+        data = {f"{prop}{i}": sess[f"{prop}{i}"] for prop in ["name", "city", "lat", "lon", "tz"] for i in "12"}
         data |= {f"dt{i}": get_dt(i) for i in [1, 2]}
         data |= {asp: sess[asp] for asp in ASPECT_NAMES}
         data |= {f"{body}{i}": sess[f"{body}{i}"] for body in Display.model_fields for i in "12"}
@@ -47,11 +43,7 @@ def archive_str(sess: DotDict = SESS) -> str:
 
 def data_hash(sess: DotDict = SESS) -> str:
     """hash the data to avoid inserting duplicate charts"""
-    raw_data = [
-        sess[f"{prop}{i}"]
-        for prop in ["name", "city", "lat", "lon", "tz", "hr", "min"]
-        for i in "12"
-    ]
+    raw_data = [sess[f"{prop}{i}"] for prop in ["name", "city", "lat", "lon", "tz", "hr", "min"] for i in "12"]
     raw_data += [sess[f"date{i}"].strftime("%Y-%m-%d") if sess[f"date{i}"] else None for i in "12"]
     raw_data += [sess["chart_type"], sess["solar_return_year"]]
     return md5(json.dumps(raw_data).encode()).hexdigest()
