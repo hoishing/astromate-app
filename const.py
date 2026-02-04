@@ -187,6 +187,10 @@ I18N = {
         ": 緯度必須在 -66.5 和 66.5 之間",
     ),
     # ai chat
+    "model_selector_help": (
+        "select or type in [OpenRouter models](https://openrouter.ai/models)",
+        "選擇或輸入 [OpenRouter 模型](https://openrouter.ai/models)",
+    ),
     "thinking": ("thinking", "思考中"),
     "question_ideas": (
         " Some question ideas &nbsp;",
